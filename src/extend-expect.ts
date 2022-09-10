@@ -1,3 +1,4 @@
-import * as extensions from './matchers';
+import * as extensions from './matchers'
 
-expect.extend(extensions);
+// @ts-ignore
+expect.extend(extensions)

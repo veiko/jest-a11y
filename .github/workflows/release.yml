@@ -8,6 +8,8 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+     - name: 🏗 Run build script
+        run: npm run build
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
       - name: 🚀 Release
