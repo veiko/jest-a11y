@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
       - name: 🏗 Run build script
         run: npm run build
       - name: 🚀 Release
