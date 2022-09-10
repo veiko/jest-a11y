@@ -1,3 +1,8 @@
+name: release
+on:
+  push:
+    branches:
+      - '*'
 steps:
   - name: ⬇️ Checkout
     uses: actions/checkout@v3
