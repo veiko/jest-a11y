@@ -1,0 +1,51 @@
+{
+  "name": "jest-a11y",
+  "version": "0.0.0",
+  "description": "Custom Jest matchers for testing accessibility",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veiko/jest-a11y.git"
+  },
+  "keywords": [
+    "a11y",
+    "jest",
+    "testing"
+  ],
+  "author": "Veronica Carrillo-Marquez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veiko/jest-a11y/issues"
+  },
+  "homepage": "https://github.com/veiko/jest-a11y#readme",
+  "dependencies": {
+    "@testing-library/user-event": "^14.4.3",
+    "jest": "^29.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "release": {
+    "plugins": [
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "yarn.lock"
+          ],
+          "message": "Build: ${nextRelease.gitTag} [skip ci]"
+        }
+      ]
+    ]
+  }
+}
