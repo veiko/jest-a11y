@@ -34,6 +34,7 @@
           "changelogFile": "CHANGELOG.md"
         }
       ],
+      "@semantic-release/npm",
       [
         "@semantic-release/git",
         {
@@ -53,6 +54,7 @@
     "@rollup/plugin-typescript": "^8.5.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^29.0.0",
     "jest": "^29.0.2",

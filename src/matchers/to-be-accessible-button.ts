@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event'
-import { getAttribute, getRole, hasAriaLabel, hasChildren, isButton } from '../utils'
+import { getAttribute, getRole, hasAriaLabel, hasChildren, hasButtonRole } from '../utils'
 
 export function toBeAccessibleButton(this: any, element: HTMLElement) {
-  if (!isButton(element)) {
+  if (!hasButtonRole(element)) {
     // element has correct role
     return {
       pass: false,
