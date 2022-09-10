@@ -7,6 +7,7 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    environment: Default Environment
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
