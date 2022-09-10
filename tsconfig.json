@@ -4,11 +4,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "lib": ["es2017"],
+    "lib": ["dom", "es2017"],
     "strict": true,
     "esModuleInterop": false,
     "outDir": "dist",
     "rootDir": "./"
   },
-  "include": ["./src/**/*.ts", "src/types"]
+  "include": ["src/**/*.ts", "src/types", "config/jest-setup.ts"]
 }
