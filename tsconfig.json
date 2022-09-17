@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "esModuleInterop": true,
     "jsx": "react",
-    "target": "es2018",
+    "lib": ["dom", "es2017"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "lib": ["dom", "es2017"],
-    "strict": true,
-    "esModuleInterop": true,
     "outDir": "dist",
-    "rootDir": "./"
+    "rootDir": "src",
+    "strict": true,
+    "target": "es2018"
   },
   "include": ["src/**/*.ts", "src/types"]
 }
