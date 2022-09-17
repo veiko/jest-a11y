@@ -1,1 +1,1 @@
-export * from './to-be-accessible-button';
+export * from './toBeAccessibleButton/to-be-accessible-button'
