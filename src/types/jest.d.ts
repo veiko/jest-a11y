@@ -11,5 +11,6 @@ declare namespace jest {
      * expect(screen.getByRole('button')).not.toToggleTooltip()
      */
     toBeAccessibleButton(): CustomMatcherResult
+    toBeAccessibleCheckbox(): CustomMatcherResult
   }
 }
