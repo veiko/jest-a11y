@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
 import { assertTab } from 'utils/assertTab'
 import { assertRole } from '../../utils/assertRole'
@@ -33,8 +34,32 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
     return tabCheck
   }
 
+  let message = ''
+  let pass = true
+
+  const newOnClick = jest.fn()
+  const oldOnClick = element.onclick
+  element.focus()
+  element.onclick = newOnClick
+  try {
+    userEvent.keyboard('{space}')
+    expect(newOnClick).toBeCalledTimes(1)
+    message += `${this.utils.EXPECTED_COLOR('✓')} element activated on {space}\n`
+    expect(element).toHaveFocus()
+  } catch (e) {
+    message += `\n${this.utils.RECEIVED_COLOR('✕')} element activated on {space}\n`
+    message += `  Expected element with focus:\n   ${this.utils.printExpected(
+      element,
+    )} to have focus\n`
+    message += `  Received element with focus:\n    ${this.utils.printReceived(
+      document.activeElement,
+    )}\n\n`
+    pass = false
+  }
+  element.onclick = oldOnClick
+
   /**
    * Checkbox is valid
    */
-  return { message: () => '', pass: true }
+  return { message: () => message, pass }
 }

@@ -53,12 +53,12 @@ describe('toBeAccessibleCheckbox', () => {
     expect(returnValue.message()).toContain('element can be reached with Tab')
   })
 
-  // TODO: How to test this and with {enter}?
+  // TODO: How to test this?
   it.skip('fails if the element does not activate on {space}', () => {
-    render(<button>text</button>)
+    render(<input aria-label="My Checkbox" disabled type="checkbox" />)
 
-    const returnValue = mockExpect.toBeAccessibleCheckbox(screen.getByRole('button'))
+    const returnValue = mockExpect.toBeAccessibleCheckbox(screen.getByRole('checkbox'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element can be reached with Tab')
+    expect(returnValue.message()).toContain('element activated on')
   })
 })
