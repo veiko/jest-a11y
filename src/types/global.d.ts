@@ -6,10 +6,13 @@ declare namespace NodeJS {
     extend: any
   }
 }
+
 export const thisIsAModule = true
+
 declare const extend: any
 declare global {
   var extend: string
+  type Role = 'button' | 'checkbox'
 }
 
 export {}

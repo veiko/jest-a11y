@@ -21,7 +21,7 @@ describe('toBeAccessibleButton', () => {
     mockExpect = new MockExpect()
   })
 
-  it('checks element has correct role', async () => {
+  it('passes when element is valid', async () => {
     render(<button>click me</button>)
 
     expect(screen.getByRole('button')).toBeAccessibleButton()
