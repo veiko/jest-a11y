@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleDialog } from '../to-be-accessible-dialog'
-import { DialogExample } from './DialogValidExample'
+import { DialogExample } from '../examples/DialogValidExample'
 
 const unitFunc = (s: any) => s
 
