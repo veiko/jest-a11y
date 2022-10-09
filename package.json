@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "description": "Custom Jest matchers for testing accessibility",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && rollup -c config/rollup.config.js",
     "test": "jest --config config/jest.config.js --watch",
