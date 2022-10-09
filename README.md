@@ -35,7 +35,7 @@ but don't yet have full browser support.
 <details>
   <summary>
     <strong>
-      "How is this different from <a href="https://www.npmjs.com/package/jest-axe"><code>jest-axe</code></a>?"
+      How is this different from <a href="https://www.npmjs.com/package/jest-axe"><code>jest-axe</code></a>?
     </strong>
   </summary>
 
@@ -47,7 +47,7 @@ This plugin will also attempt to validate keyboard navigation.
 <details>
   <summary>
     <strong>
-      "Does this work with Enzyme or React Testing Library?"
+      Does this work with Enzyme or React Testing Library?
     </strong>
   </summary>
 

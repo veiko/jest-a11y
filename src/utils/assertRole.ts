@@ -1,12 +1,15 @@
 import { getAttribute, getRole } from 'utils'
 import { failExpectedVsReceived } from 'utils/expected-vs-received'
 
+const hasAlertRole = (el: HTMLElement) => getRole(el) === 'alert'
+
 const hasButtonRole = (el: HTMLElement) => el.tagName === 'BUTTON' || getRole(el) === 'button'
 
 const hasCheckboxRole = (el: HTMLElement) =>
   (el.tagName === 'INPUT' && getAttribute(el, 'type') === 'checkbox') || getRole(el) === 'checkbox'
 
 const assertions: { [key in Role]: any } = {
+  alert: hasAlertRole,
   button: hasButtonRole,
   checkbox: hasCheckboxRole,
 }
