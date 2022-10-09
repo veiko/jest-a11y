@@ -8,10 +8,13 @@ const hasButtonRole = (el: HTMLElement) => el.tagName === 'BUTTON' || getRole(el
 const hasCheckboxRole = (el: HTMLElement) =>
   (el.tagName === 'INPUT' && getAttribute(el, 'type') === 'checkbox') || getRole(el) === 'checkbox'
 
+const hasDialogRole = (el: HTMLElement) => getRole(el) === 'dialog'
+
 const assertions: { [key in Role]: any } = {
   alert: hasAlertRole,
   button: hasButtonRole,
   checkbox: hasCheckboxRole,
+  dialog: hasDialogRole,
 }
 
 type AssertRoleConfig = {

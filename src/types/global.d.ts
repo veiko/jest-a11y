@@ -12,7 +12,7 @@ export const thisIsAModule = true
 declare const extend: any
 declare global {
   var extend: string
-  type Role = 'alert' | 'button' | 'checkbox'
+  type Role = 'alert' | 'button' | 'checkbox' | 'dialog'
 }
 
 export {}
