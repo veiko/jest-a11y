@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/veiko/jest-a11y/compare/v1.3.0...v1.4.0) (2022-10-09)
+
+
+### Features
+
+* **dialog:** toBeAccessibleDialog ([d7bcef5](https://github.com/veiko/jest-a11y/commit/d7bcef5aa5b88cd0ec54340127d8cc9278429d7e))
+
 # [1.3.0](https://github.com/veiko/jest-a11y/compare/v1.2.1...v1.3.0) (2022-10-09)
 
 
