@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/veiko/jest-a11y/compare/v1.5.0...v1.5.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* **types:** fix types bundling ([fe62dba](https://github.com/veiko/jest-a11y/commit/fe62dba72de66b693ea9ed85c48f76b458854980))
+
 # [1.5.0](https://github.com/veiko/jest-a11y/compare/v1.4.0...v1.5.0) (2022-10-09)
 
 
