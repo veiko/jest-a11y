@@ -8,12 +8,13 @@
 
 ## The problem
 
-When writing a React component
+When writing web applications, the ability to easily follow accessibility guidelines is becoming
+essential. As developers, we need a framework to easily and quickly test compliance.
 
 ## This solution
 
-A set of jest matchers that will check whether your components have the correct ARIA roles and
-support the correct keyboard navigation.
+The `jest-a11y` project aims to provide a set of jest matchers that will check whether the provided
+DOM element has the correct ARIA roles and supports keyboard navigation.
 
 ### FAQ:
 
