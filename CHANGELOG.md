@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/veiko/jest-a11y/compare/v1.4.0...v1.5.0) (2022-10-09)
+
+
+### Features
+
+* **types:** add type support ([3059bc7](https://github.com/veiko/jest-a11y/commit/3059bc79c84462c933a5f56171a6f3723b448056))
+
 # [1.4.0](https://github.com/veiko/jest-a11y/compare/v1.3.0...v1.4.0) (2022-10-09)
 
 
