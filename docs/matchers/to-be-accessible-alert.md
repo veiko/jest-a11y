@@ -39,8 +39,8 @@ test('alert', () => {
 
 Because alerts are intended to provide important and potentially time-sensitive information without
 interfering with the user's ability to continue working, it is crucial they do not affect keyboard
-focus. The [alert dialog](/matchers/dialog) is designed for situations where interrupting work flow
-is necessary.
+focus. The [alert dialog](/matchers/alertdialog) is designed for situations where interrupting work
+flow is necessary.
 
 :::caution Coming Soon
 
