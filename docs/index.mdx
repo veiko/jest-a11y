@@ -1,0 +1,57 @@
+---
+id: getting-started
+title: Getting Started
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# jest-a11y
+
+`jest-a11y` is a library that provides custom DOM element matchers for Jest
+
+<Tabs>
+  <TabItem value="npm">
+
+```sh
+npm install --save-dev jest-a11y
+```
+
+  </TabItem>
+  <TabItem default value="yarn">
+
+```sh
+yarn add -D jest-a11y
+```
+
+  </TabItem>
+</Tabs>
+
+Then follow usage section from `jest-a11y`'s documentation to add the matchers to Jest.
+
+```js
+import 'jest-a11y/matchers'
+```
+
+```js
+import { screen } from '@testing-library/dom'
+
+test('uses jest-a11y', () => {
+  document.body.innerHTML = '<button>click me</button>'
+
+  expect(screen.queryByRole('button')).toBeAccessibleButton()
+})
+```
+
+:::info This project does not guarantee what you build is accessible.
+
+The GDS Accessibility team found that **only ~30% of issues are found by automated testing.** This
+tool may help you identify common issues but cannot guarantee what you build works for users.
+
+You'll also need to test your interface with the assistive technologies that real users use.
+
+:::
+
+Check out jest-a11y's documentation for a full list of available matchers.
+
+- [`jest-a11y` on Github](https://github.com/veiko/jest-a11y)
