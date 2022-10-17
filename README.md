@@ -1,5 +1,11 @@
 <div align="center">
-<h1>jest-a11y ♿</h1>
+<h1>jest-a11y</h1>
+<img
+    height="80"
+    width="80"
+    alt="shaka"
+    src="https://raw.githubusercontent.com/veiko/jest-a11y/main/static/img/logo.svg"
+  />
 
 <p>Custom Jest matchers for testing accessibility.</p>
 </div>
