@@ -8,6 +8,7 @@
     "build": "rm -rf dist && rollup -c config/rollup.config.js",
     "docs": "docusaurus start",
     "docs:ci": "docusaurus build",
+    "docs:serve": "docusaurus serve",
     "test": "jest --config config/jest.config.js --watch",
     "test:ci": "jest --config config/jest.config.js"
   },

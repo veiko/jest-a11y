@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: '/',
+  baseUrl: '/jest-a11y/',
   favicon: '/img/logo.svg',
   presets: [
     [
@@ -57,5 +57,5 @@ module.exports = {
     },
   },
   title: 'jest-a11y',
-  url: 'https://github.com/veiko/jest-a11y',
+  url: 'https://veiko.github.io',
 }
