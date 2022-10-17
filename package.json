@@ -6,6 +6,8 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && rollup -c config/rollup.config.js",
+    "docs": "docusaurus start",
+    "docs:ci": "docusaurus build",
     "test": "jest --config config/jest.config.js --watch",
     "test:ci": "jest --config config/jest.config.js"
   },
@@ -52,6 +54,8 @@
     ]
   },
   "devDependencies": {
+    "@docusaurus/core": "^2.1.0",
+    "@docusaurus/preset-classic": "^2.1.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.5.0",
