@@ -35,7 +35,7 @@ describe('toBeAccessibleButton', () => {
       screen.getByTestId('a-button', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have correct role')
+    expect(returnValue.message()).toContain('✕ element does not have role button')
   })
 
   it('fails if the element does not have an accessible label', () => {

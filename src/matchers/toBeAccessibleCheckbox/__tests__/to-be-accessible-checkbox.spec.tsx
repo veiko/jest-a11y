@@ -34,7 +34,7 @@ describe('toBeAccessibleCheckbox', () => {
       screen.getByTestId('an-element', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have correct role')
+    expect(returnValue.message()).toContain('✕ element does not have role checkbox')
   })
 
   it('fails if the element does not have an accessible label', () => {
@@ -42,7 +42,7 @@ describe('toBeAccessibleCheckbox', () => {
 
     const returnValue = mockExpect.toBeAccessibleCheckbox(screen.getByRole('checkbox'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have accessible label')
+    expect(returnValue.message()).toContain('✕ element has accessible label')
   })
 
   it('fails if the element does not focus on tab', () => {
@@ -50,7 +50,7 @@ describe('toBeAccessibleCheckbox', () => {
 
     const returnValue = mockExpect.toBeAccessibleCheckbox(screen.getByRole('checkbox'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element can be reached with Tab')
+    expect(returnValue.message()).toContain('✕ element has focus on {tab}')
   })
 
   // TODO: How to test this?

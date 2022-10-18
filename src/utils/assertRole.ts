@@ -29,10 +29,11 @@ export const assertRole = ({
   utils,
 }: AssertRoleConfig): jest.CustomMatcherResult => {
   if (!assertions[role](element)) {
-    return failExpectedVsReceived(
-      `Element did not have correct role ${utils.printExpected(role)}`,
-      { expected: role, received: getRole(element), utils: utils },
-    )
+    return failExpectedVsReceived(`✕ element does not have role ${utils.printExpected(role)}`, {
+      expected: role,
+      received: getRole(element),
+      utils: utils,
+    })
   }
   return { message: () => '', pass: true }
 }

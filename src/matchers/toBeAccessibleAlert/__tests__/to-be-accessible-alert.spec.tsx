@@ -34,6 +34,6 @@ describe('toBeAccessibleAlert', () => {
       screen.getByTestId('an-alert', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have correct role')
+    expect(returnValue.message()).toContain('✕ element does not have role alert')
   })
 })

@@ -35,7 +35,7 @@ describe('toBeAccessibleDialog', () => {
       screen.getByTestId('a-modal', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have correct role')
+    expect(returnValue.message()).toContain('✕ element does not have role dialog')
   })
 
   it('fails if the element does not have an accessible label', () => {
@@ -43,7 +43,7 @@ describe('toBeAccessibleDialog', () => {
 
     const returnValue = mockExpect.toBeAccessibleDialog(screen.getByRole('dialog'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have accessible label')
+    expect(returnValue.message()).toContain('✕ element has accessible label')
   })
 
   // TODO: How to test focus functionality?
