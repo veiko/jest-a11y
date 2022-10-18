@@ -1,4 +1,5 @@
 import userEvent from '@testing-library/user-event'
+import { assertFocus } from './assertFocus'
 
 type AssertTabConfig = {
   element: HTMLElement
@@ -9,16 +10,10 @@ export const assertTab = ({ element, utils }: AssertTabConfig): jest.CustomMatch
   let message = ''
   let pass = true
   userEvent.tab()
-  try {
-    expect(element).toHaveFocus()
-    message += `${utils.EXPECTED_COLOR('✓')} element can be reached with Tab\n`
-  } catch (e) {
+  const focusCheck = assertFocus({ element, message: 'has focus on {tab}', utils })
+  if (!focusCheck?.pass) {
+    message += focusCheck.message()
     pass = false
-    message += `${utils.RECEIVED_COLOR('✕')} element can be reached with Tab\n\n`
-    message += `  Expected element with focus:\n    ${utils.printExpected(element)} to have focus\n`
-    message += `  Received element with focus:\n    ${utils.printReceived(
-      document.activeElement,
-    )}\n\n`
   }
   return { message: () => message, pass }
 }

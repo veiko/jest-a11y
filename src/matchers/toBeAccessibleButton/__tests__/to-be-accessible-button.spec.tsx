@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { toBeAccessibleButton } from '../to-be-accessible-button'
 
@@ -42,7 +43,7 @@ describe('toBeAccessibleButton', () => {
 
     const returnValue = mockExpect.toBeAccessibleButton(screen.getByRole('button'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('Element did not have accessible label')
+    expect(returnValue.message()).toContain('✕ element has accessible label')
   })
 
   it('fails if the element does not focus on tab', () => {
@@ -50,15 +51,28 @@ describe('toBeAccessibleButton', () => {
 
     const returnValue = mockExpect.toBeAccessibleButton(screen.getByRole('button'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element can be reached with Tab')
+    expect(returnValue.message()).toContain('✕ element has focus on {tab}')
   })
 
-  // TODO: How to test this and with {enter}?
-  it.skip('fails if the element does not activate on {space}', () => {
-    render(<button>text</button>)
+  it('fails if the element does not activate on {space}', () => {
+    const blockSpace = (e: React.KeyboardEvent) => e.code === 'Space' && e.preventDefault()
+
+    render(<button onKeyDown={blockSpace}>text</button>)
+    userEvent.keyboard('{space}')
 
     const returnValue = mockExpect.toBeAccessibleButton(screen.getByRole('button'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element can be reached with Tab')
+    expect(returnValue.message()).toContain('✕ element activated on {space}')
+  })
+
+  it('fails if the element does not activate on {enter}', () => {
+    const blockSpace = (e: React.KeyboardEvent) => e.code === 'Enter' && e.preventDefault()
+
+    render(<button onKeyDown={blockSpace}>text</button>)
+    userEvent.keyboard('{space}')
+
+    const returnValue = mockExpect.toBeAccessibleButton(screen.getByRole('button'))
+    expect(returnValue.pass).toBe(false)
+    expect(returnValue.message()).toContain('✕ element activated on {enter}')
   })
 })
