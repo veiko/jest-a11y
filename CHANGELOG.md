@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/veiko/jest-a11y/compare/v1.5.1...v1.5.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **assertFocus:** improve focus check ([84268e4](https://github.com/veiko/jest-a11y/commit/84268e470a333dfd5a5f611df37f32d5122f115b))
+
 ## [1.5.1](https://github.com/veiko/jest-a11y/compare/v1.5.0...v1.5.1) (2022-10-09)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "jest-a11y",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Custom Jest matchers for testing accessibility",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
