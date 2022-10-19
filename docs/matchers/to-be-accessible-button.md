@@ -9,7 +9,9 @@ opening a dialog, canceling an action, or performing a delete operation.
 - [WAI Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
 - [Button Example](https://www.w3.org/WAI/ARIA/apg/example-index/button/button.html)
 
-## Syntax
+## Usage
+
+### Syntax
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -21,7 +23,19 @@ test('button', () => {
 })
 ```
 
-## Button Examples
+## Test Summary
+
+The matcher tests the following:
+
+| `toBeAccessibleButton`                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------- |
+| **WAI-ARIA Roles, States, and Properties**                                                                                              |
+| 1. The element has `role` of `button`. ([example](/matchers/button#1-the-button-has-role-of-button))                                    |
+| 2. The element has an accessible label. ([example](/matchers/button#2-the-button-has-an-accessible-label))                              |
+| **Keyboard Interaction**                                                                                                                |
+| 1. When element has focus, `space` or `enter` activates it. ([example](/matchers/button#1-the-space-or-enter-keys-activate-the-button)) |
+
+## DOM Examples
 
 ### WAI-ARIA Roles, States, and Properties
 
@@ -64,18 +78,13 @@ However, it can also be provided with `aria-labelledby` or `aria-label`.
 
 #### 1. The `space` or `enter` keys activate the button.
 
-```js
-// ✅ PASS - button will activate
-test('button keyboard interaction', () => {
-  document.body.innerHTML = '<button>click me!</button>'
+```html
+<!-- ✅ PASS - HTMLButtonElement will activate -->
+<button>👍</button>
 
-  expect(screen.getByRole('button')).toBeAccessibleButton()
-})
+<!-- ✅ PASS - HTMLDivElement handles onkeydown -->
+<div onkeydown="javascript: customHandler" role="button">👍</div>
 
-// ❌ FAIL - button will not activate
-test('button keyboard interaction', () => {
-  document.body.innerHTML = '<button disabled>click me!</button>'
-
-  expect(screen.getByRole('button')).toBeAccessibleButton()
-})
+<!-- ❌ FAIL - HTMLDivElement will need Javascript -->
+<div>click me</div>
 ```
