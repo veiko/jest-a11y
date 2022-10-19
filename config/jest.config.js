@@ -10,6 +10,6 @@ module.exports = {
     '\\.[t]sx?$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '/examples/'],
   verbose: true,
 }
