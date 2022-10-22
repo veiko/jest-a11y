@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c config/rollup.config.js",
     "build:watch": "rm -rf dist && rollup --watch -c config/rollup.config.js",
-    "docs": "docusaurus start",
+    "docs": "docusaurus start --port=2983",
     "docs:ci": "docusaurus build",
     "docs:serve": "docusaurus serve",
     "test": "jest --config config/jest.config.js --watch",
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/veiko/jest-a11y#readme",
   "dependencies": {
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/user-event": "^13.5.0"
+    "@testing-library/user-event": "^14.4.3"
   },
   "release": {
     "plugins": [

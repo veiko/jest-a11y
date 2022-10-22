@@ -1,3 +1,4 @@
+export * from './toBeAccessibleAccordion/to-be-accessible-accordion'
 export * from './toBeAccessibleAlert/to-be-accessible-alert'
 export * from './toBeAccessibleAlertDialog/to-be-accessible-alert-dialog'
 export * from './toBeAccessibleButton/to-be-accessible-button'
