@@ -2,18 +2,12 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleDialog } from '../to-be-accessible-dialog'
 import { DialogExample } from '../examples/DialogValidExample'
-
-const unitFunc = (s: any) => s
+import { mockUtils } from '../../../utils/mockUtils'
 
 class MockExpect {
   isNot: boolean = false
   toBeAccessibleDialog: any = toBeAccessibleDialog
-  utils: any = {
-    EXPECTED_COLOR: unitFunc,
-    printExpected: unitFunc,
-    printReceived: unitFunc,
-    RECEIVED_COLOR: unitFunc,
-  }
+  utils: any = mockUtils
 }
 
 describe('toBeAccessibleDialog', () => {
@@ -35,7 +29,7 @@ describe('toBeAccessibleDialog', () => {
       screen.getByTestId('a-modal', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element does not have role dialog')
+    expect(returnValue.message()).toContain('✕ element has role dialog')
   })
 
   it('fails if the element does not have an accessible label', () => {
