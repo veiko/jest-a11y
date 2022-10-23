@@ -3,7 +3,11 @@ id: accordion
 title: 🚧 toBeAccessibleAccordion()
 ---
 
-import CodeBlock from '@theme/CodeBlock';
+import CodeBlock from '@theme/CodeBlock'
+
+import Tabs from '@theme/Tabs'
+
+import TabItem from'@theme/TabItem'
 
 An accordion is a vertically stacked set of interactive headings that each contain a title, content
 snippet, or thumbnail representing a section of content. The headings function as controls that
@@ -16,23 +20,69 @@ enable users to reveal or hide their associated sections of content.
 
 ### Syntax
 
-```js
-import { screen } from '@testing-library/dom'
+<Tabs>
+<TabItem value="win" label="Vanilla JS">
 
-test('accordion', () => {
+```js
+test('accordion', async () => {
   document.body.innerHTML = `
-    <div data-testid="accordion">
-      <h3><button aria-controls="panel" aria-expanded="false">Accordion Header 1</button></h3>
+    <div id="accordion">
+      <h3>
+        <button aria-controls="panel" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') == 'true' ? 'false' : 'true')">Accordion Header 1</button>
+      </h3>
       <div id="panel">Accordion Panel 1</div>
     </div>`
 
-  expect(screen.getByTestId('accordion')).toBeAccessibleAccordion()
+  await expect(document.getElementById('accordion')).toBeAccessibleAccordion()
 })
 ```
+
+</TabItem>
+<TabItem value="react" label="React + Testing Library">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+test('accordion', async () => {
+  render(
+    <div data-testid="accordion">
+      <h3>
+        <button
+          aria-controls="panel"
+          aria-expanded="false"
+          onClick={e => {
+            const self = e.target as HTMLElement
+            self.setAttribute(
+              'aria-expanded',
+              self.getAttribute('aria-expanded') == 'true' ? 'false' : 'true',
+            )
+          }}
+        >
+          Accordion Header 1
+        </button>
+      </h3>
+      <div id="panel">Accordion Panel 1</div>
+    </div>,
+  )
+
+  await expect(screen.getByTestId('accordion')).toBeAccessibleAccordion()
+})
+```
+
+</TabItem>
+</Tabs>
 
 ## Test Summary
 
 The matcher tests the following:
+
+```
+  ✓ element is wrapped in an element with role heading
+  ✓ element is wrapped in an element with aria-level
+  ✓ element has attribute aria-controls
+  ✓ aria-expanded toggled on {enter}
+  ✓ aria-expanded toggled on {space}
+```
 
 ### WAI-ARIA Roles, States, and Properties
 

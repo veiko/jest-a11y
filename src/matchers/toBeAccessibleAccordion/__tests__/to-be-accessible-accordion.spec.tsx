@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { Accordion } from '../examples/Accordion'
 import { toBeAccessibleAccordion } from '../to-be-accessible-accordion'
-import { closest } from '../../../utils/closest'
 
 const unitFunc = (s: any) => s
 
@@ -26,10 +25,45 @@ describe('toBeAccessibleAccordion', () => {
     mockExpect = new MockExpect()
   })
 
-  it('passes when element is valid', () => {
+  it('passes with vanillajs usage example', async () => {
+    document.body.innerHTML = `
+      <div id="accordion">
+        <h3><button aria-controls="panel" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') == 'true' ? 'false' : 'true')">Accordion Header 1</button></h3>
+        <div id="panel">Accordion Panel 1</div>
+      </div>`
+
+    await expect(document.getElementById('accordion')).toBeAccessibleAccordion()
+  })
+
+  it('passes with react testing library usage example', async () => {
+    render(
+      <div data-testid="accordion">
+        <h3>
+          <button
+            aria-controls="panel"
+            aria-expanded="false"
+            onClick={e => {
+              const self = e.target as HTMLElement
+              self.setAttribute(
+                'aria-expanded',
+                self.getAttribute('aria-expanded') == 'true' ? 'false' : 'true',
+              )
+            }}
+          >
+            Accordion Header 1
+          </button>
+        </h3>
+        <div id="panel">Accordion Panel 1</div>
+      </div>,
+    )
+
+    await expect(screen.getByTestId('accordion')).toBeAccessibleAccordion()
+  })
+
+  it('passes when element is valid', async () => {
     render(<Accordion id="accordionGroup" />)
 
-    expect(screen.getByTestId('accordionGroup')).toBeAccessibleAccordion()
+    await expect(screen.getByTestId('accordionGroup')).toBeAccessibleAccordion()
   })
 
   it('fails if there are no elements with role="button"', async () => {
@@ -75,6 +109,23 @@ describe('toBeAccessibleAccordion', () => {
         </div>
       )
     }
+    render(<SampleAccordion />)
+
+    const returnValue = await mockExpect.toBeAccessibleAccordion(
+      screen.getByTestId('accordionGroup', { suggest: false }),
+    )
+    expect(returnValue.pass).toBe(false)
+    expect(returnValue.message()).toContain('has attribute aria-controls')
+  })
+
+  it('fails if the button does not toggle aria-expanded', async () => {
+    const SampleAccordion = () => (
+      <div data-testid="accordionGroup">
+        <h2>
+          <button aria-controls="1">click me</button>
+        </h2>
+      </div>
+    )
     render(<SampleAccordion />)
 
     const returnValue = await mockExpect.toBeAccessibleAccordion(

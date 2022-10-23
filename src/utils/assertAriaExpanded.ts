@@ -1,5 +1,5 @@
-import { pfail, ppass } from './printPass'
-import { act, fireEvent } from '@testing-library/react'
+import { pfail, ppass } from 'utils/printPass'
+import { stringify } from 'utils/stringify'
 
 type AssertAriaExpandedConfig = {
   element: HTMLElement
@@ -20,21 +20,17 @@ export const assertAriaExpanded = async ({
   const initialState = element.getAttribute('aria-expanded') === 'true'
   await userEvent()
 
-  if (document.activeElement !== element) {
-    message += pfail(`element is not focused`, utils)
-    pass = false
-  }
   if (element.getAttribute('aria-expanded') === (!initialState).toString()) {
-    console.log('after', element.getAttribute('aria-expanded'))
     message += ppass(messageContent || 'aria-expanded toggled', utils)
+    await userEvent()
   } else {
-    message += `\n` + pfail(messageContent || 'aria-expanded toggled', utils)
-    message += `  Expected element:\n   ${utils.printExpected(
-      element,
-    )} to have aria-expanded="${!initialState}"\n`
-    message += `  Received aria-expanded:\n    ${utils.printReceived(
-      element.getAttribute('aria-expanded'),
-    )}\n\n`
+    message += pfail(messageContent || 'aria-expanded toggled', utils)
+    message += `    Expected element:\n     ${utils.BOLD_WEIGHT(
+      stringify(element),
+    )} to have ${utils.printExpected(`aria-expanded='${!initialState}'`)}\n`
+    message += `    Received element with:\n      ${utils.printReceived(
+      `aria-expanded='${element.getAttribute('aria-expanded')}'`,
+    )}\n`
     pass = false
   }
   return { message: () => message, pass }
