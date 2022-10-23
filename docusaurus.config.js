@@ -18,7 +18,7 @@ module.exports = {
       },
     ],
   ],
-  tagline: 'Dinosaurs are cool',
+  tagline: 'jest-a11y',
   themeConfig: {
     announcementBar: {
       id: 'support_us',
@@ -54,6 +54,29 @@ module.exports = {
         target: '_self',
       },
       title: 'jest-a11y',
+    },
+    prism: {
+      theme: require('prism-react-renderer/themes/oceanicNext'),
+      magicComments: [
+        // Remember to extend the default highlight class name as well!
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: { start: 'highlight-start', end: 'highlight-end' },
+        },
+        {
+          className: 'code-block-error-line',
+          line: 'error-next-line',
+        },
+        {
+          className: 'code-block-success-line',
+          line: 'success-next-line',
+        },
+        {
+          className: 'code-block-test-pass',
+          line: 'test-pass',
+        },
+      ],
     },
   },
   title: 'jest-a11y',

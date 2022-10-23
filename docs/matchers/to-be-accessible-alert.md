@@ -50,14 +50,12 @@ test('alert', () => {
 
 ## Test Summary
 
-The matcher tests the following:
+The `toBeAccessibleAlert` matcher tests the following:
 
-```
-  ✓ element is wrapped in an element with role heading
-  ✓ element is wrapped in an element with aria-level
-  ✓ element has attribute aria-controls
-  ✓ aria-expanded toggled on {enter}
-  ✓ aria-expanded toggled on {space}
+```html
+testing alert accessibility:
+<!-- test-pass -->
+✓ element has role alert
 ```
 
 ### WAI-ARIA Roles, States, and Properties
@@ -65,10 +63,10 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `alert`.
 
 ```html
-// ✅ role is set correctly
+<!-- ✅ element has role alert -->
 <div role="alert">hey, listen!</div>
 
-// ❌ role is not set or implicit
+<!-- ❌ element has role alert -->
 <span>hey, listen!</span>
 ```
 

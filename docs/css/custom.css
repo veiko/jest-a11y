@@ -1,3 +1,32 @@
+:root {
+  --ifm-color-primary: #5726c9;
+  --ifm-color-primary-dark: #4e22b5;
+  --ifm-color-primary-darker: #4a20ab;
+  --ifm-color-primary-darkest: #3d1b8d;
+  --ifm-color-primary-light: #622fd8;
+  --ifm-color-primary-lighter: #6939da;
+  --ifm-color-primary-lightest: #8057df;
+}
+
 body {
   --ifm-heading-font-family: Arial, Helvetica, sans-serif;
+}
+
+.code-block-error-line {
+  background-color: #fc929e20;
+  border-left: 3px solid #fc929e80;
+}
+
+.code-block-success-line {
+  background-color: #8dc89120;
+  border-left: 3px solid #8dc89180;
+}
+
+.code-block-test-pass span {
+  color: #787d81;
+  display: inline-block;
+}
+
+.code-block-test-pass span:first-letter {
+  color: #35d058;
 }
