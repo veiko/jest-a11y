@@ -1,18 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleCheckbox } from '../to-be-accessible-checkbox'
-
-const unitFunc = (s: any) => s
+import { mockUtils } from '../../../utils/mockUtils'
 
 class MockExpect {
   isNot: boolean = false
   toBeAccessibleCheckbox: any = toBeAccessibleCheckbox
-  utils: any = {
-    EXPECTED_COLOR: unitFunc,
-    printExpected: unitFunc,
-    printReceived: unitFunc,
-    RECEIVED_COLOR: unitFunc,
-  }
+  utils: any = mockUtils
 }
 
 describe('toBeAccessibleCheckbox', () => {
@@ -34,7 +28,7 @@ describe('toBeAccessibleCheckbox', () => {
       screen.getByTestId('an-element', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element does not have role checkbox')
+    expect(returnValue.message()).toContain('✕ element has role checkbox')
   })
 
   it('fails if the element does not have an accessible label', () => {
