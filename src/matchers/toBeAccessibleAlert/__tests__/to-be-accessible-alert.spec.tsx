@@ -22,7 +22,7 @@ describe('toBeAccessibleAlert', () => {
       </div>,
     )
 
-    expect(screen.getByTestId('an-alert')).toBeAccessibleAlert()
+    expect(screen.getByRole('alert')).toBeAccessibleAlert()
   })
 
   it('fails if the element does not have a role of alert', () => {
