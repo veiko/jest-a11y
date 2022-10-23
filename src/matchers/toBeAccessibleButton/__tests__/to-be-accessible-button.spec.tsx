@@ -2,18 +2,12 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { toBeAccessibleButton } from '../to-be-accessible-button'
-
-const unitFunc = (s: any) => s
+import { mockUtils } from '../../../utils/mockUtils'
 
 class MockExpect {
   isNot: boolean = false
   toBeAccessibleButton: any = toBeAccessibleButton
-  utils: any = {
-    EXPECTED_COLOR: unitFunc,
-    printExpected: unitFunc,
-    printReceived: unitFunc,
-    RECEIVED_COLOR: unitFunc,
-  }
+  utils: any = mockUtils
 }
 
 describe('toBeAccessibleButton', () => {
@@ -35,7 +29,7 @@ describe('toBeAccessibleButton', () => {
       screen.getByTestId('a-button', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element does not have role button')
+    expect(returnValue.message()).toContain(`✕ element has role button`)
   })
 
   it('fails if the element does not have an accessible label', () => {
