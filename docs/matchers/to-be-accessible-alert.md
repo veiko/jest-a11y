@@ -3,25 +3,62 @@ id: alert
 title: toBeAccessibleAlert()
 ---
 
+import Tabs from '@theme/Tabs'
+
+import TabItem from '@theme/TabItem'
+
 An alert is an element that displays a brief, important message in a way that attracts the user's
 attention without interrupting the user's task.
 
 - [WAI Alert Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
 - [Alert Example](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html)
 
-## Syntax
+## Usage
+
+### Syntax
+
+<Tabs>
+<TabItem label="Vanilla JS" value="js">
 
 ```js
-import { screen } from '@testing-library/dom'
+test('alert', () => {
+  document.body.innerHTML = '<div id="alert" role="alert">Hey, listen!</div>'
+
+  expect(document.getElementById('alert')).toBeAccessibleAlert()
+})
+```
+
+</TabItem>
+<TabItem default label="React + Testing Library" value="rtl">
+
+```jsx
+import { render, screen } from '@testing-library/react'
 
 test('alert', () => {
-  document.body.innerHTML = '<div data-testid="alert" role="alert">Hey, listen!</div>'
+  render(
+    <div data-testid="alert" role="alert">
+      Hey, listen!
+    </div>,
+  )
 
   expect(screen.getByTestId('alert')).toBeAccessibleAlert()
 })
 ```
 
-## What is tested
+</TabItem>
+</Tabs>
+
+## Test Summary
+
+The matcher tests the following:
+
+```
+  ✓ element is wrapped in an element with role heading
+  ✓ element is wrapped in an element with aria-level
+  ✓ element has attribute aria-controls
+  ✓ aria-expanded toggled on {enter}
+  ✓ aria-expanded toggled on {space}
+```
 
 ### WAI-ARIA Roles, States, and Properties
 

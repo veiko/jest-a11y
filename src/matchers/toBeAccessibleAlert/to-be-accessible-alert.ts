@@ -10,10 +10,5 @@ import { assertRole } from 'utils/assertRole'
  * N/A
  */
 export function toBeAccessibleAlert(this: any, element: HTMLElement): jest.CustomMatcherResult {
-  const roleCheck = assertRole({ element, role: 'alert', utils: this.utils })
-  if (!roleCheck?.pass) {
-    return roleCheck
-  } else {
-    return { pass: true, message: () => '' }
-  }
+  return assertRole({ element, role: 'alert', utils: this.utils })
 }

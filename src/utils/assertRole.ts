@@ -1,5 +1,6 @@
 import { getAttribute, getRole } from 'utils'
 import { failExpectedVsReceived } from 'utils/expected-vs-received'
+import { printUtil } from './printUtil'
 
 const hasAlertRole = (el: HTMLElement) => getRole(el) === 'alert'
 
@@ -29,11 +30,7 @@ export const assertRole = ({
   utils,
 }: AssertRoleConfig): jest.CustomMatcherResult => {
   if (!assertions[role](element)) {
-    return failExpectedVsReceived(`✕ element does not have role ${utils.printExpected(role)}`, {
-      expected: role,
-      received: getRole(element),
-      utils: utils,
-    })
+    return { message: () => printUtil.fail(`element has role ${role}`, utils), pass: false }
   }
   return { message: () => '', pass: true }
 }
