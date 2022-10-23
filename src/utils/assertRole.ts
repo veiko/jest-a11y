@@ -1,5 +1,4 @@
 import { getAttribute, getRole } from 'utils'
-import { failExpectedVsReceived } from 'utils/expected-vs-received'
 import { printUtil } from './printUtil'
 
 const hasAlertRole = (el: HTMLElement) => getRole(el) === 'alert'
