@@ -3,7 +3,7 @@ id: alertdialog
 title: toBeAccessibleDialog()
 ---
 
-An alert dialog is a modal dialog that interrupts the user's workflow to communicate an important
+An `alert dialog` is a modal dialog that interrupts the user's workflow to communicate an important
 message and acquire a response. Examples include action confirmation prompts and error message
 confirmations.
 

@@ -3,7 +3,7 @@ id: button
 title: toBeAccessibleButton()
 ---
 
-A button is a widget that enables users to trigger an action or event, such as submitting a form,
+A `button` is a widget that enables users to trigger an action or event, such as submitting a form,
 opening a dialog, canceling an action, or performing a delete operation.
 
 - [WAI Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)

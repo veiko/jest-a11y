@@ -3,7 +3,7 @@ id: checkbox
 title: toBeAccessibleCheckbox()
 ---
 
-There are two types of checkbox widgets:
+There are two types of `checkbox` widgets:
 
 - **Dual-state:** The most common type of checkbox, it allows the user to toggle between two choices
   -- checked and not checked.

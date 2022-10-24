@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-An alert is an element that displays a brief, important message in a way that attracts the user's
+An `alert` is an element that displays a brief, important message in a way that attracts the user's
 attention without interrupting the user's task.
 
 - [WAI Alert Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
