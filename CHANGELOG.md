@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/veiko/jest-a11y/compare/v1.5.2...v1.6.0) (2022-10-24)
+
+
+### Features
+
+* **link:** toBeAccessibleLink ([b14d21e](https://github.com/veiko/jest-a11y/commit/b14d21e56abd7804a8be6d0e9e94167f220125ec))
+
 ## [1.5.2](https://github.com/veiko/jest-a11y/compare/v1.5.1...v1.5.2) (2022-10-18)
 
 
