@@ -1,4 +1,5 @@
 export * from './toBeAccessibleAlert/to-be-accessible-alert'
+export * from './toBeAccessibleAlertDialog/to-be-accessible-alert-dialog'
 export * from './toBeAccessibleButton/to-be-accessible-button'
 export * from './toBeAccessibleCheckbox/to-be-accessible-checkbox'
 export * from './toBeAccessibleDialog/to-be-accessible-dialog'
