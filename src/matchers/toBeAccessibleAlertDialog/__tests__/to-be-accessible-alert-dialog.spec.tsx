@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleAlertDialog } from '../to-be-accessible-alert-dialog'
-import { DialogExample } from '../examples/AlertDialogValidExample'
 import { mockUtils } from '../../../utils/mockUtils'
 
 class MockExpect {
@@ -17,35 +16,31 @@ describe('toBeAccessibleAlertDialog', () => {
   })
 
   it('passes when element is valid', async () => {
-    render(<DialogExample />)
+    render(
+      <div aria-label="label" role="alertdialog">
+        <button>close</button>
+        <button>ok</button>
+      </div>,
+    )
 
-    expect(screen.getByRole('dialog')).toBeAccessibleAlertDialog()
+    expect(screen.getByRole('alertdialog')).toBeAccessibleAlertDialog()
   })
 
-  it('fails if the element does not have a role of dialog', () => {
+  it('fails if the element does not have a role of alertdialog', () => {
     render(<div data-testid="a-modal">hello world</div>)
 
     const returnValue = mockExpect.toBeAccessibleAlertDialog(
       screen.getByTestId('a-modal', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role dialog')
+    expect(returnValue.message()).toContain('✕ element has role alertdialog')
   })
 
   it('fails if the element does not have an accessible label', () => {
-    render(<div role="dialog" />)
+    render(<div role="alertdialog" />)
 
-    const returnValue = mockExpect.toBeAccessibleAlertDialog(screen.getByRole('dialog'))
+    const returnValue = mockExpect.toBeAccessibleAlertDialog(screen.getByRole('alertdialog'))
     expect(returnValue.pass).toBe(false)
     expect(returnValue.message()).toContain('✕ element has accessible label')
-  })
-
-  // TODO: How to test focus functionality?
-  xit('fails if the element does not focus on tab', () => {
-    render(<button disabled>text</button>)
-
-    const returnValue = mockExpect.toBeAccessibleAlertDialog(screen.getByRole('dialog'))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element can be reached with Tab')
   })
 })
