@@ -22,10 +22,7 @@ import { pfail, ppass } from 'utils/printPass'
  * Keyboard Interaction
  * 1. Space or Enter expands a collapsed panel when focus is on the associated accordion header.
  */
-export async function toBeAccessibleAccordion(
-  this: any,
-  element: HTMLElement,
-): Promise<jest.CustomMatcherResult> {
+export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.CustomMatcherResult {
   let message = ''
   let pass: boolean = true
 
@@ -66,9 +63,9 @@ export async function toBeAccessibleAccordion(
       }
 
       // The null is needed for the userEvent.keyboard functions to complete, otherwise hangs
-      const user = userEvent.setup({ delay: null })
+      // const user = userEvent.setup({ delay: null })
 
-      // 4. The accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
+      // 3. The accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
       const attrCheck = assertAttribute({
         attribute: 'aria-controls',
         element: button,
@@ -78,13 +75,13 @@ export async function toBeAccessibleAccordion(
       buttonMessage += '  ' + attrCheck.message()
       pass = pass === false ? false : attrCheck.pass
 
-      // 5. aria-expanded
-      const enterCheck = await assertAriaExpanded({
+      // 4. aria-expanded
+      const enterCheck = assertAriaExpanded({
         element: button,
         message: 'aria-expanded toggled on {enter}',
         userEvent: async () => {
           button.focus()
-          await user.keyboard('{enter}')
+          userEvent.keyboard('{enter}')
         },
         utils: this.utils,
       })

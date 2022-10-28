@@ -4,25 +4,25 @@ import { stringify } from 'utils/stringify'
 type AssertAriaExpandedConfig = {
   element: HTMLElement
   message?: string
-  userEvent(): Promise<void>
+  userEvent(): void
   utils: jest.MatcherUtils
 }
 
-export const assertAriaExpanded = async ({
+export const assertAriaExpanded = ({
   element,
   message: messageContent,
   userEvent,
   utils,
-}: AssertAriaExpandedConfig): Promise<jest.CustomMatcherResult> => {
+}: AssertAriaExpandedConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
 
   const initialState = element.getAttribute('aria-expanded') === 'true'
-  await userEvent()
+  userEvent()
 
   if (element.getAttribute('aria-expanded') === (!initialState).toString()) {
     message += ppass(messageContent || 'aria-expanded toggled', utils)
-    await userEvent()
+    userEvent()
   } else {
     message += pfail(messageContent || 'aria-expanded toggled', utils)
     message += `    Expected element:\n     ${utils.BOLD_WEIGHT(

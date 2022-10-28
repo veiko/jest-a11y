@@ -3,8 +3,6 @@ id: accordion
 title: 🚧 toBeAccessibleAccordion()
 ---
 
-import CodeBlock from '@theme/CodeBlock'
-
 import Tabs from '@theme/Tabs'
 
 import TabItem from'@theme/TabItem'
@@ -38,7 +36,7 @@ test('accordion', async () => {
 ```
 
 </TabItem>
-<TabItem value="react" label="React + Testing Library">
+<TabItem default label="React + Testing Library" value="react">
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -74,22 +72,33 @@ test('accordion', async () => {
 
 ## Test Summary
 
-The matcher tests the following:
+The matcher for an accordion will loop through the accordion items (`button` elements). For each
+accordion item, the matcher will test the following:
 
+```html
+<!-- test-pass -->
+✓ element is wrapped in an element with role heading
+<!-- test-pass -->
+✓ element is wrapped in an element with aria-level
+<!-- test-pass -->
+✓ element has attribute aria-controls
+<!-- test-pass -->
+✓ aria-expanded toggled on {enter}
+<!-- test-pass -->
+✓ aria-expanded toggled on {space}
 ```
-  ✓ element is wrapped in an element with role heading
-  ✓ element is wrapped in an element with aria-level
-  ✓ element has attribute aria-controls
-  ✓ aria-expanded toggled on {enter}
-  ✓ aria-expanded toggled on {space}
+
+Functionality that is not tested:
+
+```html
+<!-- test-caution -->
+⚠ If the accordion panel associated with an accordion header is visible, the header button element
+has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.
 ```
 
 ### WAI-ARIA Roles, States, and Properties
 
 #### 1. The title of each accordion header is contained in an element with `role` of `button`
-
-<details>
-  <summary>Example</summary>
 
 ```html
 <!-- ✅ role is set correctly -->
@@ -111,12 +120,7 @@ The matcher tests the following:
 </div>
 ```
 
-</details>
-
 #### 2. Each accordion header button is wrapped in an element with role heading that has a value set for `aria-level` that is appropriate for the information architecture of the page.
-
-<details>
-  <summary>Example</summary>
 
 ```html
 <!-- ✅ button is wrapped in element with implicit `aria-level` and `role` -->
@@ -145,12 +149,7 @@ The matcher tests the following:
 </div>
 ```
 
-</details>
-
 #### 3. The accordion header button element has `aria-controls` set to the ID of the element containing the accordion panel content.
-
-<details>
-  <summary>Example</summary>
 
 ```html
 <!--  ✅ element has aria-controls -->
@@ -171,8 +170,6 @@ The matcher tests the following:
   <div id="panel">Accordion Panel 1</div>
 </div>
 ```
-
-</details>
 
 :::info Not tested
 

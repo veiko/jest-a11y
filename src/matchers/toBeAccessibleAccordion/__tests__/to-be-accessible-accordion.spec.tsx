@@ -115,7 +115,7 @@ describe('toBeAccessibleAccordion', () => {
       screen.getByTestId('accordionGroup', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('has attribute aria-controls')
+    expect(returnValue.message()).toContain('✕ element has attribute aria-controls')
   })
 
   it('fails if the button does not toggle aria-expanded', async () => {
@@ -132,6 +132,6 @@ describe('toBeAccessibleAccordion', () => {
       screen.getByTestId('accordionGroup', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('has attribute aria-controls')
+    expect(returnValue.message()).toContain('✕ aria-expanded toggled on {enter}')
   })
 })
