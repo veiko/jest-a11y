@@ -1,3 +1,5 @@
+import { printUtil } from './printUtil'
+
 type AssertFocusConfig = {
   element: HTMLElement
   message?: string
@@ -12,9 +14,7 @@ export const assertFocus = ({
   let message = ''
   let pass = true
   if (document.activeElement == element) {
-    message += `${utils.EXPECTED_COLOR('✓')} element ${utils.EXPECTED_COLOR(
-      element,
-    )} ${messageContent}\n`
+    message += printUtil.pass(`element ${utils.EXPECTED_COLOR(element)} ${messageContent}`, utils)
   } else {
     message += `${utils.RECEIVED_COLOR('✕')} element ${messageContent}\n`
     message += `    Expected element: ${utils.printExpected(element)}}\n`

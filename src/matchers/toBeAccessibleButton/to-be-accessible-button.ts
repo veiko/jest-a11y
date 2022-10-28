@@ -3,6 +3,7 @@ import { assertFocus } from 'utils/assertFocus'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
+import { printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/button/
@@ -43,9 +44,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
     expectedCalls += 1
-    message += `${this.utils.EXPECTED_COLOR('✓')} element activated on {space}\n`
+    message += printUtil.pass('element activated on {space}', this.utils)
   } catch (e) {
-    message += `${this.utils.RECEIVED_COLOR('✕')} element activated on {space}\n`
+    message += printUtil.fail('element activated on {space}', this.utils)
     pass = false
   }
 
@@ -53,9 +54,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += `${this.utils.EXPECTED_COLOR('✓')} element activated on {enter}\n`
+    message += printUtil.pass('element activated on {enter}', this.utils)
   } catch (e) {
-    message += `${this.utils.RECEIVED_COLOR('✕')} element activated on {enter}\n${e}\n`
+    message += printUtil.fail('element activated on {enter}', this.utils)
     pass = false
   }
   element.onclick = oldOnClick

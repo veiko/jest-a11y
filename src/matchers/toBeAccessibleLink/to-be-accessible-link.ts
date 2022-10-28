@@ -1,5 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { assertRole } from 'utils/assertRole'
+import { printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/link/
@@ -27,9 +28,9 @@ export function toBeAccessibleLink(this: any, element: HTMLElement): jest.Custom
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += `${this.utils.EXPECTED_COLOR('✓')} element activated on {enter}\n`
+    message += printUtil.pass('element activated on {enter}', this.utils)
   } catch (e) {
-    message += `${this.utils.RECEIVED_COLOR('✕')} element activated on {enter}\n${e}\n`
+    message += printUtil.fail('element activated on {enter}', this.utils)
     pass = false
   }
   element.onclick = oldOnClick

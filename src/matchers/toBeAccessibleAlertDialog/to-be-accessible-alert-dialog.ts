@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
+import { printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
@@ -37,10 +38,10 @@ export function toBeAccessibleAlertDialog(
 
   try {
     userEvent.keyboard('{esc}')
-    message += `${this.utils.EXPECTED_COLOR('✓')} element closed on {esc}\n`
+    message += printUtil.pass('element closed on {esc}', this.utils)
     // TODO: How to validate dialog closed?
   } catch (e) {
-    message += `${this.utils.RECEIVED_COLOR('✕')} element closed on {esc}\n`
+    message += printUtil.fail('element closed on {esc}', this.utils)
     pass = false
   }
 
