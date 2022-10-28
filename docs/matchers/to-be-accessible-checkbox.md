@@ -15,7 +15,9 @@ There are two types of `checkbox` widgets:
 - [WAI Checkbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
 - [Checkbox Pattern Examples](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html)
 
-## Syntax
+## Usage
+
+### Syntax
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -27,7 +29,7 @@ test('button', () => {
 })
 ```
 
-## Checkbox Examples
+## Test Summary
 
 ### WAI-ARIA Roles, States, and Properties
 
