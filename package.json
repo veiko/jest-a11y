@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c config/rollup.config.js",
     "build:watch": "rm -rf dist && rollup --watch -c config/rollup.config.js",
-    "docs": "docusaurus start",
+    "docs": "docusaurus start --port=2983",
     "docs:ci": "docusaurus build",
     "docs:serve": "docusaurus serve",
     "test": "jest --config config/jest.config.js --watch",

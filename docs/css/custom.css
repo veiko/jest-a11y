@@ -93,3 +93,13 @@ html h3 {
 .code-block-test-pass span:first-letter {
   color: var(--green);
 }
+
+.code-block-error-line {
+  background-color: #fc929e20;
+  border-left: 3px solid #fc929e80;
+}
+
+.code-block-success-line {
+  background-color: #8dc89120;
+  border-left: 3px solid #8dc89180;
+}
