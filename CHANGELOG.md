@@ -1,3 +1,17 @@
+# [1.7.0](https://github.com/veiko/jest-a11y/compare/v1.6.0...v1.7.0) (2022-10-28)
+
+
+### Bug Fixes
+
+* **alertdialog:** misc fixes ([1e80266](https://github.com/veiko/jest-a11y/commit/1e80266ae22827879e57b77cdc68f5ee44c9f650))
+* **dialog:** dialog fixes ([ba7f42a](https://github.com/veiko/jest-a11y/commit/ba7f42ade859b0e95894c305193d7d63f768d1b3))
+
+
+### Features
+
+* **alertdialog:** migrate dialog to alertdialog ([b2e0363](https://github.com/veiko/jest-a11y/commit/b2e03633254bcc346888fc70851312913485b473))
+* **keyboard:** toHaveFocusLock ([615d813](https://github.com/veiko/jest-a11y/commit/615d813703d97eda50c112aec550a2428341a617))
+
 # [1.6.0](https://github.com/veiko/jest-a11y/compare/v1.5.2...v1.6.0) (2022-10-24)
 
 
