@@ -27,6 +27,11 @@ module.exports = {
       textColor: '#091E42',
       isCloseable: false,
     },
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     footer: {
       copyright: `Copyright &copy; ${new Date().getFullYear()} Veronica Carrillo Marquez`,
       logo: {
@@ -71,6 +76,10 @@ module.exports = {
         {
           className: 'code-block-success-line',
           line: 'success-next-line',
+        },
+        {
+          className: 'code-block-test-caution',
+          line: 'test-caution',
         },
         {
           className: 'code-block-test-pass',

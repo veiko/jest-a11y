@@ -3,6 +3,7 @@ import React from 'react'
 import { toBeAccessibleDialog } from '../to-be-accessible-dialog'
 import { DialogExample } from '../examples/DialogValidExample'
 import { mockUtils } from '../../../utils/mockUtils'
+import { getAllFocusableElements } from '../../../utils/getAllFocusableElements'
 
 class MockExpect {
   isNot: boolean = false
