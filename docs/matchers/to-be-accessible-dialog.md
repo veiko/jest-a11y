@@ -3,32 +3,95 @@ id: dialog
 title: toBeAccessibleDialog()
 ---
 
-An `alert dialog` is a modal dialog that interrupts the user's workflow to communicate an important
-message and acquire a response. Examples include action confirmation prompts and error message
-confirmations.
+import Tabs from '@theme/Tabs'
 
-- [WAI Alert Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/)
-- [Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html)
+import TabItem from '@theme/TabItem'
 
-## Syntax
+A `dialog` is a window overlaid on either the primary window or another dialog window. Windows under
+a modal dialog are inert. That is, users cannot interact with content outside an active dialog
+window. Inert content outside an active dialog is typically visually obscured or dimmed so it is
+difficult to discern, and in some implementations, attempts to interact with the inert content cause
+the dialog to close.
+
+Like non-modal dialogs, modal dialogs contain their tab sequence. That is, Tab and Shift + Tab do
+not move focus outside the dialog. However, unlike most non-modal dialogs, modal dialogs do not
+provide means for moving keyboard focus outside the dialog window without closing the dialog.
+
+- [WAI Dialog (Modal) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- [Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog.html)
+
+#### Related
+
+> The [`alertdialog`](/matchers/alertdialog) role is a special-case dialog role designed
+> specifically for dialogs that divert users' attention to a brief, important message.
+
+## Usage
+
+### Syntax
+
+<Tabs>
+<TabItem label="Vanilla JS" value="js">
 
 ```js
-import { screen } from '@testing-library/dom'
-
-test('alert dialog', () => {
-  document.body.innerHTML = '<div data-testid="dlg" role="alertdialog">👍</div>'
+test('dialog', () => {
+  document.body.innerHTML =
+    '<div aria-label="modal" aria-modal="true" id="dlg" role="dialog">👍</div>'
 
   expect(screen.getByTestId('dlg')).toBeAccessibleDialog()
 })
 ```
 
+</TabItem>
+<TabItem default label="React + Testing Library" value="rtl">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+test('dialog', () => {
+  render(
+    <div data-testid="dialog" role="dialog">
+      Hey, listen!
+    </div>,
+  )
+
+  expect(screen.getByTestId('alert')).toBeAccessibleAlert()
+})
+```
+
+</TabItem>
+</Tabs>
+
+## Test Summary
+
+The `toBeAccessibleDialog` matcher tests the following:
+
+```html
+<!-- test-pass -->
+✓ dialog container element has role dialog
+<!-- test-pass -->
+✓ dialog container element has aria-modal="true"
+<!-- test-pass -->
+✓ dialog container element has accessible label
+<!-- test-pass -->
+✓ dialog container element traps focus
+```
+
+Other functionality called out by WAI that is not tested:
+
+```html
+<!-- test-caution -->
+⚠ all elements required to operate the dialog are descendants of the element that has role dialog
+<!-- test-caution -->
+⚠ when a dialog opens, focus moves to an element inside the dialog
+```
+
 ### WAI-ARIA Roles, States, and Properties
 
-#### 1. The element that contains all elements of the dialog, including the alert message and any dialog buttons, has `role` of `alertdialog`.
+#### 1. The element that serves as the dialog container has a `role` of `dialog`.
 
 ```html
 <!-- ✅ PASS - role is set with attribute -->
-<div role="alertdialog">Hey, listen!</div>
+<div role="dialog">Hey, listen!</div>
 
 <!-- ❌ FAIL - role is not set or implicit -->
 <span>Hey, listen!</span>

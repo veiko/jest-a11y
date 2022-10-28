@@ -53,7 +53,6 @@ test('alert', () => {
 The `toBeAccessibleAlert` matcher tests the following:
 
 ```html
-testing alert accessibility:
 <!-- test-pass -->
 ✓ element has role alert
 ```

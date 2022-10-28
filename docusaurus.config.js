@@ -30,7 +30,7 @@ module.exports = {
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
     },
     footer: {
       copyright: `Copyright &copy; ${new Date().getFullYear()} Veronica Carrillo Marquez`,
@@ -63,6 +63,14 @@ module.exports = {
     prism: {
       theme: require('prism-react-renderer/themes/oceanicNext'),
       magicComments: [
+        {
+          className: 'code-block-comment-pass',
+          line: 'comment-pass',
+        },
+        {
+          className: 'code-block-comment-fail',
+          line: 'comment-fail',
+        },
         // Remember to extend the default highlight class name as well!
         {
           className: 'theme-code-block-highlighted-line',

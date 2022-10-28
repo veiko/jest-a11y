@@ -27,13 +27,16 @@ test('button', () => {
 
 The matcher tests the following:
 
-| `toBeAccessibleButton`                                                                                                                  |
-| --------------------------------------------------------------------------------------------------------------------------------------- |
-| **WAI-ARIA Roles, States, and Properties**                                                                                              |
-| 1. The element has `role` of `button`. ([example](/matchers/button#1-the-button-has-role-of-button))                                    |
-| 2. The element has an accessible label. ([example](/matchers/button#2-the-button-has-an-accessible-label))                              |
-| **Keyboard Interaction**                                                                                                                |
-| 1. When element has focus, `space` or `enter` activates it. ([example](/matchers/button#1-the-space-or-enter-keys-activate-the-button)) |
+```html
+<!-- test-pass -->
+✓ element has role button
+<!-- test-pass -->
+✓ element has accessible label
+<!-- test-pass -->
+✓ element activated on {space}
+<!-- test-pass -->
+✓ element activated on {enter}
+```
 
 ## DOM Examples
 

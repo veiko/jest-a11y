@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import './dracula-colors.css';
+
+@import './dark-mode.css';
 
 :root {
-  --ifm-color-primary: #5726c9;
+  --ifm-color-primary: var(--purple);
   --ifm-color-primary-dark: #4e22b5;
   --ifm-color-primary-darker: #4a20ab;
   --ifm-color-primary-darkest: #3d1b8d;
@@ -18,11 +21,9 @@
   --ifm-font-family-monospace: var(--font-family-monospace);
 }
 
-html[data-theme='dark'] {
-  --ifm-color-primary: #aa90e5;
-}
-
-html h1 {
+html h1,
+html h2,
+html h3 {
   --ifm-heading-font-weight: 300;
 }
 
@@ -47,6 +48,24 @@ html h1 {
   }
 }
 
+.code-block-comment-fail span {
+  color: #b0b6bb;
+  display: inline-block;
+}
+
+.code-block-comment-fail span::first-letter {
+  color: var(--red);
+}
+
+.code-block-comment-pass span {
+  color: #b0b6bb;
+  display: inline-block;
+}
+
+.code-block-comment-pass span::first-letter {
+  color: var(--green);
+}
+
 .code-block-error-line {
   background-color: #fc929e20;
   border-left: 3px solid #fc929e80;
@@ -63,7 +82,7 @@ html h1 {
 }
 
 .code-block-test-caution span:first-letter {
-  color: yellow;
+  color: var(--yellow);
 }
 
 .code-block-test-pass span {
@@ -72,5 +91,5 @@ html h1 {
 }
 
 .code-block-test-pass span:first-letter {
-  color: #35d058;
+  color: var(--green);
 }

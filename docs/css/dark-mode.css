@@ -1,0 +1,72 @@
+html[data-theme='dark'] {
+  --ifm-background-color: #1d1e26;
+  --ifm-background-surface-color: #121212;
+  --ifm-color-primary: var(--purple);
+
+  --ifm-tabs-color: white;
+  --ifm-tabs-color-active: var(--cyan);
+}
+
+html[data-theme='dark'] code {
+  --ifm-code-background: var(--green-100);
+  color: var(--green-900);
+}
+
+html[data-theme='dark'] h1,
+html[data-theme='dark'] h2 {
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-size: 100%;
+  -webkit-box-decoration-break: clone;
+  width: max-content;
+}
+
+html[data-theme='dark'] h1 {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--red)),
+    to(var(--orange))
+  );
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--red) 0,
+    var(--orange) 100%
+  );
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
+  background-image: linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
+}
+
+html[data-theme='dark'] h2 {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--orange)),
+    to(var(--yellow))
+  );
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--orange) 0,
+    var(--yellow) 100%
+  );
+  background-image: -moz-linear-gradient(
+    var(--gradientDegree),
+    var(--orange) 0,
+    var(--yellow) 100%
+  );
+  background-image: linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
+}
+
+html[data-theme='dark'] .alert--warning {
+  --ifm-alert-background-color: var(--yellow-200);
+  --ifm-alert-background-color-highlight: red;
+  --ifm-alert-foreground-color: var(--yellow);
+  --ifm-alert-border-color: var(--yellow);
+}

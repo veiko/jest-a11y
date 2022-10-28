@@ -3,6 +3,10 @@ id: alertdialog
 title: toBeAccessibleAlertDialog()
 ---
 
+import Tabs from '@theme/Tabs'
+
+import TabItem from '@theme/TabItem'
+
 An `alert dialog` is a modal dialog that interrupts the user's workflow to communicate an important
 message and acquire a response. Examples include action confirmation prompts and error message
 confirmations.
@@ -10,17 +14,42 @@ confirmations.
 - [WAI Alert Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/)
 - [Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html)
 
-## Syntax
+## Usage
+
+### Syntax
+
+<Tabs>
+<TabItem label="Vanilla JS" value="js">
 
 ```js
-import { screen } from '@testing-library/dom'
+test('alertdialog', () => {
+  document.body.innerHTML = '<div aria-label="modal" id="dlg" role="alertdialog">👍</div>'
 
-test('alert dialog', () => {
-  document.body.innerHTML = '<div data-testid="dlg" role="alertdialog">👍</div>'
-
-  expect(screen.getByTestId('dlg')).toBeAccessibleDialog()
+  expect(document.getElementById('dlg')).toBeAccessibleAlertDialog()
 })
 ```
+
+</TabItem>
+<TabItem default label="React + Testing Library" value="rtl">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+test('alertdialog', () => {
+  render(
+    <div data-testid="alertdialog" role="alertdialog">
+      Hey, listen!
+    </div>,
+  )
+
+  expect(screen.getByTestId('alertdialog')).toBeAccessibleAlertDialog()
+})
+```
+
+</TabItem>
+</Tabs>
+
+## Test Summary
 
 ### WAI-ARIA Roles, States, and Properties
 
