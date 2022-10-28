@@ -1,0 +1,14 @@
+import { assertRole } from 'utils/assertRole'
+
+/**
+ * https://www.w3.org/WAI/ARIA/apg/patterns/{{lowerCase componentName}}/
+ *
+ * WAI-ARIA Roles, States, and Properties
+ * ^ Copy from link above
+ *
+ * Keyboard Interaction
+ * ^ Copy from link above
+ */
+export function toBeAccessible{{properCase componentName}}(this: any, element: HTMLElement): jest.CustomMatcherResult {
+  return assertRole({ element, role: {{lowerCase componentName}}, utils: this.utils })
+}
