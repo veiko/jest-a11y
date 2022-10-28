@@ -1,0 +1,17 @@
+name: test
+on: pull_request
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    environment: Default Environment
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: 📥 Download deps
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: yarn test:ci
