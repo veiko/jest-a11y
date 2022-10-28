@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/veiko/jest-a11y/compare/v1.7.0...v1.8.0) (2022-10-28)
+
+
+### Features
+
+* **accordion:** toBeAccessibleAccordion [#1](https://github.com/veiko/jest-a11y/issues/1) ([#2](https://github.com/veiko/jest-a11y/issues/2)) ([1401832](https://github.com/veiko/jest-a11y/commit/14018324d90af1e94f4c46e967cba11c795cdfe2))
+
 # [1.7.0](https://github.com/veiko/jest-a11y/compare/v1.6.0...v1.7.0) (2022-10-28)
 
 
