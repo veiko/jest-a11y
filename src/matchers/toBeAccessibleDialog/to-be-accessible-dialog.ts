@@ -1,4 +1,5 @@
-import userEvent from '@testing-library/user-event'
+import { assertAttribute } from 'utils/assertAttribute'
+import { assertFocusLock } from 'utils/assertFocusLock'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 
@@ -19,27 +20,31 @@ import { assertRole } from 'utils/assertRole'
  * 3. Escape closes the dialog.
  */
 export function toBeAccessibleDialog(this: any, element: HTMLElement): jest.CustomMatcherResult {
-  const roleCheck = assertRole({ element, role: 'dialog', utils: this.utils })
-  if (!roleCheck?.pass) {
-    return roleCheck
-  }
-
-  const labelCheck = assertLabel({ element, utils: this.utils })
-  if (!labelCheck?.pass) {
-    return labelCheck
-  }
-
   let message = ''
   let pass = true
 
-  try {
-    userEvent.keyboard('{esc}')
-    message += `${this.utils.EXPECTED_COLOR('✓')} element closed on {esc}\n`
-  // TODO: How to validate dialog closed?
-} catch (e) {
-    message += `${this.utils.RECEIVED_COLOR('✕')} element closed on {esc}\n`
-    pass = false
-  }
+  // 1. The element that serves as the dialog container has role of dialog.
+  const roleCheck = assertRole({ element, role: 'dialog', utils: this.utils })
+  message += roleCheck.message()
+  pass = roleCheck.pass
+
+  // 3. The dialog container element has aria-modal set to true.
+  const modalCheck = assertAttribute({
+    element,
+    attribute: 'aria-modal',
+    value: 'true',
+    utils: this.utils,
+  })
+  message += modalCheck.message()
+  pass = pass ? modalCheck.pass : false
+
+  const labelCheck = assertLabel({ element, utils: this.utils })
+  message += labelCheck.message()
+  pass = pass ? labelCheck.pass : false
+
+  const focusTrapCheck = assertFocusLock({ element, utils: this.utils })
+  message += focusTrapCheck.message()
+  pass = pass ? focusTrapCheck.pass : false
 
   return { pass, message: () => message }
 }

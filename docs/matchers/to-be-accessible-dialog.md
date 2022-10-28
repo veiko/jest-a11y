@@ -35,9 +35,9 @@ provide means for moving keyboard focus outside the dialog window without closin
 ```js
 test('dialog', () => {
   document.body.innerHTML =
-    '<div aria-label="modal" aria-modal="true" id="dlg" role="dialog">👍</div>'
+    '<div aria-label="modal" aria-modal="true" id="dialog" role="dialog">👍</div>'
 
-  expect(screen.getByTestId('dlg')).toBeAccessibleDialog()
+  expect(element.getElementById('dialog')).toBeAccessibleDialog()
 })
 ```
 
@@ -54,7 +54,7 @@ test('dialog', () => {
     </div>,
   )
 
-  expect(screen.getByTestId('alert')).toBeAccessibleAlert()
+  expect(screen.getByTestId('dialog')).toBeAccessibleDialog()
 })
 ```
 
@@ -90,16 +90,26 @@ Other functionality called out by WAI that is not tested:
 #### 1. The element that serves as the dialog container has a `role` of `dialog`.
 
 ```html
-<!-- ✅ PASS - role is set with attribute -->
+<!-- ✅ role is set with attribute -->
 <div role="dialog">Hey, listen!</div>
 
-<!-- ❌ FAIL - role is not set or implicit -->
+<!-- ❌ role is not set or implicit -->
 <span>Hey, listen!</span>
 ```
 
-#### 2. The alert dialog has an accessible label.
+#### 2. The element that serves as the dialog container has attribute `aria-modal` set to `"true"`.
 
-The element with role `alertdialog` has either:
+```html
+<!-- ✅ attribute aria-modal is set to "true" -->
+<div aria-modal="true" role="dialog">Hey, listen!</div>
+
+<!-- ❌ attribute aria-modal is set to "true" -->
+<span>Hey, listen!</span>
+```
+
+#### 3. The dialog has an accessible label.
+
+The element with role `dialog` has either:
 
 - A value for `aria-labelledby` that refers to the element containing the title of the dialog if the
   dialog has a visible label.

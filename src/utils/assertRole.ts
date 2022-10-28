@@ -3,6 +3,8 @@ import { printUtil } from './printUtil'
 
 const hasAlertRole = (el: HTMLElement) => getRole(el) === 'alert'
 
+const hasAlertDialogRole = (el: HTMLElement) => getRole(el) === 'alertdialog'
+
 const hasButtonRole = (el: HTMLElement) => el.tagName === 'BUTTON' || getRole(el) === 'button'
 
 const hasCheckboxRole = (el: HTMLElement) =>
@@ -14,6 +16,7 @@ const hasLinkRole = (el: HTMLElement) => el.tagName === 'A' || getRole(el) === '
 
 const assertions: { [key in Role]: any } = {
   alert: hasAlertRole,
+  alertdialog: hasAlertDialogRole,
   button: hasButtonRole,
   checkbox: hasCheckboxRole,
   dialog: hasDialogRole,
@@ -34,5 +37,5 @@ export const assertRole = ({
   if (!assertions[role](element)) {
     return { message: () => printUtil.fail(`element has role ${role}`, utils), pass: false }
   }
-  return { message: () => '', pass: true }
+  return { message: () => printUtil.pass(`element has role ${role}`, utils), pass: true }
 }
