@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 :root {
   --ifm-color-primary: #5726c9;
   --ifm-color-primary-dark: #4e22b5;
@@ -6,10 +8,43 @@
   --ifm-color-primary-light: #622fd8;
   --ifm-color-primary-lighter: #6939da;
   --ifm-color-primary-lightest: #8057df;
+
+  --font-family-monospace: 'Inconsolata', monospace;
+
+  --ifm-heading-font-family: var(--font-family-monospace);
+
+  --ifm-font-family-base: var(--font-family-monospace);
+
+  --ifm-font-family-monospace: var(--font-family-monospace);
 }
 
-body {
-  --ifm-heading-font-family: Arial, Helvetica, sans-serif;
+html[data-theme='dark'] {
+  --ifm-color-primary: #aa90e5;
+}
+
+html h1 {
+  --ifm-heading-font-weight: 300;
+}
+
+@media screen and (max-width: 996px) {
+  :root {
+    --ifm-font-size-base: 18px;
+  }
+  article header h1 {
+    font-size: 1.5rem !important;
+  }
+  .hero .hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 997px) {
+  :root {
+    --ifm-font-size-base: 17px;
+  }
+  article header h1 {
+    font-size: 2rem !important;
+  }
 }
 
 .code-block-error-line {
@@ -20,6 +55,15 @@ body {
 .code-block-success-line {
   background-color: #8dc89120;
   border-left: 3px solid #8dc89180;
+}
+
+.code-block-test-caution span {
+  color: #b0b6bb;
+  display: inline-block;
+}
+
+.code-block-test-caution span:first-letter {
+  color: yellow;
 }
 
 .code-block-test-pass span {

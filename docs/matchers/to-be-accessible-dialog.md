@@ -1,5 +1,5 @@
 ---
-id: alertdialog
+id: dialog
 title: toBeAccessibleDialog()
 ---
 
