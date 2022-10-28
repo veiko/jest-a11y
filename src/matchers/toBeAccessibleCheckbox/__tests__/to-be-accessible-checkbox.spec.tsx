@@ -47,12 +47,11 @@ describe('toBeAccessibleCheckbox', () => {
     expect(returnValue.message()).toContain('✕ element has focus on {tab}')
   })
 
-  // TODO: How to test this?
-  it.skip('fails if the element does not activate on {space}', () => {
+  it('fails if the element does not activate on {space}', () => {
     render(<input aria-label="My Checkbox" disabled type="checkbox" />)
 
     const returnValue = mockExpect.toBeAccessibleCheckbox(screen.getByRole('checkbox'))
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('element activated on')
+    expect(returnValue.message()).toContain('✕ element activated on')
   })
 })

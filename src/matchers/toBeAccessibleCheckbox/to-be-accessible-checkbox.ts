@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
 import { assertTab } from 'utils/assertTab'
+import { printUtil } from 'utils/printUtil'
 import { assertRole } from '../../utils/assertRole'
 
 /**
@@ -12,30 +13,25 @@ import { assertRole } from '../../utils/assertRole'
  * 3. When checked, the checkbox element has state aria-checked set to true.
  *
  * Keyboard Interaction
- * 1. Space activates the button.
- * 2. Enter activates the button.
+ * 1. Space activates the checkbox.
+ * 2. Enter activates the checkbox.
  */
 export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.CustomMatcherResult {
-  /**
-   * The checkbox has role checkbox.
-   */
-  const roleCheck = assertRole({ element, role: 'checkbox', utils: this.utils })
-  if (!roleCheck?.pass) {
-    return roleCheck
-  }
-
-  const labelCheck = assertLabel({ element, utils: this.utils })
-  if (!labelCheck?.pass) {
-    return labelCheck
-  }
-
-  const tabCheck = assertTab({ element, utils: this.utils })
-  if (!tabCheck?.pass) {
-    return tabCheck
-  }
-
   let message = ''
   let pass = true
+
+  // 1. The element has role of checkbox.
+  const roleCheck = assertRole({ element, role: 'checkbox', utils: this.utils })
+  message += roleCheck.message()
+  pass = roleCheck.pass
+
+  const labelCheck = assertLabel({ element, utils: this.utils })
+  message += labelCheck.message()
+  pass = pass === false ? false : labelCheck.pass
+
+  const tabCheck = assertTab({ element, utils: this.utils })
+  message += tabCheck.message()
+  pass = pass === false ? false : tabCheck.pass
 
   const newOnClick = jest.fn()
   const oldOnClick = element.onclick
@@ -44,7 +40,7 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   try {
     userEvent.keyboard('{space}')
     expect(newOnClick).toBeCalledTimes(1)
-    message += `${this.utils.EXPECTED_COLOR('✓')} element activated on {space}\n`
+    message += printUtil.pass('element activated on {space}', this.utils)
     expect(element).toHaveFocus()
   } catch (e) {
     message += `\n${this.utils.RECEIVED_COLOR('✕')} element activated on {space}\n`
@@ -58,8 +54,5 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   }
   element.onclick = oldOnClick
 
-  /**
-   * Checkbox is valid
-   */
   return { message: () => message, pass }
 }
