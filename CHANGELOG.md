@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/veiko/jest-a11y/compare/v1.8.0...v1.9.0) (2022-10-28)
+
+
+### Features
+
+* plop ([6d2e97a](https://github.com/veiko/jest-a11y/commit/6d2e97ab6e36790845ff1f2b5c7aba9e422fe806))
+
 # [1.8.0](https://github.com/veiko/jest-a11y/compare/v1.7.0...v1.8.0) (2022-10-28)
 
 
