@@ -25,11 +25,6 @@ export const assertLabel = ({
 }: AssertLabelConfig): jest.CustomMatcherResult => {
   const failedTextContent = testTextContent && !hasChildren(element)
   if (failedTextContent && !hasAriaLabel(element)) {
-    /**
-     * The button has an accessible label.
-     * By default, the accessible name is computed from any text content inside the button element.
-     * However, it can also be provided with aria-labelledby or aria-label.
-     */
     return {
       pass: false,
       message: () => `${utils.RECEIVED_COLOR('✕')} element has accessible label\n
@@ -38,6 +33,11 @@ export const assertLabel = ({
       Text content: ${utils.printReceived(element.innerHTML)}
       aria-label: ${utils.printReceived(getAttribute(element, 'aria-label'))}
       aria-labelledby: ${utils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
+    }
+  } else if (!hasAriaLabel(element)) {
+    return {
+      pass: false,
+      message: () => printUtil.fail('element has accessible label', utils),
     }
   }
   return {
