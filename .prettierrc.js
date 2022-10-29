@@ -5,7 +5,7 @@ module.exports = {
   insertPragma: false,
   jsxSingleQuote: false,
   printWidth: 100,
-  proseWrap: 'always',
+  proseWrap: 'never',
   quoteProps: 'as-needed',
   requirePragma: false,
   semi: false,
