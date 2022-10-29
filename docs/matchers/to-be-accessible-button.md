@@ -3,8 +3,7 @@ id: button
 title: toBeAccessibleButton()
 ---
 
-A `button` is a widget that enables users to trigger an action or event, such as submitting a form,
-opening a dialog, canceling an action, or performing a delete operation.
+A `button` is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 
 - [WAI Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
 - [Button Example](https://www.w3.org/WAI/ARIA/apg/example-index/button/button.html)
@@ -57,8 +56,7 @@ The matcher tests the following:
 
 #### 2. The button has an accessible label.
 
-By default, the accessible name is computed from any text content inside the button element.
-However, it can also be provided with `aria-labelledby` or `aria-label`.
+By default, the accessible name is computed from any text content inside the button element. However, it can also be provided with `aria-labelledby` or `aria-label`.
 
 ```html
 <!-- ✅ PASS - accessible name is text content -->
@@ -79,7 +77,7 @@ However, it can also be provided with `aria-labelledby` or `aria-label`.
 
 ### Keyboard Interaction
 
-#### 1. The `space` or `enter` keys activate the button.
+#### 1. The <kbd>Space</kbd> or <kbd>Enter</kbd> keys activate the button.
 
 ```html
 <!-- ✅ PASS - HTMLButtonElement will activate -->

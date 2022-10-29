@@ -7,23 +7,16 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-A `dialog` is a window overlaid on either the primary window or another dialog window. Windows under
-a modal dialog are inert. That is, users cannot interact with content outside an active dialog
-window. Inert content outside an active dialog is typically visually obscured or dimmed so it is
-difficult to discern, and in some implementations, attempts to interact with the inert content cause
-the dialog to close.
+A `dialog` is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert. That is, users cannot interact with content outside an active dialog window. Inert content outside an active dialog is typically visually obscured or dimmed so it is difficult to discern, and in some implementations, attempts to interact with the inert content cause the dialog to close.
 
-Like non-modal dialogs, modal dialogs contain their tab sequence. That is, Tab and Shift + Tab do
-not move focus outside the dialog. However, unlike most non-modal dialogs, modal dialogs do not
-provide means for moving keyboard focus outside the dialog window without closing the dialog.
+Like non-modal dialogs, modal dialogs contain their tab sequence. That is, <kbd>Tab</kbd> and <kbd>Shift + Tab</kbd> do not move focus outside the dialog. However, unlike most non-modal dialogs, modal dialogs do not provide means for moving keyboard focus outside the dialog window without closing the dialog.
 
 - [WAI Dialog (Modal) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
 - [Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog.html)
 
 #### Related
 
-> The [`alertdialog`](/matchers/alertdialog) role is a special-case dialog role designed
-> specifically for dialogs that divert users' attention to a brief, important message.
+> The [`alertdialog`](/matchers/alertdialog) role is a special-case dialog role designed specifically for dialogs that divert users' attention to a brief, important message.
 
 ## Usage
 
@@ -34,8 +27,7 @@ provide means for moving keyboard focus outside the dialog window without closin
 
 ```js
 test('dialog', () => {
-  document.body.innerHTML =
-    '<div aria-label="modal" aria-modal="true" id="dialog" role="dialog">👍</div>'
+  document.body.innerHTML = '<div aria-label="modal" aria-modal="true" id="dialog" role="dialog">👍</div>'
 
   expect(element.getElementById('dialog')).toBeAccessibleDialog()
 })
@@ -111,8 +103,7 @@ Other functionality called out by WAI that is not tested:
 
 The element with role `dialog` has either:
 
-- A value for `aria-labelledby` that refers to the element containing the title of the dialog if the
-  dialog has a visible label.
+- A value for `aria-labelledby` that refers to the element containing the title of the dialog if the dialog has a visible label.
 - A value for `aria-label` if the dialog does not have a visible label.
 
 ```html

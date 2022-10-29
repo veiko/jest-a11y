@@ -7,9 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from'@theme/TabItem'
 
-An accordion is a vertically stacked set of interactive headings that each contain a title, content
-snippet, or thumbnail representing a section of content. The headings function as controls that
-enable users to reveal or hide their associated sections of content.
+An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content. The headings function as controls that enable users to reveal or hide their associated sections of content.
 
 - [WAI Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 - [Accordion Example](https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html)
@@ -72,8 +70,7 @@ test('accordion', async () => {
 
 ## Test Summary
 
-The matcher for an accordion will loop through the accordion items (`button` elements). For each
-accordion item, the matcher will test the following:
+The matcher for an accordion will loop through the accordion items (`button` elements). For each accordion item, the matcher will test the following:
 
 ```html
 <!-- test-pass -->
@@ -92,8 +89,8 @@ Functionality that is not tested:
 
 ```html
 <!-- test-caution -->
-⚠ If the accordion panel associated with an accordion header is visible, the header button element
-has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.
+⚠ If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not
+visible, aria-expanded is set to false.
 ```
 
 ### WAI-ARIA Roles, States, and Properties
@@ -177,8 +174,7 @@ has aria-expanded set to true. If the panel is not visible, aria-expanded is set
 
 #### 4. If the accordion panel associated with an accordion header is visible, the header button element has `aria-expanded` set to `true`. If the panel is not visible, `aria-expanded` is set to `false`.
 
-There are multiple ways to implement accordion panel visibility, so there is no single method to
-test that the panel visibility corresponds to the `aria-expanded` value.
+There are multiple ways to implement accordion panel visibility, so there is no single method to test that the panel visibility corresponds to the `aria-expanded` value.
 
 <details>
   <summary>Example</summary>
@@ -209,4 +205,4 @@ test that the panel visibility corresponds to the `aria-expanded` value.
 
 #### 1. The accordion header button element can receive focus
 
-#### 2. When element has focus, `space` or `enter` activates it.
+#### 2. When element has focus, <kbd>Space</kbd> or <kbd>Enter</kbd> activates it.

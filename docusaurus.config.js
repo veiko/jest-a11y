@@ -94,6 +94,10 @@ module.exports = {
           line: 'test-caution',
         },
         {
+          className: 'code-block-test-fail',
+          line: 'test-fail',
+        },
+        {
           className: 'code-block-test-pass',
           line: 'test-pass',
         },

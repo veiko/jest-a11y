@@ -5,10 +5,8 @@ title: toBeAccessibleCheckbox()
 
 There are two types of `checkbox` widgets:
 
-- **Dual-state:** The most common type of checkbox, it allows the user to toggle between two choices
-  -- checked and not checked.
-- **Tri-state:** This type of checkbox supports an additional third state known as partially
-  checked.
+- **Dual-state:** The most common type of checkbox, it allows the user to toggle between two choices -- checked and not checked.
+- **Tri-state:** This type of checkbox supports an additional third state known as partially checked.
 
 #### Other Resources
 
@@ -51,8 +49,7 @@ test('button', () => {
 The checkbox has an accessible label provided by one of the following:
 
 - Visible text content contained within the element with role checkbox.
-- A visible label referenced by the value of `aria-labelledby` set on the element with role
-  checkbox.
+- A visible label referenced by the value of `aria-labelledby` set on the element with role checkbox.
 - `aria-label` set on the element with role checkbox.
 
 ```html
@@ -74,4 +71,4 @@ The checkbox has an accessible label provided by one of the following:
 
 ### Keyboard Interaction
 
-#### 1. When the checkbox has focus, pressing the `space` key changes the state of the checkbox.
+#### 1. When the checkbox has focus, pressing the <kbd>Space</kbd> key changes the state of the checkbox.
