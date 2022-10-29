@@ -10,5 +10,5 @@ import { assertRole } from 'utils/assertRole'
  * ^ Copy from link above
  */
 export function toBeAccessible{{properCase componentName}}(this: any, element: HTMLElement): jest.CustomMatcherResult {
-  return assertRole({ element, role: {{lowerCase componentName}}, utils: this.utils })
+  return assertRole({ element, role: '{{lowerCase componentName}}', utils: this.utils })
 }
