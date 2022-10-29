@@ -23,8 +23,7 @@ export const assertLabel = ({
   options: { testTextContent = true } = {},
   utils,
 }: AssertLabelConfig): jest.CustomMatcherResult => {
-  const failedTextContent = testTextContent && !hasChildren(element)
-  if (failedTextContent && !hasAriaLabel(element)) {
+  if (testTextContent && !hasChildren(element) && !hasAriaLabel(element)) {
     return {
       pass: false,
       message: () => `${utils.RECEIVED_COLOR('✕')} element has accessible label\n
@@ -34,7 +33,7 @@ export const assertLabel = ({
       aria-label: ${utils.printReceived(getAttribute(element, 'aria-label'))}
       aria-labelledby: ${utils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
     }
-  } else if (!hasAriaLabel(element)) {
+  } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
       pass: false,
       message: () => printUtil.fail('element has accessible label', utils),
