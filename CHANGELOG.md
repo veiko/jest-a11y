@@ -1,3 +1,17 @@
+# [1.10.0](https://github.com/veiko/jest-a11y/compare/v1.9.0...v1.10.0) (2022-10-29)
+
+
+### Bug Fixes
+
+* **assertLabel:** fix issue with text content case ([2fa7d53](https://github.com/veiko/jest-a11y/commit/2fa7d5379115ce8855bf94fbe14740a720207e73))
+* **assertLabel:** handle no text content case ([19832e4](https://github.com/veiko/jest-a11y/commit/19832e4bd3df94366c6d8dd0d2819f188a188723))
+
+
+### Features
+
+* **breadcrumb:** toBeAccessibleBreadcrumb ([dc43c0e](https://github.com/veiko/jest-a11y/commit/dc43c0ed7f048b3f2432f718bab324cccd6bdd4c))
+* **utils:** assertTagName ([aac3a6b](https://github.com/veiko/jest-a11y/commit/aac3a6bae330015797cc245fd441e9ce1a585380))
+
 # [1.9.0](https://github.com/veiko/jest-a11y/compare/v1.8.0...v1.9.0) (2022-10-28)
 
 
