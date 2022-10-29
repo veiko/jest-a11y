@@ -10,23 +10,40 @@ const hasButtonRole = (el: HTMLElement) => el.tagName === 'BUTTON' || getRole(el
 const hasCheckboxRole = (el: HTMLElement) =>
   (el.tagName === 'INPUT' && getAttribute(el, 'type') === 'checkbox') || getRole(el) === 'checkbox'
 
+const hasColumnHeaderRole = (el: HTMLElement) =>
+  el.tagName === 'TH' || getRole(el) === 'columnheader'
+
 const hasDialogRole = (el: HTMLElement) => getRole(el) === 'dialog'
+
+const hasGridRole = (el: HTMLElement) => el.tagName === 'TABLE' || getRole(el) === 'grid'
+
+const hasGridCellRole = (el: HTMLElement) => el.tagName === 'TD' || getRole(el) === 'gridcell'
 
 const hasLinkRole = (el: HTMLElement) => el.tagName === 'A' || getRole(el) === 'link'
 
-const assertions: { [key in Role]: any } = {
+const hasRowRole = (el: HTMLElement) => el.tagName === 'TR' || getRole(el) === 'row'
+
+const hasRowHeaderRole = (el: HTMLElement) => getRole(el) === 'rowheader'
+
+/** TODO: use React.AriaRole */
+const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   alert: hasAlertRole,
   alertdialog: hasAlertDialogRole,
   button: hasButtonRole,
   checkbox: hasCheckboxRole,
+  columnheader: hasColumnHeaderRole,
   dialog: hasDialogRole,
+  grid: hasGridRole,
+  gridcell: hasGridCellRole,
   link: hasLinkRole,
+  row: hasRowRole,
+  rowheader: hasRowHeaderRole,
 }
 
 type AssertRoleConfig = {
-  role: Role
+  role: Role | Role[]
   element: HTMLElement
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const assertRole = ({
@@ -34,8 +51,24 @@ export const assertRole = ({
   role,
   utils,
 }: AssertRoleConfig): jest.CustomMatcherResult => {
-  if (!assertions[role](element)) {
-    return { message: () => printUtil.fail(`element has role ${role}`, utils), pass: false }
+  const roleList: Role[] = Array.isArray(role) ? role : [role]
+  let message = ''
+  let pass = false
+
+  roleList.forEach(r => {
+    if (!assertions[r](element)) {
+      message += printUtil.fail(`element has role ${r}`, utils)
+    } else {
+      message += printUtil.pass(`element has role ${r}`, utils)
+      pass = true
+    }
+  })
+
+  return {
+    message: () =>
+      pass && Array.isArray(role)
+        ? printUtil.pass(`element has one role of ${role.join(', ')}`, utils)
+        : message,
+    pass,
   }
-  return { message: () => printUtil.pass(`element has role ${role}`, utils), pass: true }
 }
