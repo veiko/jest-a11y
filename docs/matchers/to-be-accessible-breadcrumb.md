@@ -70,14 +70,40 @@ current page is not a link, `aria-current` is optional.
 
 ### WAI-ARIA Roles, States, and Properties
 
-#### 1. The widget has a `role` of `breadcrumb`.
+#### 1. The widget has a `tagName` of `nav`.
 
 ```html
-<!-- ✅ element has role breadcrumb -->
-<div role="breadcrumb">hey, listen!</div>
+<!-- ✅ element has tagName nav -->
+<nav aria-label="breadcrumbs">
+  <ol>
+    <li><a href="">1</a></li>
+  </ol>
+</nav>
 
-<!-- ❌ element has role breadcrumb -->
-<span>hey, listen!</span>
+<!-- ❌ element has tagName nav -->
+<div aria-label="breadcrumbs">
+  <ol>
+    <li><a href="">1</a></li>
+  </ol>
+</div>
+```
+
+#### 2. The widget has an accessible label.
+
+```html
+<!-- ✅ element has accessible label -->
+<nav aria-label="breadcrumbs">
+  <ol>
+    <li><a href="">1</a></li>
+  </ol>
+</nav>
+
+<!-- ❌ element has accessible label -->
+<nav>
+  <ol>
+    <li><a href="">1</a></li>
+  </ol>
+</nav>
 ```
 
 ### Keyboard Interaction
