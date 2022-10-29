@@ -43,13 +43,19 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'getting-started',
-          label: 'Getting Started',
+          docId: 'welcome',
+          label: 'Welcome',
         },
         {
           type: 'doc',
           docId: 'matchers/index',
           label: 'Matchers',
+        },
+        {
+          href: 'https://github.com/veiko/jest-a11y',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
       logo: {

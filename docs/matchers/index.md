@@ -1,10 +1,12 @@
 ---
 id: index
-title: Matchers
+title: Summary
+sidebar_position: 10
 ---
 
 #### Component Matchers
 
+- [`toBeAccessibleAccordion`](/matchers/accordion)
 - [`toBeAccessibleAlertDialog`](/matchers/alertdialog)
 - [`toBeAccessibleAlert`](/matchers/alert)
 - [`toBeAccessibleButton`](/matchers/button)
@@ -18,7 +20,6 @@ title: Matchers
 
 ### Coming Soon
 
-- toBeAccessibleAccordion
 - toBeAccessibleBreadcrumb
 - toBeAccessibleCarousel
 - toBeAccessibleCombobox

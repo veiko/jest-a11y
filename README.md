@@ -89,7 +89,7 @@ npm install --save jest-a11y
 
 ## Usage
 
-```typescript
+```ts
 import 'jest-a11y/matchers'
 ```
 
