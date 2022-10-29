@@ -14,7 +14,18 @@ export const thisIsAModule = true
 declare const extend: any
 declare global {
   var extend: string
-  type Role = 'alert' | 'alertdialog' | 'button' | 'checkbox' | 'dialog' | 'link'
+  type Role =
+    | 'alert'
+    | 'alertdialog'
+    | 'button'
+    | 'checkbox'
+    | 'columnheader'
+    | 'dialog'
+    | 'grid'
+    | 'gridcell'
+    | 'link'
+    | 'row'
+    | 'rowheader'
   type JestMatcherUtils = typeof jestMatcherUtils
 }
 
