@@ -12,6 +12,13 @@ html[data-theme='dark'] code {
   color: var(--green-900);
 }
 
+html[data-theme='dark'] kbd {
+  background-color: var(--blackSecondary);
+  border-color: var(--greySecondary);
+  box-shadow: inset 0 -2px 0 var(--greySecondary);
+  color: var(--purpleSecondary);
+}
+
 html[data-theme='dark'] h1,
 html[data-theme='dark'] h2 {
   -webkit-text-fill-color: transparent;
@@ -25,42 +32,16 @@ html[data-theme='dark'] h2 {
 }
 
 html[data-theme='dark'] h1 {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--gradientDegree)),
-    color-stop(0, var(--red)),
-    to(var(--orange))
-  );
-  background-image: -webkit-linear-gradient(
-    var(--gradientDegree),
-    var(--red) 0,
-    var(--orange) 100%
-  );
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--gradientDegree)), color-stop(0, var(--red)), to(var(--orange)));
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
   background-image: -moz-linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
   background-image: linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
 }
 
 html[data-theme='dark'] h2 {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--gradientDegree)),
-    color-stop(0, var(--orange)),
-    to(var(--yellow))
-  );
-  background-image: -webkit-linear-gradient(
-    var(--gradientDegree),
-    var(--orange) 0,
-    var(--yellow) 100%
-  );
-  background-image: -moz-linear-gradient(
-    var(--gradientDegree),
-    var(--orange) 0,
-    var(--yellow) 100%
-  );
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--gradientDegree)), color-stop(0, var(--orange)), to(var(--yellow)));
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
   background-image: linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
 }
 
