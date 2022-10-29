@@ -1,6 +1,5 @@
 ---
 id: contributing
-sidebar_class_name: sidebar-green
 title: Contributing
 ---
 
