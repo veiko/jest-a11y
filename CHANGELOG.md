@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/veiko/jest-a11y/compare/v1.10.0...v1.10.1) (2022-10-30)
+
+
+### Bug Fixes
+
+* export jest types ([7d8dae3](https://github.com/veiko/jest-a11y/commit/7d8dae3e4db6470af74eb723cf7cc5563fe890f8))
+
 # [1.10.0](https://github.com/veiko/jest-a11y/compare/v1.9.0...v1.10.0) (2022-10-29)
 
 
