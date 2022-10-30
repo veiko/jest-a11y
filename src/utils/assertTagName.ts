@@ -4,7 +4,7 @@ type AssertTagNameConfig = {
   element: HTMLElement
   message?: string
   tagName: string
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const assertTagName = ({

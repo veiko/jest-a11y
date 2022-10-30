@@ -9,7 +9,7 @@ type AssertClosestConfig = {
   element: HTMLElement
   message?: string
   test(element: HTMLElement): boolean
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 type AssertClosestResult = jest.CustomMatcherResult & {

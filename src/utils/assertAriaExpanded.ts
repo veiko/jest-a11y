@@ -5,7 +5,7 @@ type AssertAriaExpandedConfig = {
   element: HTMLElement
   message?: string
   userEvent(): void
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const assertAriaExpanded = ({
