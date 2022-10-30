@@ -3,7 +3,7 @@ import { assertFocus } from './assertFocus'
 
 type AssertTabConfig = {
   element: HTMLElement
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const assertTab = ({ element, utils }: AssertTabConfig): jest.CustomMatcherResult => {

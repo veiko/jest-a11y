@@ -4,7 +4,7 @@ type AssertAttributeConfig = {
   attribute: string
   element: HTMLElement
   message?: string
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
   value?: string
 }
 

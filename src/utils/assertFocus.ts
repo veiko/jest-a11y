@@ -3,7 +3,7 @@ import { printUtil } from './printUtil'
 type AssertFocusConfig = {
   element: HTMLElement
   message?: string
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const assertFocus = ({

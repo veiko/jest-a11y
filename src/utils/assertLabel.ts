@@ -12,7 +12,7 @@ type AssertLabelOptions = {
 type AssertLabelConfig = {
   element: HTMLElement
   options?: AssertLabelOptions
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 const hasAriaLabel = (el: HTMLElement) =>

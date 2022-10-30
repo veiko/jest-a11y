@@ -1,7 +1,7 @@
 type Config = {
   expected: string
   received?: string
-  utils: jest.MatcherUtils
+  utils: JestMatcherUtils
 }
 
 export const failExpectedVsReceived = (msg: string, { expected, received, utils }: Config) => {
