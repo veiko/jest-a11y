@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
 @import './dracula-colors.css';
 
 @import './dark-mode.css';
@@ -13,11 +16,12 @@
   --ifm-color-primary-lighter: #6939da;
   --ifm-color-primary-lightest: #8057df;
 
+  --font-family-sans: 'Source Sans Pro', monospace;
   --font-family-monospace: 'Inconsolata', monospace;
 
-  --ifm-heading-font-family: var(--font-family-monospace);
+  --ifm-heading-font-family: var(--font-family-sans);
 
-  --ifm-font-family-base: var(--font-family-monospace);
+  --ifm-font-family-base: var(--font-family-sans);
 
   --ifm-font-family-monospace: var(--font-family-monospace);
 }
@@ -34,10 +38,12 @@
     0.2px 20.6px 15.5px -4.3px hsl(var(--shadow-color) / 0.17), 0.4px 32.5px 24.4px -5px hsl(var(--shadow-color) / 0.08);
 }
 
-html h1,
+html h1 {
+  --ifm-heading-font-weight: 800;
+}
 html h2,
 html h3 {
-  --ifm-heading-font-weight: 300;
+  --ifm-heading-font-weight: 600;
 }
 
 .stack-blitz-editor {
