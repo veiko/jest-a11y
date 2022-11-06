@@ -21,6 +21,8 @@ const hasGridCellRole = (el: HTMLElement) => el.tagName === 'TD' || getRole(el) 
 
 const hasLinkRole = (el: HTMLElement) => el.tagName === 'A' || getRole(el) === 'link'
 
+const hasMeterRole = (el: HTMLElement) => getRole(el) === 'meter'
+
 const hasRowRole = (el: HTMLElement) => el.tagName === 'TR' || getRole(el) === 'row'
 
 const hasRowHeaderRole = (el: HTMLElement) => getRole(el) === 'rowheader'
@@ -36,6 +38,7 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   grid: hasGridRole,
   gridcell: hasGridCellRole,
   link: hasLinkRole,
+  meter: hasMeterRole,
   row: hasRowRole,
   rowheader: hasRowHeaderRole,
 }
