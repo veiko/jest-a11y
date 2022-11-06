@@ -18,9 +18,12 @@ export const assertFocus = ({
       utils,
     })
   } else {
-    message += `${utils.RECEIVED_COLOR('✕')} element ${messageContent}\n`
-    message += `    Expected element: ${utils.printExpected(element)}}\n`
-    message += `    Received element: ${utils.RECEIVED_COLOR(document.activeElement)}}]\n`
+    message += printUtil.fail(`element ${messageContent}`, {
+      hints: `    Expected element: ${utils.printExpected(
+        element,
+      )}}\n    Received element: ${utils.printReceived(document.activeElement)}}]\n`,
+      utils,
+    })
     pass = false
   }
   return { message: () => message, pass }
