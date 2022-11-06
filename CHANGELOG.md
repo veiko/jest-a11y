@@ -1,3 +1,11 @@
+## [1.10.2](https://github.com/veiko/jest-a11y/compare/v1.10.1...v1.10.2) (2022-11-06)
+
+
+### Bug Fixes
+
+* **button:** fix printUtil usage ([ac4c6b3](https://github.com/veiko/jest-a11y/commit/ac4c6b30ea79c8eba5369645b1f1b6c1c8942375))
+* **printUtil:** fix usage globally ([fdddbda](https://github.com/veiko/jest-a11y/commit/fdddbda57fe33e6eff1e9e55e6621e58a966cfe9))
+
 ## [1.10.1](https://github.com/veiko/jest-a11y/compare/v1.10.0...v1.10.1) (2022-10-30)
 
 
