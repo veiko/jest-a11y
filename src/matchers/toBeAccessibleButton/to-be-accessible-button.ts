@@ -44,9 +44,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
     expectedCalls += 1
-    message += printUtil.pass('element activated on {space}', this.utils)
+    message += printUtil.pass('element activated on {space}', { utils: this.utils })
   } catch (e) {
-    message += printUtil.fail('element activated on {space}', this.utils)
+    message += printUtil.fail('element activated on {space}', { utils: this.utils })
     pass = false
   }
 
@@ -54,9 +54,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}', this.utils)
+    message += printUtil.pass('element activated on {enter}', { utils: this.utils })
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}', this.utils)
+    message += printUtil.fail('element activated on {enter}', { utils: this.utils })
     pass = false
   }
   element.onclick = oldOnClick
