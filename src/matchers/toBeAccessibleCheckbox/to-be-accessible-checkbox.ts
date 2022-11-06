@@ -40,7 +40,7 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   try {
     userEvent.keyboard('{space}')
     expect(newOnClick).toBeCalledTimes(1)
-    message += printUtil.pass('element activated on {space}', this.utils)
+    message += printUtil.pass('element activated on {space}', { utils: this.utils })
     expect(element).toHaveFocus()
   } catch (e) {
     message += `\n${this.utils.RECEIVED_COLOR('✕')} element activated on {space}\n`

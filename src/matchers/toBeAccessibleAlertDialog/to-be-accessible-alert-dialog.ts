@@ -38,10 +38,10 @@ export function toBeAccessibleAlertDialog(
 
   try {
     userEvent.keyboard('{esc}')
-    message += printUtil.pass('element closed on {esc}', this.utils)
+    message += printUtil.pass('element closed on {esc}', { utils: this.utils })
     // TODO: How to validate dialog closed?
   } catch (e) {
-    message += printUtil.fail('element closed on {esc}', this.utils)
+    message += printUtil.fail('element closed on {esc}', { utils: this.utils })
     pass = false
   }
 

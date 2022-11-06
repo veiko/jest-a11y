@@ -28,9 +28,9 @@ export function toBeAccessibleLink(this: any, element: HTMLElement): jest.Custom
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}', this.utils)
+    message += printUtil.pass('element activated on {enter}', { utils: this.utils })
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}', this.utils)
+    message += printUtil.fail('element activated on {enter}', { utils: this.utils })
     pass = false
   }
   element.onclick = oldOnClick
