@@ -7,10 +7,13 @@ import { assertRole } from 'utils/assertRole'
  * https://www.w3.org/WAI/ARIA/apg/patterns/meter/
  *
  * WAI-ARIA Roles, States, and Properties
- * ^ Copy from link above
+ * 1. The widget has a role of meter.
+ * 2. The widget has an accessible label.
+ * 3. The widget has aria-valuemin set to a decimal value less than aria-valuemax.
+ * 4. The widget has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax
  *
  * Keyboard Interaction
- * ^ Copy from link above
+ * N/A
  */
 export function toBeAccessibleMeter(this: any, element: HTMLElement): jest.CustomMatcherResult {
   let message = ''

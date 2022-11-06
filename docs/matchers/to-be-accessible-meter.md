@@ -23,9 +23,7 @@ A <code>meter</code> is a graphical display of a numeric value that varies withi
 
 ```js
 test('meter', () => {
-  document.body.innerHTML = `
-<div role="meter" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="progress" />
-  `
+  document.body.innerHTML = '<div role="meter" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="progress" />'
 
   expect(document.getElementById('meter')).toBeAccessibleMeter()
 })
@@ -39,7 +37,7 @@ import { render, screen } from '@testing-library/react'
 
 test('meter', () => {
   render(
-    <div data-testid="meter" role="meter" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-labelledby="cpu_usage_label">
+    <div aria-label="progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" data-testid="meter" role="meter">
       <div aria-hidden="true" width="100%" />
     </div>,
   )
@@ -72,10 +70,43 @@ The matcher tests the following:
 
 ```html
 <!-- ✅ element has role meter -->
-<div role="meter">hey, listen!</div>
+<div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
 
 <!-- ❌ element has role meter -->
-<span>hey, listen!</span>
+<div aria-label="progress" />
+```
+
+#### 2. The widget has an accessible label.
+
+```html
+<!-- ✅ element has accessible label -->
+<div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
+
+<!-- ❌ element has accessible label -->
+<div aria-valuemin="0" aria-valuemax="1" />
+```
+
+#### 3. The widget has aria-valuemin set to a decimal value less than aria-valuemax.
+
+```html
+<!-- ✅ element has aria-valuemin set to a decimal value less than aria-valuemax -->
+<div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
+
+<!-- ❌ element has aria-valuemin greater than aria-valuemax -->
+<div aria-label="progress" aria-valuemin="1" aria-valuemax="0" role="meter" />
+```
+
+#### 4. The widget has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax
+
+```html
+<!-- ✅ element has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax -->
+<div aria-label="progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.5" role="meter" />
+
+<!-- ❌ element has aria-valuenow greater than aria-valuemax -->
+<div aria-label="progress" aria-valuemin="1" aria-valuemax="0" aria-valuenow="2" role="meter" />
+
+<!-- ❌ element has aria-valuenow lesser than aria-valuemmin -->
+<div aria-label="progress" aria-valuemin="2" aria-valuemax="3" aria-valuenow="1" role="meter" />
 ```
 
 ### Keyboard Interaction
