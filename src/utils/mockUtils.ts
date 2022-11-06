@@ -1,6 +1,7 @@
 const unitFunc: any = (s: any) => s
 
 export const mockUtils: JestMatcherUtils = {
+  BOLD_WEIGHT: unitFunc,
   DIM_COLOR: unitFunc,
   EXPECTED_COLOR: unitFunc,
   printExpected: unitFunc,

@@ -3,6 +3,8 @@ id: button
 title: toBeAccessibleButton()
 ---
 
+import {StackBlitzEditor} from '../components/StackBlitzEditor'
+
 A `button` is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 
 - [WAI Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
@@ -89,3 +91,7 @@ By default, the accessible name is computed from any text content inside the but
 <!-- ❌ FAIL - HTMLDivElement will need Javascript -->
 <div>click me</div>
 ```
+
+## Playground
+
+<StackBlitzEditor />
