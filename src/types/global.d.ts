@@ -24,6 +24,7 @@ declare global {
     | 'grid'
     | 'gridcell'
     | 'link'
+    | 'meter'
     | 'row'
     | 'rowheader'
   type JestMatcherUtils = typeof jestMatcherUtils
