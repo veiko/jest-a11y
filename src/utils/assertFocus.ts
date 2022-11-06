@@ -14,7 +14,9 @@ export const assertFocus = ({
   let message = ''
   let pass = true
   if (document.activeElement == element) {
-    message += printUtil.pass(`element ${utils.EXPECTED_COLOR(element)} ${messageContent}`, utils)
+    message += printUtil.pass(`element ${utils.EXPECTED_COLOR(element)} ${messageContent}`, {
+      utils,
+    })
   } else {
     message += `${utils.RECEIVED_COLOR('✕')} element ${messageContent}\n`
     message += `    Expected element: ${utils.printExpected(element)}}\n`

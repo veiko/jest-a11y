@@ -17,9 +17,9 @@ export const assertTagName = ({
   let pass = true
 
   if (element.tagName.toLowerCase() === tagName.toLowerCase()) {
-    message += printUtil.pass(msg || `element has tagName ${tagName.toLowerCase()}`, utils)
+    message += printUtil.pass(msg || `element has tagName ${tagName.toLowerCase()}`, { utils })
   } else {
-    message += printUtil.fail(msg || `element has tagName ${tagName.toLowerCase()}`, utils)
+    message += printUtil.fail(msg || `element has tagName ${tagName.toLowerCase()}`, { utils })
     pass = false
   }
   return { message: () => message, pass }

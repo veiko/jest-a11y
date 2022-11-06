@@ -20,7 +20,7 @@ export const assertFocusLock = ({
 
   if (!elements.length) {
     return {
-      message: () => printUtil.pass(`element has no focusable elements`, utils),
+      message: () => printUtil.pass(`element has no focusable elements`, { utils }),
       pass: true,
     }
   }
@@ -41,7 +41,7 @@ export const assertFocusLock = ({
       message = printUtil.fail(
         `focus outside of element
     Received: ${utils.printReceived(currentActiveElement)}`,
-        utils,
+        { utils },
       )
       pass = false
       break
@@ -51,7 +51,7 @@ export const assertFocusLock = ({
 
     if (ct > 1000) {
       pass = false
-      message = printUtil.fail(`loop detected`, utils)
+      message = printUtil.fail(`loop detected`, { utils })
       break
     }
   }

@@ -36,11 +36,11 @@ export const assertLabel = ({
   } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => printUtil.fail('element has accessible label', utils),
+      message: () => printUtil.fail('element has accessible label', { utils }),
     }
   }
   return {
-    message: () => printUtil.pass('element has accessible label', utils),
+    message: () => printUtil.pass('element has accessible label', { utils }),
     pass: true,
   }
 }

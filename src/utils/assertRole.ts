@@ -57,9 +57,9 @@ export const assertRole = ({
 
   roleList.forEach(r => {
     if (!assertions[r](element)) {
-      message += printUtil.fail(`element has role ${r}`, utils)
+      message += printUtil.fail(`element has role ${r}`, { utils })
     } else {
-      message += printUtil.pass(`element has role ${r}`, utils)
+      message += printUtil.pass(`element has role ${r}`, { utils })
       pass = true
     }
   })
@@ -67,7 +67,7 @@ export const assertRole = ({
   return {
     message: () =>
       pass && Array.isArray(role)
-        ? printUtil.pass(`element has one role of ${role.join(', ')}`, utils)
+        ? printUtil.pass(`element has one role of ${role.join(', ')}`, { utils })
         : message,
     pass,
   }

@@ -19,15 +19,23 @@ export const assertAttribute = ({
   let pass = true
   if (element.hasAttribute(attribute)) {
     if (value && element.getAttribute(attribute) === value) {
-      message += printUtil.pass(`element ${messageContent || `has ${attribute}="${value}"`}`, utils)
+      message += printUtil.pass(`element ${messageContent || `has ${attribute}="${value}"`}`, {
+        utils,
+      })
     } else if (value) {
-      message += printUtil.fail(`element ${messageContent || `has ${attribute}="${value}"`}`, utils)
+      message += printUtil.fail(`element ${messageContent || `has ${attribute}="${value}"`}`, {
+        utils,
+      })
       pass = false
     } else {
-      message += printUtil.pass(`element ${messageContent || `has attribute ${attribute}`}`, utils)
+      message += printUtil.pass(`element ${messageContent || `has attribute ${attribute}`}`, {
+        utils,
+      })
     }
   } else {
-    message += printUtil.fail(`element ${messageContent || `has attribute ${attribute}`}`, utils)
+    message += printUtil.fail(`element ${messageContent || `has attribute ${attribute}`}`, {
+      utils,
+    })
     pass = false
   }
   return { message: () => message, pass }
