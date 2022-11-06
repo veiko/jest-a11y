@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/veiko/jest-a11y/compare/v1.10.2...v1.11.0) (2022-11-06)
+
+
+### Features
+
+* **meter:** toBeAccessibleMeter [#11](https://github.com/veiko/jest-a11y/issues/11) ([#12](https://github.com/veiko/jest-a11y/issues/12)) ([4f6fb77](https://github.com/veiko/jest-a11y/commit/4f6fb77e87063a2294e780cf5308aa088b91dc88))
+
 ## [1.10.2](https://github.com/veiko/jest-a11y/compare/v1.10.1...v1.10.2) (2022-11-06)
 
 
