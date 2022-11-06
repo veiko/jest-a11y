@@ -1,4 +1,3 @@
-import React from 'react'
 import { assertRole } from '../assertRole'
 import { mockUtils } from '../mockUtils'
 
@@ -18,10 +17,11 @@ const roles = [
 
 describe('<div role="" />', () => {
   it.each(roles)('passes when testing <div role="%s" />', (role: any) => {
-    document.body.innerHTML = `<div id="element" role="${role}" />`
+    const element = document.createElement('div')
+    element.setAttribute('role', role)
 
     const result = assertRole({
-      element: document.getElementById('element') as HTMLElement,
+      element,
       role,
       utils: mockUtils,
     })
@@ -55,7 +55,7 @@ describe('<element />', () => {
   )
 })
 
-describe.only('multiple roles', () => {
+describe('multiple roles', () => {
   it.each([
     {
       tagname: 'div',
@@ -100,6 +100,7 @@ describe.only('multiple roles', () => {
   it('passes for element <a> with role of dialog or link', () => {
     const result = assertRole({
       element: document.createElement('a'),
+      // not a valid case, just testing assertRole functionality
       role: ['dialog', 'link'],
       utils: mockUtils,
     })
