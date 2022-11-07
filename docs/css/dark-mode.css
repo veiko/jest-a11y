@@ -8,8 +8,8 @@ html[data-theme='dark'] {
 }
 
 html[data-theme='dark'] code {
-  --ifm-code-background: var(--green-100);
-  color: var(--green-900);
+  --ifm-code-background: var(--cyan-100);
+  color: var(--cyan-900);
 }
 
 html[data-theme='dark'] kbd {
@@ -32,17 +32,66 @@ html[data-theme='dark'] h2 {
 }
 
 html[data-theme='dark'] h1 {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--gradientDegree)), color-stop(0, var(--red)), to(var(--orange)));
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--red) 0, var(--orange) 100%);
+  /* --gradientDegree: 90deg; */
+  --start-color: var(--purple);
+  --end-color: var(--cyan);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--start-color)),
+    to(var(--end-color))
+  );
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
 }
 
 html[data-theme='dark'] h2 {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--gradientDegree)), color-stop(0, var(--orange)), to(var(--yellow)));
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--orange) 0, var(--yellow) 100%);
+  /* --gradientDegree: 90deg; */
+  --start-color: var(--cyan);
+  --end-color: var(--green);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--start-color)),
+    to(var(--end-color))
+  );
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+}
+
+html[data-theme='dark'] #guarantee_bar {
+  background-color: var(--blackSecondary);
+  color: var(--greySecondary);
+}
+
+html[data-theme='dark'] .intro-text strong {
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-size: 100%;
+  -webkit-box-decoration-break: clone;
+  width: max-content;
+  --start-color: var(--purple);
+  --end-color: var(--purpleSecondary);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--start-color)),
+    to(var(--end-color))
+  );
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
 }
 
 html[data-theme='dark'] .alert--warning {
@@ -50,4 +99,24 @@ html[data-theme='dark'] .alert--warning {
   --ifm-alert-background-color-highlight: red;
   --ifm-alert-foreground-color: var(--yellow);
   --ifm-alert-border-color: var(--yellow);
+}
+
+.announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+  --start-color: var(--purple-100);
+  --end-color: var(--purple-800);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradientDegree)),
+    color-stop(0, var(--start-color)),
+    to(var(--end-color))
+  );
+  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  font-size: 1.2rem;
+  padding: 1.4rem !important;
 }

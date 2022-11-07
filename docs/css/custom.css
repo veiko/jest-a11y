@@ -22,8 +22,11 @@
   --ifm-heading-font-family: var(--font-family-sans);
 
   --ifm-font-family-base: var(--font-family-sans);
+  --ifm-font-size-base: 18px !important;
 
   --ifm-font-family-monospace: var(--font-family-monospace);
+
+  --ifm-h1-vertical-rhythm-bottom: 0.5;
 }
 
 :root {
@@ -40,10 +43,19 @@
 
 html h1 {
   --ifm-heading-font-weight: 800;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 html h2,
 html h3 {
   --ifm-heading-font-weight: 600;
+}
+
+.intro-text {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
 .stack-blitz-editor {

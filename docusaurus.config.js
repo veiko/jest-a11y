@@ -19,11 +19,7 @@ module.exports = {
   tagline: 'jest-a11y',
   themeConfig: {
     announcementBar: {
-      id: 'support_us',
       content: '✋ This project does not guarantee what you build is accessible.',
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
-      isCloseable: false,
     },
     colorMode: {
       defaultMode: 'dark',
@@ -65,7 +61,8 @@ module.exports = {
       title: 'jest-a11y',
     },
     prism: {
-      theme: require('prism-react-renderer/themes/oceanicNext'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
+      theme: require('prism-react-renderer/themes/github'),
       magicComments: [
         {
           className: 'code-block-comment-pass',

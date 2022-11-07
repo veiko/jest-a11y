@@ -4,14 +4,25 @@ title: Welcome
 ---
 
 import Tabs from '@theme/Tabs'
+
 import TabItem from '@theme/TabItem'
 
-# jest-a11y
+# <div style={{ WebkitTextFillColor: 'white', fontWeight: 500, marginBottom: '60px', marginTop: '40px' }}><img src="./img/logo.svg" style={{float: 'left', height: '80px'}} /> &nbsp;jest-a11y</div>
 
-<span style={{ color: '#8a8f98' }}>
-  The `jest-a11y` project aims to provide a set of jest matchers that will check whether the provided DOM element has the correct ARIA roles and
+<div className="intro-text">
+  The <code>jest-a11y</code> project aims to provide a set of jest matchers that will check whether the provided DOM element has the correct ARIA roles and
   supports keyboard navigation.
-</span>
+</div>
+
+## Overview
+
+Framer Motion is a production-ready motion library for React from Framer.
+
+It's simple yet powerful, allowing you to express complex user interactions with robust, semantic markup.
+
+### Installation
+
+Install `jest-a11y` from npm.
 
 <Tabs>
   <TabItem value="npm">
