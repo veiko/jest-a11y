@@ -7,13 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import {RadioGroup} from '../../src/matchers/toBeAccessibleRadioGroup/examples/RadioGroup'
-
 <div className="intro-text">A <strong>radio group</strong> is a set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time.</div>
-
-### Example
-
-<RadioGroup />
 
 - [WAI RadioGroup Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radiobutton/)
 - [RadioGroup Example](https://www.w3.org/WAI/ARIA/apg/example-index/radio/radio.html)
