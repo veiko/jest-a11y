@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/veiko/jest-a11y/compare/v1.11.0...v1.12.0) (2022-11-12)
+
+
+### Features
+
+* **radiogroup:** toBeAccessibleRadioGroup [#13](https://github.com/veiko/jest-a11y/issues/13) ([#14](https://github.com/veiko/jest-a11y/issues/14)) ([f5537e3](https://github.com/veiko/jest-a11y/commit/f5537e3692fe8d060ff5aebc689ed96db5af78af))
+
 # [1.11.0](https://github.com/veiko/jest-a11y/compare/v1.10.2...v1.11.0) (2022-11-06)
 
 
