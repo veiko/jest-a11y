@@ -19,9 +19,8 @@ export const assertFocus = ({
     })
   } else {
     message += printUtil.fail(`element ${messageContent}`, {
-      hints: `    Expected element: ${utils.printExpected(
-        element,
-      )}}\n    Received element: ${utils.printReceived(document.activeElement)}}]\n`,
+      expected: element,
+      received: document.activeElement,
       utils,
     })
     pass = false

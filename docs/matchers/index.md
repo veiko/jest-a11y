@@ -13,6 +13,8 @@ sidebar_position: 10
 - [`toBeAccessibleCheckbox`](/matchers/checkbox)
 - [`toBeAccessibleDialog`](/matchers/dialog)
 - [`toBeAccessibleLink`](/matchers/link)
+- [`toBeAccessibleMeter`](/matchers/meter)
+- [`toBeAccessibleRadioGroup`](/matchers/radiogroup)
 
 #### Keyboard Functionality Matchers
 
@@ -28,9 +30,7 @@ sidebar_position: 10
 - toBeAccessibleGrid
 - toBeAccessibleListbox
 - toBeAccessibleMenu
-- toBeAccessibleMeter
 - toBeAccessibleModal
-- toBeAccessibleRadioGroup
 - toBeAccessibleSlider
 - toBeAccessibleSpinbutton
 - toBeAccessibleSwitch

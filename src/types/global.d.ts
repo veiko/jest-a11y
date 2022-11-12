@@ -25,6 +25,8 @@ declare global {
     | 'gridcell'
     | 'link'
     | 'meter'
+    | 'radio'
+    | 'radiogroup'
     | 'row'
     | 'rowheader'
   type JestMatcherUtils = typeof jestMatcherUtils

@@ -23,6 +23,11 @@ const hasLinkRole = (el: HTMLElement) => el.tagName === 'A' || getRole(el) === '
 
 const hasMeterRole = (el: HTMLElement) => getRole(el) === 'meter'
 
+const hasRadioRole = (el: HTMLElement) =>
+  (el.tagName === 'INPUT' && getAttribute(el, 'type') === 'radio') || getRole(el) === 'radio'
+
+const hasRadioGroupRole = (el: HTMLElement) => getRole(el) === 'radiogroup'
+
 const hasRowRole = (el: HTMLElement) => el.tagName === 'TR' || getRole(el) === 'row'
 
 const hasRowHeaderRole = (el: HTMLElement) => getRole(el) === 'rowheader'
@@ -39,6 +44,8 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   gridcell: hasGridCellRole,
   link: hasLinkRole,
   meter: hasMeterRole,
+  radio: hasRadioRole,
+  radiogroup: hasRadioGroupRole,
   row: hasRowRole,
   rowheader: hasRowHeaderRole,
 }
@@ -46,11 +53,13 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
 type AssertRoleConfig = {
   role: Role | Role[]
   element: HTMLElement
+  elementName?: string
   utils: JestMatcherUtils
 }
 
 export const assertRole = ({
   element,
+  elementName = 'element',
   role,
   utils,
 }: AssertRoleConfig): jest.CustomMatcherResult => {
@@ -60,9 +69,9 @@ export const assertRole = ({
 
   roleList.forEach(r => {
     if (!assertions[r](element)) {
-      message += printUtil.fail(`element has role ${r}`, { utils })
+      message += printUtil.fail(`${elementName} has role ${r}`, { utils })
     } else {
-      message += printUtil.pass(`element has role ${r}`, { utils })
+      message += printUtil.pass(`${elementName} has role ${r}`, { utils })
       pass = true
     }
   })
@@ -70,7 +79,7 @@ export const assertRole = ({
   return {
     message: () =>
       pass && Array.isArray(role)
-        ? printUtil.pass(`element has one role of ${role.join(', ')}`, { utils })
+        ? printUtil.pass(`${elementName} has one role of ${role.join(', ')}`, { utils })
         : message,
     pass,
   }
