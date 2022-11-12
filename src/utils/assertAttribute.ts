@@ -3,6 +3,7 @@ import { printUtil } from './printUtil'
 type AssertAttributeConfig = {
   attribute: string
   element: HTMLElement
+  elementName?: string
   message?: string
   utils: JestMatcherUtils
   value?: string
@@ -11,6 +12,7 @@ type AssertAttributeConfig = {
 export const assertAttribute = ({
   attribute,
   element,
+  elementName = 'element',
   message: messageContent,
   utils,
   value,
@@ -19,21 +21,30 @@ export const assertAttribute = ({
   let pass = true
   if (element.hasAttribute(attribute)) {
     if (value && element.getAttribute(attribute) === value) {
-      message += printUtil.pass(`element ${messageContent || `has ${attribute}="${value}"`}`, {
-        utils,
-      })
+      message += printUtil.pass(
+        `${elementName} ${messageContent || `has ${attribute}="${value}"`}`,
+        {
+          utils,
+        },
+      )
     } else if (value) {
-      message += printUtil.fail(`element ${messageContent || `has ${attribute}="${value}"`}`, {
-        utils,
-      })
+      message += printUtil.fail(
+        `${elementName} ${messageContent || `has ${attribute}="${value}"`}`,
+        {
+          utils,
+        },
+      )
       pass = false
     } else {
-      message += printUtil.pass(`element ${messageContent || `has attribute ${attribute}`}`, {
-        utils,
-      })
+      message += printUtil.pass(
+        `${elementName} ${messageContent || `has attribute ${attribute}`}`,
+        {
+          utils,
+        },
+      )
     }
   } else {
-    message += printUtil.fail(`element ${messageContent || `has attribute ${attribute}`}`, {
+    message += printUtil.fail(`${elementName} ${messageContent || `has attribute ${attribute}`}`, {
       utils,
     })
     pass = false

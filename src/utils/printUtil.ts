@@ -1,5 +1,10 @@
+export type ExpectedOrReceived = string | Element | HTMLElement | null
+
 type Config = { hints?: string; utils: JestMatcherUtils }
-type FailConfig = { expected?: string; received?: string } & Config
+type FailConfig = {
+  expected?: ExpectedOrReceived
+  received?: ExpectedOrReceived
+} & Config
 
 export const printUtil = {
   fail: (msg: string, { expected, hints, received, utils }: FailConfig) => {

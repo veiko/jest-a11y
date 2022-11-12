@@ -11,6 +11,7 @@ type AssertLabelOptions = {
 
 type AssertLabelConfig = {
   element: HTMLElement
+  elementName?: string
   options?: AssertLabelOptions
   utils: JestMatcherUtils
 }
@@ -20,13 +21,14 @@ const hasAriaLabel = (el: HTMLElement) =>
 
 export const assertLabel = ({
   element,
+  elementName = 'element',
   options: { testTextContent = true } = {},
   utils,
 }: AssertLabelConfig): jest.CustomMatcherResult => {
   if (testTextContent && !hasChildren(element) && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => `${utils.RECEIVED_COLOR('✕')} element has accessible label\n
+      message: () => `${utils.RECEIVED_COLOR('✕')} ${elementName} has accessible label\n
     By default, the accessible name is computed from any text content inside the
     element. However, it can also be provided with aria-labelledby or aria-label.
       Text content: ${utils.printReceived(element.innerHTML)}
@@ -36,11 +38,11 @@ export const assertLabel = ({
   } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => printUtil.fail('element has accessible label', { utils }),
+      message: () => printUtil.fail(`${elementName} has accessible label`, { utils }),
     }
   }
   return {
-    message: () => printUtil.pass('element has accessible label', { utils }),
+    message: () => printUtil.pass(`${elementName} has accessible label`, { utils }),
     pass: true,
   }
 }
