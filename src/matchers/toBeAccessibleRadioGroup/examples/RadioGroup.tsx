@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 
+/**
+ * Sample RadioGroup component. Browsers do not handle aria-checked attribute, so it must be
+ * done with JavaScript
+ */
 export const RadioGroup = () => {
   const [activeItem, setActiveItem] = useState(0)
   const onKeyUp = (e: React.KeyboardEvent) => {
