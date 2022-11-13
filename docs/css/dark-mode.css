@@ -5,6 +5,14 @@ html[data-theme='dark'] {
 
   --ifm-tabs-color: white;
   --ifm-tabs-color-active: var(--cyan);
+
+  /* menu */
+  --ifm-menu-color: var(--greyTernary);
+  --ifm-menu-color-background-active: transparent;
+  --ifm-menu-color-active: var(--ifm-color-primary);
+
+  /* navbar */
+  --ifm-navbar-background-color: var(--ifm-background-color);
 }
 
 html[data-theme='dark'] code {
@@ -66,6 +74,12 @@ html[data-theme='dark'] h2 {
   background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
 }
 
+/* Navbar */
+html[data-theme='dark'] .navbar {
+  background-color: var(--grey);
+  border-bottom: 1px solid var(--grey);
+}
+
 html[data-theme='dark'] #guarantee_bar {
   background-color: var(--blackSecondary);
   color: var(--greySecondary);
@@ -104,6 +118,11 @@ html[data-theme='dark'] .alert--warning {
   --ifm-alert-background-color-highlight: red;
   --ifm-alert-foreground-color: var(--yellow);
   --ifm-alert-border-color: var(--yellow);
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > .menu__link {
+  color: white;
 }
 
 .announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {

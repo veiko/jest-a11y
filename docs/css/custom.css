@@ -28,9 +28,14 @@
   --ifm-font-family-monospace: var(--font-family-monospace);
 
   /* menu */
-  --ifm-menu-color: var(--greyTernary);
+  --ifm-menu-color: var(--grey);
   --ifm-menu-color-background-active: transparent;
   --ifm-menu-color-active: var(--ifm-color-primary);
+
+  /* navbar */
+  --ifm-navbar-height: 80px;
+  --ifm-navbar-background-color: #fff;
+  --ifm-navbar-shadow: 1px 1px #fff;
 }
 
 :root {
@@ -208,9 +213,7 @@ html kbd {
 
 /* Navbar */
 .navbar {
-  --ifm-navbar-height: 80px;
-  background-color: var(--ifm-background-color);
-  border: 1px solid var(--grey);
+  /* border-bottom: 1px solid var(--grey); */
   padding: calc(2 * var(--ifm-navbar-padding-vertical)) var(--ifm-navbar-padding-horizontal);
 }
 
@@ -230,7 +233,6 @@ html kbd {
 
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
 .theme-doc-sidebar-item-link-level-1 > .menu__link {
-  color: white;
   font-weight: 600;
 }
 
