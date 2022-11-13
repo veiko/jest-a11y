@@ -37,7 +37,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 
-  const attributeCheck = assertAriaRangeValues({ element, nowRequired: true, utils: this.utils })
+  const attributeCheck = assertAriaRangeValues({ element, utils: this.utils })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
