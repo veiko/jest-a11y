@@ -1,5 +1,4 @@
 import { assertAriaRangeValues } from 'utils/assertAriaRangeValue'
-import { assertAttribute } from 'utils/assertAttribute'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 

@@ -24,19 +24,11 @@ export const assertAriaRangeValues = ({
   let message = ''
   let pass = true
 
-  // if (nowRequired) {
-  //   const nowCheck = assertAttribute({ attribute: 'aria-valuenow', element, utils })
-  //   message += nowCheck.message()
-  //   pass = nowCheck.pass
-  // }
-
-  // const valueMaxCheck = assertAttribute({ attribute: 'aria-valuemax', element, utils })
-  // message += valueMaxCheck.message()
-  // pass = valueMaxCheck.pass
-
-  // const valueMinCheck = assertAttribute({ attribute: 'aria-valuemin', element, utils })
-  // message += valueMinCheck.message()
-  // pass = valueMinCheck.pass
+  if (nowRequired) {
+    const nowCheck = assertAttribute({ attribute: 'aria-valuenow', element, utils })
+    message += nowCheck.message()
+    pass = nowCheck.pass
+  }
 
   const now = element.getAttribute('aria-valuenow')?.length
     ? parseFloat(element.getAttribute('aria-valuenow') || '0')
@@ -62,7 +54,13 @@ export const assertAriaRangeValues = ({
         { utils },
       )
     }
-    if (now !== undefined && (now > max || now < min)) {
+    if (nowRequired && !now) {
+      message += printUtil.fail(`element has valid aria-valuenow`, {
+        expected: `decimal number greater than ${min} and less than ${max}, inclusive`,
+        utils,
+      })
+      pass = false
+    } else if (now !== undefined && (now > max || now < min)) {
       message += printUtil.fail(`element ${messageContent || `has valid aria-valuenow`}`, {
         expected: `decimal number greater than ${min} and less than ${max}, inclusive`,
         received: `decimal number (${now}) is ${now > max ? 'greater' : 'less'} than ${

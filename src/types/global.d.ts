@@ -29,6 +29,7 @@ declare global {
     | 'radiogroup'
     | 'row'
     | 'rowheader'
+    | 'slider'
   type JestMatcherUtils = typeof jestMatcherUtils
 }
 
