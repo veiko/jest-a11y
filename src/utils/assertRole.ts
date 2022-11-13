@@ -32,6 +32,8 @@ const hasRowRole = (el: HTMLElement) => el.tagName === 'TR' || getRole(el) === '
 
 const hasRowHeaderRole = (el: HTMLElement) => getRole(el) === 'rowheader'
 
+const hasSliderRole = (el: HTMLElement) => getRole(el) === 'slider'
+
 /** TODO: use React.AriaRole */
 const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   alert: hasAlertRole,
@@ -48,6 +50,7 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   radiogroup: hasRadioGroupRole,
   row: hasRowRole,
   rowheader: hasRowHeaderRole,
+  slider: hasSliderRole,
 }
 
 type AssertRoleConfig = {

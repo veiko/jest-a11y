@@ -1,5 +1,4 @@
 import { assertAriaRangeValues } from 'utils/assertAriaRangeValue'
-import { assertAttribute } from 'utils/assertAttribute'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 
@@ -31,7 +30,7 @@ export function toBeAccessibleMeter(this: any, element: HTMLElement): jest.Custo
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  const attributeCheck = assertAriaRangeValues({ element, utils: this.utils })
+  const attributeCheck = assertAriaRangeValues({ element, nowRequired: false, utils: this.utils })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
