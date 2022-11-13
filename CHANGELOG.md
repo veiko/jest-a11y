@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/veiko/jest-a11y/compare/v1.12.0...v1.13.0) (2022-11-13)
+
+
+### Features
+
+* **slider:** toBeAccessibleSlider [#15](https://github.com/veiko/jest-a11y/issues/15) ([#16](https://github.com/veiko/jest-a11y/issues/16)) ([fc6a0da](https://github.com/veiko/jest-a11y/commit/fc6a0dad0a7bb166616975a3c1a2597eac714f4a))
+
 # [1.12.0](https://github.com/veiko/jest-a11y/compare/v1.11.0...v1.12.0) (2022-11-12)
 
 
