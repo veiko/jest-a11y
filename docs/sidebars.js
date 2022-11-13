@@ -13,7 +13,6 @@ module.exports = {
     },
     {
       label: 'Matchers',
-      link: { type: 'doc', id: 'matchers/index' },
       type: 'category',
       items: [
         {

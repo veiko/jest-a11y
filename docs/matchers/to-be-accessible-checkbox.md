@@ -3,7 +3,9 @@ id: checkbox
 title: toBeAccessibleCheckbox()
 ---
 
-There are two types of `checkbox` widgets:
+<div className="intro-text">A <strong>checkbox</strong> is a widget that allows the user to toggle between choices -- checked, not checked and, in a tri-state checkbox, partially checked.</div>
+
+There are two types of checkbox widgets:
 
 - **Dual-state:** The most common type of checkbox, it allows the user to toggle between two choices -- checked and not checked.
 - **Tri-state:** This type of checkbox supports an additional third state known as partially checked.

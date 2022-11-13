@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-An `alert dialog` is a modal dialog that interrupts the user's workflow to communicate an important
-message and acquire a response. Examples include action confirmation prompts and error message
-confirmations.
+<div className="intro-text">An <strong>alert dialog</strong> is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response.</div>
+
+Examples include action confirmation prompts and error message confirmations.
 
 - [WAI Alert Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/)
 - [Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html)
@@ -67,8 +67,7 @@ test('alertdialog', () => {
 
 The element with role `alertdialog` has either:
 
-- A value for `aria-labelledby` that refers to the element containing the title of the dialog if the
-  dialog has a visible label.
+- A value for `aria-labelledby` that refers to the element containing the title of the dialog if the dialog has a visible label.
 - A value for `aria-label` if the dialog does not have a visible label.
 
 ```html

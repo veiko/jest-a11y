@@ -10,6 +10,7 @@ html[data-theme='dark'] {
 html[data-theme='dark'] code {
   --ifm-code-background: var(--cyan-100);
   color: var(--cyan-900);
+  font-weight: 600;
 }
 
 html[data-theme='dark'] kbd {
@@ -68,6 +69,10 @@ html[data-theme='dark'] h2 {
 html[data-theme='dark'] #guarantee_bar {
   background-color: var(--blackSecondary);
   color: var(--greySecondary);
+}
+
+html[data-theme='dark'] .welcome-h1 {
+  -webkit-text-fill-color: white;
 }
 
 html[data-theme='dark'] .intro-text strong {

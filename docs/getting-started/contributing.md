@@ -24,7 +24,7 @@ cd jest-a11y
 
 :::info
 
-If you run into any issues, kindly reach out to the `jest-a11y` team [here](https://github.com/veiko/jest-a11y/issues)
+If you run into any issues, kindly reach out to the `jest-a11y` team [here](https://github.com/veiko/jest-a11y/issues/new/choose)
 
 :::
 
@@ -32,9 +32,11 @@ If you run into any issues, kindly reach out to the `jest-a11y` team [here](http
 
 **`yarn`**: installs the dependency packages.
 
-**`yarn start`**: starts the local development server.
+**`yarn docs`**: starts the local documentation server.
 
 **`yarn build`**: builds the project for production.
+
+**`yarn plop`**: generator to create the files for a new matcher.
 
 ### Commit Convention
 
@@ -62,4 +64,4 @@ If you are interested in the detailed specification you can visit https://www.co
 
 ## License
 
-By contributing your code to the chakra-ui-docs GitHub repository, you agree to license your contribution under the MIT license.
+By contributing your code to the `jest-a11y` GitHub repository, you agree to license your contribution under the MIT license.

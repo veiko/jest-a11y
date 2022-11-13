@@ -3,9 +3,9 @@ id: button
 title: toBeAccessibleButton()
 ---
 
-import {StackBlitzEditor} from '../components/StackBlitzEditor'
+import { StackBlitzEditor } from '../components/StackBlitzEditor'
 
-A `button` is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+<div className="intro-text">A <strong>button</strong> is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.</div>
 
 - [WAI Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
 - [Button Example](https://www.w3.org/WAI/ARIA/apg/example-index/button/button.html)

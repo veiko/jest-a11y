@@ -7,8 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-A `link` widget provides an interactive reference to a resource. The target resource can be either
-external or local, i.e., either outside or within the current page or application.
+<div className="intro-text">A <strong>link</strong> widget provides an interactive reference to a resource.</div>
+
+The target resource can be either external or local, i.e., either outside or within the current page or application.
 
 - [WAI Link Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/link/)
 - [Link Example](https://www.w3.org/WAI/ARIA/apg/example-index/link/link.html)
@@ -22,8 +23,7 @@ external or local, i.e., either outside or within the current page or applicatio
 
 ```js
 test('alert', () => {
-  document.body.innerHTML =
-    '<a href="https://veiko.github.io/jest-a11y" id="link">Hey, listen!</div>'
+  document.body.innerHTML = '<a href="https://veiko.github.io/jest-a11y" id="link">Hey, listen!</div>'
 
   expect(document.getElementById('link')).toBeAccessibleLink()
 })

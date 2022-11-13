@@ -7,7 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-A `breadcrumb` trail consists of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application. Breadcrumbs are often placed horizontally before a page's main content.
+<div className="intro-text">A <strong>breadcrumb</strong> trail consists of a list of links to the parent pages of the current page in hierarchical order.</div>
+
+It helps users find their place within a website or web application. Breadcrumbs are often placed horizontally before a page's main content.
 
 - [WAI Breadcrumb Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/)
 - [Breadcrumb Example](https://www.w3.org/WAI/ARIA/apg/example-index/breadcrumb/index.html)
@@ -21,8 +23,7 @@ A `breadcrumb` trail consists of a list of links to the parent pages of the curr
 
 ```js
 test('breadcrumb', () => {
-  document.body.innerHTML =
-    '<nav aria-label="Breadcrumb" id="breadcrumb"><a href="1">1</a><a href="2">2</a></nav>'
+  document.body.innerHTML = '<nav aria-label="Breadcrumb" id="breadcrumb"><a href="1">1</a><a href="2">2</a></nav>'
 
   expect(document.getElementById('breadcrumb')).toBeAccessibleBreadcrumb()
 })
@@ -64,8 +65,7 @@ Functionality that is not tested:
 
 ```html
 <!-- test-caution -->
-⚠ The link to the current page has `aria-current` set to page. If the element representing the
-current page is not a link, `aria-current` is optional.
+⚠ The link to the current page has `aria-current` set to page. If the element representing the current page is not a link, `aria-current` is optional.
 ```
 
 ### WAI-ARIA Roles, States, and Properties
@@ -108,4 +108,4 @@ current page is not a link, `aria-current` is optional.
 
 ### Keyboard Interaction
 
-TBD
+Not applicable.

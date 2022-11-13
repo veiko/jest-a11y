@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import './dracula-colors.css';
 
@@ -8,6 +7,8 @@
 @import './sidebar.css';
 
 :root {
+  --doc-sidebar-width: 320px !important;
+
   --ifm-color-primary: var(--purple);
   --ifm-color-primary-dark: #4e22b5;
   --ifm-color-primary-darker: #4a20ab;
@@ -16,17 +17,20 @@
   --ifm-color-primary-lighter: #6939da;
   --ifm-color-primary-lightest: #8057df;
 
-  --font-family-sans: 'Source Sans Pro', monospace;
+  --font-family-sans: 'Poppins', 'Inconsolata', monospace;
   --font-family-monospace: 'Inconsolata', monospace;
 
   --ifm-heading-font-family: var(--font-family-sans);
 
   --ifm-font-family-base: var(--font-family-sans);
-  --ifm-font-size-base: 18px !important;
+  --ifm-font-size-base: 16px !important;
 
   --ifm-font-family-monospace: var(--font-family-monospace);
 
-  --ifm-h1-vertical-rhythm-bottom: 0.5;
+  /* menu */
+  --ifm-menu-color: var(--greyTernary);
+  --ifm-menu-color-background-active: transparent;
+  --ifm-menu-color-active: var(--ifm-color-primary);
 }
 
 :root {
@@ -46,16 +50,34 @@ html h1 {
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
-html h2,
-html h3 {
+
+html .markdown > h2,
+html .markdown > h3 {
   --ifm-heading-font-weight: 600;
+}
+
+.markdown {
+  --ifm-h1-vertical-rhythm-top: 6;
+  --ifm-h2-vertical-rhythm-top: 4;
+  --ifm-h3-vertical-rhythm-top: 3;
+  --ifm-heading-vertical-rhythm-top: 2.5;
+  --ifm-h1-vertical-rhythm-bottom: 2.5;
+  --ifm-heading-vertical-rhythm-bottom: 2;
+}
+
+.welcome-h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
 }
 
 .intro-text {
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin-bottom: calc(var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading));
 }
 
 .stack-blitz-editor {
@@ -86,7 +108,7 @@ html kbd {
 
 @media screen and (max-width: 996px) {
   :root {
-    --ifm-font-size-base: 18px;
+    --ifm-font-size-base: 17px;
   }
   article header h1 {
     font-size: 1.5rem !important;
@@ -98,7 +120,7 @@ html kbd {
 
 @media screen and (min-width: 997px) {
   :root {
-    --ifm-font-size-base: 17px;
+    --ifm-font-size-base: 16px;
   }
   article header h1 {
     font-size: 2rem !important;
@@ -182,4 +204,37 @@ html kbd {
 [data-theme='dark'] .header-github-link:before {
   /* prettier-ignore */
   background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+}
+
+/* Navbar */
+.navbar {
+  --ifm-navbar-height: 80px;
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--grey);
+  padding: calc(2 * var(--ifm-navbar-padding-vertical)) var(--ifm-navbar-padding-horizontal);
+}
+
+/* Sideber */
+.theme-doc-sidebar-menu {
+  font-size: 0.9rem;
+  padding: 1.5rem;
+}
+
+.menu__list > .menu__list-item > .menu__list {
+  padding-left: 0;
+}
+
+.menu__link {
+  font-weight: 400;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-item-link-level-1 > .menu__link {
+  color: white;
+  font-weight: 600;
+}
+
+/** Container */
+.container article {
+  padding: var(--ifm-spacing-vertical) calc(4 * var(--ifm-spacing-horizontal));
 }

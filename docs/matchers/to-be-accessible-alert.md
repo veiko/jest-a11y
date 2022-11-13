@@ -7,8 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-An `alert` is an element that displays a brief, important message in a way that attracts the user's
-attention without interrupting the user's task.
+<div className="intro-text">An <strong>alert </strong> is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task.</div>
 
 - [WAI Alert Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
 - [Alert Example](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html)
@@ -71,10 +70,7 @@ The `toBeAccessibleAlert` matcher tests the following:
 
 ### Keyboard Interaction
 
-Because alerts are intended to provide important and potentially time-sensitive information without
-interfering with the user's ability to continue working, it is crucial they do not affect keyboard
-focus. The [alert dialog](/matchers/alertdialog) is designed for situations where interrupting work
-flow is necessary.
+Because alerts are intended to provide important and potentially time-sensitive information without interfering with the user's ability to continue working, it is crucial they do not affect keyboard focus. The [alert dialog](/matchers/alertdialog) is designed for situations where interrupting work flow is necessary.
 
 :::caution Coming Soon
 

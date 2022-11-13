@@ -1,13 +1,16 @@
 ---
 id: accordion
-title: 🚧 toBeAccessibleAccordion()
+title: toBeAccessibleAccordion()
 ---
 
 import Tabs from '@theme/Tabs'
 
 import TabItem from'@theme/TabItem'
 
-An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content. The headings function as controls that enable users to reveal or hide their associated sections of content.
+<div className="intro-text">
+An <strong>accordion</strong> is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</div>
+
+The headings function as controls that enable users to reveal or hide their associated sections of content.
 
 - [WAI Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 - [Accordion Example](https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html)

@@ -7,9 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-<h3 style={{fontWeight: 400}}>
-A <code>meter</code> is a graphical display of a numeric value that varies within a defined range.
-</h3>
+<div className="intro-text">A <strong>meter</strong> is a graphical display of a numeric value that varies within a defined range.</div>
 
 - [WAI Meter Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/meter/)
 - [Meter Example](https://www.w3.org/WAI/ARIA/apg/example-index/meter/meter.html)
