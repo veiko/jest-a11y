@@ -7,12 +7,15 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { {{properCase componentName}} } from '../../src/matchers/toBeAccessible{{properCase componentName}}/examples/{{properCase componentName}}'
+
 <div className="intro-text">A <strong>{{lowerCase componentName}}</strong> is an element that...</div>
 
-- [WAI {{properCase componentName}} Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/{{lowerCase
-  componentName}}/)
-- [{{properCase componentName}} Example](https://www.w3.org/WAI/ARIA/apg/example-index/{{lowerCase
-  componentName}}/{{lowerCase componentName}}.html)
+<ExampleContainer>
+<{{properCase componentName}} />
+</ExampleContainer>
 
 ## Usage
 
@@ -73,3 +76,12 @@ The matcher tests the following:
 ### Keyboard Interaction
 
 TBD
+
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI {{properCase componentName}} Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/{{lowerCase
+  componentName}}/)
+- [{{properCase componentName}} Example](https://www.w3.org/WAI/ARIA/apg/example-index/{{lowerCase
+  componentName}}/{{lowerCase componentName}}.html)

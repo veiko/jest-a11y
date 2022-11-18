@@ -19,6 +19,16 @@ export default function (plop) {
     actions: [
       {
         type: 'add',
+        path: 'docs/css/{{lowerCase componentName}}.css',
+        templateFile: 'config/plop/matcher.css.hbs',
+      },
+      {
+        type: 'add',
+        path: 'docs/matchers/to-be-accessible-{{lowerCase componentName}}.md',
+        templateFile: 'config/plop/matcher.md.hbs',
+      },
+      {
+        type: 'add',
         path: 'src/matchers/toBeAccessible{{properCase componentName}}/to-be-accessible-{{lowerCase componentName}}.ts',
         templateFile: 'config/plop/matcher.hbs',
       },
@@ -29,8 +39,14 @@ export default function (plop) {
       },
       {
         type: 'add',
-        path: 'docs/matchers/to-be-accessible-{{lowerCase componentName}}.md',
-        templateFile: 'config/plop/matcher.md.hbs',
+        path: 'src/matchers/toBeAccessible{{properCase componentName}}/examples/{{properCase componentName}}.tsx',
+        templateFile: 'config/plop/matcher.tsx.hbs',
+      },
+      {
+        type: 'modify',
+        path: 'docs/css/custom.css',
+        pattern: /\/\*\* plop-prepend-css-file \*\//gi,
+        template: "@import './{{lowerCase componentName}}.css';\r\n/** plop-prepend-css-file */",
       },
       {
         type: 'modify',

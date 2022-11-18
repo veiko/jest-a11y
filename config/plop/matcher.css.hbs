@@ -1,0 +1,9 @@
+.{{lowerCase componentName}} {
+  --{{lowerCase componentName}}-backgroundcolor: var(--grey);
+  --{{lowerCase componentName}}-color: var(--black);
+}
+
+html[data-theme='dark'] .{{lowerCase componentName}} {
+  --{{lowerCase componentName}}-backgroundcolor: var(--grey);
+  --{{lowerCase componentName}}-color: var(--white);
+}
