@@ -6,6 +6,8 @@
 @import './dark-mode.css';
 @import './sidebar.css';
 
+@import '../../src/matchers/toBeAccessibleSwitch/examples/switch.css';
+
 :root {
   --doc-sidebar-width: 320px !important;
 
