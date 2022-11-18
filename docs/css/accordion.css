@@ -1,0 +1,42 @@
+.accordion button {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--grey);
+  font-family: var(--font-family-sans);
+  font-size: 1em;
+  line-height: 2em;
+  outline: none;
+  text-align: left;
+  width: 400px;
+}
+
+.accordion button:after {
+  content: '→';
+  float: right;
+  margin-right: 1em;
+  transition: 400ms ease-out margin-right;
+}
+
+.accordion button:focus {
+  background: transparent;
+  border-bottom-color: white;
+  color: var(--yellow);
+}
+
+.accordion button:focus:after {
+  margin-right: 0;
+}
+
+.accordion .panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: 400ms ease-out max-height;
+}
+
+.accordion .panel.open {
+  max-height: 4em;
+}
+
+.accordion .panel-content {
+  padding: 1em;
+}

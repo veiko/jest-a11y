@@ -22,17 +22,25 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ btnId, children, id, titl
           <span>{title}</span>
         </button>
       </h3>
-      <div id={id} role="region" aria-labelledby={btnId}>
-        {children}
+      <div
+        aria-labelledby={btnId}
+        className={`panel ${isOpen ? 'open' : ''}`}
+        id={id}
+        role="region"
+      >
+        <div className="panel-content">{children}</div>
       </div>
     </>
   )
 }
 
 export const Accordion: React.FC<{ id: string }> = ({ id }) => (
-  <div data-testid={id}>
-    <AccordionItem btnId="accordion1id" id="sect1" title="Personal Information">
+  <div className="accordion" data-testid={id}>
+    <AccordionItem btnId="accordion1id" id="sect1" title="Section 1">
       Item 1
+    </AccordionItem>
+    <AccordionItem btnId="accordion1id" id="sect1" title="Section 2">
+      Item 2
     </AccordionItem>
   </div>
 )

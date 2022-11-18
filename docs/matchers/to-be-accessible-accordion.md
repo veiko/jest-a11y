@@ -7,10 +7,18 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from'@theme/TabItem'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { Accordion } from '../../src/matchers/toBeAccessibleAccordion/examples/Accordion'
+
 <div className="intro-text">
 An <strong>accordion</strong> is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</div>
 
 The headings function as controls that enable users to reveal or hide their associated sections of content.
+
+<ExampleContainer>
+<Accordion />
+</ExampleContainer>
 
 - [WAI Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 - [Accordion Example](https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html)
