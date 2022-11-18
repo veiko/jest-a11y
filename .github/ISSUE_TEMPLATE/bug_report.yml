@@ -1,6 +1,6 @@
 name: '🐛 Bug Report'
 description: 'Bugs, missing documentation, or unexpected behavior 🤔.'
-labels: ['🐛 bug']
+labels: ['🐛 fix']
 title: 'fix: '
 body:
   - type: 'markdown'
