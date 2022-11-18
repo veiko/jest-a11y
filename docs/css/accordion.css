@@ -1,7 +1,23 @@
+.accordion {
+  --accordion-border-color: var(--grey);
+  --accordion-border-color-hover: var(--purple);
+  --accordion-color: var(--black);
+  --accordion-color-hover: var(--grey);
+}
+
+html[data-theme='dark'] .accordion {
+  --accordion-border-color: var(--grey);
+  --accordion-border-color-hover: var(--white);
+  --accordion-color: var(--white);
+  --accordion-color-hover: var(--yellow);
+}
+
 .accordion button {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid var(--accordion-border-color);
+  color: var(--accordion-color);
+  cursor: pointer;
   font-family: var(--font-family-sans);
   font-size: 1em;
   line-height: 2em;
@@ -17,13 +33,15 @@
   transition: 400ms ease-out margin-right;
 }
 
-.accordion button:focus {
+.accordion button:focus,
+.accordion button:hover {
   background: transparent;
-  border-bottom-color: white;
-  color: var(--yellow);
+  border-bottom-color: var(--accordion-border-color-hover);
+  color: var(--accordion-color-hover);
 }
 
-.accordion button:focus:after {
+.accordion button:focus:after,
+.accordion button:hover:after {
   margin-right: 0;
 }
 
