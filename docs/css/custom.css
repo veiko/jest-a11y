@@ -230,6 +230,11 @@ html kbd {
   padding: 1.5rem;
 }
 
+/* Tabs */
+.tabs {
+  font-weight: 500;
+}
+
 .menu__list > .menu__list-item > .menu__list {
   padding-left: 0;
 }
@@ -278,4 +283,13 @@ html kbd {
   top: calc(-0.5 * var(--circle-size));
   height: var(--circle-size);
   width: var(--circle-size);
+}
+
+/** Example Container **/
+.example {
+  background-color: var(--greyLight);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 4em;
 }

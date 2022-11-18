@@ -7,7 +7,7 @@
 
 .switch {
   --size: 2em;
-  background-color: var(--grey);
+  background-color: var(--greyTernary);
   height: calc(8px + var(--size));
   width: calc(8px + var(--size));
   border-radius: var(--size);
@@ -20,7 +20,7 @@
 }
 
 .switch:after {
-  background-color: white;
+  background-color: var(--greySecondary);
   border-radius: var(--size);
   content: '';
   display: inline-block;
@@ -33,17 +33,27 @@
 
 .switch:hover,
 .switch:focus {
-  background-color: var(--greySecondary);
-  box-shadow: 0px 0px 0 4px var(--black), 0px 0px 0 6px white;
+  box-shadow: 0px 0px 0 4px var(--white), 0px 0px 0 6px var(--purple);
 }
 
 .switch.on {
-  background-color: var(--purple);
+  background: var(--purple-cyan);
 }
 
 .switch.on:after {
   left: var(--size);
 }
 
-.switch .thumb {
+html[data-theme='dark'] .switch {
+  background-color: var(--grey);
+}
+
+html[data-theme='dark'] .switch:after {
+  background-color: white;
+}
+
+html[data-theme='dark'] .switch:hover,
+html[data-theme='dark'] .switch:focus {
+  background-color: var(--greySecondary);
+  box-shadow: 0px 0px 0 4px var(--black), 0px 0px 0 6px white;
 }

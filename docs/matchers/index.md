@@ -9,12 +9,15 @@ sidebar_position: 10
 - [`toBeAccessibleAccordion`](/matchers/accordion)
 - [`toBeAccessibleAlertDialog`](/matchers/alertdialog)
 - [`toBeAccessibleAlert`](/matchers/alert)
+- [`toBeAccessibleBreadcrumb`](/matchers/breadcrumb)
 - [`toBeAccessibleButton`](/matchers/button)
 - [`toBeAccessibleCheckbox`](/matchers/checkbox)
 - [`toBeAccessibleDialog`](/matchers/dialog)
 - [`toBeAccessibleLink`](/matchers/link)
 - [`toBeAccessibleMeter`](/matchers/meter)
 - [`toBeAccessibleRadioGroup`](/matchers/radiogroup)
+- [`toBeAccessibleSlider`](/matchers/slider)
+- [`toBeAccessibleSwitch`](/matchers/switch)
 
 #### Keyboard Functionality Matchers
 
@@ -22,7 +25,6 @@ sidebar_position: 10
 
 ### Coming Soon
 
-- toBeAccessibleBreadcrumb
 - toBeAccessibleCarousel
 - toBeAccessibleCombobox
 - toBeAccessibleDisclosure
@@ -31,9 +33,7 @@ sidebar_position: 10
 - toBeAccessibleListbox
 - toBeAccessibleMenu
 - toBeAccessibleModal
-- toBeAccessibleSlider
 - toBeAccessibleSpinbutton
-- toBeAccessibleSwitch
 - toBeAccessibleTable
 - toBeAccessibleTabs
 - toBeAccessibleToolbar

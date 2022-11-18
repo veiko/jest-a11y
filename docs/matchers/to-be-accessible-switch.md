@@ -56,6 +56,8 @@ test('switch', () => {
 
 ## Test Summary
 
+There are two different matchers for switches.
+
 The `toBeAccessibleSwitch` matcher tests the following:
 
 ```html
@@ -71,7 +73,7 @@ The `toBeAccessibleSwitch` matcher tests the following:
 ✓ element label does not change when state changes
 ```
 
-The `toBeAccessibleInputSwitch` matcher tests the following:
+The `toBeAccessibleInputSwitch` matcher should be used when the switch element is an input element with `type="checkbox"`. This matcher tests the following:
 
 ```html
 <!-- test-pass -->
@@ -107,17 +109,17 @@ If a set of switches is presented as a logical group with a visible label, eithe
 
 #### 2. The switch has an accessible label.
 
-:::info Important
-
-It is critical the label on a switch does not change when its state changes.
-
-:::
-
 The label can be provided by one of the following:
 
 - Visible text content contained within the element with `role` switch.
 - A visible label referenced by the value of `aria-labelledby` set on the element with `role` switch.
 - `aria-label` set on the element with `role` switch.
+
+:::info Important
+
+It is critical the label on a switch does not change when its state changes.
+
+:::
 
 #### 3. The switch has a valid `aria-checked` attribute.
 
