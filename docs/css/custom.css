@@ -243,7 +243,7 @@ html kbd {
 
 /** Container */
 .container article {
-  padding: var(--ifm-spacing-vertical) calc(4 * var(--ifm-spacing-horizontal));
+  padding: var(--ifm-spacing-vertical) calc(8 * var(--ifm-spacing-horizontal));
 }
 
 /** Admonition */
@@ -251,7 +251,7 @@ html kbd {
   --ifm-alert-border-left-width: 3px;
   --ifm-alert-padding-horizontal: 32px;
   --ifm-alert-padding-vertical: 24px;
-  margin-left: -32px;
+  margin: 3em 0 4em -32px !important;
   position: relative;
   text-transform: initial !important;
 }
@@ -259,7 +259,11 @@ html kbd {
   font-size: 0.9em;
   text-transform: initial !important;
 }
-.theme-admonition .admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+
+.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+  margin-bottom: 1em;
+}
+.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module > span {
   --svg-size: 1.6em; /* this is taken from the docusaurus theme */
   --icon-padding: 0.5em;
   --ifm-alert-foreground-color: var(--ifm-alert-border-color);

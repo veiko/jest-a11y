@@ -119,11 +119,18 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-i
 html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > .menu__link {
   color: white;
 }
+
 html[data-theme='dark'] .alert--info {
   --ifm-alert-background-color-highlight: rgba(84, 199, 236, 0.15);
   --ifm-alert-foreground-color: white;
   --ifm-alert-border-color: var(--cyan-500);
   background: var(--cyan-100);
+}
+html[data-theme='dark'] .alert--warning {
+  --ifm-alert-background-color-highlight: rgba(84, 199, 236, 0.15);
+  --ifm-alert-foreground-color: white;
+  --ifm-alert-border-color: var(--yellow);
+  background: var(--yellow-100);
 }
 
 .announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
