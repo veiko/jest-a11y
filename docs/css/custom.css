@@ -291,5 +291,6 @@ html kbd {
   border-radius: 4px;
   display: flex;
   justify-content: center;
+  margin: 3em 0 4em;
   padding: 4em;
 }
