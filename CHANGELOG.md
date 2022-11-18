@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/veiko/jest-a11y/compare/v1.13.0...v1.14.0) (2022-11-18)
+
+
+### Features
+
+* **switch:** toBeAccessibleSwitch [#19](https://github.com/veiko/jest-a11y/issues/19) ([#20](https://github.com/veiko/jest-a11y/issues/20)) ([72e4b66](https://github.com/veiko/jest-a11y/commit/72e4b6646b0864205b62dcac7c26ff0ae62ac076))
+
 # [1.13.0](https://github.com/veiko/jest-a11y/compare/v1.12.0...v1.13.0) (2022-11-13)
 
 
