@@ -3,11 +3,10 @@ import React, { useCallback } from 'react'
 export const LabelChangeInputSwitch = () => {
   const [on, setOn] = React.useState(false)
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('current val', e.currentTarget.checked)
-    console.log('current val', e.target.checked)
-    setOn(e.target.checked)
-  }, [])
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => setOn(e.target.checked),
+    [],
+  )
 
   return (
     <div className="switch-wrapper">
