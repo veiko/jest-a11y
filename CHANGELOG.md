@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/veiko/jest-a11y/compare/v1.14.0...v1.14.1) (2022-11-18)
+
+
+### Bug Fixes
+
+* **alertdialog:** check aria-describedby [#21](https://github.com/veiko/jest-a11y/issues/21) ([#22](https://github.com/veiko/jest-a11y/issues/22)) ([fe9697f](https://github.com/veiko/jest-a11y/commit/fe9697f892bfa50eee8e06d1f5142ff1cedc7078))
+
 # [1.14.0](https://github.com/veiko/jest-a11y/compare/v1.13.0...v1.14.0) (2022-11-18)
 
 
