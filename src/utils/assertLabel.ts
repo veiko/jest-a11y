@@ -28,12 +28,14 @@ export const assertLabel = ({
   if (testTextContent && !hasChildren(element) && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => `${utils.RECEIVED_COLOR('✕')} ${elementName} has accessible label\n
-    By default, the accessible name is computed from any text content inside the
-    element. However, it can also be provided with aria-labelledby or aria-label.
+      message: () =>
+        printUtil.fail(`${elementName} has accessible label`, {
+          hints: `By default, the accessible name is computed from any text content inside the element. However, it can also be provided with aria-labelledby or aria-label.
       Text content: ${utils.printReceived(element.innerHTML)}
       aria-label: ${utils.printReceived(getAttribute(element, 'aria-label'))}
       aria-labelledby: ${utils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
+          utils,
+        }),
     }
   } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
