@@ -1,3 +1,4 @@
+/** Components */
 export * from './toBeAccessibleAccordion/to-be-accessible-accordion'
 export * from './toBeAccessibleAlert/to-be-accessible-alert'
 export * from './toBeAccessibleAlertDialog/to-be-accessible-alert-dialog'
@@ -11,4 +12,5 @@ export * from './toBeAccessibleRadioGroup/to-be-accessible-radiogroup'
 export * from './toBeAccessibleSlider/to-be-accessible-slider'
 export * from './toBeAccessibleSwitch/to-be-accessible-switch'
 export * from './toBeAccessibleSwitch/to-be-accessible-input-switch'
+/** Other Matchers */
 export * from './toHaveFocusLock/to-have-focus-lock'

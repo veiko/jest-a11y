@@ -36,6 +36,8 @@ const hasSliderRole = (el: HTMLElement) => getRole(el) === 'slider'
 
 const hasSwitchRole = (el: HTMLElement) => getRole(el) === 'switch'
 
+/** plop-prepend-func */
+
 /** TODO: use React.AriaRole */
 const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   alert: hasAlertRole,
@@ -54,6 +56,7 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   rowheader: hasRowHeaderRole,
   slider: hasSliderRole,
   switch: hasSwitchRole,
+  /** plop-prepend-assertion */
 }
 
 type AssertRoleConfig = {
