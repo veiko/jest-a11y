@@ -34,6 +34,8 @@ const hasRowHeaderRole = (el: HTMLElement) => getRole(el) === 'rowheader'
 
 const hasSliderRole = (el: HTMLElement) => getRole(el) === 'slider'
 
+const hasSwitchRole = (el: HTMLElement) => getRole(el) === 'switch'
+
 /** TODO: use React.AriaRole */
 const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   alert: hasAlertRole,
@@ -51,6 +53,7 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   row: hasRowRole,
   rowheader: hasRowHeaderRole,
   slider: hasSliderRole,
+  switch: hasSwitchRole,
 }
 
 type AssertRoleConfig = {

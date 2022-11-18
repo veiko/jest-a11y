@@ -59,6 +59,7 @@ export const assertAttribute = ({
     }
   } else {
     message += printUtil.fail(`${elementName} ${messageContent || `has attribute ${attribute}`}`, {
+      received: element,
       utils,
     })
     pass = false

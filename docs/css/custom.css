@@ -6,8 +6,12 @@
 @import './dark-mode.css';
 @import './sidebar.css';
 
+@import '../../src/matchers/toBeAccessibleSwitch/examples/switch.css';
+
 :root {
   --doc-sidebar-width: 320px !important;
+
+  --ifm-background-color: white;
 
   --ifm-color-primary: var(--purple);
   --ifm-color-primary-dark: #4e22b5;
@@ -26,6 +30,9 @@
   --ifm-font-size-base: 16px !important;
 
   --ifm-font-family-monospace: var(--font-family-monospace);
+
+  /* alert */
+  --ifm-alert-border-radius: 0;
 
   /* menu */
   --ifm-menu-color: var(--grey);
@@ -238,5 +245,37 @@ html kbd {
 
 /** Container */
 .container article {
-  padding: var(--ifm-spacing-vertical) calc(4 * var(--ifm-spacing-horizontal));
+  padding: var(--ifm-spacing-vertical) calc(8 * var(--ifm-spacing-horizontal));
+}
+
+/** Admonition */
+.theme-admonition {
+  --ifm-alert-border-left-width: 3px;
+  --ifm-alert-padding-horizontal: 32px;
+  --ifm-alert-padding-vertical: 24px;
+  margin: 3em 0 4em -32px !important;
+  position: relative;
+  text-transform: initial !important;
+}
+.theme-admonition > div {
+  font-size: 0.9em;
+  text-transform: initial !important;
+}
+
+.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+  margin-bottom: 1em;
+}
+.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module > span {
+  --svg-size: 1.6em; /* this is taken from the docusaurus theme */
+  --icon-padding: 0.5em;
+  --ifm-alert-foreground-color: var(--ifm-alert-border-color);
+  --circle-size: calc(var(--svg-size) + 2 * var(--icon-padding));
+  background-color: var(--ifm-background-color);
+  border-radius: 40px;
+  padding: var(--icon-padding);
+  left: calc(-0.5 * var(--circle-size) - var(--ifm-alert-border-left-width));
+  position: absolute;
+  top: calc(-0.5 * var(--circle-size));
+  height: var(--circle-size);
+  width: var(--circle-size);
 }

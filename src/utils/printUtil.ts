@@ -9,10 +9,11 @@ type FailConfig = {
 export const printUtil = {
   fail: (msg: string, { expected, hints, received, utils }: FailConfig) => {
     let message = `${utils.RECEIVED_COLOR('✕')} ${utils.DIM_COLOR(msg)}${
-      hints?.length ? `\n\n${hints}\n` : ''
+      hints?.length ? `\n\n  ${hints}` : ''
     }\n`
+    if (expected || received) message += '\n'
     if (expected) {
-      message += `\n  Expected: ${utils.printExpected(expected)}\n`
+      message += `  Expected: ${utils.printExpected(expected)}\n`
     }
     if (received) {
       message += `  Received: ${utils.printReceived(received)}\n\n`

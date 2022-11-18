@@ -13,6 +13,7 @@ html[data-theme='dark'] {
 
   /* navbar */
   --ifm-navbar-background-color: var(--ifm-background-color);
+  --ifm-navbar-shadow: 1px 1px var(--grey);
 }
 
 html[data-theme='dark'] code {
@@ -74,12 +75,6 @@ html[data-theme='dark'] h2 {
   background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
 }
 
-/* Navbar */
-html[data-theme='dark'] .navbar {
-  background-color: var(--grey);
-  border-bottom: 1px solid var(--grey);
-}
-
 html[data-theme='dark'] #guarantee_bar {
   background-color: var(--blackSecondary);
   color: var(--greySecondary);
@@ -123,6 +118,19 @@ html[data-theme='dark'] .alert--warning {
 html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
 html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > .menu__link {
   color: white;
+}
+
+html[data-theme='dark'] .alert--info {
+  --ifm-alert-background-color-highlight: rgba(84, 199, 236, 0.15);
+  --ifm-alert-foreground-color: white;
+  --ifm-alert-border-color: var(--cyan-500);
+  background: var(--cyan-100);
+}
+html[data-theme='dark'] .alert--warning {
+  --ifm-alert-background-color-highlight: rgba(84, 199, 236, 0.15);
+  --ifm-alert-foreground-color: white;
+  --ifm-alert-border-color: var(--yellow);
+  background: var(--yellow-100);
 }
 
 .announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
