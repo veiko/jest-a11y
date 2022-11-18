@@ -7,12 +7,17 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { AlertDialog } from '../../src/matchers/toBeAccessibleAlertDialog/examples/AlertDialog'
+
 <div className="intro-text">An <strong>alert dialog</strong> is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response.</div>
 
 Examples include action confirmation prompts and error message confirmations.
 
-- [WAI Alert Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/)
-- [Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html)
+<ExampleContainer>
+<AlertDialog />
+</ExampleContainer>
 
 ## Usage
 
@@ -50,6 +55,21 @@ test('alertdialog', () => {
 </Tabs>
 
 ## Test Summary
+
+The matcher will test the following:
+
+```html
+<!-- test-pass -->
+✓ element has role alertdialog
+<!-- test-pass -->
+✓ element has accessible label
+<!-- test-pass -->
+✓ element has attribute aria-describedby
+<!-- test-pass -->
+✓ element description is present
+<!-- test-pass -->
+✓ element closed on {esc}
+```
 
 ### WAI-ARIA Roles, States, and Properties
 
@@ -90,4 +110,11 @@ The element with role `alertdialog` has either:
 
 ### Keyboard Interaction
 
-See the keyboard interaction section for the modal dialog pattern.
+See the [keyboard interaction](/matchers/dialog#keyboard-interaction) section for the modal dialog pattern.
+
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI Alert Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/)
+- [Alert Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html)

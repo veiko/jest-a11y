@@ -1,0 +1,19 @@
+.alertdialog {
+  --alertdialog-background: var(--white);
+  background: var(--alertdialog-background);
+  border-radius: 1em;
+  box-shadow: var(--shadow-elevation-high);
+  display: none;
+  margin-top: -4rem;
+  max-width: 600px;
+  padding: 4rem 6em;
+  position: absolute;
+}
+
+html[data-theme='dark'] .alertdialog {
+  --alertdialog-background: var(--grey);
+}
+
+.alertdialog.open {
+  display: block;
+}

@@ -20,9 +20,6 @@ The headings function as controls that enable users to reveal or hide their asso
 <Accordion />
 </ExampleContainer>
 
-- [WAI Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
-- [Accordion Example](https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html)
-
 ## Usage
 
 ### Syntax
@@ -217,3 +214,10 @@ There are multiple ways to implement accordion panel visibility, so there is no 
 #### 1. The accordion header button element can receive focus
 
 #### 2. When element has focus, <kbd>Space</kbd> or <kbd>Enter</kbd> activates it.
+
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+- [Accordion Example](https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html)

@@ -1,0 +1,26 @@
+.button {
+  --button-background-color: var(--greyTernary);
+  --button-color: var(--white);
+  --button-primary-background-color: var(--grey);
+  background: var(--button-background-color);
+  color: var(--button-color);
+  font-size: 1em;
+  line-height: 2em;
+  outline: none;
+}
+
+html[data-theme='dark'] .button {
+  --button-background-color: var(--greySecondary);
+  --button-color: var(--white);
+  --button-primary-background-color: var(--cyan-500);
+}
+
+.button.primary {
+  background: var(--button-primary-background-color);
+}
+
+.button:focus,
+.button:hover {
+  background: var(--purple);
+  box-shadow: 0 0 0 4px var(--purple-500);
+}

@@ -8,6 +8,8 @@
 
 /** component examples **/
 @import './accordion.css';
+@import './alertdialog.css';
+@import './button.css';
 
 @import '../../src/matchers/toBeAccessibleSwitch/examples/switch.css';
 
