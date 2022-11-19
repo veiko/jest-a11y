@@ -31,6 +31,7 @@ declare global {
     | 'rowheader'
     | 'slider'
     | 'switch'
+    | 'spinbutton'
   type JestMatcherUtils = typeof jestMatcherUtils
 }
 

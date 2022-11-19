@@ -12,5 +12,6 @@ export * from './toBeAccessibleRadioGroup/to-be-accessible-radiogroup'
 export * from './toBeAccessibleSlider/to-be-accessible-slider'
 export * from './toBeAccessibleSwitch/to-be-accessible-switch'
 export * from './toBeAccessibleSwitch/to-be-accessible-input-switch'
+export * from './toBeAccessibleSpinButton/to-be-accessible-spinbutton'
 /** Other Matchers */
 export * from './toHaveFocusLock/to-have-focus-lock'
