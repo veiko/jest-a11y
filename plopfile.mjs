@@ -64,6 +64,22 @@ export default function (plop) {
       },
       {
         type: 'modify',
+        path: 'src/types/jest.d.ts',
+        pattern: /\/\*\* plop-prepend-matcher \*\//gi,
+        template: `  /**\r\n
+    * Assert whether an element has the correct role, properties and keyboard interactions for \`{{lowerCase componentName}}\`.\r\n
+    * @summary A \`{{lowerCase componentName}}\` is ...\r\n
+    * @example\r\n
+    * <div role="{{lowerCase componentName}}">...</div>
+    *\r\n
+    * expect(screen.getByRole('{{lowerCase componentName}}')).toBeAccessible{{properCase componentName}}()\r\n
+    *\r\n
+    * @see https://veiko.github.io/jest-a11y/matchers/{{lowerCase componentName}}\r\n
+    */\r\n
+    toBeAccessible{{properCase componentName}}(): CustomMatcherResult\r\n/** plop-prepend-matcher */`,
+      },
+      {
+        type: 'modify',
         path: 'src/utils/assertRole.ts',
         pattern: /\/\*\* plop-prepend-func \*\//gi,
         template:
