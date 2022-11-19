@@ -75,6 +75,17 @@ The matcher tests the following:
 ✓ element decreases aria-valuenow when {arrowdown} is pressed
 ```
 
+:::caution Not Tested
+
+```html
+<!-- test-caution -->
+⚠️ home sets the value of the slider to the first allowed value in its range
+<!-- test-caution -->
+⚠️ end sets the value of the slider to the last allowed value in its range
+```
+
+:::
+
 ### WAI-ARIA Roles, States, and Properties
 
 #### 1. The widget has a `role` of `spinbutton`.
@@ -87,9 +98,42 @@ The matcher tests the following:
 <span>hey, listen!</span>
 ```
 
+#### 2. The widget has an accessible label.
+
+```html
+<!-- ✅ element has accessible label -->
+<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+
+<!-- ✅ element has accessible label -->
+<div id="spinbutton-label">Brightness</div>
+<div aria-labelledby="spinbutton-label" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+
+<!-- ❌ element is missing accessible label -->
+<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+```
+
+#### 3. The widget has valid `aria-valuemax`, `aria-valuemin` and `aria-valuenow` values
+
+```html
+<!-- ✅ element has valid aria-valuemax, aria-valuemin and aria-valuenow -->
+<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+
+<!-- ❌ element is missing aria-valuemax, aria-valuemin or aria-valuenow properties -->
+<div aria-label="brightness" role="spinbutton" />
+
+<!-- ❌ element has aria-valuemin greater than aria-valuemax -->
+<div aria-label="brightness" aria-valuemin="100" aria-valuemax="0" role="spinbutton" />
+
+<!-- ❌ element has aria-valuenow set to decimal number outside of range -->
+<div aria-label="brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="200" role="spinbutton" />
+```
+
 ### Keyboard Interaction
 
-TBD
+- <kbd>Up Arrow</kbd>: Increases the value.
+- <kbd>Down Arrow</kbd>: Decreases the value.
+- <kbd>Home</kbd>: If the spinbutton has a minimum value, sets the value to its minimum.
+- <kbd>End</kbd>: If the spinbutton has a maximum value, sets the value to its maximum.
 
 ## External Resources
 
