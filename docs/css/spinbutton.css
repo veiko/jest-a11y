@@ -1,0 +1,84 @@
+.spinbutton-wrapper {
+  --spinbutton-border-radius: 6px;
+  --spinbutton-button-background-color: var(--purple-500);
+  --spinbutton-button-background-color-hover: var(--purple-800);
+  --spinbutton-color: var(--black);
+}
+
+html[data-theme='dark'] .spinbutton {
+  --spinbutton-button-background-color: var(--black);
+  --spinbutton-color: var(--white);
+}
+
+html[data-theme='dark'] .spinbutton-wrapper.textfield {
+  --textfield-background: var(--black);
+  --textfield-border-color: var(--grey);
+  --textfield-button-background-color: var(--purple);
+}
+
+.spinbutton-wrapper.textfield {
+  border-radius: calc(2px + var(--spinbutton-border-radius));
+  box-shadow: 0 0 0 0 var(--purple-100);
+  display: inline-flex;
+  padding: 4px;
+  transition: 400ms ease box-shadow;
+}
+
+.spinbutton-wrapper button {
+  background: var(--spinbutton-button-background-color);
+  border: none;
+  border-radius: var(--spinbutton-border-radius);
+  color: white;
+  cursor: pointer;
+  height: 2em;
+  position: relative;
+  width: 2em;
+}
+
+.spinbutton-wrapper button:after {
+  content: '';
+  display: inline-block;
+  background: var(--white);
+  height: 2em;
+  left: 0;
+  mask: var(--ifm-menu-link-sublist-icon) 100% / 2em 2em no-repeat;
+  position: absolute;
+  top: 0;
+  width: 2em;
+}
+
+.spinbutton-wrapper button:after {
+  content: '';
+  display: inline-block;
+  background: var(--white);
+  height: 2em;
+  left: 0;
+  mask: var(--ifm-menu-link-sublist-icon) 100% / 2em 2em no-repeat;
+  position: absolute;
+  top: 0;
+  width: 2em;
+}
+
+.spinbutton-wrapper:hover button:not([disabled]),
+.spinbutton-wrapper button:hover:not([disabled]) {
+  background: var(--spinbutton-button-background-color-hover);
+}
+
+.spinbutton-wrapper button:first-child {
+  transform: rotate(180deg);
+}
+
+.spinbutton-wrapper input {
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-family-sans);
+  font-size: 1em;
+  outline: none;
+  text-align: center;
+  width: 40px;
+}
+
+.spinbutton-wrapper.textfield.outline {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px var(--purple-300);
+}
