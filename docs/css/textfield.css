@@ -1,0 +1,18 @@
+.textfield {
+  --textfield-background: var(--white);
+  --textfield-border-color: var(--greyTernary);
+  --textfield-button-background-color: var(--purple);
+  background: var(--textfield-background);
+  border: 1px solid var(--textfield-border-color);
+  border-radius: 4px;
+  line-height: 2em;
+  padding: 0em 0.4em;
+  position: relative;
+  width: auto;
+}
+
+html[data-theme='dark'] .textfield {
+  --textfield-background: var(--white);
+  --textfield-border-color: var(--grey);
+  --textfield-button-background-color: var(--purple);
+}
