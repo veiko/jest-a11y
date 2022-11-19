@@ -1,5 +1,7 @@
+require('ts-node/register')
 require('@testing-library/jest-dom')
-require('../src/extend-expect')
+
+import 'extend-expect'
 
 const { configure } = require('@testing-library/react')
 

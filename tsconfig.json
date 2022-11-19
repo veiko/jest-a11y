@@ -9,9 +9,8 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "outDir": "dist",
-    "rootDir": "src",
     "strict": true,
     "target": "es2018"
   },
-  "include": ["src/**/*.ts", "src/types"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/types"]
 }
