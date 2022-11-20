@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/veiko/jest-a11y/compare/v1.14.1...v1.15.0) (2022-11-20)
+
+
+### Features
+
+* **spinbutton:** toBeAccessibleSpinButton [#18](https://github.com/veiko/jest-a11y/issues/18) ([#23](https://github.com/veiko/jest-a11y/issues/23)) ([39e4554](https://github.com/veiko/jest-a11y/commit/39e45547c4754df05a2bbec228fcd68f9bb9dcc4))
+
 ## [1.14.1](https://github.com/veiko/jest-a11y/compare/v1.14.0...v1.14.1) (2022-11-18)
 
 
