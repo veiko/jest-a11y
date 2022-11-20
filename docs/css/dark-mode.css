@@ -134,6 +134,14 @@ html[data-theme='dark'] .alert--warning {
   background: var(--yellow-100);
 }
 
+html[data-theme='dark'] .code-block-test-pass span {
+  color: var(--greyTernary);
+}
+
+html[data-theme='dark'] .code-block-test-pass span:first-letter {
+  color: var(--green);
+}
+
 html[data-theme='dark'] .example {
   background: var(--black);
 }
