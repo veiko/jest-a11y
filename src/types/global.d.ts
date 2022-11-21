@@ -32,6 +32,7 @@ declare global {
     | 'slider'
     | 'switch'
     | 'spinbutton'
+    | 'tooltip'
   type JestMatcherUtils = typeof jestMatcherUtils
 }
 

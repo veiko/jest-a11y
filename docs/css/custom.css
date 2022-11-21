@@ -13,6 +13,7 @@
 @import './button.css';
 @import './spinbutton.css';
 @import './textfield.css';
+@import './tooltip.css';
 /** plop-prepend-css-file */
 
 @import '../../src/matchers/toBeAccessibleSwitch/examples/switch.css';

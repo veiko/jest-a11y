@@ -105,6 +105,17 @@ interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see https://veiko.github.io/jest-a11y/matchers/slider
    */
   toBeAccessibleSwitch(): CustomMatcherResult
+  /**
+   * Assert whether an element has the correct role, properties and keyboard interactions for `tooltip`.
+   * @summary A `tooltip` a popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+   * @example
+   * <div role="tooltip">...</div>
+   *
+   * expect(screen.getByRole('tooltip')).toBeAccessibleTooltip()
+   *
+   * @see https://veiko.github.io/jest-a11y/matchers/tooltip
+   */
+  toBeAccessibleTooltip(): CustomMatcherResult
   /** plop-prepend-matcher */
 }
 
