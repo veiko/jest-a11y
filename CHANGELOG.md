@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/veiko/jest-a11y/compare/v1.15.0...v1.16.0) (2022-11-21)
+
+
+### Features
+
+* **tooltip:** toBeAccessibleTooltip [#25](https://github.com/veiko/jest-a11y/issues/25) ([#26](https://github.com/veiko/jest-a11y/issues/26)) ([dfc3c90](https://github.com/veiko/jest-a11y/commit/dfc3c903c89008fe977ca2003d6524bb582ac581))
+
 # [1.15.0](https://github.com/veiko/jest-a11y/compare/v1.14.1...v1.15.0) (2022-11-20)
 
 
