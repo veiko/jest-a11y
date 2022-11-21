@@ -29,6 +29,11 @@ export default function (plop) {
       },
       {
         type: 'add',
+        path: 'docs/components/{{lowerCase componentName}}/{{properCase componentName}}.tsx',
+        templateFile: 'config/plop/ExampleDocs.tsx.hbs',
+      },
+      {
+        type: 'add',
         path: 'src/matchers/toBeAccessible{{properCase componentName}}/to-be-accessible-{{lowerCase componentName}}.ts',
         templateFile: 'config/plop/matcher.hbs',
       },

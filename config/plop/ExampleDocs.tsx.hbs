@@ -1,0 +1,8 @@
+import React, { useContext } from 'react';
+import { ExampleContext } from '../ExampleContainer'
+
+export const {{properCase componentName}}: React.FC = () => {
+  const { setExampleText } = useContext(ExampleContext)
+
+  return <div onFocus={() => setExampleText('next step')} role="{{lowerCase componentName}}">Hey, listen!</div>
+}

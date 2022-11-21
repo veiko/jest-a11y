@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessible{{properCase componentName}} } from '../to-be-accessible-{{lowerCase componentName}}'
 import { mockUtils } from '../../../utils/mockUtils'
+import { {{properCase componentName}} } from '../examples/{{properCase componentName}}'
 
 class MockExpect {
   isNot: boolean = false
@@ -17,9 +18,7 @@ describe('toBeAccessible{{properCase componentName}}', () => {
 
   it('passes when element is valid', async () => {
     render(
-      <div data-testid="an-{{lowerCase componentName}}" role="{{lowerCase componentName}}">
-        hello world
-      </div>,
+      <{{properCase componentName}} />,
     )
 
     expect(screen.getByRole('{{lowerCase componentName}}')).toBeAccessible{{properCase componentName}}()
