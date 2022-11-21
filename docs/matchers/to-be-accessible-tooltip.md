@@ -27,7 +27,7 @@ It typically appears after a small delay and disappears when Escape is pressed o
 
 ## Usage
 
-The `toBeAccessibleTooltip` matcher expects to be called on the tooltip trigger. Since the trigger references the tooltip with `aria-describedby`
+The `toBeAccessibleTooltip` matcher expects to be called on the tooltip trigger. The tooltip element will be obtained through the `aria-describedby` reference on the trigger element.
 
 ### Syntax
 
