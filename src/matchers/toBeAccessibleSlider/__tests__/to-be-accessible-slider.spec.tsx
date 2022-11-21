@@ -53,7 +53,7 @@ describe('toBeAccessibleSlider', () => {
       screen.getByTestId('an-slider', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has focus on {tab}')
+    expect(returnValue.message()).toContain('✕ element is part of tab sequence')
   })
 
   it('fails if the element does not have an accessible label', () => {

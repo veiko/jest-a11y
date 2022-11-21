@@ -76,6 +76,5 @@ export const assertAriaRangeValues = ({
     }
   }
 
-  // console.log(pass, message)
   return { message: () => message, pass }
 }

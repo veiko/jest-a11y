@@ -17,6 +17,13 @@ type AssertAttributeConfig = {
   value?: string | ValueCheck
 }
 
+/**
+ * Function to assert whether an element has an attribute
+ * @param {string} config.attribute name of the attribute to check
+ * @param {HTMLElement} config.element element to perform the check on
+ * @param {string} [config.elementName=element] string value that will be used in the output message
+ * @returns boolean
+ */
 export const assertAttribute = ({
   attribute,
   element,

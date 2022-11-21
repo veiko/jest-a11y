@@ -105,7 +105,7 @@ describe('toBeAccessibleRadioGroup', () => {
       screen.getByTestId('a-radiogroup', { suggest: false }),
     )
     expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has focus on {tab}')
+    expect(returnValue.message()).toContain('✕ element is part of tab sequence')
   })
 
   // FIXME: can not check whether the element is active when it is navigated to

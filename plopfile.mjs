@@ -66,31 +66,31 @@ export default function (plop) {
         type: 'modify',
         path: 'src/types/jest.d.ts',
         pattern: /\/\*\* plop-prepend-matcher \*\//gi,
-        template: `  /**\r\n
-    * Assert whether an element has the correct role, properties and keyboard interactions for \`{{lowerCase componentName}}\`.\r\n
-    * @summary A \`{{lowerCase componentName}}\` is ...\r\n
-    * @example\r\n
+        template: `  /**
+    * Assert whether an element has the correct role, properties and keyboard interactions for \`{{lowerCase componentName}}\`.
+    * @summary A \`{{lowerCase componentName}}\` is ...
+    * @example
     * <div role="{{lowerCase componentName}}">...</div>
-    *\r\n
-    * expect(screen.getByRole('{{lowerCase componentName}}')).toBeAccessible{{properCase componentName}}()\r\n
-    *\r\n
-    * @see https://veiko.github.io/jest-a11y/matchers/{{lowerCase componentName}}\r\n
-    */\r\n
-    toBeAccessible{{properCase componentName}}(): CustomMatcherResult\r\n/** plop-prepend-matcher */`,
+    *
+    * expect(screen.getByRole('{{lowerCase componentName}}')).toBeAccessible{{properCase componentName}}()
+    * @see https://veiko.github.io/jest-a11y/matchers/{{lowerCase componentName}}
+    */
+    toBeAccessible{{properCase componentName}}(): CustomMatcherResult
+/** plop-prepend-matcher */`,
       },
       {
         type: 'modify',
         path: 'src/utils/assertRole.ts',
         pattern: /\/\*\* plop-prepend-func \*\//gi,
         template:
-          "const has{{properCase componentName}}Role = (el: HTMLElement) => getRole(el) === '{{lowerCase componentName}}'\r\n/** plop-prepend-func */",
+          "\r\nconst has{{properCase componentName}}Role = (el: HTMLElement) => getRole(el) === '{{lowerCase componentName}}'\r\n/** plop-prepend-func */",
       },
       {
         type: 'modify',
         path: 'src/utils/assertRole.ts',
         pattern: /\/\*\* plop-prepend-assertion \*\//gi,
         template:
-          '{{lowerCase componentName}}: has{{properCase componentName}}Role,\r\n/** plop-prepend-assertion */',
+          '  {{lowerCase componentName}}: has{{properCase componentName}}Role,\r\n/** plop-prepend-assertion */',
       },
     ],
   })

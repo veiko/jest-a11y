@@ -1,0 +1,30 @@
+.tooltip {
+  --tooltip-background-color: var(--grey);
+  --tooltip-color: var(--black);
+
+  background-color: var(--tooltip-background-color);
+  border-radius: 4px;
+  padding: 0.1em 1em;
+  position: absolute;
+  top: -2em;
+}
+
+html[data-theme='dark'] .tooltip {
+  --tooltip-background-color: var(--grey);
+  --tooltip-color: var(--white);
+}
+
+.tooltip-trigger {
+  border-bottom: 2px solid transparent;
+  outline: none;
+  transition: 400ms ease-out border-bottom;
+}
+
+.tooltip-trigger:focus,
+.tooltip-trigger:hover {
+  border-bottom: 2px solid var(--red);
+}
+
+.tooltip-wrapper {
+  position: relative;
+}
