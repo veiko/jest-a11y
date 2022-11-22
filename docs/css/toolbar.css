@@ -1,0 +1,35 @@
+.toolbar {
+  --toolbar-background-color: var(--grey);
+  --toolbar-color: var(--black);
+  border-radius: 0.8em;
+  display: grid;
+  gap: 0.8em;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.4em;
+}
+
+html[data-theme='dark'] .toolbar {
+  --toolbar-background-color: var(--grey);
+  --toolbar-color: var(--white);
+}
+
+.toolbar.outline,
+.toolbar:focus {
+  outline: 2px solid var(--yellow);
+}
+
+.toolbar .button {
+  font-weight: 400;
+}
+
+.toolbar .button.bold {
+  font-weight: 800;
+}
+
+.toolbar .button.italic {
+  font-style: italic;
+}
+
+.toolbar .button.underline {
+  text-decoration: underline;
+}

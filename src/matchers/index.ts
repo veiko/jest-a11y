@@ -14,5 +14,6 @@ export * from './toBeAccessibleSwitch/to-be-accessible-switch'
 export * from './toBeAccessibleSwitch/to-be-accessible-input-switch'
 export * from './toBeAccessibleSpinButton/to-be-accessible-spinbutton'
 export * from './toBeAccessibleTooltip/to-be-accessible-tooltip'
+export * from './toBeAccessibleToolbar/to-be-accessible-toolbar'
 /** Other Matchers */
 export * from './toHaveFocusLock/to-have-focus-lock'

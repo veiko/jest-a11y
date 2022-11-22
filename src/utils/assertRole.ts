@@ -38,6 +38,8 @@ const hasSwitchRole = (el: HTMLElement) => getRole(el) === 'switch'
 
 const hasSpinButtonRole = (el: HTMLElement) => getRole(el) === 'spinbutton'
 
+const hasToolbarRole = (el: HTMLElement) => getRole(el) === 'toolbar'
+
 const hasTooltipRole = (el: HTMLElement) => getRole(el) === 'tooltip'
 /** plop-prepend-func */
 
@@ -60,6 +62,7 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   slider: hasSliderRole,
   switch: hasSwitchRole,
   spinbutton: hasSpinButtonRole,
+  toolbar: hasToolbarRole,
   tooltip: hasTooltipRole,
   /** plop-prepend-assertion */
 }
