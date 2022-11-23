@@ -26,7 +26,7 @@ html[data-theme='dark'] kbd {
   background-color: var(--blackSecondary);
   border-color: var(--greySecondary);
   box-shadow: inset 0 -2px 0 var(--greySecondary);
-  color: var(--purpleSecondary);
+  color: white;
 }
 
 html[data-theme='dark'] h1,

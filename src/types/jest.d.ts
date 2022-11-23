@@ -106,6 +106,16 @@ interface JestA11yMatchers<CustomMatcherResult = unknown> {
    */
   toBeAccessibleSwitch(): CustomMatcherResult
   /**
+   * Assert whether an element has the correct role, properties and keyboard interactions for `toolbar`.
+   * @summary A `toolbar` is a container for grouping a set of controls, such as buttons, menubuttons, or checkboxes.
+   * @example
+   * <div role="toolbar">...</div>
+   *
+   * expect(screen.getByRole('toolbar')).toBeAccessibleToolbar()
+   * @see https://veiko.github.io/jest-a11y/matchers/toolbar
+   */
+  toBeAccessibleToolbar(): CustomMatcherResult
+  /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `tooltip`.
    * @summary A `tooltip` a popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
    * @example

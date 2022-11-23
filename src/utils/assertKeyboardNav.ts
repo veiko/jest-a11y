@@ -1,8 +1,7 @@
 import userEvent from '@testing-library/user-event'
-import { ReactPropTypes } from 'react'
-import { assertBlur } from './assertBlur'
-import { assertFocus } from './assertFocus'
-import { printUtil } from './printUtil'
+import { assertBlur } from 'utils/assertBlur'
+import { assertFocus } from 'utils/assertFocus'
+import { printUtil } from 'utils/printUtil'
 
 type AssertKeyboardNavConfig = {
   element: HTMLElement
@@ -31,7 +30,7 @@ export const assertKeyboardNav = ({
   pass = pass ? blurCheck.pass : false
 
   if (nextElement) {
-    const focusCheck = assertFocus({ element, utils })
+    const focusCheck = assertFocus({ element: nextElement, utils })
     message += focusCheck.message()
     pass = pass ? focusCheck.pass : false
   }
