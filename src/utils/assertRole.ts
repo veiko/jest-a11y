@@ -41,6 +41,12 @@ const hasSpinButtonRole = (el: HTMLElement) => getRole(el) === 'spinbutton'
 const hasToolbarRole = (el: HTMLElement) => getRole(el) === 'toolbar'
 
 const hasTooltipRole = (el: HTMLElement) => getRole(el) === 'tooltip'
+
+const hasTabRole = (el: HTMLElement) => getRole(el) === 'tab'
+
+const hasTabListRole = (el: HTMLElement) => getRole(el) === 'tablist'
+
+const hasTabPanelRole = (el: HTMLElement) => getRole(el) === 'tabpanel'
 /** plop-prepend-func */
 
 /** TODO: use React.AriaRole */
@@ -64,6 +70,9 @@ const assertions: { [key in Role]: (el: HTMLElement) => boolean } = {
   spinbutton: hasSpinButtonRole,
   toolbar: hasToolbarRole,
   tooltip: hasTooltipRole,
+  tab: hasTabRole,
+  tablist: hasTabListRole,
+  tabpanel: hasTabPanelRole,
   /** plop-prepend-assertion */
 }
 

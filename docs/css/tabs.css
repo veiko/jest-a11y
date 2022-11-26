@@ -1,0 +1,39 @@
+.tabs {
+  --tabs-background-color: var(--grey);
+  --tabs-color: var(--black);
+  --tabs-tab-color-active: var(--black);
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+html[data-theme='dark'] .tabs {
+  --tabs-background-color: var(--grey);
+  --tabs-color: var(--white);
+  --tabs-tab-color-active: var(--cyan-900);
+  --tabs-tab-color-hover: var(--cyan-500);
+}
+
+.tabs .tab {
+  cursor: pointer;
+  display: inline-flex;
+  padding: 1em 3em;
+}
+
+.tabs .tab.active,
+.tabs .tab.focus,
+.tabs .tab:focus {
+  border-bottom: 2px solid var(--tabs-tab-color-active);
+}
+
+.tabs .tab:hover {
+  background-color: var(--tabs-background-color);
+  background-color: var(--tabs-background-color);
+  border-bottom-color: var(--tabs-tab-color-hover);
+  color: var(--tabs-color);
+}
+
+.tabpanel {
+  min-height: 200px;
+  padding: 2em;
+}
