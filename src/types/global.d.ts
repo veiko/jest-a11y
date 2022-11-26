@@ -34,6 +34,9 @@ declare global {
     | 'spinbutton'
     | 'toolbar'
     | 'tooltip'
+    | 'tab'
+    | 'tablist'
+    | 'tabpanel'
   type JestMatcherUtils = typeof jestMatcherUtils
 }
 

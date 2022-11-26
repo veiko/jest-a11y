@@ -126,6 +126,16 @@ interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see https://veiko.github.io/jest-a11y/matchers/tooltip
    */
   toBeAccessibleTooltip(): CustomMatcherResult
+  /**
+   * Assert whether an element has the correct role, properties and keyboard interactions for `tablist`.
+   * @summary Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time. Each tab panel has an associated tab element, that when activated, displays the panel.
+   * @example
+   * <div role="tablist">...</div>
+   *
+   * expect(screen.getByRole('tablist')).toBeAccessibleTabs()
+   * @see https://veiko.github.io/jest-a11y/matchers/tablist
+   */
+  toBeAccessibleTabs(): CustomMatcherResult
   /** plop-prepend-matcher */
 }
 
