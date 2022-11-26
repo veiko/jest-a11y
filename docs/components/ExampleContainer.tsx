@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import { ArrowPointer } from './ArrowPointer'
 import { List } from './List'
 
+type ExampleTextConfig = { transformY?: number }
+type ExampleTextComplete = ExampleTextConfig & { text: string }
+
 type ExampleContextValue = {
   accessibleLabel?: React.ReactNode
   actions: React.ReactNode[]
-  exampleText?: string
+  exampleText?: ExampleTextComplete
   setAccessibleLabel(label: string): void
   setActions(actions: React.ReactNode[]): void
-  setExampleText(text?: string): void
+  setExampleText(text: string, config?: ExampleTextConfig): void
 }
 
 export const ExampleContext = React.createContext<ExampleContextValue>({
@@ -21,9 +24,19 @@ export const ExampleContext = React.createContext<ExampleContextValue>({
 export const ExampleContextProvider = ({ children }) => {
   const [actions, setActions] = useState<React.ReactNode[]>([])
   const [accessibleLabel, setAccessibleLabel] = useState<React.ReactNode>()
-  const [exampleText, setExampleText] = useState<string>()
+  const [exampleText, setExampleText] = useState<ExampleTextComplete>()
+
   return (
-    <ExampleContext.Provider value={{ accessibleLabel, actions, exampleText, setAccessibleLabel, setActions, setExampleText }}>
+    <ExampleContext.Provider
+      value={{
+        accessibleLabel,
+        actions,
+        exampleText,
+        setAccessibleLabel,
+        setActions,
+        setExampleText: (text, config) => setExampleText({ text, ...config }),
+      }}
+    >
       {children}
     </ExampleContext.Provider>
   )
