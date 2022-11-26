@@ -1,16 +1,19 @@
 .switch-wrapper {
+  --size: 2em;
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: var(--size);
+  justify-content: center;
+  position: relative;
 }
 
 .switch {
-  --size: 2em;
   background-color: var(--greyTernary);
   height: calc(8px + var(--size));
   width: calc(8px + var(--size));
-  border-radius: var(--size);
+  border-radius: calc(2 * var(--size));
   cursor: pointer;
   height: calc(8px + var(--size));
   outline: none;
@@ -44,8 +47,16 @@
   left: var(--size);
 }
 
-html[data-theme='dark'] .switch {
-  background-color: var(--grey);
+.switch-wrapper.small {
+  --size: 20px;
+}
+
+.switch-wrapper.small .switch {
+  height: 3px;
+}
+
+.switch-wrapper.small .switch:after {
+  top: calc(-0.5 * var(--size));
 }
 
 html[data-theme='dark'] .switch:after {
@@ -56,4 +67,10 @@ html[data-theme='dark'] .switch:hover,
 html[data-theme='dark'] .switch:focus {
   background-color: var(--greySecondary);
   box-shadow: 0px 0px 0 4px var(--black), 0px 0px 0 6px white;
+}
+
+html[data-theme='dark'] .switch-wrapper.small .switch:hover,
+html[data-theme='dark'] .switch-wrapper.small .switch:focus {
+  background-color: var(--greySecondary);
+  box-shadow: 0px 0px 0 8px var(--black), 0px 0px 0 10px var(--greyTernary);
 }

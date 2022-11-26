@@ -12,12 +12,11 @@
 @import './alertdialog.css';
 @import './button.css';
 @import './spinbutton.css';
+@import './switch.css';
 @import './textfield.css';
 @import './tooltip.css';
 @import './toolbar.css';
 /** plop-prepend-css-file */
-
-@import '../../src/matchers/toBeAccessibleSwitch/examples/switch.css';
 
 :root {
   --doc-sidebar-width: 320px !important;
