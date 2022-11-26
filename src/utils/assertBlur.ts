@@ -18,8 +18,8 @@ export const assertBlur = ({
       utils,
     })
   } else {
-    message += printUtil.fail(`element ${utils.printReceived(element)} ${messageContent}`, {
-      hints: `    Received: ${utils.printReceived(document.activeElement)}`,
+    message += printUtil.fail(`element ${messageContent}`, {
+      received: document.activeElement,
       utils,
     })
     pass = false

@@ -6,6 +6,12 @@ type FailConfig = {
   received?: ExpectedOrReceived
 } & Config
 
+type TestingConfig = {
+  element: HTMLElement
+  pass: boolean
+  utils: JestMatcherUtils
+}
+
 export const printUtil = {
   fail: (msg: string, { expected, hints, received, utils }: FailConfig) => {
     let message = `${utils.RECEIVED_COLOR('✕')} ${utils.DIM_COLOR(msg)}${
@@ -22,4 +28,8 @@ export const printUtil = {
   },
   pass: (msg: string, { utils }: Config) =>
     `${utils.EXPECTED_COLOR('✓')} ${utils.DIM_COLOR(msg)}\n`,
+  testingElement: (msg: string, { element, pass, utils }: TestingConfig) => {
+    const printFunc = pass ? utils.EXPECTED_COLOR : utils.RECEIVED_COLOR
+    return `\n${printFunc('● Testing element:')} ${element.outerHTML}\n\n${msg}`
+  },
 }

@@ -6,7 +6,7 @@ import { printUtil } from 'utils/printUtil'
 type AssertKeyboardNavConfig = {
   element: HTMLElement
   // @see https://www.w3.org/TR/uievents-key/#keys-modifier
-  key: string // 'ArrowDown' | 'ArrowUp' | 'ArrowLeft' | 'ArrowRight'
+  key: '{arrowleft}' | '{arrowright}' | '{arrowup}' | '{arrowdown}'
   passMessage?: string
   nextElement?: HTMLElement
   utils: JestMatcherUtils
@@ -25,7 +25,11 @@ export const assertKeyboardNav = ({
   userEvent.keyboard(key)
   const activeElement = document.activeElement as HTMLElement
 
-  const blurCheck = assertBlur({ element, utils })
+  const blurCheck = assertBlur({
+    element,
+    message: 'blurs as it navigates to the next element',
+    utils,
+  })
   message += blurCheck.message()
   pass = pass ? blurCheck.pass : false
 
