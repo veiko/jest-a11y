@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/veiko/jest-a11y/compare/v1.17.0...v1.18.0) (2022-11-26)
+
+
+### Features
+
+* **tabs:** toBeAccessibleTabs [#29](https://github.com/veiko/jest-a11y/issues/29) ([#31](https://github.com/veiko/jest-a11y/issues/31)) ([a6ae9d5](https://github.com/veiko/jest-a11y/commit/a6ae9d5d2ec574b22827d8af177632a05abea6ab))
+
 # [1.17.0](https://github.com/veiko/jest-a11y/compare/v1.16.0...v1.17.0) (2022-11-23)
 
 
