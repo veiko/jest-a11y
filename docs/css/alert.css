@@ -1,0 +1,7 @@
+.example .alert {
+  background-color: var(--green-300);
+  display: block;
+  padding: 1em 2em;
+  text-align: center;
+  width: 100%;
+}

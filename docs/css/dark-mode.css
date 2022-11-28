@@ -142,10 +142,6 @@ html[data-theme='dark'] .code-block-test-pass span:first-letter {
   color: var(--green);
 }
 
-html[data-theme='dark'] .example {
-  background: var(--black);
-}
-
 .announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
   background-color: var(--black) !important;
   color: var(--white) !important;

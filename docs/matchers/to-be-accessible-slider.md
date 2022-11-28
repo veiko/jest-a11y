@@ -9,12 +9,17 @@ import TabItem from '@theme/TabItem'
 
 import { TestSummary } from '../components/TestSummary'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { Slider } from '../components/slider/DocsSlider'
+
 <div className="intro-text">A <strong>slider</strong> is an input where the user selects a value from within a given range.</div>
 
 Sliders typically have a slider thumb that can be moved along a bar or track to change the value of the slider.
 
-- [WAI Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)
-- [Slider Example](https://www.w3.org/WAI/ARIA/apg/example-index/slider/slider-color-viewer.html)
+<ExampleContainer>
+  <Slider />
+</ExampleContainer>
 
 ## Usage
 
@@ -101,3 +106,10 @@ The matcher tests the following:
 - <kbd>Left Arrow</kbd> and <kbd>Down Arrow</kbd> decrease the value of the slider by one step
 - <kbd>Home</kbd> sets the value of the slider to the first allowed value in its range
 - <kbd>End</kbd> sets the value of the slider to the last allowed value in its range
+
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)
+- [Slider Example](https://www.w3.org/WAI/ARIA/apg/example-index/slider/slider-color-viewer.html)

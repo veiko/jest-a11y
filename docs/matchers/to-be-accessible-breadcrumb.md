@@ -7,12 +7,17 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { Breadcrumb } from '../components/breadcrumb/DocsBreadcrumb'
+
 <div className="intro-text">A <strong>breadcrumb</strong> trail consists of a list of links to the parent pages of the current page in hierarchical order.</div>
 
 It helps users find their place within a website or web application. Breadcrumbs are often placed horizontally before a page's main content.
 
-- [WAI Breadcrumb Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/)
-- [Breadcrumb Example](https://www.w3.org/WAI/ARIA/apg/example-index/breadcrumb/index.html)
+<ExampleContainer size={4}>
+  <Breadcrumb />
+</ExampleContainer>
 
 ## Usage
 
@@ -109,3 +114,10 @@ Functionality that is not tested:
 ### Keyboard Interaction
 
 Not applicable.
+
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI Breadcrumb Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/)
+- [Breadcrumb Example](https://www.w3.org/WAI/ARIA/apg/example-index/breadcrumb/index.html)

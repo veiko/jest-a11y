@@ -9,7 +9,7 @@ import TabItem from'@theme/TabItem'
 
 import { ExampleContainer } from '../components/ExampleContainer'
 
-import { Accordion } from '../../src/matchers/toBeAccessibleAccordion/examples/Accordion'
+import { Accordion } from '../components/accordion/DocsAccordion'
 
 <div className="intro-text">
 An <strong>accordion</strong> is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</div>
@@ -106,16 +106,20 @@ visible, aria-expanded is set to false.
 #### 1. The title of each accordion header is contained in an element with `role` of `button`
 
 ```html
-<!-- ✅ role is set correctly -->
+<!-- ✅ the title is contained in a button -->
 <div class="accordion">
   <h3>
     <!-- success-next-line -->
-    <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
+    <button aria-controls="panel" aria-expanded="false">
+      <!-- success-next-line -->
+      Accordion Header 1
+      <!-- success-next-line -->
+    </button>
   </h3>
   <div id="panel">Accordion Panel 1</div>
 </div>
 
-<!-- ❌ role of button is not set -->
+<!-- ❌ the title is contained in a span -->
 <div class="accordion">
   <h3>
     <!-- error-next-line -->

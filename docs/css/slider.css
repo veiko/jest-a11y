@@ -1,0 +1,40 @@
+.slider {
+  --handle-size: 16px;
+  --track-size: 3px;
+  appearance: none;
+  background: var(--grey);
+  background-image: var(--purple-cyan);
+  background-repeat: no-repeat;
+  background-size: var(--percent-value) 100%;
+  border: none;
+  border-radius: var(--track-size);
+  cursor: pointer;
+  height: var(--track-size);
+  outline-color: var(--yellow);
+  outline-offset: 6px;
+  width: 400px;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--black);
+  cursor: ew-resize;
+  height: var(--handle-size);
+  width: var(--handle-size);
+  transition: background 0.3s ease-in-out;
+}
+
+.slider::-moz-range-track,
+.slider::-webkit-slider-runnable-track {
+  appearance: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+}

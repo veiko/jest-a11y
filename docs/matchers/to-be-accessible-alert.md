@@ -7,10 +7,15 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
+import { ExampleContainer } from '../components/ExampleContainer'
+
+import { Alert } from '../components/alert/DocsAlert'
+
 <div className="intro-text">An <strong>alert </strong> is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task.</div>
 
-- [WAI Alert Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
-- [Alert Example](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html)
+<ExampleContainer size={4}>
+  <Alert />
+</ExampleContainer>
 
 ## Usage
 
@@ -76,4 +81,9 @@ Because alerts are intended to provide important and potentially time-sensitive 
 
 #### 1. 🚧 The widget should not be in the tab sequence
 
-:::
+## External Resources
+
+#### Web Accessibility Initiative
+
+- [WAI Alert Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
+- [Alert Example](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html)

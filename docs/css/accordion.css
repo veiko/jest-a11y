@@ -1,12 +1,5 @@
 .accordion {
   --accordion-border-color: var(--grey);
-  --accordion-border-color-hover: var(--purple);
-  --accordion-color: var(--black);
-  --accordion-color-hover: var(--grey);
-}
-
-html[data-theme='dark'] .accordion {
-  --accordion-border-color: var(--grey);
   --accordion-border-color-hover: var(--white);
   --accordion-color: var(--white);
   --accordion-color-hover: var(--yellow);
