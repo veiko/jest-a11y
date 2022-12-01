@@ -2,12 +2,13 @@ import React, { useCallback, useState } from 'react'
 import { ArrowPointer } from './ArrowPointer'
 import { Control, ControlConfig } from './Control'
 import { List } from './List'
+import { AudioIcon } from './AudioIcon'
 
 type ExampleTextConfig = { transformY?: number }
 type ExampleTextComplete = ExampleTextConfig & { text: React.ReactNode }
 
 type ExampleContextValue = {
-  accessibleLabel?: React.ReactNode
+  accessibleLabel?: string
   actions: React.ReactNode[]
   addControl: (control: ControlConfig) => void
   controls: ControlConfig[]
@@ -35,7 +36,7 @@ export const ExampleContext = React.createContext<ExampleContextValue>({
 export const ExampleContextProvider = ({ children }) => {
   const [actions, setActions] = useState<React.ReactNode[]>([])
   const [controls, setControls] = useState<ControlConfig[]>([])
-  const [accessibleLabel, setAccessibleLabel] = useState<React.ReactNode>()
+  const [accessibleLabel, setAccessibleLabel] = useState<string>()
   const [exampleText, setExampleText] = useState<ExampleTextComplete>()
   const [tooltip, setTooltip] = useState(true)
 
@@ -52,9 +53,9 @@ export const ExampleContextProvider = ({ children }) => {
         controls,
         exampleText,
         getControlValue,
-        setAccessibleLabel,
+        setAccessibleLabel: () => {},
         setActions,
-        setExampleText: (text, config) => setExampleText({ text, ...config }),
+        setExampleText: () => {},
         setTooltip,
         tooltip,
       }}
@@ -81,26 +82,40 @@ const ExampleFooter = () => {
     <div className="example-actions">
       {accessibleLabel ? (
         <div style={{ alignItems: 'center', display: 'inline-flex', gap: '4px' }}>
-          <img src="/jest-a11y/img/audio.svg" />{' '}
+          <div className="audio-btn">
+            <AudioIcon
+              onClick={() => {
+                var msg = new SpeechSynthesisUtterance(accessibleLabel)
+                speechSynthesis.speak(msg)
+              }}
+            />
+          </div>
           <span>
             <strong>Accessible Label: </strong>
             {accessibleLabel}
           </span>
         </div>
       ) : null}
-      {actions.length > 0 && <List items={actions} />}
+      {actions.length > 0 && (
+        <div>
+          <List items={actions} />
+        </div>
+      )}
     </div>
   )
 }
 
-export const ExampleContainer = ({ size = 1, children }) => {
+export const ExampleContainer = ({ height, size = 1, children }) => {
   const arrowSize = 40
+
   return (
     <ExampleContextProvider>
-      <div className="example centered" style={{ '--arrow-size': `${arrowSize}px`, '--grid-size': `${size}fr` } as React.CSSProperties}>
-        <div className="left" />
-        <div className="center">{children}</div>
-        <div className="right">{<ArrowPointer color="var(--purple)" size={arrowSize} />}</div>
+      <div className="example-wrapper">
+        <div className="example centered" style={{ '--arrow-size': `${arrowSize}px`, '--grid-size': `${size}fr`, height } as React.CSSProperties}>
+          <div className="left" />
+          <div className="center">{children}</div>
+          <div className="right">{<ArrowPointer color="var(--purple)" size={arrowSize} />}</div>
+        </div>
       </div>
       <ExampleControls />
       <ExampleFooter />

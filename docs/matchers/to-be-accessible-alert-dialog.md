@@ -9,14 +9,14 @@ import TabItem from '@theme/TabItem'
 
 import { ExampleContainer } from '../components/ExampleContainer'
 
-import { AlertDialog } from '../../src/matchers/toBeAccessibleAlertDialog/examples/AlertDialog'
+import { AlertDialog } from '../components/alertdialog/DocsAlertDialog'
 
 <div className="intro-text">An <strong>alert dialog</strong> is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response.</div>
 
 Examples include action confirmation prompts and error message confirmations.
 
 <ExampleContainer>
-<AlertDialog />
+  <AlertDialog />
 </ExampleContainer>
 
 ## Usage
@@ -76,7 +76,7 @@ The matcher will test the following:
 #### 1. The element that contains all elements of the dialog, including the alert message and any dialog buttons, has `role` of `alertdialog`.
 
 ```html
-<!-- ✅ PASS - role is set with attribute -->
+<!-- ✓ role is set with attribute -->
 <div role="alertdialog">Hey, listen!</div>
 
 <!-- ❌ FAIL - role is not set or implicit -->
@@ -91,13 +91,13 @@ The element with role `alertdialog` has either:
 - A value for `aria-label` if the dialog does not have a visible label.
 
 ```html
-<!-- ✅ PASS - accessible name is set by aria-labelledby -->
+<!-- ✓ accessible name is set by aria-labelledby -->
 <div aria-labelledby="the-label" role="alertdialog">
   <h3 id="the-label">Sorry Mario.</h3>
   <p>But the princess is in another castle!</p>
 </div>
 
-<!-- ✅ PASS - accessible name is set by aria-label -->
+<!-- ✓ accessible name is set by aria-label -->
 <div aria-label="Sorry Mario" role="alertdialog">
   <p>But the princess is in another castle!</p>
 </div>

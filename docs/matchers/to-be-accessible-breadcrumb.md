@@ -78,7 +78,7 @@ Functionality that is not tested:
 #### 1. The widget has a `tagName` of `nav`.
 
 ```html
-<!-- ✅ element has tagName nav -->
+<!-- ✓ element has tagName nav -->
 <nav aria-label="breadcrumbs">
   <ol>
     <li><a href="">1</a></li>
@@ -96,7 +96,7 @@ Functionality that is not tested:
 #### 2. The widget has an accessible label.
 
 ```html
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <nav aria-label="breadcrumbs">
   <ol>
     <li><a href="">1</a></li>

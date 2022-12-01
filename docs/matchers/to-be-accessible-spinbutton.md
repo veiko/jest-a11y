@@ -91,7 +91,7 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `spinbutton`.
 
 ```html
-<!-- ✅ element has role spinbutton -->
+<!-- ✓ element has role spinbutton -->
 <div role="spinbutton">hey, listen!</div>
 
 <!-- ❌ element has role spinbutton -->
@@ -101,10 +101,10 @@ The matcher tests the following:
 #### 2. The widget has an accessible label.
 
 ```html
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
 
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <div id="spinbutton-label">Brightness</div>
 <div aria-labelledby="spinbutton-label" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
 
@@ -115,7 +115,7 @@ The matcher tests the following:
 #### 3. The widget has valid `aria-valuemax`, `aria-valuemin` and `aria-valuenow` values
 
 ```html
-<!-- ✅ element has valid aria-valuemax, aria-valuemin and aria-valuenow -->
+<!-- ✓ element has valid aria-valuemax, aria-valuemin and aria-valuenow -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
 
 <!-- ❌ element is missing aria-valuemax, aria-valuemin or aria-valuenow properties -->

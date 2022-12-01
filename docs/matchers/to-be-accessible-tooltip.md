@@ -81,7 +81,7 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `tooltip`.
 
 ```html
-<!-- ✅ element has role tooltip -->
+<!-- ✓ element has role tooltip -->
 <div role="tooltip">hey, listen!</div>
 
 <!-- ❌ element has role tooltip -->
@@ -91,7 +91,7 @@ The matcher tests the following:
 #### 2. The tooltip trigger references the tooltip element with aria-describedby.
 
 ```html
-<!-- ✅ trigger element has aria-describedby -->
+<!-- ✓ trigger element has aria-describedby -->
 <div aria-describedby="tooltip-content">hover me</div>
 <div id="tooltip-content" role="tooltip">hey, listen!</div>
 

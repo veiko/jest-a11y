@@ -67,7 +67,7 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `meter`.
 
 ```html
-<!-- ✅ element has role meter -->
+<!-- ✓ element has role meter -->
 <div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
 
 <!-- ❌ element has role meter -->
@@ -77,7 +77,7 @@ The matcher tests the following:
 #### 2. The widget has an accessible label.
 
 ```html
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
 
 <!-- ❌ element has accessible label -->
@@ -87,7 +87,7 @@ The matcher tests the following:
 #### 3. The widget has aria-valuemin set to a decimal value less than aria-valuemax.
 
 ```html
-<!-- ✅ element has aria-valuemin set to a decimal value less than aria-valuemax -->
+<!-- ✓ element has aria-valuemin set to a decimal value less than aria-valuemax -->
 <div aria-label="progress" aria-valuemin="0" aria-valuemax="1" role="meter" />
 
 <!-- ❌ element has aria-valuemin greater than aria-valuemax -->
@@ -97,7 +97,7 @@ The matcher tests the following:
 #### 4. The widget has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax
 
 ```html
-<!-- ✅ element has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax -->
+<!-- ✓ element has aria-valuenow set to a decimal value between aria-valuemin and aria-valuemax -->
 <div aria-label="progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.5" role="meter" />
 
 <!-- ❌ element has aria-valuenow greater than aria-valuemax -->

@@ -95,7 +95,7 @@ The matcher tests the following on each tab panel:
 #### 1. The container widget has a `role` of `tablist`.
 
 ```html
-<!-- ✅ element has role tablist -->
+<!-- ✓ element has role tablist -->
 <!-- success-next-line -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <div aria-selected="true" role="tab">1</div>
@@ -113,7 +113,7 @@ The matcher tests the following on each tab panel:
 #### 2. The container widget has an accessible name.
 
 ```html
-<!-- ✅ element has accessible name -->
+<!-- ✓ element has accessible name -->
 <!-- success-next-line -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <div aria-selected="true" role="tab">1</div>
@@ -131,7 +131,7 @@ The matcher tests the following on each tab panel:
 #### 3. The container element contains a single tab element with aria-selected="true".
 
 ```html
-<!-- ✅ element contains a single selected tab element -->
+<!-- ✓ element contains a single selected tab element -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <!-- success-next-line -->
   <div aria-selected="true" role="tab">1</div>
@@ -158,7 +158,7 @@ The matcher tests the following on each tab panel:
 #### 4. Each tab element has role `tab` and is within the `tablist` element
 
 ```html
-<!-- ✅ element has role tab and is within the tablist element -->
+<!-- ✓ element has role tab and is within the tablist element -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <!-- success-next-line -->
   <div aria-selected="true" role="tab">1</div>
@@ -186,7 +186,7 @@ The matcher tests the following on each tab panel:
 #### 5. Each tab element has `aria-controls` referring to its associated `tabpanel`
 
 ```html
-<!-- ✅ element has aria-controls referring to its associated tabpanel -->
+<!-- ✓ element has aria-controls referring to its associated tabpanel -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <!-- success-next-line -->
   <div aria-controls="one" aria-selected="true" id="1" role="tab">1</div>
@@ -210,7 +210,7 @@ The matcher tests the following on each tab panel:
 #### 6. Each tab content panel has role `tabpanel`
 
 ```html
-<!-- ✅ element has role tabpanel -->
+<!-- ✓ element has role tabpanel -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <div aria-controls="one" aria-selected="true" id="1" role="tab">1</div>
   <div aria-controls="two" id="2" role="tab">2</div>
@@ -233,7 +233,7 @@ The matcher tests the following on each tab panel:
 #### 7. Each `tabpanel` has `aria-labelledby` referring to its associated `tab` element
 
 ```html
-<!-- ✅ element has aria-labelledby referring to its associated tab element -->
+<!-- ✓ element has aria-labelledby referring to its associated tab element -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <div aria-controls="one" aria-selected="true" id="1" role="tab">1</div>
   <div aria-controls="two" id="2" role="tab">2</div>
@@ -257,7 +257,7 @@ The matcher tests the following on each tab panel:
 #### 8. Each `tabpanel` element or its first focusable child are part of the tab sequence
 
 ```html
-<!-- ✅ element or its first focusable child are part of the tab sequence -->
+<!-- ✓ element or its first focusable child are part of the tab sequence -->
 <div aria-label="The Tabs" role="tablist" tabindex="0">
   <div aria-controls="one" aria-selected="true" id="1" role="tab">1</div>
   <div aria-controls="two" id="2" role="tab">2</div>

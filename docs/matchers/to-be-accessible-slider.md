@@ -63,7 +63,7 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `slider`.
 
 ```html
-<!-- ✅ element has role slider -->
+<!-- ✓ element has role slider -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
 
 <!-- ❌ element is missing role slider -->
@@ -73,10 +73,10 @@ The matcher tests the following:
 #### 2. The widget has an accessible label.
 
 ```html
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
 
-<!-- ✅ element has accessible label -->
+<!-- ✓ element has accessible label -->
 <div id="slider-label">Brightness</div>
 <div aria-labelledby="slider-label" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
 
@@ -87,7 +87,7 @@ The matcher tests the following:
 #### 3. The widget has valid `aria-valuemax`, `aria-valuemin` and `aria-valuenow` values
 
 ```html
-<!-- ✅ element has role slider -->
+<!-- ✓ element has role slider -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
 
 <!-- ❌ element is missing aria-valuemax, aria-valuemin or aria-valuenow properties -->

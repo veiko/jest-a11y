@@ -1,17 +1,15 @@
 .alertdialog {
-  --alertdialog-background: var(--white);
+  --alertdialog-background: var(--black);
   background: var(--alertdialog-background);
+  border: 1px solid var(--purple-900);
   border-radius: 1em;
-  box-shadow: var(--shadow-elevation-high);
+  box-shadow: 0 0 0 6px var(--purple-200), var(--shadow-elevation-medium);
   display: none;
   margin-top: -4rem;
   max-width: 600px;
-  padding: 4rem 6em;
+  padding: 2rem 6em;
   position: absolute;
-}
-
-html[data-theme='dark'] .alertdialog {
-  --alertdialog-background: var(--grey);
+  top: 4.75em;
 }
 
 .alertdialog.open {

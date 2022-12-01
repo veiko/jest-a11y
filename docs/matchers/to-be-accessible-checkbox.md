@@ -36,10 +36,10 @@ test('button', () => {
 #### 1. The checkbox has `role` of `checkbox`.
 
 ```html
-<!-- ✅ PASS - role is implicit -->
+<!-- ✓ role is implicit -->
 <input type="checkbox" />
 
-<!-- ✅ PASS - role is set with attribute -->
+<!-- ✓ role is set with attribute -->
 <div role="checkbox">✔</div>
 
 <!-- ❌ FAIL - role is not set or implicit -->
@@ -55,16 +55,16 @@ The checkbox has an accessible label provided by one of the following:
 - `aria-label` set on the element with role checkbox.
 
 ```html
-<!-- ✅ PASS - accessible label is contained within -->
+<!-- ✓ accessible label is contained within -->
 <div role="checkbox">Remind me</div>
 
-<!-- ✅ PASS - accessible label is referenced with aria-labelledby -->
+<!-- ✓ accessible label is referenced with aria-labelledby -->
 <body>
   <label id="the-label">Remind me</label>
   <input aria-labelledby="the-label" type="checkbox" />
 </body>
 
-<!-- ✅ PASS - accessible label is set with aria-label -->
+<!-- ✓ accessible label is set with aria-label -->
 <input aria-label="Remind me" type="checkbox" />
 
 <!-- ❌ FAIL - accessible label is not set or implicit -->

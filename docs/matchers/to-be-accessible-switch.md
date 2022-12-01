@@ -100,7 +100,7 @@ If a set of switches is presented as a logical group with a visible label, eithe
 #### 1. The widget has a `role` of `switch`.
 
 ```html
-<!-- ✅ element has role switch -->
+<!-- ✓ element has role switch -->
 <div role="switch">hey, listen!</div>
 
 <!-- ❌ element has role switch -->
@@ -124,7 +124,7 @@ It is critical the label on a switch does not change when its state changes.
 #### 3. The switch has a valid `aria-checked` attribute.
 
 ```html
-<!-- ✅ element has valid aria-checked -->
+<!-- ✓ element has valid aria-checked -->
 <div aria-checked="true" aria-label="Lights" role="switch" />
 
 <!-- ❌ element is missing aria-checked -->

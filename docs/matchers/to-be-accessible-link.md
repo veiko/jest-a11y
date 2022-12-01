@@ -67,10 +67,10 @@ The `toBeAccessibleLink` matcher tests the following:
 #### 1. The element has `role` `link`
 
 ```html
-<!-- ✅ element has role link implicit -->
+<!-- ✓ element has role link implicit -->
 <a href="https://veiko.github.io/jest-a11y">click me</button>
 
-<!-- ✅ element has role link -->
+<!-- ✓ element has role link -->
 <div href="https://veiko.github.io/jest-a11y" role="link">click me</div>
 
 <!-- ❌ element has role link -->

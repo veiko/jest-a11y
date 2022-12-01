@@ -46,10 +46,10 @@ The matcher tests the following:
 #### 1. The button has `role` of `button`.
 
 ```html
-<!-- ✅ PASS - role is implicit -->
+<!-- ✓ role is implicit -->
 <button>👍</button>
 
-<!-- ✅ PASS - role is set with attribute -->
+<!-- ✓ role is set with attribute -->
 <div role="button">👍</div>
 
 <!-- ❌ FAIL - role is not set or implicit -->
@@ -61,13 +61,13 @@ The matcher tests the following:
 By default, the accessible name is computed from any text content inside the button element. However, it can also be provided with `aria-labelledby` or `aria-label`.
 
 ```html
-<!-- ✅ PASS - accessible name is text content -->
+<!-- ✓ accessible name is text content -->
 <button>👍</button>
 
-<!-- ✅ PASS - accessible name is set with `aria-label` -->
+<!-- ✓ accessible name is set with `aria-label` -->
 <button aria-label="👍" />
 
-<!-- ✅ PASS - accessible name is set with `aria-labelledby` -->
+<!-- ✓ accessible name is set with `aria-labelledby` -->
 <body>
   <label id="the-label">OK?</label>
   <button aria-labelledby="the-label">👍</button>
@@ -82,10 +82,10 @@ By default, the accessible name is computed from any text content inside the but
 #### 1. The <kbd>Space</kbd> or <kbd>Enter</kbd> keys activate the button.
 
 ```html
-<!-- ✅ PASS - HTMLButtonElement will activate -->
+<!-- ✓ HTMLButtonElement will activate -->
 <button>👍</button>
 
-<!-- ✅ PASS - HTMLDivElement handles onkeydown -->
+<!-- ✓ HTMLDivElement handles onkeydown -->
 <div onkeydown="javascript: customHandler" role="button">👍</div>
 
 <!-- ❌ FAIL - HTMLDivElement will need Javascript -->

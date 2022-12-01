@@ -6,6 +6,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          breadcrumbs: false,
           routeBasePath: '/',
           sidebarPath: 'docs/sidebars.js',
         },

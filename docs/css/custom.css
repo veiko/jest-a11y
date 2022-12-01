@@ -92,6 +92,8 @@ html .markdown > h3 {
   --ifm-heading-vertical-rhythm-top: 2.5;
   --ifm-h1-vertical-rhythm-bottom: 2.5;
   --ifm-heading-vertical-rhythm-bottom: 2;
+
+  line-height: 1.8;
 }
 
 .welcome-h1 {
@@ -111,7 +113,7 @@ html .markdown > h3 {
 
 .stack-blitz-editor {
   background-color: #2f3138; /* #212327; */
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 0 0 black;
   display: flex;
   flex-direction: column;
@@ -123,6 +125,12 @@ html .markdown > h3 {
 
 .stack-blitz-editor-bar {
   padding: 10px;
+}
+
+.prism-code {
+  --ifm-pre-padding: 2em;
+  line-height: 1.8rem;
+  margin: 0 -2em !important;
 }
 
 html code {
@@ -201,9 +209,10 @@ html kbd {
   content: ' ';
   height: 25.5px;
   left: 0;
+  margin: 0 -2em;
   position: absolute;
   transform: translateY(-25.5px);
-  width: 100%;
+  width: calc(100% + 4em);
 }
 
 .code-block-error-line:before,
@@ -329,6 +338,13 @@ html kbd {
 }
 
 /** Example Container **/
+
+.example-wrapper {
+  --example-primary-color: var(--ifm-color-primary);
+  --example-secondary-color: var(--cyan);
+  margin: 3em -2em 0;
+}
+
 .example {
   align-items: center;
   background: var(--black);
@@ -337,7 +353,6 @@ html kbd {
   display: grid;
   grid-template-columns: 1fr var(--grid-size) 1fr;
   justify-content: center;
-  margin: 3em 0 0;
   min-height: 200px;
   position: relative;
 }
@@ -354,13 +369,16 @@ html kbd {
   display: flex;
   flex-direction: column;
   font-family: var(--font-family-hand);
+  left: 30px;
   position: relative;
 }
 
 .example .arrow-pointer .arrow-text {
+  align-items: center;
   background-color: var(--grey);
   border-radius: 8px;
   bottom: 100%;
+  display: flex;
   height: var(--height);
   max-height: 1000px;
   max-width: 400px;
@@ -369,11 +387,38 @@ html kbd {
   padding: 12px 1em 10px;
   position: absolute;
   text-align: center;
-  transition: ease-in-out 3s height;
+  transition: ease-out 640ms max-height, ease-out 960ms color 360ms, ease-out 240ms transform;
+}
+
+.example .arrow-pointer .arrow-text div {
+  opacity: 1;
+  transition: ease 1s opacity 360ms;
+}
+
+.example .arrow-pointer .arrow-text.fade-in {
+  /* color: transparent; */
+}
+
+.example .arrow-pointer .arrow-text.fade-in div {
+  opacity: 0;
+  transition: 0s opacity;
 }
 
 .example .arrow-pointer .arrow-text kbd {
+  color: currentColor;
   font-size: 80%;
+}
+
+.example .arrow-wrapper {
+  mask-image: linear-gradient(90deg, #000, #fff);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  transition: ease-in-out 480ms all 360ms;
+}
+
+.example .arrow-wrapper.fade-in {
+  mask-size: 100% 0%;
+  transition: ease 0s all;
 }
 
 .example .center {
@@ -381,7 +426,7 @@ html kbd {
   display: flex;
   height: 100%;
   justify-content: center;
-  padding: 2em 0;
+  padding: 2em 0 3em;
 }
 
 .example .right {
@@ -394,10 +439,10 @@ html kbd {
 
 .example-actions {
   background-color: var(--blackSecondary);
-  display: flex;
   font-size: 80%;
   margin-bottom: 4em;
-  padding: 1em;
+  padding: 1em 2em;
+  position: relative;
   transition: 0.4s ease-out padding;
 }
 
@@ -414,6 +459,21 @@ html kbd {
   color: var(--yellow);
 }
 
+.example-actions .audio-btn {
+  --size: 2.4em;
+  align-items: center;
+  background-color: var(--yellow);
+  border-radius: var(--size);
+  box-shadow: 0 0 0 3px var(--black);
+  color: var(--black);
+  display: flex;
+  height: var(--size);
+  justify-content: center;
+  left: calc(-0.5 * var(--size));
+  position: absolute;
+  width: var(--size);
+}
+
 .example-controls {
   align-items: center;
   background: var(--black);
@@ -421,7 +481,6 @@ html kbd {
   color: var(--white);
   display: grid;
   justify-content: center;
-  min-height: 2em;
   position: relative;
 }
 

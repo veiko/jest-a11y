@@ -84,7 +84,7 @@ Other functionality called out by WAI that is not tested:
 #### 1. The element that serves as the dialog container has a `role` of `dialog`.
 
 ```html
-<!-- ✅ role is set with attribute -->
+<!-- ✓ role is set with attribute -->
 <div role="dialog">Hey, listen!</div>
 
 <!-- ❌ role is not set or implicit -->
@@ -94,7 +94,7 @@ Other functionality called out by WAI that is not tested:
 #### 2. The element that serves as the dialog container has attribute `aria-modal` set to `"true"`.
 
 ```html
-<!-- ✅ attribute aria-modal is set to "true" -->
+<!-- ✓ attribute aria-modal is set to "true" -->
 <div aria-modal="true" role="dialog">Hey, listen!</div>
 
 <!-- ❌ attribute aria-modal is set to "true" -->
@@ -109,13 +109,13 @@ The element with role `dialog` has either:
 - A value for `aria-label` if the dialog does not have a visible label.
 
 ```html
-<!-- ✅ PASS - accessible name is set by aria-labelledby -->
+<!-- ✓ accessible name is set by aria-labelledby -->
 <div aria-labelledby="the-label" role="alertdialog">
   <h3 id="the-label">Sorry Mario.</h3>
   <p>But the princess is in another castle!</p>
 </div>
 
-<!-- ✅ PASS - accessible name is set by aria-label -->
+<!-- ✓ accessible name is set by aria-label -->
 <div aria-label="Sorry Mario" role="alertdialog">
   <p>But the princess is in another castle!</p>
 </div>

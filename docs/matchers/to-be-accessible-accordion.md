@@ -16,8 +16,8 @@ An <strong>accordion</strong> is a vertically stacked set of interactive heading
 
 The headings function as controls that enable users to reveal or hide their associated sections of content.
 
-<ExampleContainer>
-<Accordion />
+<ExampleContainer height="340px">
+  <Accordion />
 </ExampleContainer>
 
 ## Usage
@@ -106,7 +106,7 @@ visible, aria-expanded is set to false.
 #### 1. The title of each accordion header is contained in an element with `role` of `button`
 
 ```html
-<!-- ✅ the title is contained in a button -->
+<!-- ✓ the title is contained in a button -->
 <div class="accordion">
   <h3>
     <!-- success-next-line -->
@@ -132,7 +132,7 @@ visible, aria-expanded is set to false.
 #### 2. Each accordion header button is wrapped in an element with role heading that has a value set for `aria-level` that is appropriate for the information architecture of the page.
 
 ```html
-<!-- ✅ button is wrapped in element with implicit `aria-level` and `role` -->
+<!-- ✓ button is wrapped in element with implicit `aria-level` and `role` -->
 <div>
   <!-- success-next-line -->
   <h3>
@@ -141,7 +141,7 @@ visible, aria-expanded is set to false.
   <div id="panel">Accordion Panel 1</div>
 </div>
 
-<!-- ✅ button is wrapped in element with `aria-level` and `role` set -->
+<!-- ✓ button is wrapped in element with `aria-level` and `role` set -->
 <div>
   <!-- success-next-line -->
   <div aria-level="3" role="heading">
@@ -161,7 +161,7 @@ visible, aria-expanded is set to false.
 #### 3. The accordion header button element has `aria-controls` set to the ID of the element containing the accordion panel content.
 
 ```html
-<!--  ✅ element has aria-controls -->
+<!--  ✓ element has aria-controls -->
 <div>
   <h3>
     <!-- success-next-line -->
@@ -192,7 +192,7 @@ There are multiple ways to implement accordion panel visibility, so there is no 
   <summary>Example</summary>
 
 ```html
-<!-- ✅ button has aria-expanded prop according to panel visibility -->
+<!-- ✓ button has aria-expanded prop according to panel visibility -->
 <div>
   <h3><button aria-controls="panel" aria-expanded="true">Accordion Header 1</button></h3>
   <div style="display: block">Accordion Panel 1</div>

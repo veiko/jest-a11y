@@ -86,7 +86,7 @@ The matcher tests the following:
 #### 1. The container widget has a `role` of `radiogroup`.
 
 ```html
-<!-- ✅ element has role radiogroup -->
+<!-- ✓ element has role radiogroup -->
 <div aria-label="Delivery Method" role="radiogroup">
   <input aria-checked="true" aria-label="Pickup" type="radio" />
   <input aria-checked="true" aria-label="Delivery" type="radio" />

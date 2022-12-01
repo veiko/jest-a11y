@@ -66,7 +66,7 @@ The `toBeAccessibleAlert` matcher tests the following:
 #### 1. The widget has a `role` of `alert`.
 
 ```html
-<!-- ✅ element has role alert -->
+<!-- ✓ element has role alert -->
 <div role="alert">hey, listen!</div>
 
 <!-- ❌ element has role alert -->
@@ -80,6 +80,8 @@ Because alerts are intended to provide important and potentially time-sensitive 
 :::caution Coming Soon
 
 #### 1. 🚧 The widget should not be in the tab sequence
+
+:::
 
 ## External Resources
 

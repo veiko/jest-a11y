@@ -2,7 +2,7 @@
   --accordion-border-color: var(--grey);
   --accordion-border-color-hover: var(--white);
   --accordion-color: var(--white);
-  --accordion-color-hover: var(--yellow);
+  --accordion-color-hover: var(--example-primary-color);
 }
 
 .accordion button {
@@ -37,6 +37,13 @@
 .accordion button:hover:after {
   margin-right: 0;
 }
+.accordion h3 {
+  margin: 1em 0 0;
+}
+
+.accordion h3:first-child {
+  margin: 0;
+}
 
 .accordion .panel {
   max-height: 0;
@@ -45,9 +52,12 @@
 }
 
 .accordion .panel.open {
-  max-height: 4em;
+  max-height: 10em;
 }
 
 .accordion .panel-content {
-  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin-top: 1em;
+  padding: 1em 2em;
 }

@@ -71,13 +71,18 @@ export const Accordion: React.FC<{ id: string }> = ({ id }) => {
         id="sect1"
         buttonProps={{
           onFocus: () =>
-          setExampleText(
-            <>
-              <kbd>Enter</kbd> or <kbd>Space</kbd> will expand the accordion panel
-            </>,
-            { transformY: 0 },
-          )
-          , onKeyDown: (e) => {if(e.key==='Tab') {setAccessibleLabel(undefined); setTooltip(false)}}
+            setExampleText(
+              <>
+                <kbd>Enter</kbd> or <kbd>Space</kbd> will expand the accordion panel. Make this very long so that it wraps even more.
+              </>,
+              { transformY: 0 },
+            ),
+          onKeyDown: e => {
+            if (e.key === 'Tab') {
+              setAccessibleLabel(undefined)
+              setTooltip(false)
+            }
+          },
         }}
         title="Section 2"
       >

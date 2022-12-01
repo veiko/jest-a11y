@@ -68,7 +68,7 @@ The matcher tests the following:
 #### 1. The widget has a `role` of `toolbar`.
 
 ```html
-<!-- ✅ element has role toolbar -->
+<!-- ✓ element has role toolbar -->
 <div role="toolbar">hey, listen!</div>
 
 <!-- ❌ element has role toolbar -->
