@@ -112,6 +112,12 @@ Each <span className="handwritten">button</span> element in an accordion should 
 
 Test out the DOM structure of an accordion element here:
 
+:::caution Note
+
+This Playground does not test any keyboard interactions
+
+:::
+
 <AccordionTestRunner />
 
 ## External Resources

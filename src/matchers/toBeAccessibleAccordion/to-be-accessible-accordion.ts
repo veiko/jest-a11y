@@ -69,23 +69,22 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
         attribute: 'aria-controls',
         element: button,
         message: 'has attribute aria-controls',
+        value: (value: string) => !!element.querySelector(`#${value}`),
       })
       buttonMessage += '  ' + attrCheck.message()
       pass = pass === false ? false : attrCheck.pass
 
       // 4. aria-expanded
-      if (process.env.NODE_ENV === 'test') {
-        const enterCheck = assertAriaExpanded({
-          element: button,
-          message: 'aria-expanded toggled on {enter}',
-          userEvent: async () => {
-            button.focus()
-            userEvent.keyboard('{enter}')
-          },
-        })
-        buttonMessage += '  ' + enterCheck.message()
-        pass = pass === false ? false : enterCheck.pass
-      }
+      const enterCheck = assertAriaExpanded({
+        element: button,
+        message: 'aria-expanded toggled on {enter}',
+        userEvent: async () => {
+          button.focus()
+          userEvent.keyboard('{enter}')
+        },
+      })
+      buttonMessage += '  ' + enterCheck.message()
+      pass = pass === false ? false : enterCheck.pass
 
       // FIXME: issue with js-dom?
       // const spaceCheck = await assertAriaExpanded({

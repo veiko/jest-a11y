@@ -20,6 +20,14 @@ export const assertAriaExpanded = ({
   let message = ''
   let pass = true
 
+  if (process.env.NODE_ENV !== 'test') {
+    // Only run user events in tests
+    return {
+      message: () => 'element has attribute aria-expanded',
+      pass: element.hasAttribute('aria-expanded'),
+    }
+  }
+
   const initialState = element.getAttribute('aria-expanded') === 'true'
   userEvent()
 

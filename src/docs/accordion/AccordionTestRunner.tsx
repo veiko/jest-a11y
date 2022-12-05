@@ -13,12 +13,13 @@ export const AccordionTestRunner: React.FunctionComponent<Props> = () => {
     <TestRunner
       className="accordion"
       matcher={toBeAccessibleAccordion}
-      title="Accordion.tsx"
+      title="Accordion"
       code={`<div className="accordion">
   <h3>
-    <button aria-controls="something">
-      Accordion Panel 1
+    <button aria-controls="panel-1">
+      Accordion Item 1
     </button>
+    <div id="panel-1"></div>
   </h3>
 </div>`}
     />

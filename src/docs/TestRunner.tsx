@@ -30,8 +30,8 @@ export const TestRunner: React.FunctionComponent<Props> = ({ code: codeProp, mat
         {title && <div className="test-runner-title">{title}</div>}
         <LiveEditor autoFocus={false} className="live-editor" onChange={setCode} />
         <TestSummary addChecks={false} list={list} showTotal />
+        <LiveError className="test-runner-error" />
       </div>
-      <LiveError />
     </LiveProvider>
   )
 }
