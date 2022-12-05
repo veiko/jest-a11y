@@ -4,7 +4,7 @@ module.exports = {
   htmlWhitespaceSensitivity: 'css',
   insertPragma: false,
   jsxSingleQuote: false,
-  printWidth: 150,
+  printWidth: 100,
   proseWrap: 'never',
   quoteProps: 'as-needed',
   requirePragma: false,
@@ -13,4 +13,5 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
+  overrides: [{ files: '*.md', printWidth: 150 }],
 }
