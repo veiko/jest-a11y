@@ -1,18 +1,21 @@
-import { pfail, ppass } from 'utils/printPass'
-import { stringify } from 'utils/stringify'
+import { matcherUtils, printUtil } from './printUtil'
+import { stringify } from './stringify'
 
 type AssertAriaExpandedConfig = {
   element: HTMLElement
   message?: string
   userEvent(): void
-  utils: JestMatcherUtils
+  /**
+   * @deprecated
+   */
+  utils?: JestMatcherUtils
 }
 
 export const assertAriaExpanded = ({
   element,
   message: messageContent,
   userEvent,
-  utils,
+  utils = matcherUtils,
 }: AssertAriaExpandedConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
@@ -21,10 +24,10 @@ export const assertAriaExpanded = ({
   userEvent()
 
   if (element.getAttribute('aria-expanded') === (!initialState).toString()) {
-    message += ppass(messageContent || 'aria-expanded toggled', utils)
+    message += printUtil.pass(messageContent || 'aria-expanded toggled')
     userEvent()
   } else {
-    message += pfail(messageContent || 'aria-expanded toggled', utils)
+    message += printUtil.fail(messageContent || 'aria-expanded toggled')
     message += `    Expected element:\n     ${utils.BOLD_WEIGHT(
       stringify(element),
     )} to have ${utils.printExpected(`aria-expanded='${!initialState}'`)}\n`

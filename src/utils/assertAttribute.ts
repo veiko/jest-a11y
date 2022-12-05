@@ -1,4 +1,4 @@
-import { printUtil } from './printUtil'
+import { matcherUtils, printUtil } from './printUtil'
 
 type ValueCheck = (value: string) => boolean
 
@@ -12,7 +12,7 @@ type AssertAttributeConfig = {
   /** string to replace the default message with */
   message?: string
   /** JestMatcherUtils */
-  utils: JestMatcherUtils
+  utils?: JestMatcherUtils
   /** The expected value of the attribute  */
   value?: string | ValueCheck
 }
@@ -29,7 +29,7 @@ export const assertAttribute = ({
   element,
   elementName = 'element',
   message: messageContent,
-  utils,
+  utils = matcherUtils,
   value,
 }: AssertAttributeConfig): jest.CustomMatcherResult => {
   let message = ''

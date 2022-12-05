@@ -1,5 +1,6 @@
 import { closest } from './closest'
 import { pfail, ppass } from './printPass'
+import { matcherUtils } from './printUtil'
 
 type AssertClosestConfig = {
   /**
@@ -9,7 +10,7 @@ type AssertClosestConfig = {
   element: HTMLElement
   message?: string
   test(element: HTMLElement): boolean
-  utils: JestMatcherUtils
+  utils?: JestMatcherUtils
 }
 
 type AssertClosestResult = jest.CustomMatcherResult & {
@@ -21,7 +22,7 @@ export const assertClosest = ({
   element,
   message: msg,
   test,
-  utils,
+  utils = matcherUtils,
 }: AssertClosestConfig): AssertClosestResult => {
   let message = ''
   let pass = true
