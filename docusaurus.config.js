@@ -80,8 +80,16 @@ module.exports = {
           block: { start: 'highlight-start', end: 'highlight-end' },
         },
         {
+          className: 'code-block-dim-line',
+          line: 'dim-next-line',
+        },
+        {
           className: 'code-block-error-line',
           line: 'error-next-line',
+        },
+        {
+          className: 'code-block-highlight-line',
+          line: 'highlight-next-line',
         },
         {
           className: 'code-block-success-line',
@@ -102,6 +110,7 @@ module.exports = {
       ],
     },
   },
+  themes: ['@docusaurus/theme-live-codeblock'],
   title: 'jest-a11y',
   url: 'https://veiko.github.io',
 }

@@ -12,5 +12,5 @@
     "strict": true,
     "target": "es2018"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/types"]
+  "include": ["docs/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "src/types"]
 }

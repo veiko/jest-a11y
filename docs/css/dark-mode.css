@@ -14,6 +14,14 @@ html[data-theme='dark'] {
   /* navbar */
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-navbar-shadow: 1px 1px var(--grey);
+
+  /* toc */
+  /** not sure with !important is needed here and not on items above */
+  --ifm-toc-link-color: var(--greyTernary);
+  --ifm-toc-title-color: var(--white);
+
+  --prism-background-color: #282a36;
+  --prism-color: #f6f8fa;
 }
 
 html[data-theme='dark'] code {
@@ -75,6 +83,10 @@ html[data-theme='dark'] h2 {
   background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
 }
 
+html[data-theme='dark'] h4 {
+  color: var(--orange);
+}
+
 html[data-theme='dark'] #guarantee_bar {
   background-color: var(--blackSecondary);
   color: var(--greySecondary);
@@ -82,6 +94,10 @@ html[data-theme='dark'] #guarantee_bar {
 
 html[data-theme='dark'] .welcome-h1 {
   -webkit-text-fill-color: white;
+}
+
+html[data-theme='dark'] .handwritten {
+  color: var(--orange);
 }
 
 html[data-theme='dark'] .intro-text strong {
@@ -130,8 +146,8 @@ html[data-theme='dark'] .alert--info {
 html[data-theme='dark'] .alert--warning {
   --ifm-alert-background-color-highlight: rgba(84, 199, 236, 0.15);
   --ifm-alert-foreground-color: white;
-  --ifm-alert-border-color: var(--yellow);
-  background: var(--yellow-100);
+  --ifm-alert-border-color: var(--orange);
+  background: var(--black);
 }
 
 html[data-theme='dark'] .code-block-test-pass span {
@@ -140,6 +156,21 @@ html[data-theme='dark'] .code-block-test-pass span {
 
 html[data-theme='dark'] .code-block-test-pass span:first-letter {
   color: var(--green);
+}
+
+html[data-theme='dark'] .code-block-highlight-line {
+  --arrow-color-hover: var(--yellow);
+  --background-color: var(--black);
+}
+
+html[data-theme='dark'] .tabs li:hover {
+  background-color: var(--grey);
+  color: var(--white);
+}
+
+html[data-theme='dark'] .tabs li.tabs__item--active {
+  background-color: #282a36;
+  color: var(--white);
 }
 
 .announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
