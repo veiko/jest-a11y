@@ -7,13 +7,13 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { TestSummary } from '../components/TestSummary'
+import { TestSummary } from '../../src/docs/TestSummary'
 
-import { AccordionTestRunner } from '../components/accordion/AccordionTestRunner'
+import { AccordionTestRunner } from '../../src/docs/accordion/AccordionTestRunner'
 
-import { Accordion } from '../components/accordion/DocsAccordion'
+import { Accordion } from '../../src/docs/accordion/DocsAccordion'
 
 <div className="intro-text">
 An <strong>accordion</strong> is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</div>

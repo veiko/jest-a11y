@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { Alert } from '../components/alert/DocsAlert'
+import { Alert } from '../../src/docs/alert/DocsAlert'
 
 <div className="intro-text">An <strong>alert </strong> is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task.</div>
 

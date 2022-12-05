@@ -1,7 +1,7 @@
 import theme from 'prism-react-renderer/themes/dracula'
 import React, { useState } from 'react'
 import { LiveEditor, LiveError, LiveProvider } from 'react-live'
-import { TestSummary } from './components/TestSummary'
+import { TestSummary } from './TestSummary'
 
 type Props = {
   children?: React.ReactNode
@@ -17,7 +17,12 @@ const newEl = document.createElement('div')
  * TODO: Add a preview?
  * TODO: Classes and styles have been hard-coded for now. Ideally this would import the @theme/CodeBlock component, but
  */
-export const TestRunner: React.FunctionComponent<Props> = ({ children, code: codeProp, matcher, title }) => {
+export const TestRunner: React.FunctionComponent<Props> = ({
+  children,
+  code: codeProp,
+  matcher,
+  title,
+}) => {
   const [code, setCode] = useState(codeProp)
 
   newEl.innerHTML = code

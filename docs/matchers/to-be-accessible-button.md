@@ -3,7 +3,7 @@ id: button
 title: toBeAccessibleButton()
 ---
 
-import { StackBlitzEditor } from '../components/StackBlitzEditor'
+import { StackBlitzEditor } from '../../src/docs/StackBlitzEditor'
 
 <div className="intro-text">A <strong>button</strong> is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.</div>
 

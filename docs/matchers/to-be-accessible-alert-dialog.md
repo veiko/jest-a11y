@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { AlertDialog } from '../components/alertdialog/DocsAlertDialog'
+import { AlertDialog } from '../../src/docs/alertdialog/DocsAlertDialog'
 
 <div className="intro-text">An <strong>alert dialog</strong> is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response.</div>
 

@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
 import { Switch } from '../../src/matchers/toBeAccessibleSwitch/examples/Switch'
 

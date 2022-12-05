@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { Tooltip } from '../components/tooltip/Tooltip'
+import { Tooltip } from '../../src/docs/tooltip/Tooltip'
 
 :::caution Note
 
@@ -36,7 +36,8 @@ The `toBeAccessibleTooltip` matcher expects to be called on the tooltip trigger.
 
 ```js
 test('tooltip', () => {
-  document.body.innerHTML = '<div id="tooltip-trigger">Hey, listen!</div><div role="tooltip">tooltip content</div>'
+  document.body.innerHTML =
+    '<div id="tooltip-trigger">Hey, listen!</div><div role="tooltip">tooltip content</div>'
 
   expect(document.getElementById('tooltip-trigger')).toBeAccessibleTooltip()
 })

@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { Toolbar } from '../components/toolbar/Toolbar'
+import { Toolbar } from '../../src/docs/toolbar/Toolbar'
 
 <div className="intro-text">A <strong>toolbar</strong> is a container for grouping a set of controls, such as buttons, menubuttons, or checkboxes.</div>
 

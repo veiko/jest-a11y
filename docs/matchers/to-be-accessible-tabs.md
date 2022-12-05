@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { Tabs as DocsTabs } from '../components/tabs/DocsTabs'
+import { Tabs as DocsTabs } from '../../src/docs/tabs/DocsTabs'
 
 <div className="intro-text"><strong>Tabs</strong> are a set of layered sections of content, known as tab panels, that display one panel of content at a time.</div>
 

@@ -7,11 +7,11 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { TestSummary } from '../components/TestSummary'
+import { TestSummary } from '../../src/docs/TestSummary'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { Slider } from '../components/slider/DocsSlider'
+import { Slider } from '../../src/docs/slider/DocsSlider'
 
 <div className="intro-text">A <strong>slider</strong> is an input where the user selects a value from within a given range.</div>
 
@@ -30,7 +30,8 @@ Sliders typically have a slider thumb that can be moved along a bar or track to 
 
 ```js
 test('slider', () => {
-  document.body.innerHTML = '<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" id="slider" role="slider" />'
+  document.body.innerHTML =
+    '<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" id="slider" role="slider" />'
 
   expect(document.getElementById('slider')).toBeAccessibleSlider()
 })
@@ -43,7 +44,16 @@ test('slider', () => {
 import { render, screen } from '@testing-library/react'
 
 test('slider', () => {
-  render(<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" data-testid="slider" role="slider" />)
+  render(
+    <div
+      aria-label="brightness"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="50"
+      data-testid="slider"
+      role="slider"
+    />,
+  )
 
   expect(screen.getByTestId('slider')).toBeAccessibleSlider()
 })
@@ -64,7 +74,13 @@ The matcher tests the following:
 
 ```html
 <!-- ✓ element has role slider -->
-<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
+<div
+  aria-label="brightness"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="slider"
+/>
 
 <!-- ❌ element is missing role slider -->
 <div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" />
@@ -74,11 +90,23 @@ The matcher tests the following:
 
 ```html
 <!-- ✓ element has accessible label -->
-<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
+<div
+  aria-label="brightness"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="slider"
+/>
 
 <!-- ✓ element has accessible label -->
 <div id="slider-label">Brightness</div>
-<div aria-labelledby="slider-label" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
+<div
+  aria-labelledby="slider-label"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="slider"
+/>
 
 <!-- ❌ element is missing accessible label -->
 <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" />
@@ -88,7 +116,13 @@ The matcher tests the following:
 
 ```html
 <!-- ✓ element has role slider -->
-<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="slider" />
+<div
+  aria-label="brightness"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="slider"
+/>
 
 <!-- ❌ element is missing aria-valuemax, aria-valuemin or aria-valuenow properties -->
 <div aria-label="brightness" role="slider" />
@@ -97,7 +131,13 @@ The matcher tests the following:
 <div aria-label="brightness" aria-valuemin="100" aria-valuemax="0" role="slider" />
 
 <!-- ❌ element has aria-valuenow set to decimal number outside of range -->
-<div aria-label="brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="200" role="slider" />
+<div
+  aria-label="brightness"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="200"
+  role="slider"
+/>
 ```
 
 ### Keyboard Interaction

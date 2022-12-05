@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs'
 
 import TabItem from '@theme/TabItem'
 
-import { ExampleContainer } from '../components/ExampleContainer'
+import { ExampleContainer } from '../../src/docs/ExampleContainer'
 
-import { SpinButton } from '../components/spinbutton/SpinButtonExample'
+import { SpinButton } from '../../src/docs/spinbutton/SpinButtonExample'
 
 <div className="intro-text">A <strong>spinbutton</strong> is an input widget that restricts its value to a set or range of discrete values.</div>
 
@@ -102,11 +102,23 @@ The matcher tests the following:
 
 ```html
 <!-- ✓ element has accessible label -->
-<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+<div
+  aria-label="brightness"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="spinbutton"
+/>
 
 <!-- ✓ element has accessible label -->
 <div id="spinbutton-label">Brightness</div>
-<div aria-labelledby="spinbutton-label" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+<div
+  aria-labelledby="spinbutton-label"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="spinbutton"
+/>
 
 <!-- ❌ element is missing accessible label -->
 <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
@@ -116,7 +128,13 @@ The matcher tests the following:
 
 ```html
 <!-- ✓ element has valid aria-valuemax, aria-valuemin and aria-valuenow -->
-<div aria-label="brightness" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="spinbutton" />
+<div
+  aria-label="brightness"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="50"
+  role="spinbutton"
+/>
 
 <!-- ❌ element is missing aria-valuemax, aria-valuemin or aria-valuenow properties -->
 <div aria-label="brightness" role="spinbutton" />
@@ -125,7 +143,13 @@ The matcher tests the following:
 <div aria-label="brightness" aria-valuemin="100" aria-valuemax="0" role="spinbutton" />
 
 <!-- ❌ element has aria-valuenow set to decimal number outside of range -->
-<div aria-label="brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="200" role="spinbutton" />
+<div
+  aria-label="brightness"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="200"
+  role="spinbutton"
+/>
 ```
 
 ### Keyboard Interaction

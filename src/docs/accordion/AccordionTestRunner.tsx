@@ -1,6 +1,6 @@
+import { TestRunner } from '../TestRunner'
+import { toBeAccessibleAccordion } from '../../matchers/toBeAccessibleAccordion/to-be-accessible-accordion'
 import React from 'react'
-import { toBeAccessibleAccordion } from '../../../src/matchers/toBeAccessibleAccordion/to-be-accessible-accordion'
-import { TestRunner } from '../../TestRunner'
 
 type Props = { children: React.ReactNode; code: string }
 
