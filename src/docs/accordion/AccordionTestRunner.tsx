@@ -12,6 +12,8 @@ export const AccordionTestRunner: React.FunctionComponent<Props> = () => {
   return (
     <TestRunner
       className="accordion"
+      matcher={toBeAccessibleAccordion}
+      title="Accordion.tsx"
       code={`<div className="accordion">
   <h3>
     <button aria-controls="something">
@@ -19,7 +21,6 @@ export const AccordionTestRunner: React.FunctionComponent<Props> = () => {
     </button>
   </h3>
 </div>`}
-      matcher={toBeAccessibleAccordion}
     />
   )
 }

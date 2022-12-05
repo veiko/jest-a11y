@@ -8,8 +8,9 @@ type Props = {
   className?: string
   code: string
   matcher(el: HTMLElement): jest.CustomMatcherResult
-  title?: string
+  title: string
 }
+
 const newEl = document.createElement('div')
 
 /**
@@ -17,12 +18,7 @@ const newEl = document.createElement('div')
  * TODO: Add a preview?
  * TODO: Classes and styles have been hard-coded for now. Ideally this would import the @theme/CodeBlock component, but
  */
-export const TestRunner: React.FunctionComponent<Props> = ({
-  children,
-  code: codeProp,
-  matcher,
-  title,
-}) => {
+export const TestRunner: React.FunctionComponent<Props> = ({ code: codeProp, matcher, title }) => {
   const [code, setCode] = useState(codeProp)
 
   newEl.innerHTML = code
@@ -30,7 +26,7 @@ export const TestRunner: React.FunctionComponent<Props> = ({
 
   return (
     <LiveProvider code={code} language="jsx" theme={theme}>
-      <div className="test-runner codeBlockContent_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module">
+      <div className="test-runner with-title">
         {title && <div className="test-runner-title">{title}</div>}
         <LiveEditor autoFocus={false} className="live-editor" onChange={setCode} />
         <TestSummary addChecks={false} list={list} showTotal />

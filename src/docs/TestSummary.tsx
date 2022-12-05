@@ -15,7 +15,7 @@ const getTotals = (list: string[]) => {
     ;(line.includes('✓') || line.includes('✕')) && total++
   })
 
-  return { passed, total }
+  return { failed: total - passed, passed, total }
 }
 
 const validTestList = (line: string) => {
@@ -32,12 +32,18 @@ type Props = {
  * Component to display a summary of all the tests.
  * TODO: Classes and styles have been hard-coded for now. Ideally this would import the Prism component?
  */
-export const TestSummary: React.FunctionComponent<Props> = ({ addChecks = true, list = [], showTotal }) => {
-  const { passed, total } = getTotals(list)
+export const TestSummary: React.FunctionComponent<Props> = ({
+  addChecks = true,
+  list = [],
+  showTotal,
+}) => {
+  const { failed, passed, total } = getTotals(list)
   return (
     <div
       className="test-summary codeBlockContent_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module"
-      style={{ '--prism-color': '#F8F8F2', '--prism-background-color': '#282A36' } as React.CSSProperties}
+      style={
+        { '--prism-color': '#F8F8F2', '--prism-background-color': '#282A36' } as React.CSSProperties
+      }
     >
       <pre className="prism-code language-html codeBlock_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module thin-scrollbar">
         <code className="codeBlockLines_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module">
@@ -47,10 +53,19 @@ export const TestSummary: React.FunctionComponent<Props> = ({ addChecks = true, 
               .map(item => {
                 const className = addChecks ? 'code-block-test-pass' : determineClass(item)
                 return (
-                  <li className={`token-line ${className}`} key={item} style={{ color: 'rgb(248, 248, 242)' }}>
+                  <li
+                    className={`token-line ${className}`}
+                    key={item}
+                    style={{ color: 'rgb(248, 248, 242)' }}
+                  >
                     {addChecks ? (
                       <span className="token plain">
-                        <i aria-hidden="true" className="fa-solid fa-check" style={{ color: 'var(--green)', fontSize: '80%' }} /> {item}
+                        <i
+                          aria-hidden="true"
+                          className="fa-solid fa-check"
+                          style={{ color: 'var(--green)', fontSize: '80%' }}
+                        />{' '}
+                        {item}
                       </span>
                     ) : (
                       <span className="token plain">{item}</span>
@@ -63,7 +78,13 @@ export const TestSummary: React.FunctionComponent<Props> = ({ addChecks = true, 
           {showTotal && (
             <>
               <br />
-              &nbsp; Tests: <strong className="code-green">{passed} passed</strong>, {total} total
+              &nbsp; Tests:{' '}
+              {failed ? (
+                <>
+                  <strong className="failed">{failed} failed</strong>,{' '}
+                </>
+              ) : null}
+              <strong>{passed} passed</strong>, {total} total
             </>
           )}
         </code>
