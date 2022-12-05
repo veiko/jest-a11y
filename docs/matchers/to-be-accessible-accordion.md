@@ -5,9 +5,13 @@ title: toBeAccessibleAccordion()
 
 import Tabs from '@theme/Tabs'
 
-import TabItem from'@theme/TabItem'
+import TabItem from '@theme/TabItem'
 
 import { ExampleContainer } from '../components/ExampleContainer'
+
+import { TestSummary } from '../components/TestSummary'
+
+import { AccordionTestRunner } from '../components/accordion/AccordionTestRunner'
 
 import { Accordion } from '../components/accordion/DocsAccordion'
 
@@ -22,54 +26,43 @@ The headings function as controls that enable users to reveal or hide their asso
 
 ## Usage
 
+The `toBeAccessibleAccordion` matcher should be called on the HTML element wrapped around the interactive headings and their content. It will find each accordion header item and verify that it has `role="button"` and is wrapped in a heading element.
+
 ### Syntax
 
-<Tabs>
-<TabItem value="win" label="Vanilla JS">
+To use the matcher pass a valid HTML element to the `expect` function and verify its DOM output and keyboard interactions with `toBeAccessibleAccordion()`.
 
-```js
-test('accordion', async () => {
+<Tabs>
+<TabItem value="js" label="JS">
+
+```jsx
+test('accordion', () => {
   document.body.innerHTML = `
     <div id="accordion">
       <h3>
-        <button aria-controls="panel" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') == 'true' ? 'false' : 'true')">Accordion Header 1</button>
+        <button ...>
+          Item 1
+        </button>
       </h3>
       <div id="panel">Accordion Panel 1</div>
     </div>`
 
-  await expect(document.getElementById('accordion')).toBeAccessibleAccordion()
+  // highlight-next-line
+  expect(document.getElementById('accordion')).toBeAccessibleAccordion()
 })
 ```
 
 </TabItem>
-<TabItem default label="React + Testing Library" value="react">
+<TabItem default label="React" value="react">
 
 ```jsx
 import { render, screen } from '@testing-library/react'
 
-test('accordion', async () => {
-  render(
-    <div data-testid="accordion">
-      <h3>
-        <button
-          aria-controls="panel"
-          aria-expanded="false"
-          onClick={e => {
-            const self = e.target as HTMLElement
-            self.setAttribute(
-              'aria-expanded',
-              self.getAttribute('aria-expanded') == 'true' ? 'false' : 'true',
-            )
-          }}
-        >
-          Accordion Header 1
-        </button>
-      </h3>
-      <div id="panel">Accordion Panel 1</div>
-    </div>,
-  )
+test('accordion', () => {
+  render(<Accordion id="accordion">...</Accordion>)
 
-  await expect(screen.getByTestId('accordion')).toBeAccessibleAccordion()
+  // highlight-next-line
+  expect(screen.getByTestId('accordion')).toBeAccessibleAccordion()
 })
 ```
 
@@ -78,146 +71,48 @@ test('accordion', async () => {
 
 ## Test Summary
 
-The matcher for an accordion will loop through the accordion items (`button` elements). For each accordion item, the matcher will test the following:
+The `toBeAccessibleAccordion` matcher will loop through the accordion items and test the following for each:
 
-```html
-<!-- test-pass -->
-✓ element is wrapped in an element with role heading
-<!-- test-pass -->
-✓ element is wrapped in an element with aria-level
-<!-- test-pass -->
-✓ element has attribute aria-controls
-<!-- test-pass -->
-✓ aria-expanded toggled on {enter}
-<!-- test-pass -->
-✓ aria-expanded toggled on {space}
-```
+<TestSummary list={['element is wrapped in an element with role heading', 'element is wrapped in an element with aria-level', 'element has attribute aria-controls', 'aria-expanded toggled on {enter}', 'aria-expanded toggled on {space}']} />
 
-Functionality that is not tested:
+#### Known Limitations
 
-```html
-<!-- test-caution -->
-⚠ If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not
-visible, aria-expanded is set to false.
-```
+There are many ways in which an element can be hidden in the UI. Because of this, there is no consistent way for us to test whether the value of the `aria-expanded` tag is in sync with the visibility of its content panel.
 
-### WAI-ARIA Roles, States, and Properties
+:::caution Not tested
 
-#### 1. The title of each accordion header is contained in an element with `role` of `button`
-
-```html
-<!-- ✓ the title is contained in a button -->
-<div class="accordion">
-  <h3>
-    <!-- success-next-line -->
-    <button aria-controls="panel" aria-expanded="false">
-      <!-- success-next-line -->
-      Accordion Header 1
-      <!-- success-next-line -->
-    </button>
-  </h3>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-
-<!-- ❌ the title is contained in a span -->
-<div class="accordion">
-  <h3>
-    <!-- error-next-line -->
-    <span aria-controls="panel" aria-expanded="false">Accordion Header 1</span>
-  </h3>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-```
-
-#### 2. Each accordion header button is wrapped in an element with role heading that has a value set for `aria-level` that is appropriate for the information architecture of the page.
-
-```html
-<!-- ✓ button is wrapped in element with implicit `aria-level` and `role` -->
-<div>
-  <!-- success-next-line -->
-  <h3>
-    <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
-  </h3>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-
-<!-- ✓ button is wrapped in element with `aria-level` and `role` set -->
-<div>
-  <!-- success-next-line -->
-  <div aria-level="3" role="heading">
-    <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
-  </div>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-
-<!--  ❌ button is not wrapped in heading -->
-<div>
-  <!-- error-next-line -->
-  <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-```
-
-#### 3. The accordion header button element has `aria-controls` set to the ID of the element containing the accordion panel content.
-
-```html
-<!--  ✓ element has aria-controls -->
-<div>
-  <h3>
-    <!-- success-next-line -->
-    <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
-  </h3>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-
-<!--  ❌ element does not have aria-controls -->
-<div>
-  <h3>
-    <!-- error-next-line -->
-    <button aria-expanded="false">Accordion Header 1</button>
-  </h3>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-```
-
-:::info Not tested
-
-✋ Remember, this project _does not guarantee what you build is accessible._
-
-#### 4. If the accordion panel associated with an accordion header is visible, the header button element has `aria-expanded` set to `true`. If the panel is not visible, `aria-expanded` is set to `false`.
-
-There are multiple ways to implement accordion panel visibility, so there is no single method to test that the panel visibility corresponds to the `aria-expanded` value.
-
-<details>
-  <summary>Example</summary>
-
-```html
-<!-- ✓ button has aria-expanded prop according to panel visibility -->
-<div>
-  <h3><button aria-controls="panel" aria-expanded="true">Accordion Header 1</button></h3>
-  <div style="display: block">Accordion Panel 1</div>
-  <h3><button aria-controls="panel" aria-expanded="false">Accordion Header 2</button></h3>
-  <div style="display: none">Accordion Panel 2</div>
-</div>
-
-<!-- ❌ button and panel are not expanded in sync -->
-<div>
-  <button aria-controls="panel" aria-expanded="false">Accordion Header 1</button>
-  <div id="panel">Accordion Panel 1</div>
-  <button aria-controls="panel" aria-expanded="true">Accordion Header 1</button>
-  <div id="panel">Accordion Panel 1</div>
-</div>
-```
-
-</details>
+If the accordion panel associated with an accordion header is visible, the header button element has `aria-expanded="true"`. If the panel is not visible, `aria-expanded` is set to false.
 
 :::
 
+### WAI-ARIA Roles, States, and Properties
+
+Each accordion item will be composed of the following:
+
+- A <span className="handwritten">heading</span> element.
+- A <span className="handwritten">button</span> element.
+- A <span className="handwritten">content</span> element.
+
+The elements will be checked for the following when passed through the matcher:
+
+- The title of each accordion item is contained in a <span className="handwritten">button</span> element.
+- Each <span className="handwritten">button</span> is wrapped in a <span className="handwritten">heading</span> that has a value set for <code>aria-level</code> that is appropriate for the information architecture of the page
+- The <span className="handwritten">button</span> has <code>aria-controls</code> set to the ID of the <span className="handwritten">content</span> element.
+- If the <span className="handwritten">content</span> associated with an accordion item is visible, the <span className="handwritten">button</span> element has <code>aria-expanded="true"</code>. If the panel is not visible, <code>aria-expanded="false"</code>.
+
 ### Keyboard Interaction
 
-#### 1. The accordion header button element can receive focus
+Each <span className="handwritten">button</span> element in an accordion should be part of the tab sequence and can be activated with the keyboard to show or hide its contents.
 
-#### 2. When element has focus, <kbd>Space</kbd> or <kbd>Enter</kbd> activates it.
+- The <span className="handwritten">button</span> can receive focus.
+- When the <span className="handwritten">button</span> has focus, <kbd>Space</kbd> or <kbd>Enter</kbd> toggles `aria-expanded` on the <span className="handwritten">button</span> and the visibility of the <span className="handwritten">content</span>.
+- If the <span className="handwritten">content</span> is visible, and the user presses <kbd>Tab</kbd>, focus will move to the first tabbable element within the <span className="handwritten">content</span>.
+
+## Playground
+
+Test out the DOM structure of an accordion element here:
+
+<AccordionTestRunner />
 
 ## External Resources
 

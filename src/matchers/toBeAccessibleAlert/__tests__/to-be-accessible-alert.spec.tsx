@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleAlert } from '../to-be-accessible-alert'
-import { mockUtils } from '../../../utils/mockUtils'
+import { mockUtils } from 'utils/mockUtils'
 
 class MockExpect {
   isNot: boolean = false

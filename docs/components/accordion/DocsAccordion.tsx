@@ -30,7 +30,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ btnId, buttonProps: { onF
           <span>{title}</span>
         </button>
       </h3>
-      <div aria-labelledby={btnId} className={`panel ${isOpen ? 'open' : ''}`} id={id} role="region">
+      <div aria-hidden={!isOpen} aria-labelledby={btnId} className={`panel ${isOpen ? 'open' : ''}`} id={id} role="region">
         <div className="panel-content">{children}</div>
       </div>
     </>

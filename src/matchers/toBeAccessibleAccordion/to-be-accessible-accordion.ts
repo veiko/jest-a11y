@@ -1,9 +1,10 @@
 import { within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
-import { assertAriaExpanded } from 'utils/assertAriaExpanded'
-import { assertAttribute } from 'utils/assertAttribute'
-import { assertClosest } from 'utils/assertClosest'
-import { pfail, ppass } from 'utils/printPass'
+import { matcherUtils, printUtil } from '../../utils/printUtil'
+import { assertAriaExpanded } from '../../utils/assertAriaExpanded'
+import { assertAttribute } from '../../utils/assertAttribute'
+import { assertClosest } from '../../utils/assertClosest'
+import { pfail, ppass } from '../../utils/printPass'
 
 // Setting delay null allows the userEvent to complete, otherwise hangs
 // @see https://github.com/testing-library/user-event/issues/565#issuecomment-1064579531
@@ -40,7 +41,6 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
         test: (el: HTMLElement) =>
           'h1h2h3h4h5h6'.includes(el.tagName.toLowerCase()) ||
           el.getAttribute('role') === 'heading',
-        utils: this.utils,
       })
       buttonMessage += '  ' + headingCheck.message()
       pass = pass ? headingCheck.pass : false
@@ -53,13 +53,12 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
           attribute: 'aria-level',
           element: headingCheck.closest,
           message: 'is wrapped in an element with aria-level',
-          utils: this.utils,
+          utils: matcherUtils,
         })
         buttonMessage += '  ' + ariaLevelCheck.message()
         pass = pass === false ? false : ariaLevelCheck.pass
       } else {
-        buttonMessage +=
-          '  ' + ppass(`element is wrapped in an element with aria-level`, this.utils)
+        buttonMessage += '  ' + ppass(`element is wrapped in an element with aria-level`)
       }
 
       // The null is needed for the userEvent.keyboard functions to complete, otherwise hangs
@@ -70,23 +69,23 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
         attribute: 'aria-controls',
         element: button,
         message: 'has attribute aria-controls',
-        utils: this.utils,
       })
       buttonMessage += '  ' + attrCheck.message()
       pass = pass === false ? false : attrCheck.pass
 
       // 4. aria-expanded
-      const enterCheck = assertAriaExpanded({
-        element: button,
-        message: 'aria-expanded toggled on {enter}',
-        userEvent: async () => {
-          button.focus()
-          userEvent.keyboard('{enter}')
-        },
-        utils: this.utils,
-      })
-      buttonMessage += '  ' + enterCheck.message()
-      pass = pass === false ? false : enterCheck.pass
+      if (process.env.NODE_ENV === 'test') {
+        const enterCheck = assertAriaExpanded({
+          element: button,
+          message: 'aria-expanded toggled on {enter}',
+          userEvent: async () => {
+            button.focus()
+            userEvent.keyboard('{enter}')
+          },
+        })
+        buttonMessage += '  ' + enterCheck.message()
+        pass = pass === false ? false : enterCheck.pass
+      }
 
       // FIXME: issue with js-dom?
       // const spaceCheck = await assertAriaExpanded({
@@ -96,19 +95,18 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
       //     button.focus()
       //     await user.keyboard('{space}')
       //   },
-      //   utils: this.utils,
       // })
       // buttonMessage += '  ' + spaceCheck.message() + '\n'
       // pass = pass === false ? false : spaceCheck.pass
 
-      message += `${this.utils.RECEIVED_COLOR(`${this.utils.DIM_COLOR('● Testing')}`)} ${
-        button.outerHTML
-      }\n${buttonMessage}`
+      message += `${matcherUtils.RECEIVED_COLOR(
+        `${matcherUtils.DIM_COLOR('● Testing')}`,
+      )} ${matcherUtils.printReceived(button)}\n${buttonMessage}`
     }
   } else {
     return {
       pass: false,
-      message: () => pfail('No elements with role button found', this.utils),
+      message: () => printUtil.fail('No elements with role button found', { received: element }),
     }
   }
 
