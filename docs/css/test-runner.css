@@ -1,0 +1,46 @@
+.test-runner {
+  font-family: var(--ifm-font-family-monospace);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 -2em;
+}
+
+.test-runner pre {
+  font-size: 90%;
+  font-weight: 500;
+  line-height: calc(1.8rem * 0.8);
+  height: 100%;
+}
+
+.test-runner .code-block-test-pass span {
+  color: var(--prism-color);
+}
+
+.test-runner .live-editor pre {
+  border-radius: var(--ifm-pre-border-radius) 0 0 var(--ifm-pre-border-radius);
+  padding: var(--ifm-pre-padding) 2em !important;
+}
+
+.test-runner .prism-code {
+  margin: 0 !important;
+}
+
+.test-runner .test-summary {
+}
+
+.test-runner .test-summary strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.test-runner .test-summary pre {
+  /* background-color: #050609; */
+  border-radius: 0 var(--ifm-pre-border-radius) var(--ifm-pre-border-radius) 0;
+}
+
+.test-runner .test-summary pre code {
+  border-left: 1px solid var(--grey);
+  border-radius: 0 var(--ifm-pre-border-radius) var(--ifm-pre-border-radius) 0;
+  height: 100%;
+  padding: 2em 2em 1em 1em;
+}
