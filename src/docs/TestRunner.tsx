@@ -1,7 +1,14 @@
+// @ts-ignore
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
+import { TestSummary } from './TestSummary'
 import theme from 'prism-react-renderer/themes/dracula'
 import React, { useState } from 'react'
 import { LiveEditor, LiveError, LiveProvider } from 'react-live'
-import { TestSummary } from './TestSummary'
+
+let newEl: HTMLDivElement
+if (ExecutionEnvironment.canUseDOM) {
+  newEl = document.createElement('div')
+}
 
 type Props = {
   children?: React.ReactNode
@@ -11,8 +18,6 @@ type Props = {
   title: string
 }
 
-const newEl = document.createElement('div')
-
 /**
  * Component to display a summary of all the tests.
  * TODO: Add a preview?
@@ -20,9 +25,12 @@ const newEl = document.createElement('div')
  */
 export const TestRunner: React.FunctionComponent<Props> = ({ code: codeProp, matcher, title }) => {
   const [code, setCode] = useState(codeProp)
+  let list: string[] = []
 
-  newEl.innerHTML = code
-  const list = matcher(newEl).message().split('\n')
+  if (newEl) {
+    newEl.innerHTML = code
+    list = matcher(newEl).message().split('\n')
+  }
 
   return (
     <LiveProvider code={code} language="jsx" theme={theme}>
