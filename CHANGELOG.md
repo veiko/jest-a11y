@@ -1,3 +1,10 @@
+## [1.18.2-prerelease-cjs.4](https://github.com/veiko/jest-a11y/compare/v1.18.2-prerelease-cjs.3...v1.18.2-prerelease-cjs.4) (2022-12-31)
+
+
+### Bug Fixes
+
+* export ([21dee84](https://github.com/veiko/jest-a11y/commit/21dee848c0842b969f2f71172f7d4146edcedc37))
+
 ## [1.18.2-prerelease-cjs.3](https://github.com/veiko/jest-a11y/compare/v1.18.2-prerelease-cjs.2...v1.18.2-prerelease-cjs.3) (2022-12-31)
 
 
