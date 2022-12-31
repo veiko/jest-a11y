@@ -14,13 +14,11 @@
 
 ## The problem
 
-When writing web applications, the ability to easily follow accessibility guidelines is becoming
-essential. As developers, we need a framework to easily and quickly test compliance.
+When writing web applications, the ability to easily follow accessibility guidelines is becoming essential. As developers, we need a framework to easily and quickly test compliance.
 
 ## This solution
 
-The `jest-a11y` project aims to provide a set of jest matchers that will check whether the provided
-DOM element has the correct ARIA roles and supports keyboard navigation.
+The `jest-a11y` project aims to provide a set of jest matchers that will check whether the provided DOM element has the correct ARIA roles and supports keyboard navigation.
 
 ### FAQ:
 
@@ -31,10 +29,7 @@ DOM element has the correct ARIA roles and supports keyboard navigation.
     </strong>
   </summary>
 
-ARIA roles provide semantic meaning to content, allowing screen readers and other tools to present
-and support interaction with object in a way that is consistent with user expectations of that type
-of object. ARIA roles can be used to describe elements that don't natively exist in HTML or exist
-but don't yet have full browser support.
+ARIA roles provide semantic meaning to content, allowing screen readers and other tools to present and support interaction with object in a way that is consistent with user expectations of that type of object. ARIA roles can be used to describe elements that don't natively exist in HTML or exist but don't yet have full browser support.
 
 </details>
 
@@ -45,8 +40,7 @@ but don't yet have full browser support.
     </strong>
   </summary>
 
-The `jest-axe` plugin will parse through the provided DOM structure and check for any violations.
-This plugin will also attempt to validate keyboard navigation.
+The `jest-axe` plugin will parse through the provided DOM structure and check for any violations. This plugin will also attempt to validate keyboard navigation.
 
 </details>
 
@@ -80,8 +74,7 @@ Yes. It works with either of those tools.
 
 ## Installation
 
-This module is distributed via [npm][npm] which is bundled with [node][node] and should be installed
-as one of your project's `dependencies`:
+This module is distributed via [npm](https://www.npmjs.com) which is bundled with [node](https://www.nodejs.org) and should be installed as one of your project's `dependencies`:
 
 ```sh
 npm install --save jest-a11y
@@ -102,25 +95,16 @@ describe('MyButtonComponent', () => {
 
     expect(screen.getByRole('button')).toBeAccessibleButton()
   })
+})
 ```
-
-### Known Issues
-
-#### Coming Soon
-
-TBD
 
 ## Inspiration
 
-As I have been working on different web projects, accessibility has started to become a major
-concern and product requirement, but it can be cumbersome to re-write the re-test the same
-functionality across multiple projects. As projects also started shifting to React Testing Library
-instead of Enzyme, it now became possible to test DOM output and keyboard navigation in unit tests.
+As I have been working on different web projects, accessibility has started to become a major concern and product requirement, but it can be cumbersome to re-write the re-test the same functionality across multiple projects. As projects also started shifting to React Testing Library instead of Enzyme, it now became possible to test DOM output and keyboard navigation in unit tests.
 
 ## Other Solutions
 
-There's [jest-axe](https://github.com/nickcolley/jest-axe) but that project exports a single matcher
-and doesn't test any user interactions.
+There's [jest-axe](https://github.com/nickcolley/jest-axe) which exports a single matcher and doesn't (yet) test any user interactions.
 
 ## Issues
 
@@ -130,17 +114,14 @@ _Looking to contribute? Look for the [Good First Issue][good-first-issue] label.
 
 Please file an issue for bugs, missing documentation, or unexpected behavior.
 
-[**See Bugs**][labels/bug]
+- [**File a bug**](https://github.com/veiko/jest-a11y/issues/new?assignees=&labels=%F0%9F%90%9B+fix&template=bug_report.yml&title=fix%3A+)
+- [**See existing bugs**](https://github.com/veiko/jest-a11y/labels/%F0%9F%90%9B%20fix)
 
 ### 💡 Feature Requests
 
-Please file an issue to suggest new features. Vote on feature requests by adding a 👍. This helps
-maintainers prioritize what to work on.
+Please file an issue to suggest new features. Vote on feature requests by adding a 👍. This helps maintainers prioritize what to work on.
 
-[**See Feature Requests**][labels/enhancement]
-
-This project follows the [all-contributors][all-contributors] specification. Contributions of any
-kind welcome!
+[**See Feature Requests**](https://github.com/veiko/jest-a11y/labels/%E2%9C%A8%20feature)
 
 ## LICENSE
 
