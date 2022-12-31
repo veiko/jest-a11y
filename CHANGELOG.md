@@ -1,3 +1,10 @@
+## [1.18.1-prerelease-typescript.3](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.2...v1.18.1-prerelease-typescript.3) (2022-12-31)
+
+
+### Bug Fixes
+
+* add missing toBeAccordion declaration ([708a4de](https://github.com/veiko/jest-a11y/commit/708a4de21702b3f3d8e05590c06ecb638876e708))
+
 ## [1.18.1-prerelease-typescript.2](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.1...v1.18.1-prerelease-typescript.2) (2022-12-31)
 
 
