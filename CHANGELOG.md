@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/veiko/jest-a11y/compare/v1.18.1...v1.19.0) (2022-12-31)
+
+
+### Features
+
+* **cjs:** support cjs libraries [#35](https://github.com/veiko/jest-a11y/issues/35) ([#36](https://github.com/veiko/jest-a11y/issues/36)) ([363965a](https://github.com/veiko/jest-a11y/commit/363965acb6b446187d129606a0ab07bfccb9e7fd))
+
 ## [1.18.2-prerelease-cjs.4](https://github.com/veiko/jest-a11y/compare/v1.18.2-prerelease-cjs.3...v1.18.2-prerelease-cjs.4) (2022-12-31)
 
 
