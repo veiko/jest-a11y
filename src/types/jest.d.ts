@@ -7,7 +7,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    *
    * expect(screen.getByRole('accordion')).toBeAccessibleAccordion()
    *
-   * @see https://veiko.github.io/jest-a11y/matchers/accordion
+   * @see
+   * [jest-a11y/matchers/accordion](https://veiko.github.io/jest-a11y/matchers/accordion)
    */
   toBeAccessibleAccordion(): CustomMatcherResult
   /**
@@ -18,7 +19,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    *
    * expect(screen.getByRole('alert')).toBeAccessibleAlert()
    *
-   * @see https://veiko.github.io/jest-a11y/matchers/alert
+   * @see
+   * [jest-a11y/matchers/alert](https://veiko.github.io/jest-a11y/matchers/alert)
    */
   toBeAccessibleAlert(): CustomMatcherResult
   /**
@@ -29,7 +31,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    *
    * expect(screen.getByRole('alertdialog')).toBeAccessibleAlertDialog()
    *
-   * @see https://veiko.github.io/jest-a11y/matchers/alertdialog
+   * @see
+   * [jest-a11y/matchers/alertdialog](https://veiko.github.io/jest-a11y/matchers/alertdialog)
    */
   toBeAccessibleAlertDialog(): CustomMatcherResult
   /**
@@ -39,6 +42,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <button id="targetBtn" />
    *
    * expect(screen.getByRole('button')).toBeAccessibleButton()
+   *
+   * @see
+   * [jest-a11y/matchers/button](https://veiko.github.io/jest-a11y/matchers/button)
    */
   toBeAccessibleButton(): CustomMatcherResult
   /**
@@ -48,6 +54,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <input aria-label="My Checkbox" type="checkbox" />
    *
    * expect(screen.getByRole('checkbox')).toBeAccessibleCheckbox()
+   *
+   * @see
+   * [jest-a11y/matchers/checkbox](https://veiko.github.io/jest-a11y/matchers/checkbox)
    */
   toBeAccessibleCheckbox(): CustomMatcherResult
   /**
