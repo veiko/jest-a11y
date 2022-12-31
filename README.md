@@ -83,7 +83,8 @@ npm install --save jest-a11y
 ## Usage
 
 ```ts
-import 'jest-a11y/matchers'
+// In your own jest-setup.js (or any other name e.g. setupTests.js)
+import 'jest-a11y'
 ```
 
 From there, you can use the matchers in your tests.
@@ -96,6 +97,20 @@ describe('MyButtonComponent', () => {
     expect(screen.getByRole('button')).toBeAccessibleButton()
   })
 })
+```
+
+### With Typescript
+
+If you're using TypeScript, make sure your setup file is a .ts and not a .js to include the necessary types.
+
+You will also need to include your setup file in your tsconfig.json if you haven't already:
+
+```json
+  // In tsconfig.json
+  "include": [
+    ...
+    "./jest-setup.ts"
+  ],
 ```
 
 ## Inspiration
