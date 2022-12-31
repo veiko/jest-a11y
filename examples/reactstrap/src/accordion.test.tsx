@@ -1,12 +1,11 @@
 import { Accordion, AccordionItem, AccordionHeader, AccordionBody } from 'reactstrap'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import 'jest-a11y'
 
 test('passes when valid', () => {
   render(
     <div>
-      <Accordion data-testid="the-accordion" open={[]} toggle={() => {}}>
+      <Accordion data-testid="the-accordion" open={[]}>
         <AccordionItem>
           <AccordionHeader targetId="1">Accordion Item 1</AccordionHeader>
           <AccordionBody accordionId="1">

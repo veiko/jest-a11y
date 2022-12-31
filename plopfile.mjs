@@ -78,7 +78,8 @@ export default function (plop) {
     * <div role="{{lowerCase componentName}}">...</div>
     *
     * expect(screen.getByRole('{{lowerCase componentName}}')).toBeAccessible{{properCase componentName}}()
-    * @see https://veiko.github.io/jest-a11y/matchers/{{lowerCase componentName}}
+    * @see
+    * [jest-a11y/matchers/{{lowerCase componentName}}](https://veiko.github.io/jest-a11y/matchers/{{lowerCase componentName}})
     */
     toBeAccessible{{properCase componentName}}(): CustomMatcherResult
 /** plop-prepend-matcher */`,

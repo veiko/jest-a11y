@@ -1,3 +1,38 @@
+## [1.18.1-prerelease-typescript.5](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.4...v1.18.1-prerelease-typescript.5) (2022-12-31)
+
+
+### Bug Fixes
+
+* add more details to type declaration ([b29a51b](https://github.com/veiko/jest-a11y/commit/b29a51bd577352148a45decaed4983b6072f089e))
+
+## [1.18.1-prerelease-typescript.4](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.3...v1.18.1-prerelease-typescript.4) (2022-12-31)
+
+
+### Bug Fixes
+
+* small fixes ([9722d06](https://github.com/veiko/jest-a11y/commit/9722d060f59cdd165f2e99ff783d865d203cbcdf))
+
+## [1.18.1-prerelease-typescript.3](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.2...v1.18.1-prerelease-typescript.3) (2022-12-31)
+
+
+### Bug Fixes
+
+* add missing toBeAccordion declaration ([708a4de](https://github.com/veiko/jest-a11y/commit/708a4de21702b3f3d8e05590c06ecb638876e708))
+
+## [1.18.1-prerelease-typescript.2](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.1...v1.18.1-prerelease-typescript.2) (2022-12-31)
+
+
+### Bug Fixes
+
+* missing files ([549a764](https://github.com/veiko/jest-a11y/commit/549a7648024b5fd238132062008b7ff4a399f178))
+
+## [1.18.1-prerelease-typescript.1](https://github.com/veiko/jest-a11y/compare/v1.18.0...v1.18.1-prerelease-typescript.1) (2022-12-31)
+
+
+### Bug Fixes
+
+* typescript ([bffb374](https://github.com/veiko/jest-a11y/commit/bffb374be65122940a5dde74268b179abb26e343))
+
 # [1.18.0](https://github.com/veiko/jest-a11y/compare/v1.17.0...v1.18.0) (2022-11-26)
 
 

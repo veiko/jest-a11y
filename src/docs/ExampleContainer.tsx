@@ -17,7 +17,7 @@ type ExampleContextValue = {
   tooltip: boolean
   setAccessibleLabel(label?: string): void
   setActions(actions: React.ReactNode[]): void
-  setExampleText(text: React.ReactNode, config?: ExampleTextConfig): void
+  setExampleText(text?: React.ReactNode, config?: ExampleTextConfig): void
   setTooltip(tooltip: boolean): void
 }
 
@@ -33,14 +33,18 @@ export const ExampleContext = React.createContext<ExampleContextValue>({
   tooltip: true,
 })
 
-export const ExampleContextProvider = ({ children }) => {
+type ExampleContextProviderProps = { children: React.ReactNode }
+export const ExampleContextProvider = ({ children }: ExampleContextProviderProps) => {
   const [actions, setActions] = useState<React.ReactNode[]>([])
   const [controls, setControls] = useState<ControlConfig[]>([])
   const [accessibleLabel, setAccessibleLabel] = useState<string>()
   const [exampleText, setExampleText] = useState<ExampleTextComplete>()
   const [tooltip, setTooltip] = useState(true)
 
-  const addControl = useCallback(control => setControls(controls => [...controls, control]), [setControls])
+  const addControl = useCallback(
+    (control: any) => setControls(controls => [...controls, control]),
+    [setControls],
+  )
 
   const getControlValue = useCallback(() => {}, [])
 
@@ -104,14 +108,23 @@ const ExampleFooter = () => {
     </div>
   )
 }
-
-export const ExampleContainer = ({ height, size = 1, children }) => {
+type ExampleContainerProps = { height: number; size?: number; children: React.ReactNode }
+export const ExampleContainer = ({ height, size = 1, children }: ExampleContainerProps) => {
   const arrowSize = 40
 
   return (
     <ExampleContextProvider>
       <div className="example-wrapper">
-        <div className="example centered" style={{ '--arrow-size': `${arrowSize}px`, '--grid-size': `${size}fr`, height } as React.CSSProperties}>
+        <div
+          className="example centered"
+          style={
+            {
+              '--arrow-size': `${arrowSize}px`,
+              '--grid-size': `${size}fr`,
+              height,
+            } as React.CSSProperties
+          }
+        >
           <div className="left" />
           <div className="center">{children}</div>
           <div className="right">{<ArrowPointer color="var(--purple)" size={arrowSize} />}</div>

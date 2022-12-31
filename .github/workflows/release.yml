@@ -3,8 +3,9 @@ on:
   push:
     branches:
       - main
+      - 'prerelease-**'
 jobs:
-  main:
+  main-job:
     runs-on: ubuntu-latest
     environment: Default Environment
     steps:

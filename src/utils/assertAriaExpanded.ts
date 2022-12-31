@@ -36,9 +36,9 @@ export const assertAriaExpanded = ({
     userEvent()
   } else {
     message += printUtil.fail(messageContent || 'aria-expanded toggled')
-    message += `    Expected element:\n     ${utils.BOLD_WEIGHT(
-      stringify(element),
-    )} to have ${utils.printExpected(`aria-expanded='${!initialState}'`)}\n`
+    message += `    Expected element to have ${utils.printExpected(
+      `aria-expanded='${!initialState}'`,
+    )}:\n     ${utils.BOLD_WEIGHT(stringify(element))}\n`
     message += `    Received element with:\n      ${utils.printReceived(
       `aria-expanded='${element.getAttribute('aria-expanded')}'`,
     )}\n`

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 
-export const SmallSwitch = ({ id, label }) => {
+type Props = { id: string; label: string }
+export const SmallSwitch = ({ id, label }: Props) => {
   const [on, setOn] = React.useState(false)
 
   const onKeyDown = useCallback((e: React.KeyboardEvent) => {
