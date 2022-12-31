@@ -9,14 +9,14 @@ const sharedConfig = { input: 'src/index.ts', plugins: sharedPlugins }
 
 export default [
   {
+    input: 'src/matchers/index.ts',
+    output: [{ file: 'lib/matchers/index.js', format: 'esm', sourcemap: true }],
+    plugins: sharedPlugins,
+  },
+  {
     ...sharedConfig,
     output: [{ file: pkg.module, format: 'esm', sourcemap: true }],
-    plugins: [
-      ...sharedPlugins,
-      copy({
-        targets: [{ src: ['src/types/*', '!src/types/global.d.ts'], dest: 'lib/types' }],
-      }),
-    ],
+    plugins: sharedPlugins,
   },
   {
     ...sharedConfig,
