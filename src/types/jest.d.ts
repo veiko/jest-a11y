@@ -1,4 +1,4 @@
-interface JestA11yMatchers<CustomMatcherResult = unknown> {
+export interface JestA11yMatchers<CustomMatcherResult = unknown> {
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `alert`.
    *
@@ -138,13 +138,3 @@ interface JestA11yMatchers<CustomMatcherResult = unknown> {
   toBeAccessibleTabs(): CustomMatcherResult
   /** plop-prepend-matcher */
 }
-
-declare global {
-  namespace jest {
-    interface Expect extends JestA11yMatchers {}
-    interface Matchers<R> extends JestA11yMatchers<R> {}
-    interface InverseAsymmetricMatchers extends JestA11yMatchers {}
-  }
-}
-
-export {}
