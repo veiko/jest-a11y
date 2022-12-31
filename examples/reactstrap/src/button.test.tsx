@@ -1,7 +1,6 @@
 import { Button } from 'reactstrap'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import 'jest-a11y'
 
 test('passes when valid', () => {
   render(<Button tabIndex={0}>Click me</Button>)

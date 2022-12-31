@@ -17,7 +17,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config ./jest.config.js --watch"
+    "test": "jest --config ./jest.config.ts --watch"
   },
   "dependencies": {
     "@types/reactstrap": "^8.7.2",
