@@ -1,3 +1,10 @@
+## [1.18.1-prerelease-typescript.5](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.4...v1.18.1-prerelease-typescript.5) (2022-12-31)
+
+
+### Bug Fixes
+
+* add more details to type declaration ([b29a51b](https://github.com/veiko/jest-a11y/commit/b29a51bd577352148a45decaed4983b6072f089e))
+
 ## [1.18.1-prerelease-typescript.4](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.3...v1.18.1-prerelease-typescript.4) (2022-12-31)
 
 
