@@ -1,12 +1,13 @@
 {
   "name": "jest-a11y",
-  "version": "1.18.1",
+  "version": "1.18.2-prerelease-cjs.4",
   "description": "Custom Jest matchers for testing accessibility",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/types/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && rollup -c config/rollup.config.js",
-    "build:watch": "rm -rf dist && rollup --watch -c config/rollup.config.js",
+    "build": "rm -rf lib && rollup -c config/rollup.config.js",
+    "build:watch": "rm -rf lib && rollup --watch -c config/rollup.config.js",
     "docs": "docusaurus start --port=2983",
     "docs:ci": "docusaurus build",
     "docs:serve": "docusaurus serve",

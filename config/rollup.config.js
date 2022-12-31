@@ -4,16 +4,27 @@ import typescript from '@rollup/plugin-typescript'
 import copy from 'rollup-plugin-copy'
 import pkg from '../package.json'
 
+const sharedPlugins = [nodeResolve(), commonjs(), typescript()]
+const sharedConfig = { input: 'src/index.ts', plugins: sharedPlugins }
+
 export default [
   {
-    input: 'src/index.ts',
-    output: [{ file: pkg.main, format: 'esm', sourcemap: true }],
+    input: 'src/matchers/index.ts',
+    output: [{ file: 'lib/matchers/index.js', format: 'commonjs', sourcemap: true }],
+    plugins: sharedPlugins,
+  },
+  {
+    ...sharedConfig,
+    output: [{ file: pkg.module, format: 'esm', sourcemap: true }],
+    plugins: sharedPlugins,
+  },
+  {
+    ...sharedConfig,
+    output: [{ file: pkg.main, format: 'commonjs', sourcemap: true }],
     plugins: [
-      nodeResolve(),
-      commonjs(),
-      typescript(),
+      ...sharedPlugins,
       copy({
-        targets: [{ src: ['src/types/*', '!src/types/global.d.ts'], dest: 'dist/types' }],
+        targets: [{ src: ['src/types/*', '!src/types/global.d.ts'], dest: 'lib/types' }],
       }),
     ],
   },
