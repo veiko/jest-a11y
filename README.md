@@ -113,6 +113,24 @@ You will also need to include your setup file in your tsconfig.json if you haven
   ],
 ```
 
+<details>
+  <summary>
+    <strong>
+      CommonJS and older versions of jest
+    </strong>
+  </summary>
+
+In order to extend the matchers correctly in projects using CommonJS or older versions of jest it may be necessary to extend `expect` manually. This can be achieved with:
+
+```ts
+// In your own jest-setup.js (or any other name e.g. setupTests.js)
+import * as matchers from 'jest-a11y/lib/matchers'
+
+expect.extend(matchers)
+```
+
+</details>
+
 ## Inspiration
 
 As I have been working on different web projects, accessibility has started to become a major concern and product requirement, but it can be cumbersome to re-write the re-test the same functionality across multiple projects. As projects also started shifting to React Testing Library instead of Enzyme, it now became possible to test DOM output and keyboard navigation in unit tests.
