@@ -1,3 +1,10 @@
+## [1.18.1-prerelease-typescript.1](https://github.com/veiko/jest-a11y/compare/v1.18.0...v1.18.1-prerelease-typescript.1) (2022-12-31)
+
+
+### Bug Fixes
+
+* typescript ([bffb374](https://github.com/veiko/jest-a11y/commit/bffb374be65122940a5dde74268b179abb26e343))
+
 # [1.18.0](https://github.com/veiko/jest-a11y/compare/v1.17.0...v1.18.0) (2022-11-26)
 
 
