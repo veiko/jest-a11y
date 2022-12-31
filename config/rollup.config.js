@@ -10,7 +10,7 @@ const sharedConfig = { input: 'src/index.ts', plugins: sharedPlugins }
 export default [
   {
     input: 'src/matchers/index.ts',
-    output: [{ file: 'lib/matchers/index.cjs', format: 'commonjs', sourcemap: true }],
+    output: [{ file: 'lib/matchers/index.js', format: 'commonjs', sourcemap: true }],
     plugins: sharedPlugins,
   },
   {
