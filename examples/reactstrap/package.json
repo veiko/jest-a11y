@@ -20,6 +20,12 @@
     "test": "jest --config ./jest.config.js --watch"
   },
   "dependencies": {
-    "reactstrap": "^9.1.4"
+    "@types/reactstrap": "^8.7.2",
+    "reactstrap": "^9.1.4",
+    "ts-jest": "^29.0.3"
+  },
+  "volta": {
+    "node": "16.19.0",
+    "yarn": "1.22.19"
   }
 }

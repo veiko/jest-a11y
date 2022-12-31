@@ -1,7 +1,15 @@
 import React from 'react'
 
-export const AudioIcon = ({ onClick }) => (
-  <svg onClick={onClick} xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18" fill="none">
+type Props = { onClick(): void }
+export const AudioIcon = ({ onClick }: Props) => (
+  <svg
+    onClick={onClick}
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 18 18"
+    fill="none"
+  >
     <path d="M8.25 3.75L4.5 6.75H1.5V11.25H4.5L8.25 14.25V3.75Z" fill="currentColor"></path>
     <path
       d="

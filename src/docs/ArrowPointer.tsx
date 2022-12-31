@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Arrow } from './Arrow'
 import { ExampleContext } from './ExampleContainer'
 
-export const ArrowPointer = ({ color, size }) => {
+type Props = { color: string; size: number }
+export const ArrowPointer = ({ color, size }: Props) => {
   const {
     exampleText = {
       text: null,

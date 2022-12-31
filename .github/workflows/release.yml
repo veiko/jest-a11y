@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - 'prerelease-**'
 jobs:
   main:
     runs-on: ubuntu-latest

@@ -11,7 +11,7 @@ export default [
     plugins: [nodeResolve(), commonjs(), typescript()],
   },
   {
-    input: './dist/matchers/index.d.ts',
+    input: './src/types/index.d.ts',
     output: [{ file: pkg.types, format: 'esm' }],
     plugins: [dts()],
   },
