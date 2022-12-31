@@ -1,5 +1,16 @@
 export interface JestA11yMatchers<CustomMatcherResult = unknown> {
   /**
+   * Assert whether an element has the correct role, properties and keyboard interactions for `accordion`.
+   *
+   * @example
+   * <div role="accordion">...</div>
+   *
+   * expect(screen.getByRole('accordion')).toBeAccessibleAccordion()
+   *
+   * @see https://veiko.github.io/jest-a11y/matchers/accordion
+   */
+  toBeAccessibleAccordion(): CustomMatcherResult
+  /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `alert`.
    *
    * @example
