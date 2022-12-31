@@ -2,11 +2,11 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `accordion`.
    * Each button element in an accordion will be tested for the following:
-   *   ✓ element is wrapped in an element with role heading
-   *   ✓ element is wrapped in an element with aria-level
-   *   ✓ element has attribute aria-controls
-   *   ✓ aria-expanded toggled on {enter}
-   *   ✓ aria-expanded toggled on {space}
+   * - element is wrapped in an element with `role` heading
+   * - element is wrapped in an element with `aria-level`
+   * - element has attribute `aria-controls`
+   * - `aria-expanded` toggled on {enter}
+   * - `aria-expanded` toggled on {space}
    *
    * @example
    * <div role="accordion">...</div>
