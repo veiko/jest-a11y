@@ -124,7 +124,7 @@ describe('toBeAccessibleAccordion', () => {
     const SampleAccordion = () => (
       <div data-testid="accordionGroup">
         <h2>
-          <button aria-controls="1">click me</button>
+          <button aria-controls="one">click me</button>
         </h2>
       </div>
     )
