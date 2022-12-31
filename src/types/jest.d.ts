@@ -1,6 +1,12 @@
 export interface JestA11yMatchers<CustomMatcherResult = unknown> {
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `accordion`.
+   * Each button element in an accordion will be tested for the following:
+   *   ✓ element is wrapped in an element with role heading
+   *   ✓ element is wrapped in an element with aria-level
+   *   ✓ element has attribute aria-controls
+   *   ✓ aria-expanded toggled on {enter}
+   *   ✓ aria-expanded toggled on {space}
    *
    * @example
    * <div role="accordion">...</div>
@@ -67,7 +73,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    *
    * expect(screen.getByRole('link')).toBeAccessibleLink()
    *
-   * @see https://veiko.github.io/jest-a11y/matchers/link
+   * @see
+   * [jest-a11y/matchers/link](https://veiko.github.io/jest-a11y/matchers/link)
    */
   toBeAccessibleLink(): CustomMatcherResult
   /**
@@ -78,7 +85,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="meter">...</div>
    *
    * expect(screen.getByRole('meter')).toBeAccessibleMeter()
-   * @see https://veiko.github.io/jest-a11y/matchers/meter
+   *
+   * @see
+   * [jest-a11y/matchers/meter](https://veiko.github.io/jest-a11y/matchers/meter)
    */
   toBeAccessibleMeter(): CustomMatcherResult
   /**
@@ -89,7 +98,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="radiogroup">...</div>
    *
    * expect(screen.getByRole('radiogroup')).toBeAccessibleRadioGroup()
-   * @see https://veiko.github.io/jest-a11y/matchers/radiogroup
+   *
+   * @see
+   * [jest-a11y/matchers/radiogroup](https://veiko.github.io/jest-a11y/matchers/radiogroup)
    */
   toBeAccessibleRadioGroup(): CustomMatcherResult
   /**
@@ -100,7 +111,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="slider">...</div>
    *
    * expect(screen.getByRole('slider')).toBeAccessibleSlider()
-   * @see https://veiko.github.io/jest-a11y/matchers/slider
+   *
+   * @see
+   * [jest-a11y/matchers/slider](https://veiko.github.io/jest-a11y/matchers/slider)
    */
   toBeAccessibleSlider(): CustomMatcherResult
   /**
@@ -111,7 +124,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="spinbutton">...</div>
    *
    * expect(screen.getByRole('spinbutton')).toBeAccessibleSpinButton()
-   * @see https://veiko.github.io/jest-a11y/matchers/spinbutton
+   *
+   * @see
+   * [jest-a11y/matchers/spinbutton](https://veiko.github.io/jest-a11y/matchers/spinbutton)
    */
   toBeAccessibleSpinButton(): CustomMatcherResult
   /**
@@ -122,7 +137,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="switch">...</div>
    *
    * expect(screen.getByRole('switch')).toBeAccessibleSwitch()
-   * @see https://veiko.github.io/jest-a11y/matchers/slider
+   *
+   * @see
+   * [jest-a11y/matchers/switch](https://veiko.github.io/jest-a11y/matchers/switch)
    */
   toBeAccessibleSwitch(): CustomMatcherResult
   /**
@@ -132,7 +149,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="toolbar">...</div>
    *
    * expect(screen.getByRole('toolbar')).toBeAccessibleToolbar()
-   * @see https://veiko.github.io/jest-a11y/matchers/toolbar
+   *
+   * @see
+   * [jest-a11y/matchers/toolbar](https://veiko.github.io/jest-a11y/matchers/toolbar)
    */
   toBeAccessibleToolbar(): CustomMatcherResult
   /**
@@ -143,7 +162,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    *
    * expect(screen.getByRole('tooltip')).toBeAccessibleTooltip()
    *
-   * @see https://veiko.github.io/jest-a11y/matchers/tooltip
+   * @see
+   * [jest-a11y/matchers/tooltip](https://veiko.github.io/jest-a11y/matchers/tooltip)
    */
   toBeAccessibleTooltip(): CustomMatcherResult
   /**
@@ -153,7 +173,9 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * <div role="tablist">...</div>
    *
    * expect(screen.getByRole('tablist')).toBeAccessibleTabs()
-   * @see https://veiko.github.io/jest-a11y/matchers/tablist
+   *
+   * @see
+   * [jest-a11y/matchers/tablist](https://veiko.github.io/jest-a11y/matchers/tablist)
    */
   toBeAccessibleTabs(): CustomMatcherResult
   /** plop-prepend-matcher */
