@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/veiko/jest-a11y/compare/v1.18.0...v1.18.1) (2022-12-31)
+
+
+### Bug Fixes
+
+* **ts:** typescript not working for matchers [#33](https://github.com/veiko/jest-a11y/issues/33) ([#34](https://github.com/veiko/jest-a11y/issues/34)) ([3455900](https://github.com/veiko/jest-a11y/commit/345590060ecdf97e60d33e55674c7da6018b43e9))
+
 ## [1.18.1-prerelease-typescript.5](https://github.com/veiko/jest-a11y/compare/v1.18.1-prerelease-typescript.4...v1.18.1-prerelease-typescript.5) (2022-12-31)
 
 
