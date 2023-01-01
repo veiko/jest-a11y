@@ -4,7 +4,6 @@ import { matcherUtils, printUtil } from '../../utils/printUtil'
 import { assertAriaExpanded } from '../../utils/assertAriaExpanded'
 import { assertAttribute } from '../../utils/assertAttribute'
 import { assertClosest } from '../../utils/assertClosest'
-import { pfail, ppass } from '../../utils/printPass'
 
 // Setting delay null allows the userEvent to complete, otherwise hangs
 // @see https://github.com/testing-library/user-event/issues/565#issuecomment-1064579531
@@ -34,6 +33,7 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
     // @see https://zellwk.com/blog/async-await-in-loops/
     for (const button of buttons) {
       let buttonMessage = ''
+      let buttonPass: boolean = true
       // 2. Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
       const headingCheck = assertClosest({
         description: 'with role heading',
@@ -43,7 +43,7 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
           el.getAttribute('role') === 'heading',
       })
       buttonMessage += '  ' + headingCheck.message()
-      pass = pass ? headingCheck.pass : false
+      buttonPass = buttonPass ? headingCheck.pass : false
 
       if (
         headingCheck.closest &&
@@ -56,9 +56,9 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
           utils: matcherUtils,
         })
         buttonMessage += '  ' + ariaLevelCheck.message()
-        pass = pass === false ? false : ariaLevelCheck.pass
+        buttonPass = buttonPass === false ? false : ariaLevelCheck.pass
       } else {
-        buttonMessage += '  ' + ppass(`element is wrapped in an element with aria-level`)
+        buttonMessage += '  ' + printUtil.pass('element is wrapped in an element with aria-level')
       }
 
       // The null is needed for the userEvent.keyboard functions to complete, otherwise hangs
@@ -72,7 +72,7 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
         value: (value: string) => !!element.querySelector(`#${value}`),
       })
       buttonMessage += '  ' + attrCheck.message()
-      pass = pass === false ? false : attrCheck.pass
+      buttonPass = buttonPass === false ? false : attrCheck.pass
 
       // 4. aria-expanded
       const enterCheck = assertAriaExpanded({
@@ -84,23 +84,27 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
         },
       })
       buttonMessage += '  ' + enterCheck.message()
-      pass = pass === false ? false : enterCheck.pass
+      buttonPass = buttonPass === false ? false : enterCheck.pass
 
       // FIXME: issue with js-dom?
-      // const spaceCheck = await assertAriaExpanded({
-      //   element: button,
-      //   message: 'aria-expanded toggled on {space}',
-      //   userEvent: async () => {
-      //     button.focus()
-      //     await user.keyboard('{space}')
-      //   },
-      // })
-      // buttonMessage += '  ' + spaceCheck.message() + '\n'
-      // pass = pass === false ? false : spaceCheck.pass
+      const spaceCheck = assertAriaExpanded({
+        element: button,
+        message: 'aria-expanded toggled on {space}',
+        userEvent: async () => {
+          button.focus()
+          userEvent.keyboard('{space}')
+        },
+      })
+      buttonMessage += '  ' + spaceCheck.message()
+      buttonPass = buttonPass === false ? false : spaceCheck.pass
 
-      message += `${matcherUtils.RECEIVED_COLOR(
-        `${matcherUtils.DIM_COLOR('● Testing')}`,
-      )} ${matcherUtils.printReceived(button)}\n${buttonMessage}`
+      if (!buttonPass) {
+        message += printUtil.testingElement(buttonMessage, {
+          element: button,
+          pass: buttonPass,
+        })
+      }
+      pass = buttonPass === false ? false : pass
     }
   } else {
     return {

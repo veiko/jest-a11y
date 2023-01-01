@@ -1,5 +1,4 @@
 import { matcherUtils, printUtil } from './printUtil'
-import { stringify } from './stringify'
 
 type AssertAriaExpandedConfig = {
   element: HTMLElement
@@ -35,13 +34,10 @@ export const assertAriaExpanded = ({
     message += printUtil.pass(messageContent || 'aria-expanded toggled')
     userEvent()
   } else {
-    message += printUtil.fail(messageContent || 'aria-expanded toggled')
-    message += `    Expected element to have ${utils.printExpected(
-      `aria-expanded='${!initialState}'`,
-    )}:\n     ${utils.BOLD_WEIGHT(stringify(element))}\n`
-    message += `    Received element with:\n      ${utils.printReceived(
-      `aria-expanded='${element.getAttribute('aria-expanded')}'`,
-    )}\n`
+    message += printUtil.fail(messageContent || 'aria-expanded toggled', {
+      expected: `aria-expanded='${!initialState}'`,
+      received: element,
+    })
     pass = false
   }
   return { message: () => message, pass }

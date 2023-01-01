@@ -1,5 +1,4 @@
 import { printUtil } from 'utils/printUtil'
-import { stringify } from 'utils/stringify'
 
 type AssertActiveElementConfig = {
   element: HTMLElement
