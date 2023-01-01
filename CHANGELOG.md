@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/veiko/jest-a11y/compare/v1.19.0...v1.19.1) (2023-01-01)
+
+
+### Bug Fixes
+
+* clean up accordion output ([ced80fd](https://github.com/veiko/jest-a11y/commit/ced80fdc79f74773b198384ecb9ff1fb8ebd2f0e))
+
 # [1.19.0](https://github.com/veiko/jest-a11y/compare/v1.18.1...v1.19.0) (2022-12-31)
 
 
