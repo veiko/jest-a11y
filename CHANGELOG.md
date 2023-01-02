@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/veiko/jest-a11y/compare/v1.19.1...v1.19.2) (2023-01-02)
+
+
+### Bug Fixes
+
+* remove utils params [#37](https://github.com/veiko/jest-a11y/issues/37) ([#38](https://github.com/veiko/jest-a11y/issues/38)) ([b6bedab](https://github.com/veiko/jest-a11y/commit/b6bedabf95bda0201a98f72f0b1e3feb1adff85d))
+
 ## [1.19.1](https://github.com/veiko/jest-a11y/compare/v1.19.0...v1.19.1) (2023-01-01)
 
 
