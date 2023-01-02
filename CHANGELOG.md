@@ -1,3 +1,10 @@
+## [1.19.5](https://github.com/veiko/jest-a11y/compare/v1.19.4...v1.19.5) (2023-01-02)
+
+
+### Bug Fixes
+
+* **radiogroup:** support checked attribute on input ([35ed35f](https://github.com/veiko/jest-a11y/commit/35ed35f84d0ce18231d811a86326b38dcaefd62e))
+
 ## [1.19.4](https://github.com/veiko/jest-a11y/compare/v1.19.3...v1.19.4) (2023-01-02)
 
 
