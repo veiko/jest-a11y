@@ -24,7 +24,7 @@ export function toBeAccessibleDialog(this: any, element: HTMLElement): jest.Cust
   let pass = true
 
   // 1. The element that serves as the dialog container has role of dialog.
-  const roleCheck = assertRole({ element, role: 'dialog', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'dialog' })
   message += roleCheck.message()
   pass = roleCheck.pass
 
@@ -33,16 +33,15 @@ export function toBeAccessibleDialog(this: any, element: HTMLElement): jest.Cust
     element,
     attribute: 'aria-modal',
     value: 'true',
-    utils: this.utils,
   })
   message += modalCheck.message()
   pass = pass ? modalCheck.pass : false
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false
 
-  const focusTrapCheck = assertFocusLock({ element, utils: this.utils })
+  const focusTrapCheck = assertFocusLock({ element })
   message += focusTrapCheck.message()
   pass = pass ? focusTrapCheck.pass : false
 

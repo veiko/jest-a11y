@@ -1,21 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleRadioGroup } from '../to-be-accessible-radiogroup'
-import { mockUtils } from '../../../utils/mockUtils'
 import { RadioGroup } from '../examples/RadioGroup'
 
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleRadioGroup: any = toBeAccessibleRadioGroup
-  utils: any = mockUtils
-}
-
 describe('toBeAccessibleRadioGroup', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     // Note: jsdom does not support the following:
     // - tabbing to the first element with aria-checked="true". Reversing the checked elements, should still pass, but fails
@@ -39,11 +27,8 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ container element has role radiogroup')
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('container element has role radiogroup')
   })
 
   it('fails when the container element has no label', async () => {
@@ -54,11 +39,10 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+      'container element has accessible label',
     )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ container element has accessible label')
   })
 
   // FIXME: how to get these elements without a role
@@ -70,11 +54,8 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ radio button element has role radio')
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('radio button element has role radio')
   })
 
   it('fails when one of the radio button elements have no label', async () => {
@@ -85,11 +66,10 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+      'radio button element has accessible label',
     )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ radio button element has accessible label')
   })
 
   // FIXME: jest-dom currently does not tab to the correct element with aria-checked
@@ -101,11 +81,8 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element is part of tab sequence')
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('element is part of tab sequence')
   })
 
   // FIXME: can not check whether the element is active when it is navigated to
@@ -117,10 +94,9 @@ describe('toBeAccessibleRadioGroup', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleRadioGroup(
-      screen.getByTestId('a-radiogroup', { suggest: false }),
+    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+      'radio button element has aria-checked="true"',
     )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ radio button element has aria-checked="true"')
   })
 })

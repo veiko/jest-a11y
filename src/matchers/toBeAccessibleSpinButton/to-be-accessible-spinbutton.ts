@@ -28,15 +28,15 @@ export function toBeAccessibleSpinButton(
   let pass = true
   const originalValue = parseFloat(element.getAttribute('aria-valuenow') || '0')
 
-  const roleCheck = assertRole({ element, role: 'spinbutton', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'spinbutton' })
   message += roleCheck.message()
   pass = roleCheck.pass
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = labelCheck.pass
 
-  const attributeCheck = assertAriaRangeValues({ element, nowRequired: false, utils: this.utils })
+  const attributeCheck = assertAriaRangeValues({ element, nowRequired: false })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
@@ -46,7 +46,6 @@ export function toBeAccessibleSpinButton(
     attribute: 'aria-valuenow',
     element,
     message: 'increases aria-valuenow when {arrowup} is pressed',
-    utils: this.utils,
     value: v => parseFloat(v) > originalValue,
   })
   message += upCheck.message()
@@ -57,7 +56,6 @@ export function toBeAccessibleSpinButton(
     attribute: 'aria-valuenow',
     element,
     message: 'decreases aria-valuenow when {arrowdown} is pressed',
-    utils: this.utils,
     value: `${originalValue}`,
   })
   message += downCheck.message()

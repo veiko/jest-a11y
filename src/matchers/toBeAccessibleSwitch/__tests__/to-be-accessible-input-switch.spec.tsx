@@ -1,22 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleInputSwitch } from '../to-be-accessible-input-switch'
-import { mockUtils } from '../../../utils/mockUtils'
 import { InputSwitch } from '../examples/InputSwitch'
 import { LabelChangeInputSwitch } from '../examples/LabelChangeInputSwitch'
 
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleInputSwitch: any = toBeAccessibleInputSwitch
-  utils: any = mockUtils
-}
-
 describe('toBeAccessibleInputSwitch', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(<InputSwitch />)
 
@@ -26,21 +14,15 @@ describe('toBeAccessibleInputSwitch', () => {
   it('fails if the element does not have a role of switch', () => {
     render(<input data-testid="an-switch" type="checkbox" />)
 
-    const returnValue = mockExpect.toBeAccessibleInputSwitch(
-      screen.getByTestId('an-switch', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role switch')
+    const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
+    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has role switch')
   })
 
   it('fails if the element does not have an accessible label', () => {
     render(<input data-testid="an-switch" role="switch" type="checkbox" />)
 
-    const returnValue = mockExpect.toBeAccessibleInputSwitch(
-      screen.getByTestId('an-switch', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has accessible label')
+    const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
+    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has accessible label')
   })
 
   it('fails if the element does not toggle checked on space', () => {
@@ -54,20 +36,16 @@ describe('toBeAccessibleInputSwitch', () => {
       />,
     )
 
-    const returnValue = mockExpect.toBeAccessibleInputSwitch(
-      screen.getByTestId('an-switch', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element toggles checked on {space}')
+    const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
+    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element toggles checked on {space}')
   })
 
   it('fails if the element label changes when the state changes', () => {
     render(<LabelChangeInputSwitch />)
 
-    const returnValue = mockExpect.toBeAccessibleInputSwitch(
-      screen.getByTestId('an-switch', { suggest: false }),
+    const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
+    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith(
+      'element label does not change when state changes',
     )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element label does not change when state changes')
   })
 })

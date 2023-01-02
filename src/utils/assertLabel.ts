@@ -1,6 +1,5 @@
-import React from 'react'
 import { getAttribute, hasChildren } from 'utils'
-import { printUtil } from './printUtil'
+import { matcherUtils, printUtil } from 'utils/printUtil'
 
 type AssertLabelOptions = {
   /**
@@ -13,7 +12,6 @@ type AssertLabelConfig = {
   element: HTMLElement
   elementName?: string
   options?: AssertLabelOptions
-  utils: JestMatcherUtils
 }
 
 const hasAriaLabel = (el: HTMLElement) =>
@@ -23,7 +21,6 @@ export const assertLabel = ({
   element,
   elementName = 'element',
   options: { testTextContent = true } = {},
-  utils,
 }: AssertLabelConfig): jest.CustomMatcherResult => {
   if (testTextContent && !hasChildren(element) && !hasAriaLabel(element)) {
     return {
@@ -31,20 +28,19 @@ export const assertLabel = ({
       message: () =>
         printUtil.fail(`${elementName} has accessible label`, {
           hints: `By default, the accessible name is computed from any text content inside the element. However, it can also be provided with aria-labelledby or aria-label.
-      Text content: ${utils.printReceived(element.innerHTML)}
-      aria-label: ${utils.printReceived(getAttribute(element, 'aria-label'))}
-      aria-labelledby: ${utils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
-          utils,
+      Text content: ${matcherUtils.printReceived(element.innerHTML)}
+      aria-label: ${matcherUtils.printReceived(getAttribute(element, 'aria-label'))}
+      aria-labelledby: ${matcherUtils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
         }),
     }
   } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => printUtil.fail(`${elementName} has accessible label`, { utils }),
+      message: () => printUtil.fail(`${elementName} has accessible label`),
     }
   }
   return {
-    message: () => printUtil.pass(`${elementName} has accessible label`, { utils }),
+    message: () => printUtil.pass(`${elementName} has accessible label`),
     pass: true,
   }
 }

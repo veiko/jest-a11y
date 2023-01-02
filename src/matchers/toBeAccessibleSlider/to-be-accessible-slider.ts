@@ -21,23 +21,22 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: 'slider', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'slider' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : pass
 
   const labelCheck = assertLabel({
     element,
     options: { testTextContent: false },
-    utils: this.utils,
   })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  const tabCheck = assertTab({ element, utils: this.utils })
+  const tabCheck = assertTab({ element })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 
-  const attributeCheck = assertAriaRangeValues({ element, utils: this.utils })
+  const attributeCheck = assertAriaRangeValues({ element })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
@@ -48,7 +47,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'increases aria-valuenow when {arrowright} is pressed',
-    utils: this.utils,
     value: v => parseFloat(v) > originalValue,
   })
   message += rightCheck.message()
@@ -59,7 +57,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'decreases aria-valuenow when {arrowleft} is pressed',
-    utils: this.utils,
     value: `${originalValue}`,
   })
   message += leftCheck.message()
@@ -70,7 +67,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'increases aria-valuenow when {arrowdown} is pressed',
-    utils: this.utils,
     value: v => parseFloat(v) > originalValue,
   })
   message += downCheck.message()
@@ -81,7 +77,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'decreases aria-valuenow when {arrowup} is pressed',
-    utils: this.utils,
     value: `${originalValue}`,
   })
   message += upCheck.message()
@@ -92,7 +87,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'sets aria-valuenow to aria-valuemin when {home} is pressed',
-    utils: this.utils,
     value: element.getAttribute('aria-valuemin')!,
   })
   message += homeCheck.message()
@@ -103,7 +97,6 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-valuenow',
     element,
     message: 'sets aria-valuenow to aria-valuemax when {end} is pressed',
-    utils: this.utils,
     value: element.getAttribute('aria-valuemax')!,
   })
   message += endCheck.message()

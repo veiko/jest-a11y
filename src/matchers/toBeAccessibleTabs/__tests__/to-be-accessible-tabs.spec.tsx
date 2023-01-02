@@ -1,21 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleTabs } from '../to-be-accessible-tabs'
-import { mockUtils } from '../../../utils/mockUtils'
 import { Tabs } from '../examples/Tabs'
 
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleTabs: any = toBeAccessibleTabs
-  utils: any = mockUtils
-}
-
 describe('toBeAccessibleTabs', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(<Tabs />)
 
@@ -30,11 +18,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role tablist')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element has role tablist')
   })
 
   it('fails if the container element has no tabs', () => {
@@ -44,12 +29,9 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ element contains one or more elements with role="tab"',
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith(
+      'element contains one or more elements with role="tab"',
     )
   })
 
@@ -61,11 +43,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has accessible label')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element has accessible label')
   })
 
   it('fails if the container is not part of the tab sequence', () => {
@@ -76,11 +55,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element is part of tab sequence')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element is part of tab sequence')
   })
 
   // TODO: how to test
@@ -91,11 +67,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role tablist')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element has role tablist')
   })
 
   it('fails if a tab element does not have aria-controls set to a valid panel', () => {
@@ -107,12 +80,9 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ element has valid aria-controls referring to a tabpanel',
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith(
+      'element has valid aria-controls referring to a tabpanel',
     )
   })
 
@@ -128,11 +98,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element blurs as it navigates to the next element')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element blurs as it navigates to the next element')
   })
 
   it('fails if a tab element does not navigate to the previous tab on {arrowleft}', () => {
@@ -147,11 +114,8 @@ describe('toBeAccessibleTabs', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element blurs as it navigates to the next element')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('element blurs as it navigates to the next element')
   })
 
   // TODO: how to test? perhaps use the aria-controls from the previous test?
@@ -167,11 +131,8 @@ describe('toBeAccessibleTabs', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ tab panel element has role tabpanel')
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith('tab panel element has role tabpanel')
   })
 
   it('fails if a panel element does not have aria-labelledby', () => {
@@ -188,12 +149,9 @@ describe('toBeAccessibleTabs', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ tab panel element has valid aria-labelledby referring to a tab',
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith(
+      'tab panel element has valid aria-labelledby referring to a tab',
     )
   })
 
@@ -211,12 +169,9 @@ describe('toBeAccessibleTabs', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ tab panel element has valid aria-labelledby referring to a tab',
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith(
+      'tab panel element has valid aria-labelledby referring to a tab',
     )
   })
 
@@ -234,12 +189,9 @@ describe('toBeAccessibleTabs', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTabs(
-      screen.getByTestId('tablist-id', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      "✕ element (or element's child) is part of tab sequence",
+    const tabs = screen.getByTestId('tablist-id', { suggest: false })
+    expect(toBeAccessibleTabs(tabs)).toFailWith(
+      "element (or element's child) is part of tab sequence",
     )
   })
 })

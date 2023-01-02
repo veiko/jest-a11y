@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event'
-import { assertFocus } from 'utils/assertFocus'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
@@ -21,16 +20,16 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   let pass = true
 
   // 1. The button has role of button.
-  const roleCheck = assertRole({ element, role: 'button', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'button' })
   message += roleCheck.message()
   pass = roleCheck.pass
 
   // 2. The button has an accessible label.
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass === false ? false : labelCheck.pass
 
-  const tabCheck = assertTab({ element, utils: this.utils })
+  const tabCheck = assertTab({ element })
   message += tabCheck.message()
   pass = pass === false ? false : tabCheck.pass
 
@@ -44,9 +43,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
     expectedCalls += 1
-    message += printUtil.pass('element activated on {space}', { utils: this.utils })
+    message += printUtil.pass('element activated on {space}')
   } catch (e) {
-    message += printUtil.fail('element activated on {space}', { utils: this.utils })
+    message += printUtil.fail('element activated on {space}')
     pass = false
   }
 
@@ -54,9 +53,9 @@ export function toBeAccessibleButton(this: any, element: HTMLElement): jest.Cust
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}', { utils: this.utils })
+    message += printUtil.pass('element activated on {enter}')
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}', { utils: this.utils })
+    message += printUtil.fail('element activated on {enter}')
     pass = false
   }
   element.onclick = oldOnClick

@@ -15,7 +15,7 @@ export function toBeAccessibleLink(this: any, element: HTMLElement): jest.Custom
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: 'link', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'link' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
 
@@ -28,9 +28,9 @@ export function toBeAccessibleLink(this: any, element: HTMLElement): jest.Custom
   userEvent.keyboard('{enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}', { utils: this.utils })
+    message += printUtil.pass('element activated on {enter}')
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}', { utils: this.utils })
+    message += printUtil.fail('element activated on {enter}')
     pass = false
   }
   element.onclick = oldOnClick

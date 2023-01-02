@@ -10,7 +10,6 @@ type AssertAriaRangeValueConfig = {
   element: HTMLElement
   message?: string
   nowRequired?: boolean
-  utils: JestMatcherUtils
 }
 
 export const assertAriaRangeValues = ({
@@ -19,13 +18,12 @@ export const assertAriaRangeValues = ({
   // per MDN web docs, aria-valuenow is optional if indeterminate
   // per WAI, this is not mentioned, so leaving the option to disable in the future
   nowRequired = true,
-  utils,
 }: AssertAriaRangeValueConfig) => {
   let message = ''
   let pass = true
 
   if (nowRequired) {
-    const nowCheck = assertAttribute({ attribute: 'aria-valuenow', element, utils })
+    const nowCheck = assertAttribute({ attribute: 'aria-valuenow', element })
     message += nowCheck.message()
     pass = nowCheck.pass
   }
@@ -44,20 +42,17 @@ export const assertAriaRangeValues = ({
         {
           expected: `aria-valuemin < ${max}`,
           received: `${min}`,
-          utils,
         },
       )
       pass = false
     } else {
       message += printUtil.pass(
         'element has aria-valuemin set to a decimal value less than aria-valuemax',
-        { utils },
       )
     }
     if (nowRequired && !now) {
       message += printUtil.fail(`element has valid aria-valuenow`, {
         expected: `decimal number greater than ${min} and less than ${max}, inclusive`,
-        utils,
       })
       pass = false
     } else if (now !== undefined && (now > max || now < min)) {
@@ -66,13 +61,10 @@ export const assertAriaRangeValues = ({
         received: `decimal number (${now}) is ${now > max ? 'greater' : 'less'} than ${
           now > max ? max : min
         }`,
-        utils,
       })
       pass = false
     } else {
-      message += printUtil.pass(`element ${messageContent || `has valid aria-valuenow`}`, {
-        utils,
-      })
+      message += printUtil.pass(`element ${messageContent || `has valid aria-valuenow`}`)
     }
   }
 

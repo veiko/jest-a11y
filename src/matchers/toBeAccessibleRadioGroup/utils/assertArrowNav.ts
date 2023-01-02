@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event'
-import { assertActiveElement } from 'utils/assertActiveElement'
 import { assertAttribute } from 'utils/assertAttribute'
 import { printUtil } from 'utils/printUtil'
 
@@ -13,7 +12,6 @@ type AssertArrowNavConfig = {
   elements: HTMLElement[]
   elementName?: string
   message?: string
-  utils: JestMatcherUtils
 }
 
 type AssertSingleArrowNavConfig = {
@@ -21,7 +19,6 @@ type AssertSingleArrowNavConfig = {
   nextElement: HTMLElement
   key: string
   message?: string
-  utils: JestMatcherUtils
 }
 
 const keys = [
@@ -36,7 +33,6 @@ const assertSingleArrowNav = ({
   key,
   message: messageContent = `${elementName} navigates with ${key} and checks next element`,
   nextElement,
-  utils,
 }: AssertSingleArrowNavConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
@@ -56,19 +52,13 @@ const assertSingleArrowNav = ({
     attribute: 'aria-checked',
     element: nextElement,
     elementName,
-    utils,
     value: 'true',
   })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
   return {
-    message: () =>
-      pass
-        ? printUtil.pass(messageContent, {
-            utils,
-          })
-        : message,
+    message: () => (pass ? printUtil.pass(messageContent) : message),
     pass,
   }
 }
@@ -85,7 +75,6 @@ export const assertArrowNav = ({
   elements,
   elementName = 'element',
   message: messageContent = 'navigates with arrow keys',
-  utils,
 }: AssertArrowNavConfig): jest.CustomMatcherResult => {
   let pass = true
   let message = ''
@@ -103,7 +92,6 @@ export const assertArrowNav = ({
         elementName,
         key,
         nextElement: elements[nextElement],
-        utils,
       })
 
       message += navCheck.message()
@@ -114,12 +102,7 @@ export const assertArrowNav = ({
   })
 
   return {
-    message: () =>
-      pass
-        ? printUtil.pass(messageContent, {
-            utils,
-          })
-        : message,
+    message: () => (pass ? printUtil.pass(messageContent) : message),
     pass,
   }
 }

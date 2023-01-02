@@ -1,6 +1,4 @@
-import { assertClosest } from 'utils/assertClosest'
 import { assertLabel } from 'utils/assertLabel'
-import { assertRole } from 'utils/assertRole'
 import { assertTagName } from 'utils/assertTagName'
 
 /**
@@ -19,14 +17,13 @@ export function toBeAccessibleBreadcrumb(
   let message = ''
   let pass = true
 
-  const tagNameCheck = assertTagName({ element, tagName: 'nav', utils: this.utils })
+  const tagNameCheck = assertTagName({ element, tagName: 'nav' })
   message += tagNameCheck.message()
   pass = pass ? tagNameCheck.pass : false
 
   const labelCheck = assertLabel({
     element,
     options: { testTextContent: false },
-    utils: this.utils,
   })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false

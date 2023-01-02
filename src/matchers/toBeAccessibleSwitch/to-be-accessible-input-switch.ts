@@ -27,24 +27,23 @@ export function toBeAccessibleInputSwitch(
         printUtil.fail('element is an input[type="checkbox"]', {
           expected: '<input type="checkbox" />',
           received: element,
-          utils: this.utils,
         }),
       pass: false,
     }
   }
 
-  const roleCheck = assertRole({ element, role: 'switch', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'switch' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false
 
   const initialChecked = (element as HTMLInputElement).checked
   const initialLabel = getElementLabel(element)
 
-  const attributeCheck = assertProperty({ property: 'checked', element, utils: this.utils })
+  const attributeCheck = assertProperty({ property: 'checked', element })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : false
 
@@ -55,7 +54,6 @@ export function toBeAccessibleInputSwitch(
     property: 'checked',
     element,
     message: 'toggles checked on {space}',
-    utils: this.utils,
     value: !initialChecked,
   })
   message += toggleCheck.message()
@@ -64,8 +62,8 @@ export function toBeAccessibleInputSwitch(
   const constantLabelCheck = getElementLabel(element) === initialLabel
   const constantLabelMessage = 'element label does not change when state changes'
   message += constantLabelCheck
-    ? printUtil.pass(constantLabelMessage, { utils: this.utils })
-    : printUtil.fail(constantLabelMessage, { utils: this.utils })
+    ? printUtil.pass(constantLabelMessage)
+    : printUtil.fail(constantLabelMessage)
   pass = pass ? constantLabelCheck : false
 
   return { message: () => message, pass }

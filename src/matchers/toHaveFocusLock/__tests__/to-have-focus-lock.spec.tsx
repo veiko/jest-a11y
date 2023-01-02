@@ -1,13 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toHaveFocusLock } from '../to-have-focus-lock'
-import { mockUtils } from '../../../utils/mockUtils'
-
-class MockExpect {
-  isNot: boolean = false
-  toHaveFocusLock: any = toHaveFocusLock
-  utils: any = mockUtils
-}
 
 const MockFocusLock = () => {
   const theRef = React.useRef<HTMLButtonElement>(null)
@@ -21,11 +14,6 @@ const MockFocusLock = () => {
 }
 
 describe('toHaveFocusLock', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(<MockFocusLock />)
 
@@ -40,8 +28,6 @@ describe('toHaveFocusLock', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toHaveFocusLock(screen.getByTestId('trap'))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ focus outside of element')
+    expect(toHaveFocusLock(screen.getByTestId('trap'))).toFailWith('focus outside of element')
   })
 })

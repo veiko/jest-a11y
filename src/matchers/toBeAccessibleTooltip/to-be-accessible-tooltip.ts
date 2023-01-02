@@ -19,7 +19,7 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
   let message = ''
   let pass = true
 
-  const tabCheck = assertTab({ element, elementName: 'trigger element', utils: this.utils })
+  const tabCheck = assertTab({ element, elementName: 'trigger element' })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : false
 
@@ -33,7 +33,6 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
     attribute: 'aria-describedby',
     element,
     elementName: 'trigger element',
-    utils: this.utils,
     value: element.id,
   })
   if (!descriptionCheck.pass) {
@@ -54,7 +53,6 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
     element: tooltipElement,
     elementName: 'tooltip element',
     role: 'tooltip',
-    utils: this.utils,
   })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
@@ -63,7 +61,6 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
     element: tooltipElement,
     elementName: 'tooltip element',
     message: 'is accessible when trigger is focused',
-    utils: this.utils,
   })
   message += accessibleCheck.message()
   pass = pass ? accessibleCheck.pass : false
@@ -74,7 +71,6 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
     element: tooltipElement,
     elementName: 'tooltip element',
     message: 'is hidden on {esc}',
-    utils: this.utils,
   })
   message += hiddenCheck.message()
   pass = pass ? hiddenCheck.pass : false

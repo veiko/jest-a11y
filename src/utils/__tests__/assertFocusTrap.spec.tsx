@@ -1,7 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import React from 'react'
-import { assertFocusLock } from '../../utils/assertFocusLock'
-import { mockUtils } from '../../utils/mockUtils'
+import { assertFocusLock } from 'utils/assertFocusLock'
 
 const idPrefix = 'el'
 const firstElementId = 'el-0'
@@ -29,7 +28,6 @@ describe('assertFocusLock', () => {
     )
     const result = assertFocusLock({
       element: document.getElementById('trap') as HTMLElement,
-      utils: mockUtils,
     })
 
     expect(result.message()).toBe('')
@@ -49,7 +47,6 @@ describe('assertFocusLock', () => {
 
     const result = assertFocusLock({
       element: screen.getByTestId('trap'),
-      utils: mockUtils,
     })
 
     expect(result.message()).toBe('')
@@ -65,10 +62,8 @@ describe('assertFocusLock', () => {
     )
     const result = assertFocusLock({
       element: document.getElementById('trap') as HTMLElement,
-      utils: mockUtils,
     })
 
-    expect(result.pass).toBe(false)
-    expect(result.message()).toContain('✕ focus outside of element')
+    expect(result).toFailWith('focus outside of element')
   })
 })

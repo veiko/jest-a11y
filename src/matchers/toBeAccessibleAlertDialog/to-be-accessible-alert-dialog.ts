@@ -26,35 +26,34 @@ export function toBeAccessibleAlertDialog(
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: 'alertdialog', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'alertdialog' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : pass
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
   const descriptionCheck = assertAttribute({
     attribute: 'aria-describedby',
     element,
-    utils: this.utils,
   })
   message += descriptionCheck.message()
   pass = pass ? descriptionCheck.pass : pass
 
   if (document.getElementById(element.getAttribute('aria-describedby') || '')) {
-    message += printUtil.pass('element description is present', { utils: this.utils })
+    message += printUtil.pass('element description is present')
     pass = pass ? true : false
   } else {
-    message += printUtil.fail('element description is present', { utils: this.utils })
+    message += printUtil.fail('element description is present')
   }
 
   try {
     userEvent.keyboard('{esc}')
-    message += printUtil.pass('element closed on {esc}', { utils: this.utils })
+    message += printUtil.pass('element closed on {esc}')
     // TODO: How to validate dialog closed?
   } catch (e) {
-    message += printUtil.fail('element closed on {esc}', { utils: this.utils })
+    message += printUtil.fail('element closed on {esc}')
     pass = false
   }
 

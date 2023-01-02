@@ -1,14 +1,10 @@
-import * as MatcherUtils from 'jest-matcher-utils'
+import * as utils from 'jest-matcher-utils'
 
-export const matcherUtils = MatcherUtils
+export const matcherUtils = utils
 export type ExpectedOrReceived = string | Element | HTMLElement | null
 
 type Config = {
   hints?: string
-  /**
-   * @deprecated
-   */
-  utils?: JestMatcherUtils
 }
 
 type FailConfig = {
@@ -19,10 +15,6 @@ type FailConfig = {
 type TestingConfig = {
   element: HTMLElement
   pass: boolean
-  /**
-   * @deprecated
-   */
-  utils?: JestMatcherUtils
 }
 
 /**
@@ -41,7 +33,7 @@ function truncateElement(
 
 export const printUtil = {
   /** Formats a message for a failed test */
-  fail: (msg: string, { expected, hints, received, utils = MatcherUtils }: FailConfig = {}) => {
+  fail: (msg: string, { expected, hints, received }: FailConfig = {}) => {
     let message = `${utils.RECEIVED_COLOR('✕')} ${utils.DIM_COLOR(msg)}${
       hints?.length ? `\n\n  ${hints}` : ''
     }\n`
@@ -55,10 +47,9 @@ export const printUtil = {
     return message
   },
   /** Formats a message for a passing test */
-  pass: (msg: string, { utils = MatcherUtils }: Config = {}) =>
-    `${utils.EXPECTED_COLOR('✓')} ${utils.DIM_COLOR(msg)}\n`,
+  pass: (msg: string) => `${utils.EXPECTED_COLOR('✓')} ${utils.DIM_COLOR(msg)}\n`,
   /** Formats a message for testing a single element, useful when looping through multiple elements and displaying the current tested element */
-  testingElement: (msg: string, { element, pass, utils = MatcherUtils }: TestingConfig) => {
+  testingElement: (msg: string, { element, pass }: TestingConfig) => {
     const printFunc = pass ? utils.EXPECTED_COLOR : utils.RECEIVED_COLOR
     return `\n${printFunc('●')} Testing: ${truncateElement(element)}\n\n${msg}`
   },

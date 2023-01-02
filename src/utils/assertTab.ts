@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
-import { assertFocus } from './assertFocus'
-import { getFirstFocusableElement } from './getFirstFocusableElement'
+import { assertFocus } from 'utils/assertFocus'
+import { getFirstFocusableElement } from 'utils/getFirstFocusableElement'
 
 type AssertTabOptions = {
   includeChildren?: boolean
@@ -11,14 +11,12 @@ type AssertTabConfig = {
   element: HTMLElement
   elementName?: string
   options?: AssertTabOptions
-  utils: JestMatcherUtils
 }
 
 export const assertTab = ({
   element,
   elementName = 'element',
   options: { includeChildren, resetFocus } = {},
-  utils,
 }: AssertTabConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
@@ -29,7 +27,6 @@ export const assertTab = ({
     element,
     elementName,
     message: 'is part of tab sequence',
-    utils,
   })
 
   if (includeChildren && !focusCheck.pass) {
@@ -37,7 +34,6 @@ export const assertTab = ({
       element: getFirstFocusableElement(element) as HTMLElement,
       elementName: "element (or element's child)",
       message: 'is part of tab sequence',
-      utils,
     })
     message += childCheck.message()
     pass = pass ? childCheck.pass : false
