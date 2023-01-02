@@ -7,7 +7,7 @@ export function toHaveFocusLock(this: any, element: HTMLElement): jest.CustomMat
   let message = ''
   let pass = true
 
-  const focusTrapCheck = assertFocusLock({ element, utils: this.utils })
+  const focusTrapCheck = assertFocusLock({ element })
   message += focusTrapCheck.message()
   pass = pass ? focusTrapCheck.pass : false
 

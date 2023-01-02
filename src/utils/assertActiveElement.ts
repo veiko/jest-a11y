@@ -4,25 +4,22 @@ type AssertActiveElementConfig = {
   element: HTMLElement
   elementName?: string
   message?: string
-  utils: JestMatcherUtils
 }
 
 export const assertActiveElement = ({
   element,
   elementName = 'element',
   message: messageContent = 'is active',
-  utils,
 }: AssertActiveElementConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
 
   if (document.activeElement === element) {
-    message += printUtil.pass(`${elementName} ${messageContent}`, { utils })
+    message += printUtil.pass(`${elementName} ${messageContent}`)
   } else {
     message += printUtil.fail(`${elementName} ${messageContent}`, {
       expected: element,
       received: document.activeElement,
-      utils,
     })
     pass = false
   }

@@ -1,21 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleTooltip } from '../to-be-accessible-tooltip'
-import { mockUtils } from '../../../utils/mockUtils'
 import { Tooltip } from '../examples/Tooltip'
 
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleTooltip: any = toBeAccessibleTooltip
-  utils: any = mockUtils
-}
-
 describe('toBeAccessibleTooltip', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(<Tooltip />)
 
@@ -34,9 +22,8 @@ describe('toBeAccessibleTooltip', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTooltip(screen.getByText(/hover me/i))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ tooltip element has role tooltip')
+    const tooltip = screen.getByText(/hover me/i)
+    expect(toBeAccessibleTooltip(tooltip)).toFailWith('tooltip element has role tooltip')
   })
 
   it('fails if the trigger element does not have a description', () => {
@@ -49,9 +36,10 @@ describe('toBeAccessibleTooltip', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTooltip(screen.getByText(/hover me/i))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ trigger element has attribute aria-describedby')
+    const tooltip = screen.getByText(/hover me/i)
+    expect(toBeAccessibleTooltip(tooltip)).toFailWith(
+      'trigger element has attribute aria-describedby',
+    )
   })
 
   it('fails if the tooltip does not appear on focus', () => {
@@ -66,10 +54,9 @@ describe('toBeAccessibleTooltip', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTooltip(screen.getByText(/hover me/i))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ tooltip element has aria-hidden attribute set to true',
+    const tooltip = screen.getByText(/hover me/i)
+    expect(toBeAccessibleTooltip(tooltip)).toFailWith(
+      'tooltip element has aria-hidden attribute set to true',
     )
   })
 
@@ -85,8 +72,7 @@ describe('toBeAccessibleTooltip', () => {
       </>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleTooltip(screen.getByText(/hover me/i))
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ tooltip element is hidden on {esc}')
+    const tooltip = screen.getByText(/hover me/i)
+    expect(toBeAccessibleTooltip(tooltip)).toFailWith('tooltip element is hidden on {esc}')
   })
 })

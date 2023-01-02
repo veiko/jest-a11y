@@ -10,16 +10,15 @@ type AssertActivationConfig = {
   elementName?: string
   message?: string
   onActivate(): ActivationCheck
-  utils: JestMatcherUtils
 }
 
+/** TODO */
 export const assertActivation = ({
   activateOnEnter = true,
   activateOnSpace = true,
   element,
   elementName = 'element',
   onActivate,
-  utils,
 }: AssertActivationConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
@@ -28,14 +27,11 @@ export const assertActivation = ({
   userEvent.keyboard('{space}')
   const result = onActivate()
   if (result.pass) {
-    message += printUtil.pass(`${elementName} activated on {space}`, {
-      utils,
-    })
+    message += printUtil.pass(`${elementName} activated on {space}`)
   } else {
     message += printUtil.fail(`${elementName} activated on {space}`, {
       expected: result.expected,
       received: result.received,
-      utils,
     })
     pass = false
   }

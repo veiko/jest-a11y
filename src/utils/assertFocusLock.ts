@@ -1,17 +1,13 @@
 import userEvent from '@testing-library/user-event'
-import { getAllFocusableElements } from './getAllFocusableElements'
-import { printUtil } from './printUtil'
+import { getAllFocusableElements } from 'utils/getAllFocusableElements'
+import { matcherUtils, printUtil } from 'utils/printUtil'
 
 type AssertFocusConfig = {
   element: HTMLElement
   message?: string
-  utils: JestMatcherUtils
 }
 
-export const assertFocusLock = ({
-  element,
-  utils,
-}: AssertFocusConfig): jest.CustomMatcherResult => {
+export const assertFocusLock = ({ element }: AssertFocusConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true
 
@@ -20,7 +16,7 @@ export const assertFocusLock = ({
 
   if (!elements.length) {
     return {
-      message: () => printUtil.pass(`element has no focusable elements`, { utils }),
+      message: () => printUtil.pass(`element has no focusable elements`),
       pass: true,
     }
   }
@@ -40,8 +36,7 @@ export const assertFocusLock = ({
     if (!elements.includes(currentActiveElement as HTMLElement)) {
       message = printUtil.fail(
         `focus outside of element
-    Received: ${utils.printReceived(currentActiveElement)}`,
-        { utils },
+    Received: ${matcherUtils.printReceived(currentActiveElement)}`,
       )
       pass = false
       break
@@ -51,7 +46,7 @@ export const assertFocusLock = ({
 
     if (ct > 1000) {
       pass = false
-      message = printUtil.fail(`loop detected`, { utils })
+      message = printUtil.fail(`loop detected`)
       break
     }
   }

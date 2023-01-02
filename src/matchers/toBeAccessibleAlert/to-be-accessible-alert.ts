@@ -10,5 +10,5 @@ import { assertRole } from 'utils/assertRole'
  * N/A
  */
 export function toBeAccessibleAlert(this: any, element: HTMLElement): jest.CustomMatcherResult {
-  return assertRole({ element, role: 'alert', utils: this.utils })
+  return assertRole({ element, role: 'alert' })
 }

@@ -26,15 +26,15 @@ export function toBeAccessibleSwitch(this: any, element: HTMLElement): jest.Cust
     }
   }
 
-  const roleCheck = assertRole({ element, role: 'switch', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'switch' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false
 
-  const attributeCheck = assertAttribute({ attribute: 'aria-checked', element, utils: this.utils })
+  const attributeCheck = assertAttribute({ attribute: 'aria-checked', element })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : false
 
@@ -48,7 +48,6 @@ export function toBeAccessibleSwitch(this: any, element: HTMLElement): jest.Cust
     attribute: 'aria-checked',
     element,
     message: `toggles aria-checked on {space}`,
-    utils: this.utils,
     value: initialChecked === 'true' ? 'false' : 'true',
   })
   message += toggleCheck.message()
@@ -57,11 +56,10 @@ export function toBeAccessibleSwitch(this: any, element: HTMLElement): jest.Cust
   const constantLabelCheck = getElementLabel(element) === initialLabel
   const constantLabelMessage = 'element label does not change when state changes'
   message += constantLabelCheck
-    ? printUtil.pass(constantLabelMessage, { utils: this.utils })
+    ? printUtil.pass(constantLabelMessage)
     : printUtil.fail(constantLabelMessage, {
         expected: initialLabel,
         received: getElementLabel(element),
-        utils: this.utils,
       })
   pass = pass ? constantLabelCheck : false
 

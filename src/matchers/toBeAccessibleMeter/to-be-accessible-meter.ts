@@ -18,19 +18,18 @@ export function toBeAccessibleMeter(this: any, element: HTMLElement): jest.Custo
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: 'meter', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'meter' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : pass
 
   const labelCheck = assertLabel({
     element,
     options: { testTextContent: false },
-    utils: this.utils,
   })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  const attributeCheck = assertAriaRangeValues({ element, nowRequired: false, utils: this.utils })
+  const attributeCheck = assertAriaRangeValues({ element, nowRequired: false })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 

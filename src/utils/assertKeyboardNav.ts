@@ -9,7 +9,6 @@ type AssertKeyboardNavConfig = {
   key: '{arrowleft}' | '{arrowright}' | '{arrowup}' | '{arrowdown}'
   passMessage?: string
   nextElement?: HTMLElement
-  utils: JestMatcherUtils
 }
 
 export const assertKeyboardNav = ({
@@ -17,7 +16,6 @@ export const assertKeyboardNav = ({
   key,
   passMessage = 'element supports arrow keyboard navigation',
   nextElement,
-  utils,
 }: AssertKeyboardNavConfig): jest.CustomMatcherResult & { activeElement: HTMLElement } => {
   let message = ''
   let pass = true
@@ -28,20 +26,19 @@ export const assertKeyboardNav = ({
   const blurCheck = assertBlur({
     element,
     message: 'blurs as it navigates to the next element',
-    utils,
   })
   message += blurCheck.message()
   pass = pass ? blurCheck.pass : false
 
   if (nextElement) {
-    const focusCheck = assertFocus({ element: nextElement, utils })
+    const focusCheck = assertFocus({ element: nextElement })
     message += focusCheck.message()
     pass = pass ? focusCheck.pass : false
   }
 
   return {
     activeElement,
-    message: () => (pass ? printUtil.pass(passMessage, { utils }) : message),
+    message: () => (pass ? printUtil.pass(passMessage) : message),
     pass,
   }
 }

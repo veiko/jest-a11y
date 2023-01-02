@@ -20,23 +20,20 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: 'tablist', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'tablist' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
 
   const labelCheck = assertLabel({
     element,
     options: { testTextContent: false },
-    utils: this.utils,
   })
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false
 
   const tabs = getChildrenWithRole(element, { role: 'tab' })
   if (!tabs.length) {
-    message += printUtil.fail('element contains one or more elements with role="tab"', {
-      utils: this.utils,
-    })
+    message += printUtil.fail('element contains one or more elements with role="tab"')
     return {
       message: () => message,
       pass: false,
@@ -46,7 +43,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
   // FIXME: what if first tab is disabled?
   const tabCheck = assertTab({
     element: tabs[0],
-    utils: this.utils,
   })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : false
@@ -57,7 +53,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
     key: '{arrowright}',
     nextElement: tabs[1],
     passMessage: 'element navigates to next tab on {arrowright}',
-    utils: this.utils,
   })
   message += rightCheck.message()
   pass = pass ? rightCheck.pass : false
@@ -69,7 +64,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
       key: '{arrowleft}',
       nextElement: tabs[0],
       passMessage: 'element navigates to previous tab on {arrowleft}',
-      utils: this.utils,
     })
     message += leftCheck.message()
     pass = pass ? leftCheck.pass : false
@@ -79,7 +73,7 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
     let tabMessage = ''
     let tabPass = true
 
-    const tabRoleCheck = assertRole({ element: tabElement, role: 'tab', utils: this.utils })
+    const tabRoleCheck = assertRole({ element: tabElement, role: 'tab' })
     tabMessage += tabRoleCheck.message()
     tabPass = tabPass ? tabRoleCheck.pass : false
 
@@ -87,7 +81,7 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
       attribute: 'aria-controls',
       element: tabElement,
       message: 'has valid aria-controls referring to a tabpanel',
-      utils: this.utils,
+
       value: (value: string) => !!document.getElementById(value),
     })
     tabMessage += ariaControlsCheck.message()
@@ -102,7 +96,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
         element: panelElement,
         elementName: 'tab panel element',
         role: 'tabpanel',
-        utils: this.utils,
       })
       tabMessage += panelRoleCheck.message()
       tabPass = tabPass ? panelRoleCheck.pass : false
@@ -112,7 +105,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
         element: panelElement,
         elementName: 'tab panel element',
         message: 'has valid aria-labelledby referring to a tab',
-        utils: this.utils,
         value: (value: string) => !!document.getElementById(value),
       })
       tabMessage += ariaLabelledByCheck.message()
@@ -129,7 +121,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
       const tabCheck = assertTab({
         element: panelElement,
         options: { includeChildren: true, resetFocus: true },
-        utils: this.utils,
       })
       tabMessage += tabCheck.message()
       tabPass = tabPass ? tabCheck.pass : false
@@ -138,7 +129,6 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
     message += printUtil.testingElement(tabMessage, {
       element: tabElement,
       pass: tabPass,
-      utils: this.utils,
     })
     pass = pass ? tabPass : false
   })

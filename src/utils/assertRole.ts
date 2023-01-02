@@ -1,5 +1,5 @@
 import { getAttribute, getRole } from 'utils'
-import { printUtil } from './printUtil'
+import { printUtil } from 'utils/printUtil'
 
 const hasAlertRole = (el: HTMLElement) => getRole(el) === 'alert'
 
@@ -80,14 +80,12 @@ type AssertRoleConfig = {
   role: Role | Role[]
   element: HTMLElement
   elementName?: string
-  utils: JestMatcherUtils
 }
 
 export const assertRole = ({
   element,
   elementName = 'element',
   role,
-  utils,
 }: AssertRoleConfig): jest.CustomMatcherResult => {
   const roleList: Role[] = Array.isArray(role) ? role : [role]
   let message = ''
@@ -95,9 +93,9 @@ export const assertRole = ({
 
   roleList.forEach(r => {
     if (!assertions[r](element)) {
-      message += printUtil.fail(`${elementName} has role ${r}`, { utils })
+      message += printUtil.fail(`${elementName} has role ${r}`)
     } else {
-      message += printUtil.pass(`${elementName} has role ${r}`, { utils })
+      message += printUtil.pass(`${elementName} has role ${r}`)
       pass = true
     }
   })
@@ -105,7 +103,7 @@ export const assertRole = ({
   return {
     message: () =>
       pass && Array.isArray(role)
-        ? printUtil.pass(`${elementName} has one role of ${role.join(', ')}`, { utils })
+        ? printUtil.pass(`${elementName} has one role of ${role.join(', ')}`)
         : message,
     pass,
   }

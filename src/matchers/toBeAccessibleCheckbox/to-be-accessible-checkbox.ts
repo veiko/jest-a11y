@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
+import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
 import { printUtil } from 'utils/printUtil'
-import { assertRole } from '../../utils/assertRole'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
@@ -21,15 +21,15 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   let pass = true
 
   // 1. The element has role of checkbox.
-  const roleCheck = assertRole({ element, role: 'checkbox', utils: this.utils })
+  const roleCheck = assertRole({ element, role: 'checkbox' })
   message += roleCheck.message()
   pass = roleCheck.pass
 
-  const labelCheck = assertLabel({ element, utils: this.utils })
+  const labelCheck = assertLabel({ element })
   message += labelCheck.message()
   pass = pass === false ? false : labelCheck.pass
 
-  const tabCheck = assertTab({ element, utils: this.utils })
+  const tabCheck = assertTab({ element })
   message += tabCheck.message()
   pass = pass === false ? false : tabCheck.pass
 
@@ -40,16 +40,13 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   try {
     userEvent.keyboard('{space}')
     expect(newOnClick).toBeCalledTimes(1)
-    message += printUtil.pass('element activated on {space}', { utils: this.utils })
+    message += printUtil.pass('element activated on {space}')
     expect(element).toHaveFocus()
   } catch (e) {
-    message += `\n${this.utils.RECEIVED_COLOR('✕')} element activated on {space}\n`
-    message += `  Expected element with focus:\n   ${this.utils.printExpected(
-      element,
-    )} to have focus\n`
-    message += `  Received element with focus:\n    ${this.utils.printReceived(
-      document.activeElement,
-    )}\n\n`
+    message += printUtil.fail('element activated on {space}', {
+      expected: element,
+      received: document.activeElement,
+    })
     pass = false
   }
   element.onclick = oldOnClick

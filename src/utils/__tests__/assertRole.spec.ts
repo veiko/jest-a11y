@@ -1,5 +1,4 @@
 import { assertRole } from '../assertRole'
-import { mockUtils } from '../mockUtils'
 
 const roles = [
   'alert',
@@ -20,14 +19,12 @@ describe('<div role="" />', () => {
     const element = document.createElement('div')
     element.setAttribute('role', role)
 
-    const result = assertRole({
-      element,
-      role,
-      utils: mockUtils,
-    })
-
-    expect(result.message()).toContain(`✓ element has role ${role}`)
-    expect(result.pass).toBe(true)
+    expect(
+      assertRole({
+        element,
+        role,
+      }),
+    ).toPassWith(`element has role ${role}`)
   })
 })
 
@@ -44,13 +41,12 @@ describe('<element />', () => {
     ({ role, tagname }: { role: any; tagname: string }) => {
       const element = document.createElement(tagname)
 
-      const result = assertRole({
-        element,
-        role,
-        utils: mockUtils,
-      })
-      expect(result.message()).toContain(`✓ element has role ${role}`)
-      expect(result.pass).toBe(true)
+      expect(
+        assertRole({
+          element,
+          role,
+        }),
+      ).toPassWith(`element has role ${role}`)
     },
   )
 })
@@ -73,62 +69,60 @@ describe('multiple roles', () => {
     const div1 = document.createElement(tagname)
     div1.setAttribute('role', role)
 
-    const result = assertRole({
-      element: div1,
-      role: ['columnheader', 'gridcell', 'rowheader'],
-      utils: mockUtils,
-    })
-
-    expect(result.message()).toContain(`✓ element has one role of `)
-    expect(result.pass).toBe(true)
+    expect(
+      assertRole({
+        element: div1,
+        role: ['columnheader', 'gridcell', 'rowheader'],
+      }),
+    ).toPassWith(`element has one role of `)
   })
   it.each(['td', 'th'])(
     'passes for <%s> with role of columnheader, gridcell or rowheader',
     tagname => {
-      const result = assertRole({
-        element: document.createElement(tagname),
-        role: ['columnheader', 'gridcell', 'rowheader'],
-        utils: mockUtils,
-      })
-
-      expect(result.message()).toContain(
-        `✓ element has one role of columnheader, gridcell, rowheader`,
-      )
-      expect(result.pass).toBe(true)
+      expect(
+        assertRole({
+          element: document.createElement(tagname),
+          role: ['columnheader', 'gridcell', 'rowheader'],
+        }),
+      ).toPassWith(`element has one role of columnheader, gridcell, rowheader`)
     },
   )
   it('passes for element <a> with role of dialog or link', () => {
-    const result = assertRole({
-      element: document.createElement('a'),
-      // not a valid case, just testing assertRole functionality
-      role: ['dialog', 'link'],
-      utils: mockUtils,
-    })
-
-    expect(result.message()).toContain('✓ element has one role of dialog, link')
-    expect(result.pass).toBe(true)
+    expect(
+      assertRole({
+        element: document.createElement('a'),
+        // not a valid case, just testing assertRole functionality
+        role: ['dialog', 'link'],
+      }),
+    ).toPassWith('element has one role of dialog, link')
   })
   it('fails for element <div /> with role of link or dialog', () => {
-    const result = assertRole({
-      element: document.createElement('div'),
-      role: ['link', 'dialog'],
-      utils: mockUtils,
-    })
-
-    expect(result.message()).toContain('✕ element has role link')
-    expect(result.message()).toContain('✕ element has role dialog')
-    expect(result.pass).toBe(false)
+    expect(
+      assertRole({
+        element: document.createElement('div'),
+        role: ['link', 'dialog'],
+      }),
+    ).toFailWith('element has role link')
+    expect(
+      assertRole({
+        element: document.createElement('div'),
+        role: ['link', 'dialog'],
+      }),
+    ).toFailWith('element has role dialog')
   })
   it('fails for element <a> with role of dialog or rowheader', () => {
-    const result = assertRole({
-      element: document.createElement('a'),
-      role: ['dialog', 'rowheader'],
-      utils: mockUtils,
-    })
-
-    expect(result.message()).toContain('✕ element has role dialog')
-    expect(result.message()).toContain('✕ element has role rowheader')
-    expect(result.pass).toBe(false)
+    expect(
+      assertRole({
+        element: document.createElement('a'),
+        role: ['dialog', 'rowheader'],
+      }),
+    ).toFailWith('element has role dialog')
+    expect(
+      assertRole({
+        element: document.createElement('a'),
+        role: ['dialog', 'rowheader'],
+      }),
+    ).toFailWith('element has role rowheader')
   })
 })
 
@@ -136,12 +130,11 @@ describe('<div />', () => {
   it.each(roles)('fails when the element does not have a role of %s', (role: any) => {
     const element = document.createElement('div')
 
-    const result = assertRole({
-      element,
-      role,
-      utils: mockUtils,
-    })
-    expect(result.message()).toContain(`✕ element has role ${role}`)
-    expect(result.pass).toBe(false)
+    expect(
+      assertRole({
+        element,
+        role,
+      }),
+    ).toFailWith(`element has role ${role}`)
   })
 })

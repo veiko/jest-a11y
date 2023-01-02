@@ -4,17 +4,12 @@ type AssertAriaExpandedConfig = {
   element: HTMLElement
   message?: string
   userEvent(): void
-  /**
-   * @deprecated
-   */
-  utils?: JestMatcherUtils
 }
 
 export const assertAriaExpanded = ({
   element,
   message: messageContent,
   userEvent,
-  utils = matcherUtils,
 }: AssertAriaExpandedConfig): jest.CustomMatcherResult => {
   let message = ''
   let pass = true

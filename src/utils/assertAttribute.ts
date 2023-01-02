@@ -1,4 +1,4 @@
-import { matcherUtils, printUtil } from './printUtil'
+import { printUtil } from 'utils/printUtil'
 
 type ValueCheck = (value: string) => boolean
 
@@ -11,8 +11,6 @@ type AssertAttributeConfig = {
   elementName?: string
   /** string to replace the default message with */
   message?: string
-  /** JestMatcherUtils */
-  utils?: JestMatcherUtils
   /** The expected value of the attribute  */
   value?: string | ValueCheck
 }
@@ -29,7 +27,6 @@ export const assertAttribute = ({
   element,
   elementName = 'element',
   message: messageContent,
-  utils = matcherUtils,
   value,
 }: AssertAttributeConfig): jest.CustomMatcherResult => {
   let message = ''
@@ -39,12 +36,7 @@ export const assertAttribute = ({
 
   if (element.hasAttribute(attribute)) {
     if (value && valueCheck(element.getAttribute(attribute) || '')) {
-      message += printUtil.pass(
-        `${elementName} ${messageContent || `has ${attribute}="${value}"`}`,
-        {
-          utils,
-        },
-      )
+      message += printUtil.pass(`${elementName} ${messageContent || `has ${attribute}="${value}"`}`)
     } else if (value) {
       message += printUtil.fail(
         `${elementName} ${messageContent || `has ${attribute}="${value}"`}`,
@@ -52,22 +44,15 @@ export const assertAttribute = ({
         {
           expected: typeof value === 'function' ? undefined : value,
           received: element.getAttribute(attribute),
-          utils,
         },
       )
       pass = false
     } else {
-      message += printUtil.pass(
-        `${elementName} ${messageContent || `has attribute ${attribute}`}`,
-        {
-          utils,
-        },
-      )
+      message += printUtil.pass(`${elementName} ${messageContent || `has attribute ${attribute}`}`)
     }
   } else {
     message += printUtil.fail(`${elementName} ${messageContent || `has attribute ${attribute}`}`, {
       received: element,
-      utils,
     })
     pass = false
   }

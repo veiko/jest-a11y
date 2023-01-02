@@ -1,20 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleMeter } from '../to-be-accessible-meter'
-import { mockUtils } from '../../../utils/mockUtils'
-
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleMeter: any = toBeAccessibleMeter
-  utils: any = mockUtils
-}
+import { stripAnsi } from '../../../utils/testUtils'
 
 describe('toBeAccessibleMeter', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(
       <div
@@ -47,21 +36,15 @@ describe('toBeAccessibleMeter', () => {
   it('fails if the element does not have a role of meter', () => {
     render(<div aria-label="progress" data-testid="an-meter" />)
 
-    const returnValue = mockExpect.toBeAccessibleMeter(
-      screen.getByTestId('an-meter', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role meter')
+    const meter = screen.getByTestId('an-meter', { suggest: false })
+    expect(toBeAccessibleMeter(meter)).toFailWith('element has role meter')
   })
 
   it('fails if the element does not have an accessible label', () => {
-    render(<div aria-label="progress" data-testid="an-meter" />)
+    render(<div data-testid="an-meter" role="meter" />)
 
-    const returnValue = mockExpect.toBeAccessibleMeter(
-      screen.getByTestId('an-meter', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role meter')
+    const meter = screen.getByTestId('an-meter', { suggest: false })
+    expect(toBeAccessibleMeter(meter)).toFailWith('element has accessible label')
   })
 
   it('fails if the element does not have aria-valuemax attribute', () => {
@@ -75,12 +58,9 @@ describe('toBeAccessibleMeter', () => {
       />,
     )
 
-    const returnValue = mockExpect.toBeAccessibleMeter(
-      screen.getByTestId('an-meter', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ element has aria-valuemin set to a decimal number less than aria-valuemax',
+    const meter = screen.getByTestId('an-meter', { suggest: false })
+    expect(toBeAccessibleMeter(meter)).toFailWith(
+      'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
 
@@ -95,12 +75,9 @@ describe('toBeAccessibleMeter', () => {
       />,
     )
 
-    const returnValue = mockExpect.toBeAccessibleMeter(
-      screen.getByTestId('an-meter', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ element has aria-valuemin set to a decimal number less than aria-valuemax',
+    const meter = screen.getByTestId('an-meter', { suggest: false })
+    expect(toBeAccessibleMeter(meter)).toFailWith(
+      'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
 
@@ -115,14 +92,11 @@ describe('toBeAccessibleMeter', () => {
       />,
     )
 
-    const returnValue = mockExpect.toBeAccessibleMeter(
-      screen.getByTestId('an-meter', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain(
-      '✕ element has aria-valuemin set to a decimal number less than aria-valuemax',
+    const returnValue = toBeAccessibleMeter(screen.getByTestId('an-meter', { suggest: false }))
+    expect(returnValue).toFailWith(
+      'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
     // it is valid to not have an aria-valuenow
-    expect(returnValue.message()).toContain('✓ element has valid aria-valuenow')
+    expect(stripAnsi(returnValue.message())).toContain('✓ element has valid aria-valuenow')
   })
 })

@@ -13,7 +13,7 @@ export function toBeAccessible{{properCase componentName}}(this: any, element: H
   let message = ''
   let pass = true
 
-  const roleCheck = assertRole({ element, role: '{{lowerCase componentName}}', utils: this.utils })
+  const roleCheck = assertRole({ element, role: '{{lowerCase componentName}}' })
   message += roleCheck.message()
   pass = pass ? roleCheck.pass : false
 

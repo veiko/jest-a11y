@@ -1,21 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { toBeAccessibleToolbar } from '../to-be-accessible-toolbar'
-import { mockUtils } from '../../../utils/mockUtils'
 import { Toolbar } from '../examples/Toolbar'
 
-class MockExpect {
-  isNot: boolean = false
-  toBeAccessibleToolbar: any = toBeAccessibleToolbar
-  utils: any = mockUtils
-}
-
 describe('toBeAccessibleToolbar', () => {
-  let mockExpect: MockExpect
-  beforeEach(() => {
-    mockExpect = new MockExpect()
-  })
-
   it('passes when element is valid', async () => {
     render(<Toolbar />)
 
@@ -30,11 +18,8 @@ describe('toBeAccessibleToolbar', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleToolbar(
-      screen.getByTestId('an-toolbar', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has role toolbar')
+    const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
+    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element has role toolbar')
   })
 
   it('fails if the element does not have an accessible label', () => {
@@ -45,11 +30,8 @@ describe('toBeAccessibleToolbar', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleToolbar(
-      screen.getByTestId('an-toolbar', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element has accessible label')
+    const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
+    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element has accessible label')
   })
 
   it('fails if the element does not navigate to the first control on {home}', () => {
@@ -65,11 +47,10 @@ describe('toBeAccessibleToolbar', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleToolbar(
-      screen.getByTestId('an-toolbar', { suggest: false }),
+    const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
+    expect(toBeAccessibleToolbar(toolbar)).toFailWith(
+      'element navigates to first control on {home}',
     )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element navigates to first control on {home}')
   })
 
   it('fails if the element does not navigate to the last control on {end}', () => {
@@ -91,10 +72,7 @@ describe('toBeAccessibleToolbar', () => {
       </div>,
     )
 
-    const returnValue = mockExpect.toBeAccessibleToolbar(
-      screen.getByTestId('an-toolbar', { suggest: false }),
-    )
-    expect(returnValue.pass).toBe(false)
-    expect(returnValue.message()).toContain('✕ element navigates to last control on {end}')
+    const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
+    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element navigates to last control on {end}')
   })
 })

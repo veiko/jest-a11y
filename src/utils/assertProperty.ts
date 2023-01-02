@@ -11,8 +11,6 @@ type AssertPropertyConfig = {
   elementName?: string
   /** string to replace the default message with */
   message?: string
-  /** JestMatcherUtils */
-  utils: JestMatcherUtils
   /** The expected value of the property  */
   value?: string | boolean | ValueCheck
 }
@@ -22,7 +20,6 @@ export const assertProperty = ({
   element,
   elementName = 'element',
   message: messageContent,
-  utils,
   value,
 }: AssertPropertyConfig): jest.CustomMatcherResult => {
   let message = ''
@@ -33,12 +30,7 @@ export const assertProperty = ({
 
   if ((element as any)[property] !== undefined) {
     if (value !== undefined && valueCheck((element as any)[property])) {
-      message += printUtil.pass(
-        `${elementName} ${messageContent || `has ${property}="${value}"`}`,
-        {
-          utils,
-        },
-      )
+      message += printUtil.pass(`${elementName} ${messageContent || `has ${property}="${value}"`}`)
     } else if (value !== undefined) {
       message += printUtil.fail(
         `${elementName} ${messageContent || `has ${property}="${value}"`}`,
@@ -46,19 +38,15 @@ export const assertProperty = ({
         {
           expected: typeof value === 'function' ? undefined : `${value}`,
           received: (element as any)[property],
-          utils,
         },
       )
       pass = false
     } else {
-      message += printUtil.pass(`${elementName} ${messageContent || `has property ${property}`}`, {
-        utils,
-      })
+      message += printUtil.pass(`${elementName} ${messageContent || `has property ${property}`}`)
     }
   } else {
     message += printUtil.fail(`${elementName} ${messageContent || `has property ${property}`}`, {
       received: `${(element as any)[property]}`,
-      utils,
     })
     pass = false
   }
