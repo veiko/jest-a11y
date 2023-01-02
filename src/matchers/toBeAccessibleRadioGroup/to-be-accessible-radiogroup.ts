@@ -4,7 +4,7 @@ import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
 import { getChildrenWithRole } from 'utils/getChildrenWithRole'
-import { matcherUtils } from 'utils/printUtil'
+import { matcherUtils, printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/radiobutton/
@@ -41,15 +41,15 @@ export function toBeAccessibleRadioGroup(
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  // 3. Keyboard arrow navigation
-
   const radioButtons = getChildrenWithRole(element, { role: 'radio', tagName: 'INPUT' })
+
   // The element that will receive focus on tab. If no radio element is checked, the first radio element is used
   let elementToFocus = radioButtons[0]
   const tabCheck = assertTab({ element: elementToFocus })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 
+  // 3. Keyboard arrow navigation
   const arrowNavCheck = assertArrowNav({
     elements: radioButtons,
     elementName: 'radio button element',
@@ -77,13 +77,16 @@ export function toBeAccessibleRadioGroup(
     radioMessage += radioLabelCheck.message()
     radioPass = radioPass ? radioLabelCheck.pass : radioPass
 
-    const radioCheckedCheck = assertAttribute({
-      attribute: 'aria-checked',
-      element: radio,
-      elementName: 'radio button element',
-    })
-    radioMessage += radioCheckedCheck.message()
-    radioPass = radioPass ? radioCheckedCheck.pass : radioPass
+    // If the radio element is not <input type="radio">, it will need aria-checked
+    if (radio.tagName !== 'INPUT') {
+      const radioCheckedCheck = assertAttribute({
+        attribute: 'aria-checked',
+        element: radio,
+        elementName: 'radio button element',
+      })
+      radioMessage += radioCheckedCheck.message()
+      radioPass = radioPass ? radioCheckedCheck.pass : radioPass
+    }
 
     const func = pass ? matcherUtils.EXPECTED_COLOR : matcherUtils.RECEIVED_COLOR
     message += `\n${func('● Testing')} ${radio.outerHTML}\n${radioMessage}\n`

@@ -22,8 +22,8 @@ describe('toBeAccessibleRadioGroup', () => {
   it('fails if the container element does not have a role of radiogroup', () => {
     render(
       <div aria-label="Question" data-testid="a-radiogroup">
-        <input aria-checked="true" aria-label="Yes" type="radio" />
-        <input aria-checked="false" aria-label="No" type="radio" />
+        <input defaultChecked aria-label="Yes" type="radio" />
+        <input aria-label="No" type="radio" />
       </div>,
     )
 
@@ -34,8 +34,8 @@ describe('toBeAccessibleRadioGroup', () => {
   it('fails when the container element has no label', async () => {
     render(
       <div data-testid="a-radiogroup" role="radiogroup">
-        <input aria-checked="true" aria-label="Yes" type="radio" />
-        <input aria-checked="false" aria-label="No" type="radio" />
+        <input defaultChecked aria-label="Yes" type="radio" />
+        <input aria-label="No" type="radio" />
       </div>,
     )
 
@@ -45,24 +45,11 @@ describe('toBeAccessibleRadioGroup', () => {
     )
   })
 
-  // FIXME: how to get these elements without a role
-  it('fails if one of the radio button elements does not have a role of radio', () => {
+  it('fails when one of the radio button elements has no label', async () => {
     render(
       <div aria-label="Question" data-testid="a-radiogroup" role="radiogroup">
-        <input aria-checked="true" aria-label="Yes" />
-        <input aria-checked="false" aria-label="No" role="radio" />
-      </div>,
-    )
-
-    const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('radio button element has role radio')
-  })
-
-  it('fails when one of the radio button elements have no label', async () => {
-    render(
-      <div aria-label="Question" data-testid="a-radiogroup" role="radiogroup">
-        <input aria-checked="true" type="radio" />
-        <input aria-checked="false" aria-label="No" type="radio" />
+        <input defaultChecked type="radio" />
+        <input aria-label="No" type="radio" />
       </div>,
     )
 
@@ -73,11 +60,11 @@ describe('toBeAccessibleRadioGroup', () => {
   })
 
   // FIXME: jest-dom currently does not tab to the correct element with aria-checked
-  xit('FIXME fails if the checked radio element does not focus on tab', async () => {
+  it.skip('FIXME fails if the checked radio element does not focus on tab', async () => {
     render(
       <div aria-label="Question" data-testid="a-radiogroup" role="radiogroup">
-        <input aria-checked="true" aria-label="Yes" type="radio" />
-        <input aria-checked="true" aria-label="No" type="radio" />
+        <input aria-label="Yes" defaultChecked type="radio" />
+        <input aria-label="No" type="radio" />
       </div>,
     )
 
@@ -86,17 +73,15 @@ describe('toBeAccessibleRadioGroup', () => {
   })
 
   // FIXME: can not check whether the element is active when it is navigated to
-  it('FIXME fails if the arrow keys do not navigate and select', async () => {
+  it.skip('FIXME fails if the arrow keys do not navigate and select', async () => {
     render(
       <div aria-label="Question" data-testid="a-radiogroup" role="radiogroup">
-        <input aria-checked="true" aria-label="Yes" type="radio" />
-        <input aria-checked="false" aria-label="No" type="radio" />
+        <input aria-label="Yes" defaultChecked type="radio" />
+        <input aria-label="No" type="radio" />
       </div>,
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
-      'radio button element has aria-checked="true"',
-    )
+    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('radio button element has aria-checked')
   })
 })

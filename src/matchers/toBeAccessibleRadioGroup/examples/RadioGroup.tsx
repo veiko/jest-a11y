@@ -10,9 +10,9 @@ export const RadioGroup = () => {
     setActiveItem(idx => {
       let newIdx: number = idx
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        newIdx = idx === 2 ? 0 : idx + 1
+        newIdx = idx === 3 ? 0 : idx + 1
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        newIdx = idx === 0 ? 2 : idx - 1
+        newIdx = idx === 0 ? 3 : idx - 1
       }
 
       return newIdx
@@ -22,26 +22,40 @@ export const RadioGroup = () => {
   return (
     <div aria-label="group" role="radiogroup">
       <input
-        aria-checked={activeItem === 0}
         aria-label="item 0"
+        checked={activeItem === 0}
         id="item-0"
         name="group"
+        onChange={e => e.preventDefault()}
         onKeyUp={onKeyUp}
         type="radio"
       />
-      <input
+      <div
         aria-checked={activeItem === 1}
         aria-label="item 1"
         id="item-1"
-        name="group"
+        onChange={e => e.preventDefault()}
         onKeyUp={onKeyUp}
-        type="radio"
+        role="radio"
       />
+      <label>
+        item 2
+        <input
+          checked={activeItem === 2}
+          id="item-2"
+          name="group"
+          onChange={e => e.preventDefault()}
+          onKeyUp={onKeyUp}
+          type="radio"
+        />
+      </label>
+
+      <label htmlFor="item-3">item 3</label>
       <input
-        aria-checked={activeItem === 2}
-        aria-label="item 2"
-        id="item-2"
+        checked={activeItem === 3}
+        id="item-3"
         name="group"
+        onChange={e => e.preventDefault()}
         onKeyUp={onKeyUp}
         type="radio"
       />

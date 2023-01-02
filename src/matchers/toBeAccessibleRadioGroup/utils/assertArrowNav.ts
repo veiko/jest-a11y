@@ -1,5 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { assertAttribute } from 'utils/assertAttribute'
+import { assertChecked } from 'utils/assertChecked'
 import { printUtil } from 'utils/printUtil'
 
 /**
@@ -48,11 +49,10 @@ const assertSingleArrowNav = ({
   // message += activeCheck.message()
   // pass = pass ? activeCheck.pass : pass
 
-  const attributeCheck = assertAttribute({
-    attribute: 'aria-checked',
+  const attributeCheck = assertChecked({
     element: nextElement,
     elementName,
-    value: 'true',
+    checked: true,
   })
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
