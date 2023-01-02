@@ -26,19 +26,35 @@ describe('toBeAccessibleTooltip', () => {
     expect(toBeAccessibleTooltip(tooltip)).toFailWith('tooltip element has role tooltip')
   })
 
-  it('fails if the trigger element does not have a description', () => {
+  it('fails if the trigger element does not have aria-describedby', () => {
     render(
       <>
-        <div>hover me</div>
+        <button>hover me</button>
         <div id="tooltip-text" role="tooltip">
           hello world
         </div>
       </>,
     )
 
-    const tooltip = screen.getByText(/hover me/i)
-    expect(toBeAccessibleTooltip(tooltip)).toFailWith(
-      'trigger element has attribute aria-describedby',
+    const trigger = screen.getByRole('button')
+    expect(toBeAccessibleTooltip(trigger)).toFailWith(
+      'trigger element does not have aria-describedby set to a valid id',
+    )
+  })
+
+  it('fails if the trigger element does not have valid aria-describedby', () => {
+    render(
+      <>
+        <button aria-describedby="tooltip-text">hover me</button>
+        <div id="tooltip-text2" role="tooltip">
+          hello world
+        </div>
+      </>,
+    )
+
+    const trigger = screen.getByRole('button')
+    expect(toBeAccessibleTooltip(trigger)).toFailWith(
+      'trigger element does not have aria-describedby set to a valid id',
     )
   })
 

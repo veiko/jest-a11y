@@ -26,7 +26,7 @@ export function toFailWith(
   }
   if (!stripAnsi(received.message()).includes(`✕ ${expected}`)) {
     pass = false
-    message = printUtil.fail('incorrect message', {
+    message = printUtil.fail('fail message does not match', {
       expected: `✕ ${expected}`,
       received: stripAnsi(received.message()),
     })

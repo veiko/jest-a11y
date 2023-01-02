@@ -4,6 +4,7 @@ import { assertAttribute } from 'utils/assertAttribute'
 import { assertHidden } from 'utils/assertHidden'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
+import { printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
@@ -14,6 +15,8 @@ import { assertTab } from 'utils/assertTab'
  *
  * Keyboard Interaction
  * 1. Escape: Dismisses the Tooltip.
+ *
+ * TODO: Clarify that the tooltip trigger is passed here
  */
 export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.CustomMatcherResult {
   let message = ''
@@ -29,24 +32,26 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
   }
 
   // 2. The element that triggers the tooltip references the tooltip element with aria-describedby.
+  // Here, we are just checking that aria-describedby is present
   const descriptionCheck = assertAttribute({
     attribute: 'aria-describedby',
     element,
     elementName: 'trigger element',
-    value: element.id,
   })
-  if (!descriptionCheck.pass) {
+
+  const tooltipElement = document.getElementById(
+    element.getAttribute('aria-describedby')!,
+  ) as HTMLElement
+
+  if (!tooltipElement) {
     return {
-      message: () => descriptionCheck.message(),
+      message: () =>
+        printUtil.fail('trigger element does not have aria-describedby set to a valid id'),
       pass: false,
     }
   } else {
     message += descriptionCheck.message()
   }
-
-  const tooltipElement = document.getElementById(
-    element.getAttribute('aria-describedby')!,
-  ) as HTMLElement
 
   // 1. The element that serves as the tooltip container has role tooltip.
   const roleCheck = assertRole({
