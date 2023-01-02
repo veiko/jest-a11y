@@ -4,6 +4,7 @@ import { assertAriaExpanded } from 'utils/assertAriaExpanded'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertClosest } from 'utils/assertClosest'
 import { printUtil } from 'utils/printUtil'
+import { cssEscape } from 'utils/cssEscape'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
@@ -64,7 +65,9 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
       attribute: 'aria-controls',
       element: button,
       message: 'has attribute aria-controls',
-      value: (value: string) => !!element.querySelector(`#${value}`),
+      // cssEscape is needed in case selectors contain special characters
+      // @see https://gomakethings.com/what-to-do-when-queryselector-fail-on-valid-selectors/
+      value: (value: string) => !!element.querySelector(`#${cssEscape(value)}`),
     })
     buttonMessage += '  ' + attrCheck.message()
     buttonPass = buttonPass === false ? false : attrCheck.pass
