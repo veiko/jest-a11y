@@ -40,13 +40,13 @@ export const TestSummary: React.FunctionComponent<Props> = ({
   const { failed, passed, total } = getTotals(list)
   return (
     <div
-      className="test-summary codeBlockContent_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module"
+      className="test-summary codeBlockContent_"
       style={
         { '--prism-color': '#F8F8F2', '--prism-background-color': '#282A36' } as React.CSSProperties
       }
     >
-      <pre className="prism-code language-html codeBlock_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module thin-scrollbar">
-        <code className="codeBlockLines_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module">
+      <pre className="prism-code language-html codeBlock_ thin-scrollbar">
+        <code className="codeBlockLines_">
           <ul style={{ margin: 0, listStyleType: 'none', padding: 0 }}>
             {list
               .filter(t => addChecks || validTestList(t))

@@ -27,7 +27,7 @@ html[data-theme='dark'] {
 html[data-theme='dark'] code {
   --ifm-code-background: var(--cyan-100);
   color: var(--cyan-900);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 html[data-theme='dark'] kbd {
@@ -61,9 +61,21 @@ html[data-theme='dark'] h1 {
     color-stop(0, var(--start-color)),
     to(var(--end-color))
   );
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: -moz-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
 }
 
 html[data-theme='dark'] h2 {
@@ -78,9 +90,21 @@ html[data-theme='dark'] h2 {
     color-stop(0, var(--start-color)),
     to(var(--end-color))
   );
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: -moz-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
 }
 
 html[data-theme='dark'] h4 {
@@ -119,9 +143,21 @@ html[data-theme='dark'] .intro-text strong {
     color-stop(0, var(--start-color)),
     to(var(--end-color))
   );
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: -moz-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
 }
 
 html[data-theme='dark'] .alert--warning {
@@ -131,7 +167,10 @@ html[data-theme='dark'] .alert--warning {
   --ifm-alert-border-color: var(--yellow);
 }
 
-html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+html[data-theme='dark']
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link,
 html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > .menu__link {
   color: white;
 }
@@ -173,7 +212,7 @@ html[data-theme='dark'] .tabs li.tabs__item--active {
   color: var(--white);
 }
 
-.announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+html[data-theme='dark'] div[role='banner'][class^='announcementBar'] {
   background-color: var(--black) !important;
   color: var(--white) !important;
   --start-color: var(--purple-100);
@@ -186,9 +225,21 @@ html[data-theme='dark'] .tabs li.tabs__item--active {
     color-stop(0, var(--start-color)),
     to(var(--end-color))
   );
-  background-image: -webkit-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: -moz-linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
-  background-image: linear-gradient(var(--gradientDegree), var(--start-color) 0, var(--end-color) 100%);
+  background-image: -webkit-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: -moz-linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
+  background-image: linear-gradient(
+    var(--gradientDegree),
+    var(--start-color) 0,
+    var(--end-color) 100%
+  );
   font-size: 1.2rem;
   padding: 1.4rem !important;
 }

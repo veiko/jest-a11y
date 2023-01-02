@@ -8,6 +8,7 @@
 @import './dark-mode.css';
 @import './sidebar.css';
 @import './test-runner.css';
+@import './test-summary.css';
 
 /** component examples **/
 @import './accordion.css';
@@ -78,15 +79,20 @@
 :root {
   --shadow-color: 265deg 44% 3%;
   --shadow-elevation-low: 0px 0.3px 0.2px hsl(var(--shadow-color) / 0.69),
-    0px 0.4px 0.3px -2.5px hsl(var(--shadow-color) / 0.46), 0px 1.3px 1px -5px hsl(var(--shadow-color) / 0.23);
+    0px 0.4px 0.3px -2.5px hsl(var(--shadow-color) / 0.46),
+    0px 1.3px 1px -5px hsl(var(--shadow-color) / 0.23);
   --shadow-elevation-medium: 0px 0.3px 0.2px hsl(var(--shadow-color) / 0.72),
-    0px 0.6px 0.5px -1.7px hsl(var(--shadow-color) / 0.54), 0px 2.2px 1.7px -3.3px hsl(var(--shadow-color) / 0.36),
+    0px 0.6px 0.5px -1.7px hsl(var(--shadow-color) / 0.54),
+    0px 2.2px 1.7px -3.3px hsl(var(--shadow-color) / 0.36),
     0.1px 6.5px 4.9px -5px hsl(var(--shadow-color) / 0.18);
   --shadow-elevation-high: 0px 0.3px 0.2px hsl(var(--shadow-color) / 0.67),
-    0px 0.4px 0.3px -0.7px hsl(var(--shadow-color) / 0.59), 0px 1.1px 0.8px -1.4px hsl(var(--shadow-color) / 0.5),
-    0px 2.9px 2.2px -2.1px hsl(var(--shadow-color) / 0.42), 0.1px 6.3px 4.7px -2.9px hsl(var(--shadow-color) / 0.34),
+    0px 0.4px 0.3px -0.7px hsl(var(--shadow-color) / 0.59),
+    0px 1.1px 0.8px -1.4px hsl(var(--shadow-color) / 0.5),
+    0px 2.9px 2.2px -2.1px hsl(var(--shadow-color) / 0.42),
+    0.1px 6.3px 4.7px -2.9px hsl(var(--shadow-color) / 0.34),
     0.1px 12.1px 9.1px -3.6px hsl(var(--shadow-color) / 0.25),
-    0.2px 20.6px 15.5px -4.3px hsl(var(--shadow-color) / 0.17), 0.4px 32.5px 24.4px -5px hsl(var(--shadow-color) / 0.08);
+    0.2px 20.6px 15.5px -4.3px hsl(var(--shadow-color) / 0.17),
+    0.4px 32.5px 24.4px -5px hsl(var(--shadow-color) / 0.08);
 }
 
 html h1 {
@@ -450,10 +456,10 @@ html .markdown ul[class=''] li::before {
   text-transform: initial !important;
 }
 
-.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+.theme-admonition div[class^='admonitionHeading_'] {
   margin-bottom: 1em;
 }
-.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module > span {
+.theme-admonition div[class^='admonitionHeading_'] > span {
   --svg-size: 1.6em; /* this is taken from the docusaurus theme */
   --icon-padding: 0.5em;
   --ifm-alert-foreground-color: var(--ifm-alert-border-color);
@@ -467,9 +473,7 @@ html .markdown ul[class=''] li::before {
   height: var(--circle-size);
   width: var(--circle-size);
 }
-.theme-admonition.alert--warning
-  .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module
-  > span {
+.theme-admonition.alert--warning div[class^='admonitionHeading_'] > span {
   border-radius: 10px;
 }
 

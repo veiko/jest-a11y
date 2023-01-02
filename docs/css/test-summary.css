@@ -1,0 +1,8 @@
+.test-summary .prism-code {
+  background-color: var(--prism-background-color);
+}
+
+.test-summary .prism-code code {
+  font-size: 16px;
+  font-weight: 400;
+}
