@@ -1,3 +1,10 @@
+## [1.19.4](https://github.com/veiko/jest-a11y/compare/v1.19.3...v1.19.4) (2023-01-02)
+
+
+### Bug Fixes
+
+* **assertLabel:** add missing cases for valid label ([1656014](https://github.com/veiko/jest-a11y/commit/16560146f5a616f51f3029e74330a9272ec05e98))
+
 ## [1.19.3](https://github.com/veiko/jest-a11y/compare/v1.19.2...v1.19.3) (2023-01-02)
 
 
