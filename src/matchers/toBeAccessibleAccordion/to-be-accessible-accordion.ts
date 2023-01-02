@@ -1,10 +1,11 @@
 import { within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
-import { assertAriaExpanded } from 'utils/assertAriaExpanded'
-import { assertAttribute } from 'utils/assertAttribute'
-import { assertClosest } from 'utils/assertClosest'
-import { printUtil } from 'utils/printUtil'
-import { cssEscape } from 'utils/cssEscape'
+// FIXME: Have to use relative paths to be able to import this into AccordionTestRunner
+import { assertAriaExpanded } from '../../utils/assertAriaExpanded'
+import { assertAttribute } from '../../utils/assertAttribute'
+import { assertClosest } from '../../utils/assertClosest'
+import { printUtil } from '../../utils/printUtil'
+import { cssEscape } from '../../utils/cssEscape'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/accordion/

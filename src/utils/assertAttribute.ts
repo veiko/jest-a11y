@@ -1,4 +1,5 @@
-import { printUtil } from 'utils/printUtil'
+// FIXME: Have to use relative paths to be able to import this into AccordionTestRunner
+import { printUtil } from '../utils/printUtil'
 
 type ValueCheck = (value: string) => boolean
 
