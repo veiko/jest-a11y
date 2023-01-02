@@ -76,8 +76,16 @@ Yes. It works with either of those tools.
 
 This module is distributed via [npm](https://www.npmjs.com) which is bundled with [node](https://www.nodejs.org) and should be installed as one of your project's `dependencies`:
 
+With `npm`:
+
 ```sh
-npm install --save jest-a11y
+npm install --save-dev jest-a11y
+```
+
+With `yarn`:
+
+```sh
+yarn add -D jest-a11y
 ```
 
 ## Usage
@@ -141,7 +149,7 @@ There's [jest-axe](https://github.com/nickcolley/jest-axe) which exports a singl
 
 ## Issues
 
-_Looking to contribute? Look for the [Good First Issue][good-first-issue] label._
+_Looking to contribute? Look for the [Good First Issue](https://github.com/veiko/jest-a11y/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) label._
 
 ### 🐛 Bugs
 
