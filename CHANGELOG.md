@@ -1,3 +1,12 @@
+## [1.19.3](https://github.com/veiko/jest-a11y/compare/v1.19.2...v1.19.3) (2023-01-02)
+
+
+### Bug Fixes
+
+* **accordion:** allow special characters in selectors ([eace48e](https://github.com/veiko/jest-a11y/commit/eace48e2fc204a09b8970ee91578e3e25228c1aa))
+* **dialog:** add missing type ([b8b601b](https://github.com/veiko/jest-a11y/commit/b8b601b1fc78ce4e97c29ecf9f6ed9d62f603c67))
+* **tooltip:** aria-describedby valid ([c25a7a3](https://github.com/veiko/jest-a11y/commit/c25a7a32091bebabd61598376d4ed3e73884156a))
+
 ## [1.19.2](https://github.com/veiko/jest-a11y/compare/v1.19.1...v1.19.2) (2023-01-02)
 
 
