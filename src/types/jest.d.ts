@@ -66,6 +66,18 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    */
   toBeAccessibleCheckbox(): CustomMatcherResult
   /**
+   * Assert whether an element has the correct role, properties and keyboard interactions for `dialog`.
+   *
+   * @example
+   * <div role="dialog">...</div>
+   *
+   * expect(screen.getByRole('dialog')).toBeAccessibleDialog()
+   *
+   * @see
+   * [jest-a11y/matchers/dialog](https://veiko.github.io/jest-a11y/matchers/dialog)
+   */
+  toBeAccessibleDialog(): CustomMatcherResult
+  /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `link`.
    *
    * @example
