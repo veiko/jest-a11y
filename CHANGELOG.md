@@ -1,3 +1,10 @@
+## [1.19.9](https://github.com/veiko/jest-a11y/compare/v1.19.8...v1.19.9) (2023-01-03)
+
+
+### Bug Fixes
+
+* typescript errors ([f87f8d5](https://github.com/veiko/jest-a11y/commit/f87f8d56ca6db6edaa0fbdca97bb9272e1baba8c))
+
 ## [1.19.8](https://github.com/veiko/jest-a11y/compare/v1.19.7...v1.19.8) (2023-01-03)
 
 
