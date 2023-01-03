@@ -81,7 +81,7 @@ describe('toBeAccessibleTooltip', () => {
     render(
       <>
         <div aria-describedby="tooltip-text" data-testid="a-trigger">
-          hover me 6
+          hover me
         </div>
         <div id="tooltip-text" data-testid="a-tooltip" role="tooltip">
           hello world
@@ -89,7 +89,7 @@ describe('toBeAccessibleTooltip', () => {
       </>,
     )
 
-    const tooltip = screen.getByText(/hover me 6/i)
-    expect(await toBeAccessibleTooltip(tooltip)).toFailWith('tooltip element is hidden on {esc}')
+    const tooltip = screen.getByText(/hover me/i)
+    expect(await toBeAccessibleTooltip(tooltip)).toFailWith('tooltip element is hidden on {Escape}')
   })
 })

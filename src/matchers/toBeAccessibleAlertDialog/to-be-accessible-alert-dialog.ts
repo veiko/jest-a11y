@@ -49,11 +49,11 @@ export async function toBeAccessibleAlertDialog(
   }
 
   try {
-    await userEvent.keyboard('{esc}')
-    message += printUtil.pass('element closed on {esc}')
+    await userEvent.keyboard('{Escape}')
+    message += printUtil.pass('element closed on {Escape}')
     // TODO: How to validate dialog closed?
   } catch (e) {
-    message += printUtil.fail('element closed on {esc}')
+    message += printUtil.fail('element closed on {Escape}')
     pass = false
   }
 

@@ -74,12 +74,12 @@ export async function toBeAccessibleTooltip(
   message += accessibleCheck.message()
   pass = pass ? accessibleCheck.pass : false
 
-  await userEvent.keyboard('{esc}')
+  await userEvent.keyboard('{Escape}')
 
   const hiddenCheck = assertHidden({
     element: tooltipElement,
     elementName: 'tooltip element',
-    message: 'is hidden on {esc}',
+    message: 'is hidden on {Escape}',
   })
   message += hiddenCheck.message()
   pass = pass ? hiddenCheck.pass : false
