@@ -1,3 +1,10 @@
+## [1.19.6](https://github.com/veiko/jest-a11y/compare/v1.19.5...v1.19.6) (2023-01-03)
+
+
+### Bug Fixes
+
+* **assertArrowNav:** better message when nav fails ([469c3e0](https://github.com/veiko/jest-a11y/commit/469c3e0abed8ef5ee657a3801de833b9d1899026))
+
 ## [1.19.5](https://github.com/veiko/jest-a11y/compare/v1.19.4...v1.19.5) (2023-01-02)
 
 
