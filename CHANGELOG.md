@@ -1,3 +1,10 @@
+## [1.19.8](https://github.com/veiko/jest-a11y/compare/v1.19.7...v1.19.8) (2023-01-03)
+
+
+### Bug Fixes
+
+* **radioGroup:** INPUT => input ([4434b8b](https://github.com/veiko/jest-a11y/commit/4434b8bfc0fdcce0e78267c302930fa99be2be15))
+
 ## [1.19.7](https://github.com/veiko/jest-a11y/compare/v1.19.6...v1.19.7) (2023-01-03)
 
 
