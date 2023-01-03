@@ -32,7 +32,7 @@
   "homepage": "https://github.com/veiko/jest-a11y#readme",
   "dependencies": {
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
     "jest-matcher-utils": "^29.3.1"
   },
   "release": {
