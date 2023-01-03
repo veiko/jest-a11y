@@ -27,21 +27,21 @@ test('fails when checked is true for an input element', () => {
   render(<input type="checkbox" checked readOnly />)
 
   const element = screen.getByRole('checkbox')
-  expect(assertChecked({ element, checked: false })).toFailWith('element is checked')
+  expect(assertChecked({ element, checked: false })).toFailWith('element is not checked')
 })
 
 test('fails when checked is undefined for an input element', () => {
   render(<input type="checkbox" />)
 
   const element = screen.getByRole('checkbox')
-  expect(assertChecked({ element, checked: true })).toFailWith('element is not checked')
+  expect(assertChecked({ element, checked: true })).toFailWith('element is checked')
 })
 
 test('fails when checked is false for an input element', () => {
   render(<input checked={false} readOnly type="checkbox" />)
 
   const element = screen.getByRole('checkbox')
-  expect(assertChecked({ element, checked: true })).toFailWith('element is not checked')
+  expect(assertChecked({ element, checked: true })).toFailWith('element is checked')
 })
 
 test('passes when checked is true for an element with aria-checked', () => {
