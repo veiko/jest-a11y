@@ -2,7 +2,7 @@
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
 import { TestSummary } from './TestSummary'
 import theme from 'prism-react-renderer/themes/dracula'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LiveEditor, LiveError, LiveProvider } from 'react-live'
 
 let newEl: HTMLDivElement
@@ -14,7 +14,7 @@ type Props = {
   children?: React.ReactNode
   className?: string
   code: string
-  matcher(el: HTMLElement): jest.CustomMatcherResult
+  matcher(el: HTMLElement): Promise<jest.CustomMatcherResult>
   title: string
 }
 
@@ -27,10 +27,16 @@ export const TestRunner: React.FunctionComponent<Props> = ({ code: codeProp, mat
   const [code, setCode] = useState(codeProp)
   let list: string[] = []
 
-  if (newEl) {
-    newEl.innerHTML = code
-    list = matcher(newEl).message().split('\n')
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (newEl) {
+        newEl.innerHTML = code
+        list = (await matcher(newEl)).message().split('\n')
+      }
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <LiveProvider code={code} language="jsx" theme={theme}>

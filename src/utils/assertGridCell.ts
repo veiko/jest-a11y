@@ -1,3 +1,4 @@
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 import { assertKeyboardInactive } from 'utils/assertKeyboardInactive'
 import { assertKeyboardNav } from 'utils/assertKeyboardNav'
 import { assertRole } from 'utils/assertRole'
@@ -7,6 +8,7 @@ type Config = {
   coords: [number, number]
   element: HTMLElement
   tableMeta: { colcount: number; rowcount: number }
+  userEvent: UserEvent
 }
 
 /**
@@ -14,11 +16,12 @@ type Config = {
  * 2. element is focusable, or has a focusable child
  * 3. arrow keyboard navigation works
  */
-export const assertGridCell = ({
+export const assertGridCell = async ({
   coords: [colidx, rowidx],
   element,
   tableMeta: { colcount, rowcount },
-}: Config): jest.CustomMatcherResult => {
+  userEvent,
+}: Config): Promise<jest.CustomMatcherResult> => {
   let message = ''
   let pass = true
   const roleCheck = assertRole({
@@ -32,15 +35,17 @@ export const assertGridCell = ({
   const focusableCellElement = getFirstFocusableElement(element) || element
   const navRightCheck =
     colidx === colcount - 1
-      ? assertKeyboardInactive({
+      ? await assertKeyboardInactive({
           element: focusableCellElement,
           key: '{arrowright}',
           passMessage: 'element is last in row and does not navigate right',
+          userEvent,
         })
-      : assertKeyboardNav({
+      : await assertKeyboardNav({
           element: focusableCellElement,
           key: '{arrowright}',
           passMessage: 'element navigates with {arrowRight}',
+          userEvent,
         })
   message += '  ' + navRightCheck.message()
   pass = pass ? navRightCheck.pass : false
