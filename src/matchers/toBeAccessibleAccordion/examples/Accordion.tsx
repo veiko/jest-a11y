@@ -17,11 +17,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ btnId, children, id, titl
           aria-expanded={isOpen}
           aria-controls={id}
           id={btnId}
-          onKeyDown={e => {
-            if (e.key === 'space' || e.key === 'Enter') {
-              setIsOpen(!isOpen)
-            }
-          }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           {title}
         </button>

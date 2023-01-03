@@ -44,15 +44,13 @@ describe('toBeAccessibleSwitch', () => {
     expect(await toBeAccessibleSwitch(switchEl)).toFailWith('element has attribute aria-checked')
   })
 
-  it('fails if the value of aria-checked does not toggle on {space}', async () => {
+  it('fails if the value of aria-checked does not toggle on Space', async () => {
     render(
       <div aria-checked="false" aria-label="My Switch" data-testid="an-switch" role="switch" />,
     )
 
     const switchEl = screen.getByTestId('an-switch', { suggest: false })
-    expect(await toBeAccessibleSwitch(switchEl)).toFailWith(
-      'element toggles aria-checked on {space}',
-    )
+    expect(await toBeAccessibleSwitch(switchEl)).toFailWith('element toggles aria-checked on Space')
   })
 
   it('fails if the label changes when the state changes', async () => {

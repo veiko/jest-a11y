@@ -50,7 +50,7 @@ export async function toBeAccessibleSwitch(
   const toggleCheck = assertAttribute({
     attribute: 'aria-checked',
     element,
-    message: `toggles aria-checked on {space}`,
+    message: `toggles aria-checked on Space`,
     value: initialChecked === 'true' ? 'false' : 'true',
   })
   message += toggleCheck.message()

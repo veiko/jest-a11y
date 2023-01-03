@@ -2,6 +2,7 @@ import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
+import { printUtil } from 'utils/printUtil'
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
@@ -37,19 +38,18 @@ export async function toBeAccessibleCheckbox(
   pass = pass === false ? false : tabCheck.pass
 
   // TODO: Test the triggered value of checked and aria-checked
-  // const newOnClick = jest.fn()
-  // const oldOnClick = element.onclick
-  // element.focus()
-  // element.onclick = newOnClick
-  // try {
-  //   await userEvent.keyboard('{space}')
-  //   expect(newOnClick).toBeCalledTimes(1)
-  //   message += printUtil.pass('element activated on {space}')
-  // } catch (e) {
-  //   message += printUtil.fail('element activated on {space}')
-  //   pass = false
-  // }
-  // element.onclick = oldOnClick
+  const newOnClick = jest.fn()
+  const oldOnClick = element.onclick
+  element.onclick = newOnClick
+  try {
+    await userEvent.keyboard(' ')
+    expect(newOnClick).toBeCalledTimes(1)
+    message += printUtil.pass('element activated on Space')
+  } catch (e) {
+    message += printUtil.fail('element activated on Space')
+    pass = false
+  }
+  element.onclick = oldOnClick
 
   return { message: () => message, pass }
 }

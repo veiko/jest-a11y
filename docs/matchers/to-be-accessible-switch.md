@@ -68,7 +68,7 @@ The `toBeAccessibleSwitch` matcher tests the following:
 <!-- test-pass -->
 ✓ element has aria-checked attribute
 <!-- test-pass -->
-✓ element toggles aria-checked on {space}
+✓ element toggles aria-checked on Space
 <!-- test-pass -->
 ✓ element label does not change when state changes
 ```
@@ -81,7 +81,7 @@ The `toBeAccessibleInputSwitch` matcher should be used when the switch element i
 <!-- test-pass -->
 ✓ element has accessible label
 <!-- test-pass -->
-✓ element toggles checked on {space}
+✓ element toggles checked on Space
 <!-- test-pass -->
 ✓ element label does not change when state changes
 ```

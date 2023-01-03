@@ -53,7 +53,7 @@ export async function toBeAccessibleInputSwitch(
   const toggleCheck = assertProperty({
     property: 'checked',
     element,
-    message: 'toggles checked on {space}',
+    message: 'toggles checked on Space',
     value: !initialChecked,
   })
   message += toggleCheck.message()

@@ -30,7 +30,7 @@ describe('toBeAccessibleCheckbox', () => {
     expect(await toBeAccessibleCheckbox(checkbox)).toFailWith('element is part of tab sequence')
   })
 
-  it.skip('fails if the element does not activate on {space}', async () => {
+  it.skip('fails if the element does not activate on Space', async () => {
     render(<input aria-label="My Checkbox" disabled type="checkbox" />)
 
     const checkbox = screen.getByRole('checkbox')

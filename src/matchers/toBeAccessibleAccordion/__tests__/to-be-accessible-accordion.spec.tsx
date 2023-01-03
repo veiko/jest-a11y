@@ -79,6 +79,6 @@ describe('toBeAccessibleAccordion', () => {
     expect(returnValue.pass).toBe(false)
     // FIXME: The ✕ seems to not be able to be captured in the string
     // We risk having this return a false positive without the ✕
-    expect(returnValue.message()).toContain('aria-expanded toggled on {enter}')
+    expect(returnValue.message()).toContain('aria-expanded toggled on Enter')
   })
 })

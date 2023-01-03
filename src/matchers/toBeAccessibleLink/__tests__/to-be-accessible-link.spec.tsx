@@ -16,7 +16,7 @@ describe('toBeAccessibleLink', () => {
     expect(await toBeAccessibleLink(link)).toFailWith('element has role link')
   })
 
-  it('fails if the element does not activate on {enter}', async () => {
+  it('fails if the element does not activate on Enter', async () => {
     render(<div data-testid="a-link">hello world</div>)
 
     const link = screen.getByTestId('a-link', { suggest: false })

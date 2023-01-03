@@ -24,12 +24,12 @@ export const assertActivation = async ({
   let pass = true
 
   element.focus()
-  await userEvent.keyboard('{space}')
+  await userEvent.keyboard(' ')
   const result = onActivate()
   if (result.pass) {
-    message += printUtil.pass(`${elementName} activated on {space}`)
+    message += printUtil.pass(`${elementName} activated on Space`)
   } else {
-    message += printUtil.fail(`${elementName} activated on {space}`, {
+    message += printUtil.fail(`${elementName} activated on Space`, {
       expected: result.expected,
       received: result.received,
     })

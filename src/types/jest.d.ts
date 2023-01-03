@@ -5,8 +5,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * - element is wrapped in an element with `role` heading
    * - element is wrapped in an element with `aria-level`
    * - element has attribute `aria-controls`
-   * - `aria-expanded` toggled on {enter}
-   * - `aria-expanded` toggled on {space}
+   * - `aria-expanded` toggled on <kbd>Enter</kbd>
+   * - `aria-expanded` toggled on <kbd>Space</kbd>
    *
    * @example
    * <div role="accordion">...</div>

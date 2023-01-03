@@ -32,23 +32,23 @@ describe('toBeAccessibleButton', () => {
     expect(await toBeAccessibleButton(button)).toFailWith('element is part of tab sequence')
   })
 
-  it.skip('fails if the element does not activate on {space}', async () => {
+  it('fails if the element does not activate on Space', async () => {
     const blockSpace = (e: React.KeyboardEvent) => e.code === 'Space' && e.preventDefault()
 
     render(<button onKeyDown={blockSpace}>text</button>)
-    await userEvent.keyboard('{space}')
+    await userEvent.keyboard(' ')
 
     const button = screen.getByRole('button')
-    expect(await toBeAccessibleButton(button)).toFailWith('element activated on {space}')
+    expect(await toBeAccessibleButton(button)).toFailWith('element activated on Space')
   })
 
-  it('fails if the element does not activate on {enter}', async () => {
+  it('fails if the element does not activate on Enter', async () => {
     const blockSpace = (e: React.KeyboardEvent) => e.code === 'Enter' && e.preventDefault()
 
     render(<button onKeyDown={blockSpace}>text</button>)
-    await userEvent.keyboard('{space}')
+    await userEvent.keyboard('{Enter}')
 
     const button = screen.getByRole('button')
-    expect(await toBeAccessibleButton(button)).toFailWith('element activated on {enter}')
+    expect(await toBeAccessibleButton(button)).toFailWith('element activated on Enter')
   })
 })

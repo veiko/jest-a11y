@@ -29,12 +29,12 @@ export async function toBeAccessibleLink(
   element.onclick = newOnClick
 
   element.focus()
-  await userEvent.keyboard('{enter}')
+  await userEvent.keyboard('{Enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}')
+    message += printUtil.pass('element activated on Enter')
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}')
+    message += printUtil.fail('element activated on Enter')
     pass = false
   }
   element.onclick = oldOnClick

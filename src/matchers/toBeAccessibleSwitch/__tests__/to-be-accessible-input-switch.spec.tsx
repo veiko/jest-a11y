@@ -38,7 +38,7 @@ describe('toBeAccessibleInputSwitch', () => {
 
     const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
     expect(await toBeAccessibleInputSwitch(inputSwitch)).toFailWith(
-      'element toggles checked on {space}',
+      'element toggles checked on Space',
     )
   })
 

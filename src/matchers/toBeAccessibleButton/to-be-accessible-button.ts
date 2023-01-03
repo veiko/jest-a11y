@@ -42,25 +42,24 @@ export async function toBeAccessibleButton(
   let expectedCalls = 1
   element.onclick = newOnClick
 
-  // FIXME: userEvent.keyboard('{space}') does not work, issue with jsdom?
-  // element.focus()
-  // await userEvent.keyboard('{space}')
-  // try {
-  //   expect(newOnClick).toBeCalledTimes(expectedCalls)
-  //   expectedCalls += 1
-  //   message += printUtil.pass('element activated on {space}')
-  // } catch (e) {
-  //   message += printUtil.fail('element activated on {space}')
-  //   pass = false
-  // }
-
   element.focus()
-  await userEvent.keyboard('{enter}')
+  await userEvent.keyboard(' ')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}')
+    expectedCalls += 1
+    message += printUtil.pass('element activated on Space')
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}')
+    message += printUtil.fail('element activated on Space')
+    pass = false
+  }
+
+  element.focus()
+  await userEvent.keyboard('{Enter}')
+  try {
+    expect(newOnClick).toBeCalledTimes(expectedCalls)
+    message += printUtil.pass('element activated on Enter')
+  } catch (e) {
+    message += printUtil.fail('element activated on Enter')
     pass = false
   }
   element.onclick = oldOnClick

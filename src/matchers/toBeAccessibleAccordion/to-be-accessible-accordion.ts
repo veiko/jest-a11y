@@ -82,10 +82,10 @@ export async function toBeAccessibleAccordion(
     // 4. aria-expanded
     const enterCheck = await assertAriaExpanded({
       element: button,
-      message: 'aria-expanded toggled on {enter}',
+      message: 'aria-expanded toggled on Enter',
       userEvent: async () => {
         button.focus()
-        await userEvent.keyboard('{enter}')
+        await userEvent.keyboard('{Enter}')
       },
     })
     buttonMessage += '  ' + enterCheck.message()
@@ -93,10 +93,10 @@ export async function toBeAccessibleAccordion(
 
     const spaceCheck = await assertAriaExpanded({
       element: button,
-      message: 'aria-expanded toggled on {space}',
+      message: 'aria-expanded toggled on Space',
       userEvent: async () => {
         button.focus()
-        await userEvent.keyboard('{space}')
+        await userEvent.keyboard(' ')
       },
     })
     buttonMessage += '  ' + spaceCheck.message()

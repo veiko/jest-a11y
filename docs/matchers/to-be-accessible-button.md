@@ -34,9 +34,9 @@ The matcher tests the following:
 <!-- test-pass -->
 ✓ element has accessible label
 <!-- test-pass -->
-✓ element activated on {space}
+✓ element activated on Space
 <!-- test-pass -->
-✓ element activated on {enter}
+✓ element activated on Enter
 ```
 
 ## DOM Examples
