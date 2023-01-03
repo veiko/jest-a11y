@@ -88,16 +88,25 @@ export const assertArrowNav = ({
         idx: activeElement || 0,
         length: elements.length,
       })
-      const navCheck = assertSingleArrowNav({
-        elementName,
-        key,
-        nextElement: elements[nextElement],
-      })
 
-      message += navCheck.message()
-      pass = pass ? navCheck.pass : pass
-      activeElement = nextElement
-      ct++
+      if (elements[nextElement]) {
+        const navCheck = assertSingleArrowNav({
+          elementName,
+          key,
+          nextElement: elements[nextElement],
+        })
+
+        message += navCheck.message()
+        pass = pass ? navCheck.pass : pass
+        activeElement = nextElement
+        ct++
+      } else {
+        message += printUtil.fail(`element with index ${nextElement} does not exist`, {
+          received: elements.map(el => el.outerHTML).join('\n'),
+        })
+        pass = false
+        ct = 100
+      }
     }
   })
 
