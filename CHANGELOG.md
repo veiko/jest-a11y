@@ -1,3 +1,10 @@
+## [1.19.7](https://github.com/veiko/jest-a11y/compare/v1.19.6...v1.19.7) (2023-01-03)
+
+
+### Bug Fixes
+
+* improve error messaging ([40b0d05](https://github.com/veiko/jest-a11y/commit/40b0d059dca8c033a30c5f33a4e0557cf10cb592))
+
 ## [1.19.6](https://github.com/veiko/jest-a11y/compare/v1.19.5...v1.19.6) (2023-01-03)
 
 
