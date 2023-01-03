@@ -34,9 +34,6 @@ const assertSingleArrowNav = ({
   message: messageContent = `${elementName} navigates with ${key} and checks next element`,
   nextElement,
 }: AssertSingleArrowNavConfig): jest.CustomMatcherResult => {
-  let message = ''
-  let pass = true
-
   userEvent.keyboard(key)
 
   // FIXME: can not check focus on radio button, jest-dom does not auto-focus the element on keyboard nav
@@ -48,17 +45,18 @@ const assertSingleArrowNav = ({
   // message += activeCheck.message()
   // pass = pass ? activeCheck.pass : pass
 
-  const attributeCheck = assertChecked({
+  const checkCheck = assertChecked({
     element: nextElement,
     elementName,
     checked: true,
   })
-  message += attributeCheck.message()
-  pass = pass ? attributeCheck.pass : pass
 
   return {
-    message: () => (pass ? printUtil.pass(messageContent) : message),
-    pass,
+    message: () =>
+      checkCheck.pass
+        ? messageContent
+        : printUtil.fail(`${elementName} failed to become checked`, { received: nextElement }),
+    pass: checkCheck.pass,
   }
 }
 
@@ -95,10 +93,17 @@ export const assertArrowNav = ({
           nextElement: elements[nextElement],
         })
 
-        message += navCheck.message()
-        pass = pass ? navCheck.pass : pass
-        activeElement = nextElement
-        ct++
+        if (navCheck.pass) {
+          message += navCheck.message()
+          pass = pass ? navCheck.pass : pass
+          activeElement = nextElement
+          ct++
+        } else {
+          message += printUtil.fail(`navigation to ${elements[nextElement]} failed`)
+          message += navCheck.message()
+
+          return { message: () => message, pass: false }
+        }
       } else {
         message += printUtil.fail(`${elementName} with index ${nextElement} does not exist`, {
           received: `${elements.length} elements: \n${elements.map(el => el.outerHTML).join('\n')}`,
