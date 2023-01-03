@@ -19,7 +19,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ btnId, children, id, titl
           id={btnId}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <span>{title}</span>
+          {title}
         </button>
       </h3>
       <div
@@ -39,7 +39,7 @@ export const Accordion: React.FC<{ id: string }> = ({ id }) => (
     <AccordionItem btnId="accordion1id" id="sect1" title="Section 1">
       Item 1
     </AccordionItem>
-    <AccordionItem btnId="accordion1id" id="sect1" title="Section 2">
+    <AccordionItem btnId="accordion2id" id="sect2" title="Section 2">
       Item 2
     </AccordionItem>
   </div>

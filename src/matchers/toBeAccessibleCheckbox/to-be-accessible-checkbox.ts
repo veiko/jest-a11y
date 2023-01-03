@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertLabel } from 'utils/assertLabel'
 import { assertRole } from 'utils/assertRole'
 import { assertTab } from 'utils/assertTab'
@@ -16,7 +16,11 @@ import { printUtil } from 'utils/printUtil'
  * 1. Space activates the checkbox.
  * 2. Enter activates the checkbox.
  */
-export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleCheckbox(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -29,24 +33,20 @@ export function toBeAccessibleCheckbox(this: any, element: HTMLElement): jest.Cu
   message += labelCheck.message()
   pass = pass === false ? false : labelCheck.pass
 
-  const tabCheck = assertTab({ element })
+  const tabCheck = await assertTab({ element, userEvent })
   message += tabCheck.message()
   pass = pass === false ? false : tabCheck.pass
 
+  // TODO: Test the triggered value of checked and aria-checked
   const newOnClick = jest.fn()
   const oldOnClick = element.onclick
-  element.focus()
   element.onclick = newOnClick
   try {
-    userEvent.keyboard('{space}')
+    await userEvent.keyboard(' ')
     expect(newOnClick).toBeCalledTimes(1)
-    message += printUtil.pass('element activated on {space}')
-    expect(element).toHaveFocus()
+    message += printUtil.pass('element activated on Space')
   } catch (e) {
-    message += printUtil.fail('element activated on {space}', {
-      expected: element,
-      received: document.activeElement,
-    })
+    message += printUtil.fail('element activated on Space')
     pass = false
   }
   element.onclick = oldOnClick

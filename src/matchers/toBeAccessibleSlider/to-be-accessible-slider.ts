@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertAriaRangeValues } from 'utils/assertAriaRangeValue'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertLabel } from 'utils/assertLabel'
@@ -17,7 +17,11 @@ import { assertTab } from 'utils/assertTab'
  * Keyboard Interaction
  * N/A
  */
-export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleSlider(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -32,7 +36,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  const tabCheck = assertTab({ element })
+  const tabCheck = await assertTab({ element, userEvent })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 
@@ -42,7 +46,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
 
   const originalValue = parseFloat(element.getAttribute('aria-valuenow') || '0')
 
-  userEvent.keyboard('{arrowright}')
+  await userEvent.keyboard('{arrowright}')
   const rightCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -52,7 +56,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += rightCheck.message()
   pass = pass ? rightCheck.pass : pass
 
-  userEvent.keyboard('{arrowleft}')
+  await userEvent.keyboard('{arrowleft}')
   const leftCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -62,7 +66,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += leftCheck.message()
   pass = pass ? leftCheck.pass : pass
 
-  userEvent.keyboard('{arrowdown}')
+  await userEvent.keyboard('{arrowdown}')
   const downCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -72,7 +76,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += downCheck.message()
   pass = pass ? downCheck.pass : pass
 
-  userEvent.keyboard('{arrowup}')
+  await userEvent.keyboard('{arrowup}')
   const upCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -82,7 +86,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += upCheck.message()
   pass = pass ? upCheck.pass : pass
 
-  userEvent.keyboard('{home}')
+  await userEvent.keyboard('{home}')
   const homeCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -92,7 +96,7 @@ export function toBeAccessibleSlider(this: any, element: HTMLElement): jest.Cust
   message += homeCheck.message()
   pass = pass ? homeCheck.pass : pass
 
-  userEvent.keyboard('{end}')
+  await userEvent.keyboard('{end}')
   const endCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,

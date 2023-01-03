@@ -5,8 +5,8 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * - element is wrapped in an element with `role` heading
    * - element is wrapped in an element with `aria-level`
    * - element has attribute `aria-controls`
-   * - `aria-expanded` toggled on {enter}
-   * - `aria-expanded` toggled on {space}
+   * - `aria-expanded` toggled on <kbd>Enter</kbd>
+   * - `aria-expanded` toggled on <kbd>Space</kbd>
    *
    * @example
    * <div role="accordion">...</div>
@@ -16,7 +16,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/accordion](https://veiko.github.io/jest-a11y/matchers/accordion)
    */
-  toBeAccessibleAccordion(): CustomMatcherResult
+  toBeAccessibleAccordion(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `alert`.
    *
@@ -40,7 +40,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/alertdialog](https://veiko.github.io/jest-a11y/matchers/alertdialog)
    */
-  toBeAccessibleAlertDialog(): CustomMatcherResult
+  toBeAccessibleAlertDialog(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct keyboard interaction, label and role for a button.
    *
@@ -52,7 +52,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/button](https://veiko.github.io/jest-a11y/matchers/button)
    */
-  toBeAccessibleButton(): CustomMatcherResult
+  toBeAccessibleButton(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct keyboard interaction, label and role for a checkbox.
    *
@@ -64,7 +64,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/checkbox](https://veiko.github.io/jest-a11y/matchers/checkbox)
    */
-  toBeAccessibleCheckbox(): CustomMatcherResult
+  toBeAccessibleCheckbox(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `dialog`.
    *
@@ -76,7 +76,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/dialog](https://veiko.github.io/jest-a11y/matchers/dialog)
    */
-  toBeAccessibleDialog(): CustomMatcherResult
+  toBeAccessibleDialog(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `link`.
    *
@@ -88,7 +88,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/link](https://veiko.github.io/jest-a11y/matchers/link)
    */
-  toBeAccessibleLink(): CustomMatcherResult
+  toBeAccessibleLink(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `meter`.
    * @summary A `meter` is a graphical display of a numeric value that varies within a defined range.
@@ -114,7 +114,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/radiogroup](https://veiko.github.io/jest-a11y/matchers/radiogroup)
    */
-  toBeAccessibleRadioGroup(): CustomMatcherResult
+  toBeAccessibleRadioGroup(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `slider`.
    * @summary A `slider` is an input where the user selects a value from within a given range.
@@ -127,7 +127,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/slider](https://veiko.github.io/jest-a11y/matchers/slider)
    */
-  toBeAccessibleSlider(): CustomMatcherResult
+  toBeAccessibleSlider(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `spinbutton`.
    * @summary A `spinbutton` is an input widget that restricts its value to a set or range of discrete values.
@@ -140,7 +140,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/spinbutton](https://veiko.github.io/jest-a11y/matchers/spinbutton)
    */
-  toBeAccessibleSpinButton(): CustomMatcherResult
+  toBeAccessibleSpinButton(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `switch`.
    * @summary A `switch` is an input widget that allows users to choose one of two values: on or off.
@@ -153,7 +153,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/switch](https://veiko.github.io/jest-a11y/matchers/switch)
    */
-  toBeAccessibleSwitch(): CustomMatcherResult
+  toBeAccessibleSwitch(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `toolbar`.
    * @summary A `toolbar` is a container for grouping a set of controls, such as buttons, menubuttons, or checkboxes.
@@ -165,7 +165,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/toolbar](https://veiko.github.io/jest-a11y/matchers/toolbar)
    */
-  toBeAccessibleToolbar(): CustomMatcherResult
+  toBeAccessibleToolbar(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `tooltip`.
    * @summary A `tooltip` a popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
@@ -177,7 +177,7 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/tooltip](https://veiko.github.io/jest-a11y/matchers/tooltip)
    */
-  toBeAccessibleTooltip(): CustomMatcherResult
+  toBeAccessibleTooltip(): Promise<CustomMatcherResult>
   /**
    * Assert whether an element has the correct role, properties and keyboard interactions for `tablist`.
    * @summary Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time. Each tab panel has an associated tab element, that when activated, displays the panel.
@@ -189,6 +189,6 @@ export interface JestA11yMatchers<CustomMatcherResult = unknown> {
    * @see
    * [jest-a11y/matchers/tablist](https://veiko.github.io/jest-a11y/matchers/tablist)
    */
-  toBeAccessibleTabs(): CustomMatcherResult
+  toBeAccessibleTabs(): Promise<CustomMatcherResult>
   /** plop-prepend-matcher */
 }

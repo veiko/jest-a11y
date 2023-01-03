@@ -73,7 +73,7 @@ test('accordion', () => {
 
 The `toBeAccessibleAccordion` matcher will loop through the accordion items and test the following for each:
 
-<TestSummary list={['element is wrapped in an element with role heading', 'element is wrapped in an element with aria-level', 'element has attribute aria-controls', 'aria-expanded toggled on {enter}', 'aria-expanded toggled on {space}']} />
+<TestSummary list={['element is wrapped in an element with role heading', 'element is wrapped in an element with aria-level', 'element has attribute aria-controls', 'aria-expanded toggled on Enter', 'aria-expanded toggled on Space']} />
 
 #### Known Limitations
 

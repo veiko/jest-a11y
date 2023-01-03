@@ -23,7 +23,8 @@ The target resource can be either external or local, i.e., either outside or wit
 
 ```js
 test('alert', () => {
-  document.body.innerHTML = '<a href="https://veiko.github.io/jest-a11y" id="link">Hey, listen!</div>'
+  document.body.innerHTML =
+    '<a href="https://veiko.github.io/jest-a11y" id="link">Hey, listen!</div>'
 
   expect(document.getElementById('link')).toBeAccessibleLink()
 })
@@ -57,7 +58,7 @@ The `toBeAccessibleLink` matcher tests the following:
 <!-- test-pass -->
 ✓ element has role link
 <!-- test-pass -->
-✓ element activates on {enter}
+✓ element activates on Enter
 ```
 
 ### DOM Examples

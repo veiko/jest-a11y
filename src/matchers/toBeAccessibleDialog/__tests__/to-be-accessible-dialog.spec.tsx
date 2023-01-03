@@ -7,17 +7,17 @@ describe('toBeAccessibleDialog', () => {
   it('passes when element is valid', async () => {
     render(<DialogExample />)
 
-    expect(screen.getByRole('dialog')).toBeAccessibleDialog()
+    await expect(screen.getByRole('dialog')).toBeAccessibleDialog()
   })
 
-  it('fails if the element does not have a role of dialog', () => {
+  it('fails if the element does not have a role of dialog', async () => {
     render(<div data-testid="a-modal">hello world</div>)
 
     const modal = screen.getByText(/hello world/i)
-    expect(toBeAccessibleDialog(modal)).toFailWith('element has role dialog')
+    expect(await toBeAccessibleDialog(modal)).toFailWith('element has role dialog')
   })
 
-  it('fails if the element does not have aria-modal="true"', () => {
+  it('fails if the element does not have aria-modal="true"', async () => {
     render(
       <div data-testid="a-modal" role="dialog">
         hello world
@@ -25,14 +25,14 @@ describe('toBeAccessibleDialog', () => {
     )
 
     const modal = screen.getByRole('dialog')
-    expect(toBeAccessibleDialog(modal)).toFailWith('element has attribute aria-modal')
+    expect(await toBeAccessibleDialog(modal)).toFailWith('element has attribute aria-modal')
   })
 
-  it('fails if the element does not have an accessible label', () => {
+  it('fails if the element does not have an accessible label', async () => {
     render(<div role="dialog" />)
 
     const modal = screen.getByRole('dialog')
-    expect(toBeAccessibleDialog(modal)).toFailWith('element has accessible label')
+    expect(await toBeAccessibleDialog(modal)).toFailWith('element has accessible label')
   })
 
   it('fails if the element does not create a focus trap', async () => {
@@ -47,6 +47,6 @@ describe('toBeAccessibleDialog', () => {
     )
 
     const modal = screen.getByRole('dialog')
-    expect(toBeAccessibleDialog(modal)).toFailWith('focus outside of element')
+    expect(await toBeAccessibleDialog(modal)).toFailWith('focus outside of element')
   })
 })

@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertRole } from 'utils/assertRole'
 import { printUtil } from 'utils/printUtil'
 
@@ -11,7 +11,11 @@ import { printUtil } from 'utils/printUtil'
  * Keyboard Interaction
  * 1. Enter: Executes the link and moves focus to the link target.
  */
-export function toBeAccessibleLink(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleLink(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -25,12 +29,12 @@ export function toBeAccessibleLink(this: any, element: HTMLElement): jest.Custom
   element.onclick = newOnClick
 
   element.focus()
-  userEvent.keyboard('{enter}')
+  await userEvent.keyboard('{Enter}')
   try {
     expect(newOnClick).toBeCalledTimes(expectedCalls)
-    message += printUtil.pass('element activated on {enter}')
+    message += printUtil.pass('element activated on Enter')
   } catch (e) {
-    message += printUtil.fail('element activated on {enter}')
+    message += printUtil.fail('element activated on Enter')
     pass = false
   }
   element.onclick = oldOnClick

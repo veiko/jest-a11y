@@ -14,7 +14,10 @@ import { printUtil } from 'utils/printUtil'
  * Keyboard Interaction
  * ^ Copy from link above
  */
-export function toBeAccessibleSwitch(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleSwitch(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
   let message = ''
   let pass = true
 
@@ -42,12 +45,12 @@ export function toBeAccessibleSwitch(this: any, element: HTMLElement): jest.Cust
   const initialLabel = getElementLabel(element)
 
   element.focus()
-  userEvent.keyboard(' ')
+  await userEvent.keyboard(' ')
 
   const toggleCheck = assertAttribute({
     attribute: 'aria-checked',
     element,
-    message: `toggles aria-checked on {space}`,
+    message: `toggles aria-checked on Space`,
     value: initialChecked === 'true' ? 'false' : 'true',
   })
   message += toggleCheck.message()

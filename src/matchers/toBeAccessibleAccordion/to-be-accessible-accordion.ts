@@ -1,5 +1,5 @@
 import { within } from '@testing-library/dom'
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 // FIXME: Have to use relative paths to be able to import this into AccordionTestRunner
 import { assertAriaExpanded } from '../../utils/assertAriaExpanded'
 import { assertAttribute } from '../../utils/assertAttribute'
@@ -20,7 +20,11 @@ import { cssEscape } from '../../utils/cssEscape'
  * Keyboard Interaction
  * 1. Space or Enter expands a collapsed panel when focus is on the associated accordion header.
  */
-export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleAccordion(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass: boolean = true
 
@@ -33,7 +37,9 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
       message: () => printUtil.fail('No elements with role button found', { received: element }),
     }
 
-  buttons.forEach((button: HTMLElement) => {
+  // N.B. It is important to run these sequentially, running in parallel can cause issues
+  // @see https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
+  for (const button of buttons) {
     let buttonMessage = ''
     let buttonPass: boolean = true
     // 2. Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
@@ -74,37 +80,34 @@ export function toBeAccessibleAccordion(this: any, element: HTMLElement): jest.C
     buttonPass = buttonPass === false ? false : attrCheck.pass
 
     // 4. aria-expanded
-    const enterCheck = assertAriaExpanded({
+    const enterCheck = await assertAriaExpanded({
       element: button,
-      message: 'aria-expanded toggled on {enter}',
+      message: 'aria-expanded toggled on Enter',
       userEvent: async () => {
         button.focus()
-        userEvent.keyboard('{enter}')
+        await userEvent.keyboard('{Enter}')
       },
     })
     buttonMessage += '  ' + enterCheck.message()
     buttonPass = buttonPass === false ? false : enterCheck.pass
 
-    // FIXME: issue with js-dom?
-    const spaceCheck = assertAriaExpanded({
+    const spaceCheck = await assertAriaExpanded({
       element: button,
-      message: 'aria-expanded toggled on {space}',
+      message: 'aria-expanded toggled on Space',
       userEvent: async () => {
         button.focus()
-        userEvent.keyboard('{space}')
+        await userEvent.keyboard(' ')
       },
     })
     buttonMessage += '  ' + spaceCheck.message()
     buttonPass = buttonPass === false ? false : spaceCheck.pass
 
-    if (!buttonPass) {
-      message += printUtil.testingElement(buttonMessage, {
-        element: button,
-        pass: buttonPass,
-      })
-    }
+    message += printUtil.testingElement(buttonMessage, {
+      element: button,
+      pass: buttonPass,
+    })
     pass = buttonPass === false ? false : pass
-  })
+  }
 
   return { pass, message: () => message }
 }

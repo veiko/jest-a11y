@@ -7,10 +7,10 @@ describe('toBeAccessibleToolbar', () => {
   it('passes when element is valid', async () => {
     render(<Toolbar />)
 
-    expect(screen.getByRole('toolbar')).toBeAccessibleToolbar()
+    await expect(screen.getByRole('toolbar')).toBeAccessibleToolbar()
   })
 
-  it('fails if the element does not have a role of toolbar', () => {
+  it('fails if the element does not have a role of toolbar', async () => {
     render(
       <div data-testid="an-toolbar">
         <button>hello</button>
@@ -19,10 +19,10 @@ describe('toBeAccessibleToolbar', () => {
     )
 
     const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
-    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element has role toolbar')
+    expect(await toBeAccessibleToolbar(toolbar)).toFailWith('element has role toolbar')
   })
 
-  it('fails if the element does not have an accessible label', () => {
+  it('fails if the element does not have an accessible label', async () => {
     render(
       <div data-testid="an-toolbar" role="toolbar">
         <button>hello</button>
@@ -31,10 +31,10 @@ describe('toBeAccessibleToolbar', () => {
     )
 
     const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
-    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element has accessible label')
+    expect(await toBeAccessibleToolbar(toolbar)).toFailWith('element has accessible label')
   })
 
-  it('fails if the element does not navigate to the first control on {home}', () => {
+  it('fails if the element does not navigate to the first control on {home}', async () => {
     render(
       <div
         aria-label="a toolbar"
@@ -48,12 +48,12 @@ describe('toBeAccessibleToolbar', () => {
     )
 
     const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
-    expect(toBeAccessibleToolbar(toolbar)).toFailWith(
+    expect(await toBeAccessibleToolbar(toolbar)).toFailWith(
       'element navigates to first control on {home}',
     )
   })
 
-  it('fails if the element does not navigate to the last control on {end}', () => {
+  it('fails if the element does not navigate to the last control on {end}', async () => {
     render(
       <div
         aria-label="a toolbar"
@@ -73,6 +73,8 @@ describe('toBeAccessibleToolbar', () => {
     )
 
     const toolbar = screen.getByTestId('an-toolbar', { suggest: false })
-    expect(toBeAccessibleToolbar(toolbar)).toFailWith('element navigates to last control on {end}')
+    expect(await toBeAccessibleToolbar(toolbar)).toFailWith(
+      'element navigates to last control on {end}',
+    )
   })
 })

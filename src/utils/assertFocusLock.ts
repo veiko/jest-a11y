@@ -1,13 +1,17 @@
-import userEvent from '@testing-library/user-event'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 import { getAllFocusableElements } from 'utils/getAllFocusableElements'
 import { matcherUtils, printUtil } from 'utils/printUtil'
 
 type AssertFocusConfig = {
   element: HTMLElement
   message?: string
+  userEvent: UserEvent
 }
 
-export const assertFocusLock = ({ element }: AssertFocusConfig): jest.CustomMatcherResult => {
+export const assertFocusLock = async ({
+  element,
+  userEvent,
+}: AssertFocusConfig): Promise<jest.CustomMatcherResult> => {
   let message = ''
   let pass = true
 
@@ -30,7 +34,7 @@ export const assertFocusLock = ({ element }: AssertFocusConfig): jest.CustomMatc
 
   let ct = 0
   while (currentActiveElement !== firstActiveElement && currentActiveElement?.tagName !== 'BODY') {
-    userEvent.tab()
+    await userEvent.tab()
     currentActiveElement = document.activeElement
 
     if (!elements.includes(currentActiveElement as HTMLElement)) {

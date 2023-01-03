@@ -20,10 +20,10 @@ import { assertRole } from 'utils/assertRole'
  * 3. Home: If the spinbutton has a minimum value, sets the value to its minimum.
  * 4. End: If the spinbutton has a maximum value, sets the value to its maximum.
  */
-export function toBeAccessibleSpinButton(
+export async function toBeAccessibleSpinButton(
   this: any,
   element: HTMLElement,
-): jest.CustomMatcherResult {
+): Promise<jest.CustomMatcherResult> {
   let message = ''
   let pass = true
   const originalValue = parseFloat(element.getAttribute('aria-valuenow') || '0')
@@ -40,8 +40,8 @@ export function toBeAccessibleSpinButton(
   message += attributeCheck.message()
   pass = pass ? attributeCheck.pass : pass
 
-  userEvent.tab()
-  userEvent.keyboard('{arrowup}')
+  await userEvent.tab()
+  await userEvent.keyboard('{arrowup}')
   const upCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,
@@ -51,7 +51,7 @@ export function toBeAccessibleSpinButton(
   message += upCheck.message()
   pass = pass ? upCheck.pass : pass
 
-  userEvent.keyboard('{arrowdown}')
+  await userEvent.keyboard('{arrowdown}')
   const downCheck = assertAttribute({
     attribute: 'aria-valuenow',
     element,

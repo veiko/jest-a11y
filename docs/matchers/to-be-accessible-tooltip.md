@@ -74,7 +74,7 @@ The matcher tests the following:
 <!-- test-pass -->
 ✓ tooltip element is accessible when trigger is focused
 <!-- test-pass -->
-✓ tooltip element is hidden on {esc}
+✓ tooltip element is hidden on {Escape}
 ```
 
 ### WAI-ARIA Roles, States, and Properties

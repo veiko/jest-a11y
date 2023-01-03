@@ -28,13 +28,13 @@ const keys = [
   { key: '{arrowup}', direction: -1 },
 ]
 
-const assertSingleArrowNav = ({
+const assertSingleArrowNav = async ({
   elementName = 'element',
   key,
   message: messageContent = `${elementName} navigates with ${key} and checks next element`,
   nextElement,
-}: AssertSingleArrowNavConfig): jest.CustomMatcherResult => {
-  userEvent.keyboard(key)
+}: AssertSingleArrowNavConfig): Promise<jest.CustomMatcherResult> => {
+  await userEvent.keyboard(key)
 
   // FIXME: can not check focus on radio button, jest-dom does not auto-focus the element on keyboard nav
   // const activeCheck = assertActiveElement({
@@ -76,7 +76,7 @@ export const assertArrowNav = ({
   let pass = true
   let message = ''
 
-  keys.forEach(({ key, direction }) => {
+  keys.forEach(async ({ key, direction }) => {
     let activeElement: number | undefined = undefined
     let ct = 0 // protect against infinite loop
     while (activeElement !== 0 && ct < 100) {
@@ -87,7 +87,7 @@ export const assertArrowNav = ({
       })
 
       if (elements[nextElement]) {
-        const navCheck = assertSingleArrowNav({
+        const navCheck = await assertSingleArrowNav({
           elementName,
           key,
           nextElement: elements[nextElement],

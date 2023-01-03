@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 import { assertFocus } from 'utils/assertFocus'
 import { getFirstFocusableElement } from 'utils/getFirstFocusableElement'
 
@@ -11,17 +11,19 @@ type AssertTabConfig = {
   element: HTMLElement
   elementName?: string
   options?: AssertTabOptions
+  userEvent: UserEvent
 }
 
-export const assertTab = ({
+export const assertTab = async ({
   element,
   elementName = 'element',
   options: { includeChildren, resetFocus } = {},
-}: AssertTabConfig): jest.CustomMatcherResult => {
+  userEvent,
+}: AssertTabConfig): Promise<jest.CustomMatcherResult> => {
   let message = ''
   let pass = true
 
-  userEvent.tab()
+  await userEvent.tab()
 
   const focusCheck = assertFocus({
     element,
@@ -43,7 +45,7 @@ export const assertTab = ({
   }
 
   if (resetFocus) {
-    userEvent.tab({ shift: true })
+    await userEvent.tab({ shift: true })
   }
 
   return { message: () => message, pass }

@@ -16,10 +16,10 @@ describe('toBeAccessibleRadioGroup', () => {
     // )
     render(<RadioGroup />)
 
-    expect(screen.getByRole('radiogroup')).toBeAccessibleRadioGroup()
+    await expect(screen.getByRole('radiogroup')).toBeAccessibleRadioGroup()
   })
 
-  it('fails if the container element does not have a role of radiogroup', () => {
+  it('fails if the container element does not have a role of radiogroup', async () => {
     render(
       <div aria-label="Question" data-testid="a-radiogroup">
         <input defaultChecked aria-label="Yes" type="radio" />
@@ -28,7 +28,9 @@ describe('toBeAccessibleRadioGroup', () => {
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('container element has role radiogroup')
+    expect(await toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+      'container element has role radiogroup',
+    )
   })
 
   it('fails when the container element has no label', async () => {
@@ -40,7 +42,7 @@ describe('toBeAccessibleRadioGroup', () => {
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+    expect(await toBeAccessibleRadioGroup(radiogroup)).toFailWith(
       'container element has accessible label',
     )
   })
@@ -54,7 +56,7 @@ describe('toBeAccessibleRadioGroup', () => {
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+    expect(await toBeAccessibleRadioGroup(radiogroup)).toFailWith(
       'radio button element has accessible label',
     )
   })
@@ -69,7 +71,7 @@ describe('toBeAccessibleRadioGroup', () => {
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('element is part of tab sequence')
+    expect(await toBeAccessibleRadioGroup(radiogroup)).toFailWith('element is part of tab sequence')
   })
 
   // FIXME: can not check whether the element is active when it is navigated to
@@ -82,6 +84,8 @@ describe('toBeAccessibleRadioGroup', () => {
     )
 
     const radiogroup = screen.getByTestId('a-radiogroup', { suggest: false })
-    expect(toBeAccessibleRadioGroup(radiogroup)).toFailWith('radio button element has aria-checked')
+    expect(await toBeAccessibleRadioGroup(radiogroup)).toFailWith(
+      'radio button element has aria-checked',
+    )
   })
 })

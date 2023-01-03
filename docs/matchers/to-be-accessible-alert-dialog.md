@@ -68,7 +68,7 @@ The matcher will test the following:
 <!-- test-pass -->
 ✓ element description is present
 <!-- test-pass -->
-✓ element closed on {esc}
+✓ element closed on {Escape}
 ```
 
 ### WAI-ARIA Roles, States, and Properties

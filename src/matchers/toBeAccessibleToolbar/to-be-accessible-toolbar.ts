@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertFocus } from 'utils/assertFocus'
 import { assertKeyboardNav } from 'utils/assertKeyboardNav'
 import { assertLabel } from 'utils/assertLabel'
@@ -18,7 +18,11 @@ import { getAllFocusableElements } from 'utils/getAllFocusableElements'
  * 1. Tab and Shift + Tab: Move focus into and out of the toolbar.
  * 2. The arrow keys navigate between controls.
  */
-export function toBeAccessibleToolbar(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleToolbar(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -26,7 +30,7 @@ export function toBeAccessibleToolbar(this: any, element: HTMLElement): jest.Cus
   // The first control is focused if the toolbar is receiving focus for the first time after page load.
   const allElements = getAllFocusableElements(element)
   const firstEl = allElements[0]
-  const tabCheck = assertTab({ element: firstEl })
+  const tabCheck = await assertTab({ element: firstEl, userEvent })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : false
 
@@ -45,15 +49,16 @@ export function toBeAccessibleToolbar(this: any, element: HTMLElement): jest.Cus
   // 2. The arrow keys navigate between controls.
   // TODO: test looping?
   firstEl.focus()
-  const keyCheck = assertKeyboardNav({
+  const keyCheck = await assertKeyboardNav({
     element: firstEl,
     nextElement: allElements[1],
     key: '{arrowright}',
+    userEvent,
   })
   message += keyCheck.message()
   pass = pass ? keyCheck.pass : false
 
-  userEvent.keyboard('{home}')
+  await userEvent.keyboard('{home}')
   const homeCheck = assertFocus({
     element: firstEl,
     message: 'navigates to first control on {home}',
@@ -61,7 +66,7 @@ export function toBeAccessibleToolbar(this: any, element: HTMLElement): jest.Cus
   message += homeCheck.message()
   pass = pass ? homeCheck.pass : false
 
-  userEvent.keyboard('{end}')
+  await userEvent.keyboard('{end}')
   const endCheck = assertFocus({
     element: allElements[allElements.length - 1],
     message: 'navigates to last control on {end}',

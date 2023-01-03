@@ -6,12 +6,12 @@ test('returns nested children with role and tag', () => {
   render(
     <div aria-label="group" role="radiogroup">
       <label>
-        <input checked type="radio" value="a" />
+        <input defaultChecked type="radio" value="a" />
         <span aria-hidden="true" />
         <span>a</span>
       </label>
       <label>
-        <input checked type="radio" value="b" />
+        <input type="radio" value="b" />
         <span aria-hidden="true" />
         <span>b</span>
       </label>

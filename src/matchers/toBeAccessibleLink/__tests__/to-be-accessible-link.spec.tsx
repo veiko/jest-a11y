@@ -4,22 +4,22 @@ import { toBeAccessibleLink } from '../to-be-accessible-link'
 
 describe('toBeAccessibleLink', () => {
   it('passes when element is valid', async () => {
-    render(<a href="https://ww.google.com">hello world</a>)
+    render(<a href="#">hello world</a>)
 
-    expect(screen.getByRole('link')).toBeAccessibleLink()
+    await expect(screen.getByRole('link')).toBeAccessibleLink()
   })
 
-  it('fails if the element does not have a role of link', () => {
+  it('fails if the element does not have a role of link', async () => {
     render(<div data-testid="a-link">hello world</div>)
 
     const link = screen.getByTestId('a-link', { suggest: false })
-    expect(toBeAccessibleLink(link)).toFailWith('element has role link')
+    expect(await toBeAccessibleLink(link)).toFailWith('element has role link')
   })
 
-  it('fails if the element does not activate on {enter}', () => {
+  it('fails if the element does not activate on Enter', async () => {
     render(<div data-testid="a-link">hello world</div>)
 
     const link = screen.getByTestId('a-link', { suggest: false })
-    expect(toBeAccessibleLink(link)).toFailWith('element has role link')
+    expect(await toBeAccessibleLink(link)).toFailWith('element has role link')
   })
 })
