@@ -1,4 +1,4 @@
 export const getChildrenWithRole = (
   element: HTMLElement,
-  { role, tagName }: { role: Role; tagName?: string },
-): HTMLElement[] => Array.from(element.querySelectorAll(`${tagName},[role="${role}"]`))
+  { role, tag }: { role: Role; tag?: string },
+): HTMLElement[] => Array.from(element.querySelectorAll(`${tag},[role="${role}"]`))

@@ -41,16 +41,7 @@ export function toBeAccessibleRadioGroup(
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : pass
 
-  const radioButtons = getChildrenWithRole(element, { role: 'radio', tagName: 'INPUT' })
-
-  // The element that will receive focus on tab. If no radio element is checked, the first radio element is used
-  let elementToFocus = radioButtons[0]
-  const tabCheck = assertTab({ element: elementToFocus, elementName: 'first radio button element' })
-  message += tabCheck.message()
-  pass = pass ? tabCheck.pass : pass
-
-  // 3. Keyboard arrow navigation
-
+  const radioButtons = getChildrenWithRole(element, { role: 'radio', tag: 'input' })
   if (!radioButtons.length) {
     return {
       message: () =>
@@ -60,6 +51,14 @@ export function toBeAccessibleRadioGroup(
       pass: false,
     }
   }
+
+  // The element that will receive focus on tab. If no radio element is checked, the first radio element is used
+  let elementToFocus = radioButtons[0]
+  const tabCheck = assertTab({ element: elementToFocus, elementName: 'first radio button element' })
+  message += tabCheck.message()
+  pass = pass ? tabCheck.pass : pass
+
+  // 3. Keyboard arrow navigation
 
   if (radioButtons.length > 1) {
     const arrowNavCheck = assertArrowNav({
