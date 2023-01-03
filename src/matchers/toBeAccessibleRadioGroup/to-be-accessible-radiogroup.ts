@@ -45,18 +45,33 @@ export function toBeAccessibleRadioGroup(
 
   // The element that will receive focus on tab. If no radio element is checked, the first radio element is used
   let elementToFocus = radioButtons[0]
-  const tabCheck = assertTab({ element: elementToFocus })
+  const tabCheck = assertTab({ element: elementToFocus, elementName: 'first radio button element' })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 
   // 3. Keyboard arrow navigation
-  const arrowNavCheck = assertArrowNav({
-    elements: radioButtons,
-    elementName: 'radio button element',
-    message: 'navigates to each radio button with arrow keys and checks the next element',
-  })
-  message += arrowNavCheck.message()
-  pass = pass ? arrowNavCheck.pass : pass
+
+  if (!radioButtons.length) {
+    return {
+      message: () =>
+        printUtil.fail('No radio button elements found', {
+          received: element,
+        }),
+      pass: false,
+    }
+  }
+
+  if (radioButtons.length > 1) {
+    const arrowNavCheck = assertArrowNav({
+      elements: radioButtons,
+      elementName: 'radio button element',
+      message: 'navigates to each radio button with arrow keys and checks the next element',
+    })
+    message += arrowNavCheck.message()
+    pass = pass ? arrowNavCheck.pass : pass
+  } else {
+    message += printUtil.pass('only one radio button element found, skipping arrow navigation')
+  }
 
   radioButtons.forEach(radio => {
     let radioMessage = ''
@@ -88,8 +103,10 @@ export function toBeAccessibleRadioGroup(
       radioPass = radioPass ? radioCheckedCheck.pass : radioPass
     }
 
-    const func = pass ? matcherUtils.EXPECTED_COLOR : matcherUtils.RECEIVED_COLOR
-    message += `\n${func('● Testing')} ${radio.outerHTML}\n${radioMessage}\n`
+    message += printUtil.testingElement(radioMessage, {
+      element: radio,
+      pass: radioPass,
+    })
     pass = radioPass ? pass : false
   })
 

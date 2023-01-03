@@ -52,12 +52,13 @@ export const assertLabel = ({
       Text content: ${matcherUtils.printReceived(element.innerHTML)}
       aria-label: ${matcherUtils.printReceived(getAttribute(element, 'aria-label'))}
       aria-labelledby: ${matcherUtils.printReceived(getAttribute(element, 'aria-labelledby'))}\n\n`,
+          received: element,
         }),
     }
   } else if (!testTextContent && !hasAriaLabel(element)) {
     return {
       pass: false,
-      message: () => printUtil.fail(`${elementName} has accessible label`),
+      message: () => printUtil.fail(`${elementName} has accessible label`, { received: element }),
     }
   }
 

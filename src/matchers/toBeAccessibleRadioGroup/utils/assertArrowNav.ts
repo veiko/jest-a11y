@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event'
-import { assertAttribute } from 'utils/assertAttribute'
 import { assertChecked } from 'utils/assertChecked'
 import { printUtil } from 'utils/printUtil'
 
@@ -101,11 +100,11 @@ export const assertArrowNav = ({
         activeElement = nextElement
         ct++
       } else {
-        message += printUtil.fail(`element with index ${nextElement} does not exist`, {
-          received: elements.map(el => el.outerHTML).join('\n'),
+        message += printUtil.fail(`${elementName} with index ${nextElement} does not exist`, {
+          received: `${elements.length} elements: \n${elements.map(el => el.outerHTML).join('\n')}`,
         })
-        pass = false
-        ct = 100
+
+        return { message: () => message, pass: false }
       }
     }
   })

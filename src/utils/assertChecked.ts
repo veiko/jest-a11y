@@ -34,9 +34,8 @@ export const assertChecked = ({
       message += printUtil.pass(`${elementName} ${messageContent || `is checked`}`)
     } else {
       message += printUtil.fail(
-        `${elementName} ${messageContent || `is${!checked ? '' : ' not'} checked`}`,
+        `${elementName} ${messageContent || `${checked ? 'is checked' : 'is not checked'}`}`,
         {
-          expected: `${elementName} to be ${checked ? 'checked' : 'not checked'}`,
           received: element,
         },
       )
