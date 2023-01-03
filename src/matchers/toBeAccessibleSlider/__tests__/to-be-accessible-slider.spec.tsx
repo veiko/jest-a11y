@@ -12,17 +12,17 @@ describe('toBeAccessibleSlider', () => {
   it('passes when element is valid', async () => {
     render(<Slider />)
 
-    expect(screen.getByRole('slider')).toBeAccessibleSlider()
+    await expect(screen.getByRole('slider')).toBeAccessibleSlider()
   })
 
-  it('fails if the element does not have a role of slider', () => {
+  it('fails if the element does not have a role of slider', async () => {
     render(<div aria-label="progress" data-testid="an-slider" />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith('element has role slider')
+    expect(await toBeAccessibleSlider(slider)).toFailWith('element has role slider')
   })
 
-  it('fails if the element is not in the tab sequence', () => {
+  it('fails if the element is not in the tab sequence', async () => {
     render(
       <div
         aria-label="progress"
@@ -35,17 +35,17 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith('element is part of tab sequence')
+    expect(await toBeAccessibleSlider(slider)).toFailWith('element is part of tab sequence')
   })
 
-  it('fails if the element does not have an accessible label', () => {
+  it('fails if the element does not have an accessible label', async () => {
     render(<div aria-label="progress" data-testid="an-slider" />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith('element has role slider')
+    expect(await toBeAccessibleSlider(slider)).toFailWith('element has role slider')
   })
 
-  it('fails if the element does not have aria-valuemax', () => {
+  it('fails if the element does not have aria-valuemax', async () => {
     render(
       <div
         aria-label="progress"
@@ -57,12 +57,12 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
 
-  it('fails if the element does not have aria-valuemin attribute', () => {
+  it('fails if the element does not have aria-valuemin attribute', async () => {
     render(
       <div
         aria-label="progress"
@@ -74,7 +74,7 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
@@ -92,10 +92,10 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith('element has valid aria-valuenow')
+    expect(await toBeAccessibleSlider(slider)).toFailWith('element has valid aria-valuenow')
   })
 
-  it('fails if aria-valuemin is less than aria-valuemax', () => {
+  it('fails if aria-valuemin is less than aria-valuemax', async () => {
     render(
       <div
         aria-label="progress"
@@ -109,12 +109,12 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
 
-  it('fails if {arrowright} does not increase the value', () => {
+  it('fails if {arrowright} does not increase the value', async () => {
     render(
       <div
         aria-label="progress"
@@ -128,52 +128,52 @@ describe('toBeAccessibleSlider', () => {
     )
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element increases aria-valuenow when {arrowright} is pressed',
     )
   })
 
-  it('fails if {arrowleft} does not decrease the value', () => {
+  it('fails if {arrowleft} does not decrease the value', async () => {
     render(<SliderWithoutLeft />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element decreases aria-valuenow when {arrowleft} is pressed',
     )
   })
 
-  it('fails if {arrowdown} does not increase the value', () => {
+  it('fails if {arrowdown} does not increase the value', async () => {
     render(<SliderWithoutDown />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element increases aria-valuenow when {arrowdown} is pressed',
     )
   })
 
-  it('fails if {arrowup} does not decrease the value', () => {
+  it('fails if {arrowup} does not decrease the value', async () => {
     render(<SliderWithoutUp />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element decreases aria-valuenow when {arrowup} is pressed',
     )
   })
 
-  it('fails if {home} does not set the value to aria-valuemin', () => {
+  it('fails if {home} does not set the value to aria-valuemin', async () => {
     render(<SliderWithoutHome />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element sets aria-valuenow to aria-valuemin when {home} is pressed',
     )
   })
 
-  it('fails if {end} does not set the value to aria-valuemax', () => {
+  it('fails if {end} does not set the value to aria-valuemax', async () => {
     render(<SliderWithoutEnd />)
 
     const slider = screen.getByTestId('an-slider', { suggest: false })
-    expect(toBeAccessibleSlider(slider)).toFailWith(
+    expect(await toBeAccessibleSlider(slider)).toFailWith(
       'element sets aria-valuenow to aria-valuemax when {end} is pressed',
     )
   })

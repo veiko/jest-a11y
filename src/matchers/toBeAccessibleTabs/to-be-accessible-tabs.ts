@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertKeyboardNav } from 'utils/assertKeyboardNav'
 import { assertLabel } from 'utils/assertLabel'
@@ -16,7 +16,11 @@ import { printUtil } from 'utils/printUtil'
  * Keyboard Interaction
  * ^ Copy from link above
  */
-export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleTabs(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -41,35 +45,38 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
   }
 
   // FIXME: what if first tab is disabled?
-  const tabCheck = assertTab({
+  const tabCheck = await assertTab({
     element: tabs[0],
+    userEvent,
+    options: { includeChildren: true },
   })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : false
 
-  tabs[0].focus()
-  const rightCheck = assertKeyboardNav({
-    element: tabs[0],
-    key: '{arrowright}',
-    nextElement: tabs[1],
-    passMessage: 'element navigates to next tab on {arrowright}',
-  })
-  message += rightCheck.message()
-  pass = pass ? rightCheck.pass : false
-
   if (tabs.length > 1) {
+    tabs[0].focus()
+    const rightCheck = await assertKeyboardNav({
+      element: tabs[0],
+      key: '{arrowright}',
+      nextElement: tabs[1],
+      passMessage: 'element navigates to next tab on {arrowright}',
+      userEvent,
+    })
+    message += rightCheck.message()
+    pass = pass ? rightCheck.pass : false
     tabs[1].focus()
-    const leftCheck = assertKeyboardNav({
+    const leftCheck = await assertKeyboardNav({
       element: tabs[1],
       key: '{arrowleft}',
       nextElement: tabs[0],
       passMessage: 'element navigates to previous tab on {arrowleft}',
+      userEvent,
     })
     message += leftCheck.message()
     pass = pass ? leftCheck.pass : false
   }
 
-  tabs.forEach(tabElement => {
+  tabs.forEach(async tabElement => {
     let tabMessage = ''
     let tabPass = true
 
@@ -114,16 +121,17 @@ export function toBeAccessibleTabs(this: any, element: HTMLElement): jest.Custom
       if (ariaLabelledByCheck.pass) {
         let ct = 0
         while (ct < 100 && tabElement !== document.activeElement) {
-          userEvent.keyboard('{arrowright}')
+          await userEvent.keyboard('{arrowright}')
           ct++
         }
+        const tabCheck = await assertTab({
+          element: panelElement,
+          options: { includeChildren: true, resetFocus: true },
+          userEvent,
+        })
+        tabMessage += tabCheck.message()
+        tabPass = tabPass ? tabCheck.pass : false
       }
-      const tabCheck = assertTab({
-        element: panelElement,
-        options: { includeChildren: true, resetFocus: true },
-      })
-      tabMessage += tabCheck.message()
-      tabPass = tabPass ? tabCheck.pass : false
     }
 
     message += printUtil.testingElement(tabMessage, {

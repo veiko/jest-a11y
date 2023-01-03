@@ -17,10 +17,10 @@ describe('toHaveFocusLock', () => {
   it('passes when element is valid', async () => {
     render(<MockFocusLock />)
 
-    expect(screen.getByRole('dialog')).toHaveFocusLock()
+    await expect(screen.getByRole('dialog')).toHaveFocusLock()
   })
 
-  it('fails if the element does not create focus trap', () => {
+  it('fails if the element does not create focus trap', async () => {
     render(
       <div data-testid="trap">
         <button>cancel</button>
@@ -28,6 +28,6 @@ describe('toHaveFocusLock', () => {
       </div>,
     )
 
-    expect(toHaveFocusLock(screen.getByTestId('trap'))).toFailWith('focus outside of element')
+    expect(await toHaveFocusLock(screen.getByTestId('trap'))).toFailWith('focus outside of element')
   })
 })

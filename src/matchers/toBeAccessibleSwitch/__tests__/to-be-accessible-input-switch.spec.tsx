@@ -8,24 +8,24 @@ describe('toBeAccessibleInputSwitch', () => {
   it('passes when element is valid', async () => {
     render(<InputSwitch />)
 
-    expect(screen.getByRole('switch')).toBeAccessibleInputSwitch()
+    await expect(screen.getByRole('switch')).toBeAccessibleInputSwitch()
   })
 
-  it('fails if the element does not have a role of switch', () => {
+  it('fails if the element does not have a role of switch', async () => {
     render(<input data-testid="an-switch" type="checkbox" />)
 
     const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
-    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has role switch')
+    expect(await toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has role switch')
   })
 
-  it('fails if the element does not have an accessible label', () => {
+  it('fails if the element does not have an accessible label', async () => {
     render(<input data-testid="an-switch" role="switch" type="checkbox" />)
 
     const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
-    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has accessible label')
+    expect(await toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element has accessible label')
   })
 
-  it('fails if the element does not toggle checked on space', () => {
+  it('fails if the element does not toggle checked on space', async () => {
     render(
       <input
         aria-label="My Switch"
@@ -37,14 +37,16 @@ describe('toBeAccessibleInputSwitch', () => {
     )
 
     const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
-    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith('element toggles checked on {space}')
+    expect(await toBeAccessibleInputSwitch(inputSwitch)).toFailWith(
+      'element toggles checked on {space}',
+    )
   })
 
-  it('fails if the element label changes when the state changes', () => {
+  it('fails if the element label changes when the state changes', async () => {
     render(<LabelChangeInputSwitch />)
 
     const inputSwitch = screen.getByTestId('an-switch', { suggest: false })
-    expect(toBeAccessibleInputSwitch(inputSwitch)).toFailWith(
+    expect(await toBeAccessibleInputSwitch(inputSwitch)).toFailWith(
       'element label does not change when state changes',
     )
   })

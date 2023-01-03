@@ -13,18 +13,18 @@ type AssertActivationConfig = {
 }
 
 /** TODO */
-export const assertActivation = ({
+export const assertActivation = async ({
   activateOnEnter = true,
   activateOnSpace = true,
   element,
   elementName = 'element',
   onActivate,
-}: AssertActivationConfig): jest.CustomMatcherResult => {
+}: AssertActivationConfig): Promise<jest.CustomMatcherResult> => {
   let message = ''
   let pass = true
 
   element.focus()
-  userEvent.keyboard('{space}')
+  await userEvent.keyboard('{space}')
   const result = onActivate()
   if (result.pass) {
     message += printUtil.pass(`${elementName} activated on {space}`)

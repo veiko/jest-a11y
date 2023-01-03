@@ -1,3 +1,5 @@
+import { render as rtlRender } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { printUtil } from './printUtil'
 
 // Strip ANSI from the given string

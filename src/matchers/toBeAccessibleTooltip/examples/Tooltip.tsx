@@ -11,7 +11,7 @@ export const Tooltip: React.FC = () => {
         onBlur={() => setIsOpen(false)}
         onFocus={() => setIsOpen(true)}
         onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-          if (e.key === 'Escape') {
+          if (e.key === 'esc') {
             setIsOpen(false)
           }
         }}

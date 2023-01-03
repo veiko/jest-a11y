@@ -1,3 +1,4 @@
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertArrowNav } from 'matchers/toBeAccessibleRadioGroup/utils/assertArrowNav'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertLabel } from 'utils/assertLabel'
@@ -16,10 +17,11 @@ import { matcherUtils, printUtil } from 'utils/printUtil'
  * Keyboard Interaction
  * TODO
  */
-export function toBeAccessibleRadioGroup(
+export async function toBeAccessibleRadioGroup(
   this: any,
   element: HTMLElement,
-): jest.CustomMatcherResult {
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -54,7 +56,11 @@ export function toBeAccessibleRadioGroup(
 
   // The element that will receive focus on tab. If no radio element is checked, the first radio element is used
   let elementToFocus = radioButtons[0]
-  const tabCheck = assertTab({ element: elementToFocus, elementName: 'first radio button element' })
+  const tabCheck = await assertTab({
+    element: elementToFocus,
+    elementName: 'first radio button element',
+    userEvent,
+  })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : pass
 

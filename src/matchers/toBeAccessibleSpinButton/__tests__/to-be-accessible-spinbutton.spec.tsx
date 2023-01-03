@@ -7,17 +7,17 @@ describe('toBeAccessibleSpinButton', () => {
   it('passes when element is valid', async () => {
     render(<SpinButton />)
 
-    expect(screen.getByRole('spinbutton')).toBeAccessibleSpinButton()
+    await expect(screen.getByRole('spinbutton')).toBeAccessibleSpinButton()
   })
 
-  it('fails if the element does not have a role of spinbutton', () => {
+  it('fails if the element does not have a role of spinbutton', async () => {
     render(<div data-testid="a-spinbutton">hello world</div>)
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith('element has role spinbutton')
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith('element has role spinbutton')
   })
 
-  it('fails if the element does not have an accessible label', () => {
+  it('fails if the element does not have an accessible label', async () => {
     render(
       <input
         aria-valuemax={10}
@@ -29,10 +29,10 @@ describe('toBeAccessibleSpinButton', () => {
     )
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith('element has accessible label')
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith('element has accessible label')
   })
 
-  it('fails if aria-valuemin is not less than aria-valuemax', () => {
+  it('fails if aria-valuemin is not less than aria-valuemax', async () => {
     render(
       <input
         aria-label="some number"
@@ -45,12 +45,12 @@ describe('toBeAccessibleSpinButton', () => {
     )
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith(
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith(
       'element has aria-valuemin set to a decimal number less than aria-valuemax',
     )
   })
 
-  it('fails if aria-valuenow is not valid', () => {
+  it('fails if aria-valuenow is not valid', async () => {
     render(
       <input
         aria-label="some number"
@@ -63,10 +63,10 @@ describe('toBeAccessibleSpinButton', () => {
     )
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith('element has valid aria-valuenow')
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith('element has valid aria-valuenow')
   })
 
-  it('fails if aria-valuenow does not increase when {arrowup} is pressed', () => {
+  it('fails if aria-valuenow does not increase when {arrowup} is pressed', async () => {
     render(
       <input
         aria-label="some number"
@@ -79,12 +79,12 @@ describe('toBeAccessibleSpinButton', () => {
     )
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith(
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith(
       'element increases aria-valuenow when {arrowup} is pressed',
     )
   })
 
-  it('fails if aria-valuenow does not decrease when {arrowdown} is pressed', () => {
+  it('fails if aria-valuenow does not decrease when {arrowdown} is pressed', async () => {
     render(
       <input
         aria-label="some number"
@@ -100,7 +100,7 @@ describe('toBeAccessibleSpinButton', () => {
     )
 
     const spinbutton = screen.getByTestId('a-spinbutton', { suggest: false })
-    expect(toBeAccessibleSpinButton(spinbutton)).toFailWith(
+    expect(await toBeAccessibleSpinButton(spinbutton)).toFailWith(
       'element decreases aria-valuenow when {arrowdown} is pressed',
     )
   })

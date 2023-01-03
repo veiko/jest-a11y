@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 import { assertFocus } from 'utils/assertFocus'
 import { printUtil } from 'utils/printUtil'
 
@@ -7,6 +7,7 @@ type Config = {
   // @see https://www.w3.org/TR/uievents-key/#keys-modifier
   key: string // 'ArrowDown' | 'ArrowUp' | 'ArrowLeft' | 'ArrowRight'
   passMessage?: string
+  userEvent: UserEvent
 }
 
 /**
@@ -14,15 +15,16 @@ type Config = {
  * @param Config
  * @returns jest.CustomMatcherResult
  */
-export const assertKeyboardInactive = ({
+export const assertKeyboardInactive = async ({
   element,
   key,
   passMessage = 'element supports arrow keyboard navigation',
-}: Config): jest.CustomMatcherResult & { activeElement: HTMLElement } => {
+  userEvent,
+}: Config): Promise<jest.CustomMatcherResult & { activeElement: HTMLElement }> => {
   let message = ''
   let pass = true
 
-  userEvent.keyboard(key)
+  await userEvent.keyboard(key)
   const activeElement = document.activeElement as HTMLElement
 
   const focusCheck = assertFocus({ element })

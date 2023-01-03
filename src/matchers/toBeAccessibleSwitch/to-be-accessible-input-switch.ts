@@ -14,10 +14,10 @@ import { printUtil } from 'utils/printUtil'
  * Keyboard Interaction
  * ^ Copy from link above
  */
-export function toBeAccessibleInputSwitch(
+export async function toBeAccessibleInputSwitch(
   this: any,
   element: HTMLElement,
-): jest.CustomMatcherResult {
+): Promise<jest.CustomMatcherResult> {
   let message = ''
   let pass = true
 
@@ -48,7 +48,7 @@ export function toBeAccessibleInputSwitch(
   pass = pass ? attributeCheck.pass : false
 
   element.focus()
-  userEvent.keyboard(' ')
+  await userEvent.keyboard(' ')
 
   const toggleCheck = assertProperty({
     property: 'checked',

@@ -1,16 +1,16 @@
-import { matcherUtils, printUtil } from './printUtil'
+import { printUtil } from './printUtil'
 
 type AssertAriaExpandedConfig = {
   element: HTMLElement
   message?: string
-  userEvent(): void
+  userEvent(): Promise<void>
 }
 
-export const assertAriaExpanded = ({
+export const assertAriaExpanded = async ({
   element,
   message: messageContent,
   userEvent,
-}: AssertAriaExpandedConfig): jest.CustomMatcherResult => {
+}: AssertAriaExpandedConfig): Promise<jest.CustomMatcherResult> => {
   let message = ''
   let pass = true
 
@@ -23,11 +23,11 @@ export const assertAriaExpanded = ({
   }
 
   const initialState = element.getAttribute('aria-expanded') === 'true'
-  userEvent()
+  await userEvent()
 
   if (element.getAttribute('aria-expanded') === (!initialState).toString()) {
     message += printUtil.pass(messageContent || 'aria-expanded toggled')
-    userEvent()
+    // await userEvent()
   } else {
     message += printUtil.fail(messageContent || 'aria-expanded toggled', {
       expected: `aria-expanded='${!initialState}'`,

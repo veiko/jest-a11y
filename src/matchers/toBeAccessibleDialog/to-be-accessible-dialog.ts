@@ -1,3 +1,4 @@
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertFocusLock } from 'utils/assertFocusLock'
 import { assertLabel } from 'utils/assertLabel'
@@ -19,7 +20,11 @@ import { assertRole } from 'utils/assertRole'
  * 2. Shift + Tab Moves focus to the previous tabbable element inside the dialog. If focus is on the first tabbable element inside the dialog, moves focus to the last tabbable element inside the dialog.
  * 3. Escape closes the dialog.
  */
-export function toBeAccessibleDialog(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleDialog(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
@@ -41,7 +46,7 @@ export function toBeAccessibleDialog(this: any, element: HTMLElement): jest.Cust
   message += labelCheck.message()
   pass = pass ? labelCheck.pass : false
 
-  const focusTrapCheck = assertFocusLock({ element })
+  const focusTrapCheck = await assertFocusLock({ element, userEvent })
   message += focusTrapCheck.message()
   pass = pass ? focusTrapCheck.pass : false
 

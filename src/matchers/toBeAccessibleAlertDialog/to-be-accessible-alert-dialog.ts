@@ -19,10 +19,10 @@ import { printUtil } from 'utils/printUtil'
  * 2. Shift + Tab Moves focus to the previous tabbable element inside the dialog. If focus is on the first tabbable element inside the dialog, moves focus to the last tabbable element inside the dialog.
  * 3. Escape closes the dialog.
  */
-export function toBeAccessibleAlertDialog(
+export async function toBeAccessibleAlertDialog(
   this: any,
   element: HTMLElement,
-): jest.CustomMatcherResult {
+): Promise<jest.CustomMatcherResult> {
   let message = ''
   let pass = true
 
@@ -49,7 +49,7 @@ export function toBeAccessibleAlertDialog(
   }
 
   try {
-    userEvent.keyboard('{esc}')
+    await userEvent.keyboard('{esc}')
     message += printUtil.pass('element closed on {esc}')
     // TODO: How to validate dialog closed?
   } catch (e) {

@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+import { default as rtlUserEvent } from '@testing-library/user-event'
 import { assertAccessible } from 'utils/assertAccessible'
 import { assertAttribute } from 'utils/assertAttribute'
 import { assertHidden } from 'utils/assertHidden'
@@ -18,11 +18,15 @@ import { printUtil } from 'utils/printUtil'
  *
  * TODO: Clarify that the tooltip trigger is passed here
  */
-export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.CustomMatcherResult {
+export async function toBeAccessibleTooltip(
+  this: any,
+  element: HTMLElement,
+): Promise<jest.CustomMatcherResult> {
+  const userEvent = rtlUserEvent.setup()
   let message = ''
   let pass = true
 
-  const tabCheck = assertTab({ element, elementName: 'trigger element' })
+  const tabCheck = await assertTab({ element, elementName: 'trigger element', userEvent })
   message += tabCheck.message()
   pass = pass ? tabCheck.pass : false
 
@@ -70,7 +74,7 @@ export function toBeAccessibleTooltip(this: any, element: HTMLElement): jest.Cus
   message += accessibleCheck.message()
   pass = pass ? accessibleCheck.pass : false
 
-  userEvent.keyboard('{esc}')
+  await userEvent.keyboard('{esc}')
 
   const hiddenCheck = assertHidden({
     element: tooltipElement,
